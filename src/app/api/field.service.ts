@@ -11,9 +11,7 @@
  *//* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
+import { HttpClient, HttpHeaders, HttpResponse, HttpEvent }  from '@angular/common/http';
 
 import { Observable }                                        from 'rxjs';
 
@@ -21,8 +19,8 @@ import { FieldRequest } from '../model/fieldRequest';
 import { FieldResponse } from '../model/fieldResponse';
 import { GetAllFields } from '../model/getAllFields';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../configuration';
+import { BASE_PATH }                     from 'service_utils/variables';
+import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()
