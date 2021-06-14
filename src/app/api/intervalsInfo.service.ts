@@ -13,15 +13,15 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
 
 import { Observable }                                        from 'rxjs';
 
 import { IntervalsInfoRequest } from '../model/intervalsInfoRequest';
 import { IntervalsInfoResponse } from '../model/intervalsInfoResponse';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
+import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()
