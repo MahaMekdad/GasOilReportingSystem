@@ -5,16 +5,19 @@ import { ApiModule } from 'api.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductionBudgetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ApiModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
