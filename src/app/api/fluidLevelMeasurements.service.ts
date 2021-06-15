@@ -13,16 +13,16 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
- 
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
+
 import { Observable }                                        from 'rxjs';
 
 import { FluidLevelMeasurementRequest } from '../model/fluidLevelMeasurementRequest';
 import { GetAllFluidLevelMeasurement } from '../model/getAllFluidLevelMeasurement';
 import { GetFluidLevelMeasurement } from '../model/getFluidLevelMeasurement';
 
-import { BASE_PATH } from 'service_utils/variables';
-import { Configuration } from 'service_utils/configuration';
-import { CustomHttpUrlEncodingCodec } from 'service_utils/encoder';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
+import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()

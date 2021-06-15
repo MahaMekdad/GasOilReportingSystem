@@ -200,9 +200,9 @@ export class WellTestsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<WellTestResponse>;
-    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<WellTestResponse>>;
-    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<WellTestResponse>>;
+    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<AllTests>;
+    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AllTests>>;
+    public getTestById(id: number, beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AllTests>>;
     public getTestById(id: number, beginDate?: Date, endDate?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -234,7 +234,7 @@ export class WellTestsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<WellTestResponse>('get',`${this.basePath}/wells/${encodeURIComponent(String(id))}/tests`,
+        return this.httpClient.request<AllTests>('get',`${this.basePath}/wells/${encodeURIComponent(String(id))}/tests`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

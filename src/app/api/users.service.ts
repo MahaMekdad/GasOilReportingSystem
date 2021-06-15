@@ -195,17 +195,17 @@ export class UsersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public usersIdPut(body: UserRequest, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public usersIdPut(body: UserRequest, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public usersIdPut(body: UserRequest, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public usersIdPut(body: UserRequest, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public usersIdPatch(body: UserRequest, id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public usersIdPatch(body: UserRequest, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public usersIdPatch(body: UserRequest, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public usersIdPatch(body: UserRequest, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling usersIdPut.');
+            throw new Error('Required parameter body was null or undefined when calling usersIdPatch.');
         }
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling usersIdPut.');
+            throw new Error('Required parameter id was null or undefined when calling usersIdPatch.');
         }
 
         let headers = this.defaultHeaders;
@@ -227,7 +227,7 @@ export class UsersService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/users/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('patch',`${this.basePath}/users/${encodeURIComponent(String(id))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

@@ -85,8 +85,7 @@ export class WellService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
@@ -164,7 +163,6 @@ export class WellService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -201,7 +199,6 @@ export class WellService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -256,8 +253,7 @@ export class WellService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {

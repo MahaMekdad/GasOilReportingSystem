@@ -11,7 +11,9 @@
  *//* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpEvent }  from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
 
 import { Observable }                                        from 'rxjs';
 
@@ -19,7 +21,7 @@ import { FieldRequest } from '../model/fieldRequest';
 import { FieldResponse } from '../model/fieldResponse';
 import { GetAllFields } from '../model/getAllFields';
 
-import { BASE_PATH }                     from 'service_utils/variables';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
 
 
@@ -83,8 +85,7 @@ export class FieldService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
@@ -162,7 +163,6 @@ export class FieldService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -199,7 +199,6 @@ export class FieldService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -254,8 +253,7 @@ export class FieldService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {

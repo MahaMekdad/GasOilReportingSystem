@@ -12,6 +12,5 @@
 
 export interface FieldRequest { 
     fieldName?: string;
-    fieldCode?: string;
     concessionId?: number;
 }

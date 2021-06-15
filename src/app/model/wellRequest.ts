@@ -12,5 +12,5 @@
 
 export interface WellRequest { 
     wellName?: string;
-    wellCode?: string;
+    fieldId?: number;
 }

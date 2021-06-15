@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AllWellsResponse } from './allWellsResponse';
+import { WellResponse } from './wellResponse';
 
-export interface GetAllWells extends Array<AllWellsResponse> { 
+export interface GetAllWells extends Array<WellResponse> { 
 }

@@ -91,8 +91,7 @@ export class WellDailyActionsService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {
@@ -113,22 +112,22 @@ export class WellDailyActionsService {
     /**
      * Deletes a report
      * Deletes a report by its id
-     * @param dailyActionId Delete a daily report by its id
      * @param wellId Delete a daily report in a well by its id
+     * @param dailyActionId Delete a daily report by its id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteReportById(dailyActionId: number, wellId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteReportById(dailyActionId: number, wellId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteReportById(dailyActionId: number, wellId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteReportById(dailyActionId: number, wellId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (dailyActionId === null || dailyActionId === undefined) {
-            throw new Error('Required parameter dailyActionId was null or undefined when calling deleteReportById.');
-        }
+    public deleteReportById(wellId: number, dailyActionId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteReportById(wellId: number, dailyActionId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteReportById(wellId: number, dailyActionId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteReportById(wellId: number, dailyActionId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (wellId === null || wellId === undefined) {
             throw new Error('Required parameter wellId was null or undefined when calling deleteReportById.');
+        }
+
+        if (dailyActionId === null || dailyActionId === undefined) {
+            throw new Error('Required parameter dailyActionId was null or undefined when calling deleteReportById.');
         }
 
         let headers = this.defaultHeaders;
@@ -197,7 +196,6 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -267,7 +265,6 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -315,7 +312,6 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -375,8 +371,7 @@ export class WellDailyActionsService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
-            'application/json',
-            'application/xml'
+            'application/json'
         ];
         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
         if (httpContentTypeSelected != undefined) {

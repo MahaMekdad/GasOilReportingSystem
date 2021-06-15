@@ -10,13 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface AllWellDailyActionsResponse { 
-    id?: number;
-    wellId?: number;
-    siLVL4?: number;
-    actionDescription?: string;
-    netProduction?: number;
-    downTime?: number;
-    losses?: number;
-    date?: Date;
+/**
+ * Model for the UserData object info for return loggin
+ */
+export interface LoginRequest { 
+    email: string;
+    password: string;
 }

@@ -11,7 +11,7 @@
  *//* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpEvent }  from '@angular/common/http';
 
 import { Observable }                                        from 'rxjs';
 
@@ -19,7 +19,7 @@ import { AllConcessions } from '../model/allConcessions';
 import { ConcessionRequest } from '../model/concessionRequest';
 import { ConcessionResponse } from '../model/concessionResponse';
 
-import { BASE_PATH }                     from 'service_utils/variables';
+import { BASE_PATH }                                         from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
 
 
