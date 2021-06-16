@@ -1,0 +1,53 @@
+<!--<div class="container">-->
+<!--  <div class="card">-->
+<!--    <div class="card-body">-->
+<!--      <div class="row">-->
+<!--        <div class="col-md-12">-->
+          <table class="table table-bordered table-responsive table-condensed table-striped table-hover data-page-length='10'">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Id</th>
+              <th>Production Date</th>
+              <th>Meleiha</th>
+              <th>Aghar</th>
+              <th>East Kanays</th>
+              <th>Zarif</th>
+              <th>Faras</th>
+              <th>Raml</th>
+              <th>Western Desert</th>
+              <th>Ashrafi</th>
+              <th>Agiba Oil</th>
+              <th>Sales Gas</th>
+              <th>Agiba Boe</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of productionBudgetDataResponse; let currentIndex=index">
+              <td>{{currentIndex+1}}</td>
+              <td>{{item.id}}</td>
+              <td>{{item.productionDate}}</td>
+              <td>{{item.meleiha}}</td>
+              <td>{{item.aghar}}</td>
+              <td>{{item.eastKanays}}</td>
+              <td>{{item.zarif}}</td>
+              <td>{{item.faras}}</td>
+              <td>{{item.raml}}</td>
+              <td>{{item.westernDesert}}</td>
+              <td>{{item.ashrafi}}</td>
+              <td>{{item.agibaOil}}</td>
+              <td>{{item.salesGas}}</td>
+              <td>{{item.agibaBOE}}</td>
+              <td>
+                <button (click)="delete(currentIndex)" type="button" class="btn btn-danger">DELETE</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
