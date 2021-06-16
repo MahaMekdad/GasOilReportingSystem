@@ -1,0 +1,33 @@
+<div class="text-center border border-light p-5">
+    
+      <input  type="text" class="form-control"  placeholder="First name" [(ngModel)]="userRequest.firstName">
+      <br>    
+      <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="userRequest.lastName">
+      <br>
+      <input type="email" class="form-control"  placeholder="Email" [(ngModel)]="userRequest.email">
+      <br>
+      <input type="password" class="form-control"  placeholder="Password" [(ngModel)]="userRequest.password">
+      <br>
+      <input type="text" class="form-control" placeholder="Phone number" [(ngModel)]="userRequest.phoneNumber">
+      <br>
+      job title
+      <input type="text" class="form-control" placeholder="Job title" [(ngModel)]="userRequest.jobTitle">
+      <br>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Job location
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="setJobLocation('office')">office</a>
+          <a class="dropdown-item" (click)="setJobLocation('meleiha')">meleiha</a>
+          <a class="dropdown-item" (click)="setJobLocation('faras')">faras</a>
+          <a class="dropdown-item" (click)="setJobLocation('raml')">raml</a>
+          <a class="dropdown-item" (click)="setJobLocation('ashrafi')">ashrafi</a>
+        </div>
+      </div>
+      
+      
+      <br>
+      <br>
+    <button (click)=register() class="btn btn-primary">Sign Up</button>
+</div>
