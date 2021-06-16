@@ -1,1 +1,62 @@
-<p>production-general-info works!</p>
+<!--<p>production-general-info works!</p>-->
+<!-- <p>fluid-level-measurements works!</p> -->
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>id</th>
+              <th>initial_prod_date</th>
+              <th>initial_type</th>
+              <th>initial_product</th>
+              <th>initial_lift_type</th>
+              <th>init_status</th>
+              <th>monitoring_system</th>
+              <th>current_well_type_date</th>
+              <th>current_well_type</th>
+              <th>current_product</th>
+              <th>current_status</th>
+              <th>runtime</th>
+              <th>current_lift_type</th>
+              <th>current_lift_type_date</th>
+              <th>power_source_type</th>
+              <th>power_source</th>
+              <th>procession_plant</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pqi of pqi; let currentIndex=index">
+              <td>{{currentIndex+1}}</td>
+              <td>{{pqi.id}}</td>
+              <td>{{pqi.initialProdDate | date: 'dd-MM-yyyy'}}</td>
+              <td>{{pqi.initialType}}</td>
+              <td>{{pqi.currentProduct}}</td>
+              <td>{{pqi.initialLiftType}}</td>
+              <td>{{pqi.initStatus}}</td>
+              <td>{{pqi.monitoringSystem}}</td>
+              <td>{{pqi.currentWellTypeDate | date: 'dd-MM-yyyy'}}</td>
+              <td>{{pqi.currentWellType}}</td>
+              <td>{{pqi.currentProduct}}</td>
+              <td>{{pqi.currentStatus}}</td>
+              <td>{{pqi.runtime}}</td>
+              <td>{{pqi.currentLiftType}}</td>
+              <td>{{pqi.currentLiftTypeDate | date: 'dd-MM-yyyy'}}</td>
+              <td>{{pqi.powerSourceType}}</td>
+              <td>{{pqi.powerSource}}</td>
+              <td>{{pqi.processionPlant}}</td>
+<!--              <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>-->
+<!--            -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

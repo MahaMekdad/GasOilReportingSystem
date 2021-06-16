@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AllProductionGeneralInfoWithNamesResponse} from "../../model/allProductionGeneralInfoWithNamesResponse";
+import {ProductionGeneralInfoService} from "../../api/productionGeneralInfo.service";
 
 @Component({
   selector: 'app-production-general-info',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductionGeneralInfoComponent implements OnInit {
 
-  constructor() { }
+  pqi: AllProductionGeneralInfoWithNamesResponse[]
+
+  constructor(private _productionGeneralInfoService: ProductionGeneralInfoService) { }
 
   ngOnInit(): void {
+    this._productionGeneralInfoService.wellsProductionGeneralInfoGet(null, null).subscribe(
+      data => {
+        // console.log(data)
+        this.pqi = data;
+      }
+    )
   }
 
 }
