@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
 import { WellComponent } from './components/well/well.component';
+import { FieldComponent } from './components/field/field.component';
+import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 
 @NgModule({
   
@@ -15,7 +17,9 @@ import { WellComponent } from './components/well/well.component';
     AppComponent,
     FluidLevelMeasurementsComponent,
     TestComponent,
-    WellComponent
+    WellComponent,
+    FieldComponent,
+    ProductionGeneralInfoComponent
   ],
   imports: [
     BrowserModule,

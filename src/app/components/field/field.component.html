@@ -1,0 +1,36 @@
+<!--<p>field works!</p>-->
+<!--<p>well works!</p>-->
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>field_id</th>
+              <th>field_name</th>
+              <th>field_code</th>
+              <th>concession_id</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let field of field; let currentIndex=index">
+              <td>{{currentIndex+1}}</td>
+              <td>{{field.fieldId}}</td>
+              <td>{{field.fieldName}}</td>
+              <td>{{field.fieldCode}}</td>
+              <td>{{field.concessionId}}</td>
+              <!--              <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>-->
+              <!--          -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
