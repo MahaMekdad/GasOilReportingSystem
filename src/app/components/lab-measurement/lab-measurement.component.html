@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>remarks</th>
+                            <th>s1</th>
+                            <th>s2</th>
+                            <th>s3</th>
+                            <th>s4</th>
+                            <th>s5</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let lab of labs; let currentIndex=index">
+                            <td>{{currentIndex+1}}</td>
+                            <td>{{lab.id}}</td>
+                            <td>{{lab.date | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{lab.remarks}}</td>
+                            <td>{{lab.s1}}</td>
+                            <td>{{lab.s2}}</td>
+                            <td>{{lab.s3}}</td>
+                            <td>{{lab.s4}}</td>
+                            <td>{{lab.s5}}</td>
+                            <td><button type="button" class="btn btn-danger" (click)="deleteFromLabs(currentIndex)">Delete</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+</div>

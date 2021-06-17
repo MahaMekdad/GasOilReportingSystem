@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
+import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
+import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
 
 @NgModule({
 
@@ -15,7 +17,9 @@ import { FluidLevelMeasurementsComponent } from './components/fluid-level-measur
     AppComponent,
     ProductionBudgetComponent,
     FluidLevelMeasurementsComponent,
-    TestComponent
+    TestComponent,
+    LabMeasurementComponent,
+    DailyActionsComponent
 
   ],
   imports: [
