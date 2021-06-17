@@ -1,8 +1,7 @@
-import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { Configuration } from 'service_utils/configuration';
 import { HttpClient } from '@angular/common/http';
-
-
 import { ConcessionsService } from 'src/app/api/concessions.service';
 import { ConcessionsBudgetsService } from 'src/app/api/concessionsBudgets.service';
 import { DrilingInfoService } from 'src/app/api/drilingInfo.service';
@@ -24,6 +23,9 @@ import { WellTestsService } from 'src/app/api/wellTests.service';
   imports:      [],
   declarations: [],
   exports:      [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   providers: [
     ConcessionsService,
     ConcessionsBudgetsService,

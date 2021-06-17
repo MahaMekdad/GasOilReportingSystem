@@ -1,6 +1,6 @@
 import { TestComponent } from './components/test/test.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiModule } from 'api.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,14 +19,18 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
     FluidLevelMeasurementsComponent,
     TestComponent,
     LabMeasurementComponent,
-    DailyActionsComponent
+    DailyActionsComponent,
 
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ApiModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

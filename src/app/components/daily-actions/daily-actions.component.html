@@ -8,7 +8,7 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>Id</th>
+                            <th>Well Id</th>
                             <th>Date</th>
                             <th>DownTime</th>
                             <th>Losses</th>
@@ -30,8 +30,52 @@
 
                             <td><button type="button" class="btn btn-danger" (click)="deleteFromReports(currentIndex)">Delete</button></td>
                           </tr>
+                          <tr>
+                            <td>#</td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="id" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="r.date" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="down time" [(ngModel)]="r.downTime" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="losses" [(ngModel)]="r.losses" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="ShutinLevel4" [(ngModel)]="r.siLVL4" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="netProduction" [(ngModel)]="r.netProduction" class="border-none"></td>
+                            <td class="pt-3-half" contenteditable="true"><input type="text" name="actionDescription" [(ngModel)]="r.actionDescription" class="border-none"></td>
+                            <td>
+                              <span class="table-remove"><button type="button" (click)=insert()
+                                                    class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
+                            </td>
+                          </tr>                          
                         </tbody>
                       </table>
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>Lab Id</th>
+                            <th>Well Id</th>
+                            <th>Date</th>
+                            <th>DownTime</th>
+                            <th>Losses</th>
+                            <th>ShutinLevel4</th>
+                            <th>Net Production</th>
+                            <th>Action Description</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="idEdit" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellId" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="r2.date" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="down time" [(ngModel)]="r2.downTime" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="losses" [(ngModel)]="r2.losses" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="ShutinLevel4" [(ngModel)]="r2.siLVL4" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="netProduction" [(ngModel)]="r2.netProduction" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="actionDescription" [(ngModel)]="r2.actionDescription" class="border-none"></td>
+                              <td>
+                                <span class="table-remove"><button type="button" (click)=edit()
+                                                      class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                 </div>
                
             </div>
