@@ -10,6 +10,7 @@ import { FluidLevelMeasurementsComponent } from './components/fluid-level-measur
 import { WellComponent } from './components/well/well.component';
 import { FieldComponent } from './components/field/field.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
+import { DrillingInfoComponent } from './components/drilling-info/drilling-info.component';
 
 @NgModule({
   
@@ -19,7 +20,8 @@ import { ProductionGeneralInfoComponent } from './components/production-general-
     TestComponent,
     WellComponent,
     FieldComponent,
-    ProductionGeneralInfoComponent
+    ProductionGeneralInfoComponent,
+    DrillingInfoComponent
   ],
   imports: [
     BrowserModule,

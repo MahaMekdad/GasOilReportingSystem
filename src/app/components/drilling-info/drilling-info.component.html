@@ -1,0 +1,48 @@
+<!--<p>drilling-info works!</p>-->
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>id</th>
+              <th>release_date</th>
+              <th>well_description</th>
+              <th>well_type</th>
+              <th>bore_type</th>
+              <th>measured_depth</th>
+              <th>tvd_depth</th>
+              <th>bbtp</th>
+              <th>production_general_info</th>
+              <th>well_id</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let drill of drill; let currentIndex=index">
+              <td>{{currentIndex+1}}</td>
+              <td>{{drill.id}}</td>
+              <td>{{drill.releaseDate}}</td>
+              <td>{{drill.wellDescription}}</td>
+              <td>{{drill.wellType}}</td>
+              <td>{{drill.boreType}}</td>
+              <td>{{drill.measuredDepth}}</td>
+              <td>{{drill.tvdDepth}}</td>
+              <td>{{drill.bbtp}}</td>>
+              <td>{{drill.productionGeneralInfo}}</td>
+              <td>{{drill.wellId}}</td>
+
+              <!--              <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>-->
+              <!--          -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
