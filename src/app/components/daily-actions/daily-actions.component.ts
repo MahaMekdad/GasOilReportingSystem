@@ -37,7 +37,6 @@ export class DailyActionsComponent implements OnInit {
   sLvl4Filter: number;
   date: String;
   wellIdFilter: number;
-  isShown: boolean = true ;
   startDate: string;
   endDate: string;
 
@@ -96,7 +95,6 @@ insert():void{
 }
 
 filterBySiLvl4():void{
-  this.isShown=false;
   this._wellDaily.getAllReports(this.sLvl4Filter,null,null,null,null).subscribe(
     data => {
       // console.log(data)
@@ -106,7 +104,6 @@ filterBySiLvl4():void{
 }
 
 filterByLosses():void{
-  this.isShown=false;
   this._wellDaily.getAllReports(null,this.losses,null,null,null).subscribe(
     data => {
       // console.log(data)
@@ -116,7 +113,6 @@ filterByLosses():void{
 }
 
 filterByDownTime():void{
-  this.isShown=false;
   this._wellDaily.getAllReports(null,null,this.downTime,null,null).subscribe(
     data => {
       // console.log(data)
@@ -148,7 +144,6 @@ filterByWellAndReport():void{
 }
 
 filterById():void{
-  this.isShown=false;
   this._wellDaily.getReportById(this.wellIdFilter,null,null,null,null,null).subscribe(
     data => {
       // console.log(data)
@@ -167,20 +162,4 @@ edit():void{
   });
 }
 
-
-private handleError(error: HttpErrorResponse) {
-  if (error.error instanceof ErrorEvent) {
-    // A client-side or network error occurred. Handle it accordingly.
-    console.error('An error occurred:', error.error.message);
-  } else {
-    // The backend returned an unsuccessful response code.
-    // The response body may contain clues as to what went wrong,
-    console.error(
-      `Backend returned code ${error.status}, ` +
-      `body was: ${error.error}`);
-  }
-  // return an observable with a user-facing error message
-  return throwError(
-    'Something bad happened; please try again later.');
-}
 }

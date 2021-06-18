@@ -1,3 +1,32 @@
+<div class="form-check">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Well Id
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellFilter" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterById()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    StartDate
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="startDate" class="border-none">
+    </td>EndDate
+    <td class="pt-3-half" contenteditable="true">
+      <input type="text" name="id" [(ngModel)]="endDate" class="border-none">
+    </td>
+    <span class="table-remove"><button type="button" (click)=filterByDate()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    WellId
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellF" class="border-none">
+    </td>LabId
+    <td class="pt-3-half" contenteditable="true">
+      <input type="text" name="id" [(ngModel)]="labF" class="border-none">
+    </td>
+    <span class="table-remove"><button type="button" (click)=filterByWellAndLab()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+</div>
+<br><br><br>
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -31,8 +60,58 @@
                             <td>{{lab.s5}}</td>
                             <td><button type="button" class="btn btn-danger" (click)="deleteFromLabs(currentIndex)">Delete</button></td>
                           </tr>
+                        <tr>
+                          <td>#</td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="id" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="l.date" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="remarks" [(ngModel)]="l.remarks" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="s1" [(ngModel)]="l.s1" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="s2" [(ngModel)]="l.s2" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="s3" [(ngModel)]="l.s3" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="s4" [(ngModel)]="l.s4" class="border-none"></td>
+                          <td class="pt-3-half" contenteditable="true"><input type="text" name="s5" [(ngModel)]="l.s5" class="border-none"></td>
+
+                          <td>
+                            <span class="table-remove"><button type="button" (click)=insert()
+                                                  class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
+                          </td>
+                        </tr>    
                         </tbody>
                       </table>
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>Lab Id</th>
+                            <th>Well Id</th>
+                            <th>Date</th>
+                            <th>remarks</th>
+                            <th>s1</th>
+                            <th>s2</th>
+                            <th>s3</th>
+                            <th>s4</th>
+                            <th>s5</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="idEdit" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellId" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="l2.date" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="remarks" [(ngModel)]="l2.remarks" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="s1" [(ngModel)]="l2.s1" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="s2" [(ngModel)]="l2.s2" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="s3" [(ngModel)]="l2.s3" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="s4" [(ngModel)]="l2.s4" class="border-none"></td>
+                              <td class="pt-3-half" contenteditable="true"><input type="text" name="s5" [(ngModel)]="l2.s5" class="border-none"></td>
+
+                              <td>
+                                <span class="table-remove"><button type="button" (click)=edit()
+                                                      class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                 </div>
                
             </div>
