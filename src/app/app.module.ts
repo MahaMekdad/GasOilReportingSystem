@@ -9,6 +9,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
+import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 
 @NgModule({
 
@@ -17,7 +18,8 @@ import { FluidLevelMeasurementsComponent } from './components/fluid-level-measur
     RegistrationComponent,
     ProductionBudgetComponent,
     FluidLevelMeasurementsComponent,
-    TestComponent
+    TestComponent,
+    IntervalsInfoComponent
   ],
   imports: [
     BrowserModule,
