@@ -1,3 +1,53 @@
+<div class="form-check">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Well Id
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellIdFilter" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterById()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    ShutinLevel4
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="sLvl4Filter" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterBySiLvl4()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    Losses
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="losses" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterByLosses()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    DownTime
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="downTime" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterByDownTime()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    StartDate
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="startDate" class="border-none">
+    </td>EndDate
+    <td class="pt-3-half" contenteditable="true">
+      <input type="text" name="id" [(ngModel)]="endDate" class="border-none">
+    </td>
+    <span class="table-remove"><button type="button" (click)=filterByDate()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+  <label class="form-check-label" for="flexRadioDefault1">
+    WellId
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellF" class="border-none">
+    </td>ReportId
+    <td class="pt-3-half" contenteditable="true">
+      <input type="text" name="id" [(ngModel)]="reportF" class="border-none">
+    </td>
+    <span class="table-remove"><button type="button" (click)=filterByWellAndReport()
+      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+</div>
+
+
+<br><br><br>
+
 <div class="container">
     <div class="card">
         <div class="card-body">

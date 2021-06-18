@@ -30,6 +30,7 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
     AppRoutingModule,
     ApiModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

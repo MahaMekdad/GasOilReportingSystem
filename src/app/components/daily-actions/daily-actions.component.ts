@@ -8,6 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { ReportRequest } from 'src/app/model/ReportRequest';
 import { WellDailyActionsRequest } from 'src/app/model/wellDailyActionsRequest';
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 
 @Component({
@@ -30,8 +31,17 @@ export class DailyActionsComponent implements OnInit {
   downTime: number;
   idEdit: number;
   wellId: number;
+  wellF: number;
+  reportF: number;
   losses: number;
+  sLvl4Filter: number;
   date: String;
+  wellIdFilter: number;
+  isShown: boolean = true ;
+  startDate: string;
+  endDate: string;
+
+
 
   r: WellDailyActionsRequest={
   siLVL4: 0.0,
@@ -58,6 +68,7 @@ export class DailyActionsComponent implements OnInit {
         this.reports= data;
       }
     )
+
   }
 
   deleteFromReports(index: number) {
@@ -72,29 +83,8 @@ export class DailyActionsComponent implements OnInit {
     );
   }
 
-  private body = new HttpParams()
-  .set('ShutinLevel4', '123456')
-  .set('actionDescription', '123456')
-  .set('netProduction', '123456')
-  .set('down time', '123456')
-  .set('losses', '123456')
-  .set('date', '1978-03-26T17:09:08.459Z')
 
-;
 
-// insert(){
-//   this._http.post('http://localhost:9595/wells/1/dailyActions',
-//      this.body.toString(),
-//      {
-//        headers: new HttpHeaders()
-//          .set('Content-Type', 'application/json')
-//      }
-//    )
-//  .pipe(
-//  catchError(this.handleError) // then handle the error
-// );
-
-// }
 
 insert():void{
   this._wellDaily.addDailyReport(this.r,this.id).subscribe( Response=>{
@@ -103,6 +93,69 @@ insert():void{
     this.message=error.error.errorMessage;
     console.log(this.message);
   });
+}
+
+filterBySiLvl4():void{
+  this.isShown=false;
+  this._wellDaily.getAllReports(this.sLvl4Filter,null,null,null,null).subscribe(
+    data => {
+      // console.log(data)
+      this.reports= data;
+    }
+)
+}
+
+filterByLosses():void{
+  this.isShown=false;
+  this._wellDaily.getAllReports(null,this.losses,null,null,null).subscribe(
+    data => {
+      // console.log(data)
+      this.reports= data;
+    }
+)
+}
+
+filterByDownTime():void{
+  this.isShown=false;
+  this._wellDaily.getAllReports(null,null,this.downTime,null,null).subscribe(
+    data => {
+      // console.log(data)
+      this.reports= data;
+    }
+)
+}
+
+filterByDate():void{
+  this._wellDaily.getAllReports(null,null,null,this.startDate,this.endDate).subscribe(
+    data => {
+      // console.log(data)
+      this.reports= data;
+    }
+)
+}
+
+filterByWellAndReport():void{
+  this._wellDaily.getWellReportById(this.wellF,this.reportF).subscribe(
+    data => {
+      // console.log(data)
+      this.reports[0]= data;
+      
+    }
+  )
+  for(var counter:number = 1; counter<this.reports.length; counter++){
+    delete (this.reports[counter]);
+}
+}
+
+filterById():void{
+  this.isShown=false;
+  this._wellDaily.getReportById(this.wellIdFilter,null,null,null,null,null).subscribe(
+    data => {
+      // console.log(data)
+      
+      this.reports= data;
+    }
+)
 }
 
 edit():void{
