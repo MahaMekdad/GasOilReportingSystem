@@ -10,6 +10,7 @@ import { ProductionBudgetComponent } from './components/production-budget/produc
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
+import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
 
 @NgModule({
 
@@ -19,7 +20,8 @@ import { IntervalsInfoComponent } from './components/intervals-info/intervals-in
     ProductionBudgetComponent,
     FluidLevelMeasurementsComponent,
     TestComponent,
-    IntervalsInfoComponent
+    IntervalsInfoComponent,
+    WellGeneralInfoComponent
   ],
   imports: [
     BrowserModule,
