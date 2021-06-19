@@ -11,5 +11,7 @@
  */
 import { ConcessionResponse } from './concessionResponse';
 
-export interface AllConcessions extends Array<ConcessionResponse> { 
+export interface AllConcessions extends Array<ConcessionResponse> {
+
+
 }
