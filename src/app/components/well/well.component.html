@@ -1,4 +1,14 @@
 <!--<p>well works!</p>-->
+<div class="form-check">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Well Id
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellIdFilter" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterById()
+                                       class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+
+</div>
+
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -22,8 +32,46 @@
               <td>{{wel.wellName}}</td>
               <td>{{wel.fieldId}}</td>
               <td>{{wel.wellCode}}</td>
-<!--              <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>-->
-<!--          -->
+              <td><button type="button" class="btn btn-danger" (click)="deleteFromwell(currentIndex)">Delete</button></td>
+
+            </tr>
+
+            <tr>
+              <td>#</td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellId" [(ngModel)]="wellId" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellName" [(ngModel)]="r.wellName" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="r.fieldId" class="border-none"></td>
+<!--              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellCode" [(ngModel)]="r.losses" class="border-none"></td>-->
+<!--           -->
+            <td>
+             <span class="table-remove"><button type="button" (click)=insert()
+                                                                 class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>wellId</th>
+              <th>wellName</th>
+              <th>fieldId</th>
+<!--              <th>wellCode</th>-->
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellId" [(ngModel)]="wellIdEdit" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellName" [(ngModel)]="r2.wellName" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="r2.fieldId" class="border-none"></td>
+<!--              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellCode" [(ngModel)]="r2." class="border-none"></td>-->
+<!--             -->
+              <td>
+                                <span class="table-remove"><button type="button" (click)=edit()
+                                                                   class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+              </td>
             </tr>
             </tbody>
           </table>

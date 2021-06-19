@@ -22,4 +22,16 @@ export class ProductionGeneralInfoComponent implements OnInit {
     )
   }
 
+  deleteFromPqi(index: number) {
+    let Pqi = this.pqi[index];
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdDelete(Pqi.wellId,Pqi.id,"body").subscribe(
+      response => {
+        this.pqi.splice(index, 1);
+      },
+      error => {
+        alert(error.errorMessage);
+      }
+    );
+  }
+
 }

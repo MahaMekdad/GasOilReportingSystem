@@ -1,5 +1,14 @@
 <!--<p>field works!</p>-->
 <!--<p>well works!</p>-->
+<div class="form-check">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Field Id
+    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="fieldIdFilter" class="border-none"></td>
+    <span class="table-remove"><button type="button" (click)=filterById()
+                                       class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
+  </label>
+
+</div>
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -23,9 +32,47 @@
               <td>{{field.fieldName}}</td>
               <td>{{field.fieldCode}}</td>
               <td>{{field.concessionId}}</td>
-              <!--              <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>-->
-              <!--          -->
+                            <td><button type="button" class="btn btn-danger" (click)="deleteFromField(currentIndex)">Delete</button></td>
+
             </tr>
+            <tr>
+              <td>#</td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="fieldId" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldName" [(ngModel)]="r.fieldName" class="border-none"></td>
+<!--              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldCode" [(ngModel)]="r.fieldCode" class="border-none"></td>-->
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="concessionId" [(ngModel)]="r.concessionId" class="border-none"></td>
+
+              <td>
+             <span class="table-remove"><button type="button" (click)=insert()
+                                                class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>fieldId</th>
+              <th>fieldName</th>
+<!--              <th>fieldCode</th>-->
+              <th>concessionId</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="fieldIdEdit" class="border-none"></td>
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldName" [(ngModel)]="r2.fieldName" class="border-none"></td>
+<!--              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldCode" [(ngModel)]="r2.fieldCode" class="border-none"></td>-->
+              <td class="pt-3-half" contenteditable="true"><input type="text" name="concessionId" [(ngModel)]="r2.concessionId" class="border-none"></td>
+
+              <td>
+                                <span class="table-remove"><button type="button" (click)=edit()
+                                                                   class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
+              </td>
+            </tr>
+
             </tbody>
           </table>
         </div>

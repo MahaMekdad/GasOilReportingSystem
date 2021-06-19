@@ -11,9 +11,9 @@ import { WellComponent } from './components/well/well.component';
 import { FieldComponent } from './components/field/field.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 import { DrillingInfoComponent } from './components/drilling-info/drilling-info.component';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     FluidLevelMeasurementsComponent,
@@ -27,7 +27,8 @@ import { DrillingInfoComponent } from './components/drilling-info/drilling-info.
     BrowserModule,
     AppRoutingModule,
     ApiModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
