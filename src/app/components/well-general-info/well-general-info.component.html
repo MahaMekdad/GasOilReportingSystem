@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Well Id</th>
+                            <th>Subcompany name</th>
+                            <th>Location name</th>
+                            <th>Area name</th>
+                            <th>Lease name</th>
+                            <th>Bore name</th>
+                            <th>xcord</th>
+                            <th>ycord</th>
+                            <th>latitude</th>
+                            <th>longitude</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="wellGeneralInfoResponse !=null">
+                            <td>{{wellGeneralInfoResponse.id}}</td>
+                            <td>{{wellGeneralInfoResponse.wellId}}</td>
+                            <td>{{wellGeneralInfoResponse.subCompanyName}}</td>
+                            <td>{{wellGeneralInfoResponse.locationName}}</td>
+                            <td>{{wellGeneralInfoResponse.areaName}}</td>
+                            <td>{{wellGeneralInfoResponse.leaseName}}</td>
+                            <td>{{wellGeneralInfoResponse.boreName}}</td>
+                            <td>{{wellGeneralInfoResponse.xcord}}</td>
+                            <td>{{wellGeneralInfoResponse.ycord}}</td>
+                            <td>{{wellGeneralInfoResponse.lat}}</td>
+                            <td>{{wellGeneralInfoResponse.long_}}</td>
+                            <td><button (click)="deleteWellGeneralInfo(wellGeneralInfoResponse.id)" class="btn btn-warning">Delete</button></td>
+                        </tbody>
+                      </table>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+</div>
