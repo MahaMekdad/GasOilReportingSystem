@@ -4,6 +4,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import {ProductionBudgetComponent} from './components/production-budget/production-budget.component';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
 import { TestComponent } from './components/test/test.component';
+import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   },
   {path: 'productionbudget', component: ProductionBudgetComponent},
   {path:'registration',component:RegistrationComponent},
+  {path:'intervalsInfo',component: IntervalsInfoComponent},
   {path:'wellGeneralInfo',component: WellGeneralInfoComponent}
 ];
 

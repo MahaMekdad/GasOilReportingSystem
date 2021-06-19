@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Well Id</th>
+                            <th>Driving mechanism</th>
+                            <th>zones</th>
+                            <th>interval</th>
+                            <th>from</th>
+                            <th>to</th>
+                            <th>length</th>
+                            <th>pr</th>
+                            <th>tr</th>
+                            <th>status</th>
+                            <th>Start date</th> 
+                            <th>End date</th> 
+                            <th>Pi</th> 
+                            <th>Mobility</th> 
+                            <th>fluidType</th> 
+                            <th>api</th> 
+                            <th>notes</th> 
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let intervalsInfoResponse of intervalsInfoResponseList">
+                            <td>{{intervalsInfoResponse.id}}</td>
+                            <td>{{intervalsInfoResponse.wellId}}</td>
+                            <td>{{intervalsInfoResponse.drivingMechanism}}</td>
+                            <td>{{intervalsInfoResponse.zones}}</td>
+                            <td>{{intervalsInfoResponse.interval}}</td>
+                            <td>{{intervalsInfoResponse.from}}</td>
+                            <td>{{intervalsInfoResponse.to}}</td>
+                            <td>{{intervalsInfoResponse.length}}</td>
+                            <td>{{intervalsInfoResponse.pr}}</td>
+                            <td>{{intervalsInfoResponse.tr}}</td>
+                            <td>{{intervalsInfoResponse.status}}</td>
+                            <td>{{intervalsInfoResponse.startDate | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{intervalsInfoResponse.endDate  | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{intervalsInfoResponse.pi}}</td>
+                            <td>{{intervalsInfoResponse.mobility}}</td>
+                            <td>{{intervalsInfoResponse.fluidType}}</td>
+                            <td>{{intervalsInfoResponse.api}}</td>
+                            <td>{{intervalsInfoResponse.notes}}</td>
+                            <td><button (click)="deleteIntervalsInfo(intervalsInfoResponse.id)" class="btn btn-warning">Delete</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+</div>
