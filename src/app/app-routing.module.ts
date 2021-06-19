@@ -4,6 +4,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import {ProductionBudgetComponent} from './components/production-budget/production-budget.component';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
 import { TestComponent } from './components/test/test.component';
+import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     component: TestComponent
   },
   {path: 'productionbudget', component: ProductionBudgetComponent},
-  {path:'registration',component:RegistrationComponent}
+  {path:'registration',component:RegistrationComponent},
+  {path:'intervalsInfo',component: IntervalsInfoComponent}
 ];
 
 @NgModule({
