@@ -28,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class WellTestsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:9494';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -59,7 +59,7 @@ export class WellTestsService {
 
     /**
      * Add a new test record to the database for specific well
-     * 
+     *
      * @param body test roew object that needs to be added to the database
      * @param id ID of the well of which we need to add the tests records
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -247,7 +247,7 @@ export class WellTestsService {
 
     /**
      * Update an existing test record based on a given Id
-     * 
+     *
      * @param body well test row object that needs to be added to the database
      * @param id ID of the well of which we need to update the record.
      * @param recordId ID of the well test record that needs to be deleted

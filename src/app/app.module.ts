@@ -1,15 +1,36 @@
-import { TestComponent } from './components/test/test.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiModule } from 'api.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { NavComponent } from './components/nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ProdDashboardComponent } from './components/prod-dashboard/prod-dashboard.component';
+import { ConcessionComponent } from './components/concession/concession.component';
+import { WellTestTableComponent } from './components/well-test-table/well-test-table.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
 import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
 import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
+import { TestComponent } from './components/test/test.component';
+import { TestEditComponent } from './components/test-edit/test-edit.component';
+import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
+import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
 
 @NgModule({
 
@@ -20,6 +41,17 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
     TestComponent,
     LabMeasurementComponent,
     DailyActionsComponent,
+    NavComponent,
+    ProdDashboardComponent,
+    ConcessionComponent,
+    WellTestTableComponent,
+    TestEditComponent,
+    RegistrationComponent,
+    ProductionBudgetComponent,
+    FluidLevelMeasurementsComponent,
+    TestComponent,
+    IntervalsInfoComponent,
+    WellGeneralInfoComponent
 
   ],
   schemas: [
@@ -29,9 +61,23 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
     BrowserModule,
     AppRoutingModule,
     ApiModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
