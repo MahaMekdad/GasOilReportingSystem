@@ -11,6 +11,8 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   flms: AllFluidLevelMeasurementResponse[]
 
+  highlightedRow: number
+
   constructor(private _fluidLevelMeasurementsService: FluidLevelMeasurementsService) { }
 
   ngOnInit(): void {
@@ -22,11 +24,22 @@ export class FluidLevelMeasurementsComponent implements OnInit {
     )
   }
 
-  deleteFromFlms(index: number) {
-    let flm = this.flms[index];
+  ClickedRowToDelete(index: number)
+  {
+    if(this.highlightedRow == index)
+    {
+      this.highlightedRow = -1;
+      return;
+    }
+    this.highlightedRow = index;
+  }
+
+  deleteFromFlms() {
+    let flm = this.flms[this.highlightedRow];
     this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(flm.wellId, flm.id).subscribe(
       response => {
-        this.flms.splice(index, 1);
+        this.flms.splice(this.highlightedRow, 1);
+        this.highlightedRow = -1;
       },
       error => {
         alert(error.errorMessage);
