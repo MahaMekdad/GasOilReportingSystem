@@ -4,9 +4,19 @@
         <div class="card-body">
             <br>
             <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-danger">🗑️</button>
+                <button class="btn btn-warning">🖊️</button>
+                <button class="btn btn-primary">➕</button>
+              </div>
+          </div>
+            <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered table-hover">
                         <thead>
+                          <!-- <tr>
+                            <button class="btn btn-danger">Delete</button>
+                          </tr> -->
                           <tr>
                             <th>#</th>
                             <th>Well Id</th>
@@ -36,7 +46,7 @@
                             <td>{{flm.pumpSubmerge}}</td>
                             <td>{{flm.card}}</td>
                             <td>{{flm.remarks}}</td>
-                            <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>
+                            <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
                           </tr>
                         </tbody>
                       </table>

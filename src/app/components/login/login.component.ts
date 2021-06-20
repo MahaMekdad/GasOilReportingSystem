@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/api/login.service';
 import { LoginRequest } from 'src/app/model/loginRequest';
 import { UserLoggedInResponse } from 'src/app/model/userLoggedInResponse';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loggedInUser: UserLoggedInResponse
   form: FormGroup;
 
-  constructor(private _loginService: LoginService, private _formBuilder: FormBuilder) { }
+  constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router) { }
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
       response => {
         this.loggedInUser = response;
         localStorage.setItem("accessToken", response.accessToken);
+        this._router.navigate(['home'])
       },
       error => {
         console.log(error)

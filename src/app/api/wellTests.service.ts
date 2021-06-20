@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 /**
  * Oil and Gas Reporting System (OGRS-API)
  * This is an api  to allows users to obtain infomation about the oil and gas wells database and generating a punch of related reposts such as wells count, insurance as well as production allocation funcationality
@@ -24,12 +25,12 @@ import { WellTestResponse } from '../model/wellTestResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
-
+// import { apiBaseUrl } from '../../environments/environment';
 
 @Injectable()
 export class WellTestsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
