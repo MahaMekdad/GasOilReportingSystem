@@ -13,15 +13,19 @@ import { LabMeasurementResponse } from 'src/app/model/labMeasurementResponse';
 export class LabMeasurementComponent implements OnInit {
 
   labs: LabMeasurementResponse[]
-  wellF: number;
   wellFilter: number;
   labF: number;
   startDate: string;
   endDate: string;
   id: number;
-  idEdit: number;
   wellId: number;
   message:string="";
+  LabIdDelete: number;
+  checkbox1 :number;
+  LabIdD: number;
+  accepted: Boolean = false;
+  isChecked: Boolean = true;
+
 
 
   constructor(private _labService: LabService) { }
@@ -65,7 +69,7 @@ export class LabMeasurementComponent implements OnInit {
   }
   
   filterByWellAndLab():void{
-    this._labService.getLabByWellIdAndLabId(this.wellF,this.labF).subscribe(
+    this._labService.getLabByWellIdAndLabId(1,this.labF).subscribe(
       data => {
         // console.log(data)
         this.labs[0]= data;
@@ -96,8 +100,9 @@ export class LabMeasurementComponent implements OnInit {
     });
   }
 
-  edit():void{
-    this._labService.updateLabMeasurement(this.l2,this.wellId,this.idEdit).subscribe( Response=>{
+  edit(index: number){
+    let lab = this.labs[index];
+    this._labService.updateLabMeasurement(this.l2,1,lab.id).subscribe( Response=>{
       this.message="Edited";
     },error => {
       this.message=error.error.errorMessage;
@@ -116,5 +121,10 @@ export class LabMeasurementComponent implements OnInit {
       }
     );
   }
+
+  equal(index: number) {
+this.LabIdD=index;
+  }
+
 
 }
