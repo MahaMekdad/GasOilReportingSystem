@@ -11,8 +11,14 @@ import {ProductionBudgetService} from '../../api/productionBudget.service';
 })
 export class ProductionBudgetComponent implements OnInit {
   productionBudgetDataResponse: ProductionBudegetDataResponse[] = [];
-  constructor(private httpClient: HttpClient , private productionBudgetService: ProductionBudgetService ) { }
-
+  HighlightRow: number;
+  Employee: any;
+  // ClickedRow: any;
+  constructor(private httpClient: HttpClient , private productionBudgetService: ProductionBudgetService ) {
+    // this.ClickedRow = function (index) {
+    //   this.HighlightRow = index;
+    // }
+  }
 
   ngOnInit(): void {
     this.productionBudgetService.concessionsBudgetProductionBudgetGet(null).subscribe((data: any[]) => {
@@ -21,12 +27,24 @@ export class ProductionBudgetComponent implements OnInit {
     })
 
   }
-  delete(index:number)
+  ClickedRow(index:number)
   {
-    let productionbudget=this.productionBudgetDataResponse[index];
+    if(this.HighlightRow == index)
+    {
+      this.HighlightRow = -1;
+      return;
+    }
+    this.HighlightRow = index;
+  }
+  delete()
+  {
+    console.log("inedx" + this.HighlightRow);
+    let productionbudget=this.productionBudgetDataResponse[this.HighlightRow];
     this.productionBudgetService.concessionsBudgetProductionBudgetIdDelete(productionbudget.id).subscribe(
       response=>{
-        this.productionBudgetDataResponse.splice(index,1);
+        this.productionBudgetDataResponse.splice(this.HighlightRow,1);
+        this.HighlightRow = -1;
+
       },
       error=>{
         alert("Error");
