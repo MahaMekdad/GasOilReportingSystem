@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h2>Well Test Data</h2>
+  <a [routerLink]="['/test/add/0']" class="btn btn-primary mt-5 mb-3">Creat Record</a>
+  <table class="table">
+    <thead>
+      <th>Well Id</th>
+      <th>Date</th>
+      <th>Test Duration</th>
+      <th>Gross</th>
+      <th>Net</th>
+      <th>WaterCut</th>
+      <th>GOR</th>
+      <th>Gas Rate</th>
+      <th>Condensate Rate</th>
+      <th>WHP</th>
+      <th>WHT</th>
+      <th>USP</th>
+      <th>UST</th>
+      <th>Sp</th>
+      <th>St</th>
+      <th>FLP</th>
+      <th>FLT</th>
+      <th>Chock type</th>
+      <th>Chs</th>
+      <th>H2s</th>
+      <th>Co2</th>
+      <th>Unit</th>
+      <th>Remarks</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let testRecord of testListForAllWells" >
+        <td>{{testRecord?.id}}</td>
+        <td>{{testRecord?.productionDate}}</td>
+        <td>{{testRecord?.tDuration}}</td>
+        <td>{{testRecord?.gross}}</td>
+        <td>{{testRecord?.net}}</td>
+        <td>{{testRecord?.waterCut}}</td>
+        <td>{{testRecord?.gor}}</td>
+        <td>{{testRecord?.gasRate}}</td>
+        <td>{{testRecord?.condensateRate}}</td>
+        <td>{{testRecord?.whp}}</td>
+        <td>{{testRecord?.wht}}</td>
+        <td>{{testRecord?.usp}}</td>
+        <td>{{testRecord?.ust}}</td>
+        <td>{{testRecord?.sp}}</td>
+        <td>{{testRecord?.st}}</td>
+        <td>{{testRecord?.flp}}</td>
+        <td>{{testRecord?.flt}}</td>
+        <td>{{testRecord?.chockType}}</td>
+        <td>{{testRecord?.chockSize}}</td>
+        <td>{{testRecord?.h2s}}</td>
+        <td>{{testRecord?.co2}}</td>
+        <td>{{testRecord?.unit}}</td>
+        <td>{{testRecord?.remarks}}</td>
+        <td><a [routerLink]="['test/edit',testRecord.id]">Edit</a></td>
+        <td><button (click)="onDeleteRecord(testRecord.id)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

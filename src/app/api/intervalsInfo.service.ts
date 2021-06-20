@@ -27,7 +27,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class IntervalsInfoService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -139,9 +139,9 @@ export class IntervalsInfoService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<IntervalsInfoResponse>;
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<IntervalsInfoResponse>>;
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<IntervalsInfoResponse>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<Array<IntervalsInfoResponse>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<IntervalsInfoResponse>>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<IntervalsInfoResponse>>>;
     public wellsIntervalsInfoIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
