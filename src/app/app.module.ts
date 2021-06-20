@@ -32,6 +32,7 @@ import { TestComponent } from './components/test/test.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
 
@@ -50,7 +51,8 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
     FluidLevelMeasurementsComponent,
     TestComponent,
     IntervalsInfoComponent,
-    WellGeneralInfoComponent
+    WellGeneralInfoComponent,
+    LoginComponent
 
   ],
   imports: [
