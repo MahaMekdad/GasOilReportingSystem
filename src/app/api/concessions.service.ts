@@ -11,22 +11,25 @@
  *//* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpEvent }  from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
 
 import { Observable }                                        from 'rxjs';
 
 import { AllConcessions } from '../model/allConcessions';
 import { ConcessionRequest } from '../model/concessionRequest';
 import { ConcessionResponse } from '../model/concessionResponse';
+import { ErrorDetails } from '../model/errorDetails';
 
-import { BASE_PATH }                                         from 'service_utils/variables';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()
 export class ConcessionsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

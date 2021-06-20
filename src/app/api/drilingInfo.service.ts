@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { DrillingInfoDataRequest } from '../model/drillingInfoDataRequest';
 import { DrillingInfoDataResponse } from '../model/drillingInfoDataResponse';
+import { ErrorDetails } from '../model/errorDetails';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
@@ -112,6 +113,7 @@ export class DrilingInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -198,6 +200,7 @@ export class DrilingInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -294,6 +297,7 @@ export class DrilingInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -345,6 +349,7 @@ export class DrilingInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

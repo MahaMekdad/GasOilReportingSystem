@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 import { Observable }                                        from 'rxjs';
 
 import { AllTests } from '../model/allTests';
+import { ErrorDetails } from '../model/errorDetails';
 import { WellTestRequest } from '../model/wellTestRequest';
 import { WellTestResponse } from '../model/wellTestResponse';
 

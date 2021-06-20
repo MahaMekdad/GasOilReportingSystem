@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { IntervalsInfoRequest } from '../model/intervalsInfoRequest';
 import { IntervalsInfoResponse } from '../model/intervalsInfoResponse';
 
@@ -112,6 +113,7 @@ export class IntervalsInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -139,9 +141,9 @@ export class IntervalsInfoService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<IntervalsInfoResponse>;
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<IntervalsInfoResponse>>;
-    public wellsIntervalsInfoIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<IntervalsInfoResponse>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<Array<IntervalsInfoResponse>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<IntervalsInfoResponse>>>;
+    public wellsIntervalsInfoIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<IntervalsInfoResponse>>>;
     public wellsIntervalsInfoIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -163,7 +165,7 @@ export class IntervalsInfoService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<IntervalsInfoResponse>('get',`${this.basePath}/wells/intervalsInfo/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<Array<IntervalsInfoResponse>>('get',`${this.basePath}/wells/intervalsInfo/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -198,6 +200,7 @@ export class IntervalsInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -244,6 +247,7 @@ export class IntervalsInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

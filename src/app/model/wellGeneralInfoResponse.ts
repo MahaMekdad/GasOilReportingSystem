@@ -21,5 +21,5 @@ export interface WellGeneralInfoResponse {
     xcord?: number;
     ycord?: number;
     lat?: number;
-    long_?: number;
+    longitude?: number;
 }
