@@ -12,7 +12,7 @@ export class TokenInterceptor implements HttpInterceptor {
         let modifiedRequest = req;
 
         if(accessToken != null){
-            console.log(accessToken + " <=========")
+            // console.log(accessToken + " <=========")
             modifiedRequest = req.clone({
                 setHeaders: {
                     Authorization: 'Bearer ' + accessToken

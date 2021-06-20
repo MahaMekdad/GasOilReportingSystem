@@ -15,7 +15,7 @@
           <div class="lg-3">
             <label for="formPassword" class="form-label">Password</label>
             <input formControlName="password" type="password" class="form-control" placeholder="Password" id="formPassword"/>
-            <div *ngIf="form.controls['email'].invalid && ((form.controls['email'].touched) || (this.form.controls['email'].dirty))">
+            <div *ngIf="form.controls['password'].invalid && ((form.controls['password'].touched) || (this.form.controls['password'].dirty))">
               <small *ngIf="this.form.controls['password'].hasError('required')" class="form-text text-danger">Please Enter Your Password</small>
             </div>
           </div>
@@ -32,7 +32,7 @@
             </div> -->
           </div>
           <br>
-          <button [disabled]="form.invalid" type="submit" class="btn btn-primary" (click)="login()">Sign in</button>
+          <button [disabled]="form.invalid" type="submit" class="btn btn-success" (click)="login()">Sign in</button>
         </form>
         <br>
         <div class="dropdown-divider"></div>
