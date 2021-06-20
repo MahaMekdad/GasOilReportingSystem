@@ -29,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class FluidLevelMeasurementsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -90,6 +90,7 @@ export class FluidLevelMeasurementsService {
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
+
         }
 
         // to determine the Content-Type header
