@@ -5,7 +5,7 @@
             <br>
             <div class="row">
               <div class="col-md-12">
-                <button class="btn btn-danger">🗑️</button>
+                <button class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
                 <button class="btn btn-warning">🖊️</button>
                 <button class="btn btn-primary">➕</button>
               </div>
@@ -18,7 +18,7 @@
                             <button class="btn btn-danger">Delete</button>
                           </tr> -->
                           <tr>
-                            <th>#</th>
+                            <th style="display: none;">#</th>
                             <th>Well Id</th>
                             <th>Date</th>
                             <th>Intervals</th>
@@ -33,8 +33,8 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let flm of flms; let currentIndex=index">
-                            <td>{{currentIndex+1}}</td>
+                          <tr *ngFor="let flm of flms; let currentIndex=index" (click)="ClickedRowToDelete(currentIndex)" [class.active]="currentIndex == highlightedRow">
+                            <td style="display: none;">{{currentIndex+1}}</td>
                             <td>{{flm.wellId}}</td>
                             <td>{{flm.date | date: 'dd-MM-yyyy'}}</td>
                             <td>{{flm.intervals}}</td>
