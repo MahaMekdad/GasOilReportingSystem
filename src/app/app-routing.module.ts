@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'intervalsInfo', component: IntervalsInfoComponent },
   { path: 'wellGeneralInfo', component: WellGeneralInfoComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'notFound', component: PageNotFoundComponent }
 
 ];
 

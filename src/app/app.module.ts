@@ -40,6 +40,7 @@ import { UpdateFlmComponent } from './components/update-flm/update-flm.component
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     WellGeneralInfoComponent,
     LoginComponent,
     AddNewFlmComponent,
-    UpdateFlmComponent
+    UpdateFlmComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
