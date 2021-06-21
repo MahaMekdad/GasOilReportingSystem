@@ -1,7 +1,6 @@
 
 <button class="btn btn-primary" (click)="triggerModal(modalData)">insert</button>
-
-
+<button class="btn btn-primary" (click)="triggerModal(updateModal) ; update()">Update</button>
 <ng-template #modalData let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Insert New Production Budget Record</h4>
@@ -17,13 +16,21 @@
           <form >
             <div>
               <label>Production Date</label>
-              <input  type="datetime" [(ngModel)]="productionBudgetDataInsert.productionDate" class="form-control" required>
+              <input  type="date" [(ngModel)]="date" class="form-control" required>
+            </div>
+            <div>
+              <label>Production Time</label>
+              <input  type="time" [(ngModel)]="time" class="form-control" required>
             </div>
             <br>
             <div>
               <label>Meleiha</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.meleiha" class="form-control" required>
-<!--              <small *ngIf="!productionBudgetDataInsert.meleiha" class="form-text text-danger">Please EnterData</small>-->
+              <input  type="number" [(ngModel)]="productionBudgetDataInsert.meleiha"  class="form-control" required>
+
+<!--              <div *ngIf="form.controls['meleiha'].errors?.required">-->
+<!--              <div *ngIf="form.controls['meleiha'].invalid && ((form.controls['meleiha'].touched) || (this.form.controls['meleiha'].dirty))">-->
+<!--                <small *ngIf="this.form.controls['meleiha'].hasError('required')" class="form-text text-danger">Please Enter The Data</small>-->
+<!--              </div>-->
             </div>
             <br>
             <div>
@@ -74,10 +81,85 @@
     </div>
   </div>
 </ng-template>
+<ng-template #updateModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" >UpdateProduction Budget Record</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br/>
+        <div>
+          <form >
+            <div>
+              <label>Production Date</label>
+              <input  type="date"  [(ngModel)]="dateForUpdate" dataformatas="MM/dd/yyyy" class="form-control" required>
+            </div>
+            <div>
+              <label>Production Time</label>
+              <input  type="time" [(ngModel)]="time" class="form-control" required>
+            </div>
+            <br>
+            <div>
+              <label>Meleiha</label>
+              <input  type="number" [(ngModel)]="productionBudgetDataUpdate.meleiha"  class="form-control" required>
+            </div>
+            <br>
+            <div>
+              <label>Aghar</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.aghar" class="form-control" required>
+            </div>
+            <div>
+              <label>EastKanays</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.eastKanays" class="form-control" required>
+            </div>
+            <div>
+              <label>Zarif</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.zarif" class="form-control" required>
+            </div>
+            <div>
+              <label>Faras</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.faras" class="form-control" required>
+            </div>
+            <div>
+              <label>Raml</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.raml" class="form-control" required>
+            </div>
+            <div>
+              <label>WesternDesert</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.westernDesert" class="form-control" required>
+            </div>
+            <div>
+              <label>Ashrafi</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.ashrafi" class="form-control" required>
+            </div>
+            <div>
+              <label>AgibaOil</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaOil" class="form-control" required>
+            </div>
+            <div>
+              <label>SalesGas</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.salesGas" class="form-control" required>
+            </div>
+            <div>
+              <label>AgibaBOE</label>
+              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaBOE" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn bg-primary" (click)="insert()">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
 
 <button (click)="delete()" type="button" class="btn btn-danger">DELETE</button>
-<button type="button" class="btn bg-primary">Update</button>
+
 <!--<button  (click)="" type="button" class="btn bg-primary">Add</button>-->
 <table class="table table-bordered table-responsive table-condensed table-hover data-page-length='10'">
   <thead>

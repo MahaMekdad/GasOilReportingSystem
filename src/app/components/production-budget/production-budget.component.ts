@@ -3,7 +3,7 @@ import { ProductionBudegetDataResponse } from '../../model/productionBudegetData
 import { HttpClient } from '@angular/common/http';
 import {ProductionBudgetService} from '../../api/productionBudget.service';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
-import { FormControl } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductionBudegetRequest} from '../../model/productionBudegetRequest';
 
 
@@ -18,11 +18,32 @@ export class ProductionBudgetComponent implements OnInit {
   HighlightRow: number;
   closeModal: string;
   window: NgbModalRef;
-  insertForm = new FormControl('');
-  constructor(private httpClient: HttpClient , private productionBudgetService: ProductionBudgetService , private modalService: NgbModal ) {
+  form: FormGroup;
+  date: string;
+  time: string;
+  productionBudgetDataUpdate: ProductionBudegetRequest;
+  dateForUpdate:string;
+  timeForUpdate:string;
+
+  constructor(private httpClient: HttpClient ,private _formBuilder: FormBuilder, private productionBudgetService: ProductionBudgetService , private modalService: NgbModal ) {
   }
 
   ngOnInit(): void {
+    // this.form = this._formBuilder.group({
+    //   productionDate: ['', [Validators.required]],
+    //   meleiha: ['', [Validators.required]],
+    //   aghar: ['', [Validators.required]],
+    //   eastKanays: ['', [Validators.required]],
+    //   zarif: ['', [Validators.required]],
+    //   faras: ['', [Validators.required]],
+    //   raml: ['', [Validators.required]],
+    //   westernDesert: ['', [Validators.required]],
+    //   ashrafi: ['', [Validators.required]],
+    //   agibaOil: ['', [Validators.required]],
+    //   salesGas: ['', [Validators.required]],
+    //   agibaBOE: ['', [Validators.required]]
+    // });
+
     this.productionBudgetService.concessionsBudgetProductionBudgetGet(null).subscribe((data: any[]) => {
       console.log("data = " + data);
       this.productionBudgetDataInsert = new class implements ProductionBudegetRequest {
@@ -39,7 +60,6 @@ export class ProductionBudgetComponent implements OnInit {
         westernDesert: number;
         zarif: number;
       }
-      this.productionBudgetDataInsert.meleiha = 2 ;
       console.log("========== "+ this.productionBudgetDataInsert);
       this.productionBudgetDataResponse = data;
     })
@@ -89,12 +109,39 @@ export class ProductionBudgetComponent implements OnInit {
       this.productionBudgetDataResponse = data;
     })
   }
+  update():void
+  {
+    let productionbudget=this.productionBudgetDataResponse[this.HighlightRow];
+    this.productionBudgetDataUpdate = productionbudget;
+    let s = this.productionBudgetDataUpdate.productionDate.toString().split("T");
+    console.log("s[0] == "+ s[0]);
+    let ss = s.toString().split("-");
+    let sss = ss[2].toString().split(",");
+    console.log("ss[2]== "+ ss[2]);
+    this.dateForUpdate  = ss[1] + '/' + sss[0] + '/' + ss[0];
+    console.log("dateforUpdate == "+ this.dateForUpdate);
+
+
+
+  }
   insert(): void
  {
    console.log("datee === " + this.productionBudgetDataInsert.productionDate);
    console.log("meleiha === " + this.productionBudgetDataInsert.meleiha);
    console.log("aghar === " + this.productionBudgetDataInsert.aghar);
    console.log("zarif === " + this.productionBudgetDataInsert.zarif);
+   let dateValue = this.date.split("-");
+   let timeValues = this.time.split(":");
+   console.log("dateVlaues === "+ dateValue);
+   console.log("timeValuess === "+ timeValues);
+   let n1 :number = +dateValue[0];
+   let n2 :number = +dateValue[1];
+   let n3 :number = +dateValue[2];
+   let n4 :number = +timeValues[0];
+   let n5 :number = +timeValues[1];
+   console.log("--- "+ n1+ " -" + n2 + "=" + n3 +" -" +n4+"-" +n5);
+   this.productionBudgetDataInsert.productionDate = new Date(n1 , n2 , n3, n4 , n5);
+   console.log("datee===  "+this.productionBudgetDataInsert.productionDate);
    this.productionBudgetService.concessionsBudgetProductionBudgetPost(this.productionBudgetDataInsert).subscribe(
      response=>{
        console.log("insert done");
