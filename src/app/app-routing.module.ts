@@ -1,6 +1,7 @@
-import {TestEditComponent} from './components/test-edit/test-edit.component';
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TestEditComponent } from './components/test-edit/test-edit.component';
+import { NgModule, Component } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import {CommonModule} from '@angular/common';
 
@@ -14,27 +15,28 @@ import {TestComponent} from './components/test/test.component';
 import {IntervalsInfoComponent} from './components/intervals-info/intervals-info.component';
 import {WellGeneralInfoComponent} from './components/well-general-info/well-general-info.component';
 import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path: 'home', component: ProdDashboardComponent},
-  {path: 'login', component: ProdDashboardComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'registration', component: ProdDashboardComponent},
   {path: 'concessions', component: ConcessionComponent},
   {path: 'well', component: WellTabsComponent},
   {path: 'wellGeneralInfo', component: WellGeneralInfoComponent},
   {path: 'intervalsInfo', component: IntervalsInfoComponent},
   {path: 'tests', component: WellTestTableComponent},
   {path: 'test', component: TestComponent},
-  {path: 'test', component: TestComponent},
   {path: 'test/add/:id', component: TestEditComponent},
   {path: 'test/edit/:id', component: TestEditComponent},
   {path: 'flm', component: FluidLevelMeasurementsComponent},
-  {path: 'flm', component: FluidLevelMeasurementsComponent},
   {path: 'productionbudget', component: ProductionBudgetComponent},
-  {path: 'dashboard', component: ProdDashboardComponent}
-
-];
+  {path: 'dashboard', component: ProdDashboardComponent},
+  { path: 'home', component: ProdDashboardComponent },
+  { path: 'dashboard', component: ProdDashboardComponent },
+  { path: 'test', component: ProdDashboardComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'notFound', component: PageNotFoundComponent }
+]
 
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],

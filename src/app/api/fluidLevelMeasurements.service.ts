@@ -10,25 +10,26 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent } from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from 'service_utils/encoder';
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
+
+import { ErrorDetails } from '../model/errorDetails';
 
 import { FluidLevelMeasurementRequest } from '../model/fluidLevelMeasurementRequest';
 import { GetAllFluidLevelMeasurement } from '../model/getAllFluidLevelMeasurement';
 import { GetFluidLevelMeasurement } from '../model/getFluidLevelMeasurement';
 
-import { BASE_PATH, COLLECTION_FORMATS } from 'service_utils/variables';
-import { Configuration }from 'service_utils/configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
+import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()
 export class FluidLevelMeasurementsService {
 
-    // protected basePath = 'http://www.ourcompany.com/v1';
     protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
@@ -90,6 +91,7 @@ export class FluidLevelMeasurementsService {
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
             headers = headers.set('Accept', httpHeaderAcceptSelected);
+
         }
 
         // to determine the Content-Type header
@@ -132,6 +134,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -182,6 +185,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -238,6 +242,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -343,6 +348,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

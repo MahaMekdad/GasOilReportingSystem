@@ -9,17 +9,18 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { JobLocation } from './jobLocation';
 
-export interface WellGeneralInfoResponse { 
-    id?: number;
-    wellId?: number;
-    subCompanyName?: string;
-    locationName?: string;
-    areaName?: string;
-    leaseName?: string;
-    boreName?: string;
-    xcord?: number;
-    ycord?: number;
-    lat?: number;
-    longitude?: number;
+/**
+ * Model for the UserData object with the jwt token
+ */
+export interface UserLoggedInResponse { 
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    jobTitle: number;
+    jobLocation: JobLocation;
+    accessToken: string;
 }
