@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'productionbudget', component: ProductionBudgetComponent },
   // { path: 'login', component: ProdDashboardComponent },
-  { path: 'registration', component: ProdDashboardComponent },
+  // { path: 'registration', component: ProdDashboardComponent },
   { path: 'test', component: ProdDashboardComponent },
   { path: 'productionbudget', component: ProductionBudgetComponent },
   { path: 'test/add/:id', component: TestEditComponent },
