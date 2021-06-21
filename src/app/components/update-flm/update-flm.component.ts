@@ -56,8 +56,7 @@ export class UpdateFlmComponent implements OnInit {
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
     let dateValues = this.form.controls.date.value.split("-");
     let timeValues = this.form.controls.time.value.split(":");
-    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], timeValues[0], timeValues[1])
-    // console.log(flmRequest.date)
+    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsFlmIdPatch(flmRequest, this.flmToBeUpdate.wellId, this.flmToBeUpdate.id).subscribe(
       response => {
         console.log(response + "ff")

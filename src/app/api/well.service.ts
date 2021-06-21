@@ -29,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class WellService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://localhost:8888';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
