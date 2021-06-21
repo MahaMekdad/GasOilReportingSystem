@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this._loginService.loginPost(loginRequest).subscribe(
       response => {
         this.loggedInUser = response;
+        console.log(response)
         localStorage.setItem("accessToken", response.accessToken);
         this._router.navigate(['home'])
       },

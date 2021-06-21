@@ -5,13 +5,44 @@
         <div>
           <form [formGroup]="form">
             <div class="lg-3">
+              <label for="well">Well:</label>
+              <select formControlName="well" class="form-control">
+                <option disabled>Select Well</option>
+                <option>Choose Well</option>
+                <option *ngFor="let well of allWells" [value]='well.wellId'>{{well.wellName}}</option>
+              </select>
+            <div *ngIf="this.form.controls['well'].touched && this.form.controls['well'].invalid">
+                <small *ngIf="this.form.controls['well'].errors.required" class="form-text text-danger">Please Choose a Well</small>
+            </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
               <label for="formDate" class="form-label">Date</label>
-              <input formControlName="date" type="datetime" class="form-control" placeholder="Date" id="formDate"/>
+              <input formControlName="date" type="date" class="form-control" placeholder="Date" id="formDate"/>
               <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
                 <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small> 
               </div>
             </div>
             <br>
+
+            <div class="lg-3">
+              <label for="formHour" class="form-label">Date</label>
+              <input formControlName="time" type="time" class="form-control" placeholder="Time" id="formHour"/>
+              <div *ngIf="form.controls['time'].invalid && ((form.controls['time'].touched) || (this.form.controls['time'].dirty))">
+                <small *ngIf="this.form.controls['time'].hasError('required')" class="form-text text-danger">Please Pick a Time</small> 
+              </div>
+            </div>
+            <br>
+
+            <!-- <div class="lg-3">
+              <label for="formMin" class="form-label">Date</label>
+              <input formControlName="date" type="text" class="form-control" placeholder="Date" id="formMin"/>
+              <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
+                <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small> 
+              </div>
+            </div>
+            <br> -->
 
             <div class="lg-3">
                 <label for="formIntervals" class="form-label">Intervals</label>

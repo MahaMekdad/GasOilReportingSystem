@@ -2,6 +2,8 @@ import { FluidLevelMeasurementRequest } from './../../model/fluidLevelMeasuremen
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurements.service';
+import { WellService } from 'src/app/api/well.service';
+import { AllWellsResponse } from 'src/app/model/allWellsResponse';
 
 @Component({
   selector: 'app-add-new-flm',
@@ -10,14 +12,16 @@ import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurement
 })
 export class AddNewFlmComponent implements OnInit {
 
+  allWells: AllWellsResponse[]
   form: FormGroup;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
 
-  constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder) { }
+  constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder, private _wellService: WellService) { }
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
+      time:['', [Validators.required]],
       intervals:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
       flType:['', [Validators.required]],
       fluidLevel:['', [Validators.required]],
@@ -26,23 +30,38 @@ export class AddNewFlmComponent implements OnInit {
       pumpFillage:['', [Validators.required]],
       pumpSubmerge:['', [Validators.required]],
       card:['', [Validators.required]],
-      remarks:['', [Validators.required, Validators.minLength(5), Validators.maxLength(2000)]]
+      remarks:['', [Validators.minLength(5), Validators.maxLength(2000)]],
+      well: ['', [Validators.required]]
     })
+
+    this._wellService.getwells().subscribe(
+      response => {
+        this.allWells = response;
+      },
+      error => {
+        console.log(error)
+    })
+    
   }
 
   insert() {
     debugger
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
     console.log(this.form);
-    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, 1).subscribe(
-      response => {
-        console.log(response + "ff")
-        this.closeModal.emit()
-      },
-      error => {
-        console.log(error + "cc")
-      }
-    );
+    console.log(this.form.controls.well.value);
+    console.log(this.form.controls.date.value);
+    console.log(this.form.controls.time.value);
+
+    // let date: Date = new Date()
+    // this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
+    //   response => {
+    //     console.log(response + "ff")
+    //     this.closeModal.emit()
+    //   },
+    //   error => {
+    //     console.log(error + "cc")
+    //   }
+    // );
   }
 
 
