@@ -16,6 +16,8 @@ import {IntervalsInfoComponent} from './components/intervals-info/intervals-info
 import {WellGeneralInfoComponent} from './components/well-general-info/well-general-info.component';
 import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
 import { LoginComponent } from './components/login/login.component';
+import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
+import { FieldNavComponent } from './components/field-nav/field-nav.component';
 
 const routes: Routes = [
   {path: 'home', component: ProdDashboardComponent},
@@ -35,7 +37,10 @@ const routes: Routes = [
   { path: 'dashboard', component: ProdDashboardComponent },
   { path: 'test', component: ProdDashboardComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'notFound', component: PageNotFoundComponent }
+  { path: 'notFound', component: PageNotFoundComponent },
+  { path: 'conNav', component: ConcessionNavComponent },
+  { path: 'fieldNav', component: FieldNavComponent }
+
 ]
 
 @NgModule({

@@ -47,6 +47,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
+import { FieldNavComponent } from './components/field-nav/field-nav.component';
 
 
 @NgModule({
@@ -72,7 +74,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginComponent,
     AddNewFlmComponent,
     UpdateFlmComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ConcessionNavComponent,
+    FieldNavComponent
   ],
   imports: [
     BrowserModule,
