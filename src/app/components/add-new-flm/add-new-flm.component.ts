@@ -49,19 +49,23 @@ export class AddNewFlmComponent implements OnInit {
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
     console.log(this.form);
     console.log(this.form.controls.well.value);
-    console.log(this.form.controls.date.value);
+    console.log(this.form.controls.date);
     console.log(this.form.controls.time.value);
-
-    // let date: Date = new Date()
-    // this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
-    //   response => {
-    //     console.log(response + "ff")
-    //     this.closeModal.emit()
-    //   },
-    //   error => {
-    //     console.log(error + "cc")
-    //   }
-    // );
+    let dateValues = this.form.controls.date.value.split("-");
+    let timeValues = this.form.controls.time.value.split(":");
+    console.log(dateValues)
+    console.log(timeValues)
+    flmRequest.date = new Date(dateValues[0], dateValues[1], dateValues[2], timeValues[0], timeValues[1])
+    console.log(flmRequest.date)
+    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
+      response => {
+        console.log(response + "ff")
+        this.closeModal.emit()
+      },
+      error => {
+        console.log(error + "cc")
+      }
+    );
   }
 
 

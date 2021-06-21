@@ -15,8 +15,8 @@ export class TokenInterceptor implements HttpInterceptor {
         let modifiedRequest = req;
 
         if (accessToken != null) {
-            console.log(req.url)
-            if (req.url === "http://localhost:8000/login") {
+            // console.log(req.url.includes('/login'))
+            if (req.url.includes('/login')) {
                 return next.handle(modifiedRequest);
             }
             modifiedRequest = req.clone({
