@@ -34,6 +34,8 @@ import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 
@@ -53,7 +55,8 @@ import { LoginComponent } from './components/login/login.component';
     TestComponent,
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
-    LoginComponent
+    LoginComponent,
+    AddNewFlmComponent
 
   ],
   imports: [
@@ -75,7 +78,8 @@ import { LoginComponent } from './components/login/login.component';
     MatSortModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     {

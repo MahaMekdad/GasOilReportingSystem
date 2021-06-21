@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 import { Observable }                                        from 'rxjs';
 
 import { ErrorDetails } from '../model/errorDetails';
+
 import { FluidLevelMeasurementRequest } from '../model/fluidLevelMeasurementRequest';
 import { GetAllFluidLevelMeasurement } from '../model/getAllFluidLevelMeasurement';
 import { GetFluidLevelMeasurement } from '../model/getFluidLevelMeasurement';
