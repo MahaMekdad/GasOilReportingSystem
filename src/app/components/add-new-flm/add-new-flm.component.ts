@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurements.service';
 import { WellService } from 'src/app/api/well.service';
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
+import { AllFluidLevelMeasurementResponse } from 'src/app/model/allFluidLevelMeasurementResponse';
 
 @Component({
   selector: 'app-add-new-flm',
@@ -15,6 +16,10 @@ export class AddNewFlmComponent implements OnInit {
   allWells: AllWellsResponse[]
   form: FormGroup;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
+  
+  cardEnums = Object.values(AllFluidLevelMeasurementResponse.CardEnum);
+
+  flTypeEnums = Object.values(AllFluidLevelMeasurementResponse.FlTypeEnum);
 
   constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder, private _wellService: WellService) { }
 
@@ -55,7 +60,7 @@ export class AddNewFlmComponent implements OnInit {
     let timeValues = this.form.controls.time.value.split(":");
     console.log(dateValues)
     console.log(timeValues)
-    flmRequest.date = new Date(dateValues[0], dateValues[1], dateValues[2], timeValues[0], timeValues[1])
+    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], timeValues[0], timeValues[1])
     console.log(flmRequest.date)
     this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
       response => {

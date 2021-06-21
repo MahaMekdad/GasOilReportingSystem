@@ -37,6 +37,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 
 @NgModule({
 
@@ -59,7 +63,6 @@ import { UpdateFlmComponent } from './components/update-flm/update-flm.component
     LoginComponent,
     AddNewFlmComponent,
     UpdateFlmComponent
-
   ],
   imports: [
     BrowserModule,
@@ -81,14 +84,21 @@ import { UpdateFlmComponent } from './components/update-flm/update-flm.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }
+    },
+    { 
+      provide: JWT_OPTIONS, 
+      useValue: JWT_OPTIONS 
+    },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

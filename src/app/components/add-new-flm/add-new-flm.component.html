@@ -27,22 +27,13 @@
             <br>
 
             <div class="lg-3">
-              <label for="formHour" class="form-label">Date</label>
+              <label for="formHour" class="form-label">Time</label>
               <input formControlName="time" type="time" class="form-control" placeholder="Time" id="formHour"/>
               <div *ngIf="form.controls['time'].invalid && ((form.controls['time'].touched) || (this.form.controls['time'].dirty))">
                 <small *ngIf="this.form.controls['time'].hasError('required')" class="form-text text-danger">Please Pick a Time</small> 
               </div>
             </div>
             <br>
-
-            <!-- <div class="lg-3">
-              <label for="formMin" class="form-label">Date</label>
-              <input formControlName="date" type="text" class="form-control" placeholder="Date" id="formMin"/>
-              <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
-                <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small> 
-              </div>
-            </div>
-            <br> -->
 
             <div class="lg-3">
                 <label for="formIntervals" class="form-label">Intervals</label>
@@ -56,13 +47,26 @@
             <br>
 
             <div class="lg-3">
+              <label for="flType">Fluid Level Type:</label>
+              <select formControlName="flType" class="form-control">
+                  <option disabled>Select Fluid Level Type</option>
+                  <option>Choose Fluid Level Type</option>
+                  <option *ngFor="let flType of flTypeEnums">{{flType}}</option>
+              </select>
+              <div *ngIf="form.controls['flType'].invalid && ((form.controls['flType'].touched) || (this.form.controls['flType'].dirty))">
+                  <small *ngIf="this.form.controls['flType'].hasError('required')" class="form-text text-danger">Please Choose The Fluid Level Type</small> 
+              </div>
+            </div>
+            <br>
+
+            <!-- <div class="lg-3">
                 <label for="formFlType" class="form-label">Fluid Level Type</label>
                 <input formControlName="flType" type="text" class="form-control" placeholder="Fluid level Type" id="formFlType"/>
                 <div *ngIf="form.controls['flType'].invalid && ((form.controls['flType'].touched) || (this.form.controls['flType'].dirty))">
                   <small *ngIf="this.form.controls['flType'].hasError('required')" class="form-text text-danger">Please Choose The Fluid Level Type</small> 
                 </div>
               </div>
-            <br>
+            <br> -->
 
             <div class="lg-3">
                 <label for="formFluidLevel" class="form-label">Fluid Level Value</label>
@@ -110,13 +114,26 @@
             <br>
 
             <div class="lg-3">
+              <label for="card">Card:</label>
+              <select formControlName="card" class="form-control">
+                  <option disabled>Select A Card</option>
+                  <option>Choose A Card</option>
+                  <option *ngFor="let card of cardEnums">{{card}}</option>
+              </select>
+              <div *ngIf="form.controls['card'].invalid && ((form.controls['card'].touched) || (this.form.controls['card'].dirty))">
+                  <small *ngIf="this.form.controls['card'].hasError('required')" class="form-text text-danger">Please Choose A Card</small> 
+              </div>
+            </div>
+            <br>
+
+            <!-- <div class="lg-3">
                 <label for="formCard" class="form-label">Card</label>
                 <input formControlName="card" type="text" class="form-control" placeholder="Card" id="formCard"/>
                 <div *ngIf="form.controls['card'].invalid && ((form.controls['card'].touched) || (this.form.controls['card'].dirty))">
                   <small *ngIf="this.form.controls['card'].hasError('required')" class="form-text text-danger">Please Choose A Card</small> 
                 </div>
               </div>
-            <br>
+            <br> -->
 
             <div class="lg-3">
               <label for="formRemarks" class="form-label">remarks</label>
