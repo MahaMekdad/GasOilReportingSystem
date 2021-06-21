@@ -36,6 +36,7 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
 import { LoginComponent } from './components/login/login.component';
 import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
 
 @NgModule({
 
@@ -56,7 +57,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
     LoginComponent,
-    AddNewFlmComponent
+    AddNewFlmComponent,
+    UpdateFlmComponent
 
   ],
   imports: [

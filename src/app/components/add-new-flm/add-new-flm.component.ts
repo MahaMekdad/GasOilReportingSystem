@@ -45,7 +45,7 @@ export class AddNewFlmComponent implements OnInit {
   }
 
   insert() {
-    debugger
+    // debugger
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
     console.log(this.form);
     console.log(this.form.controls.well.value);
@@ -67,7 +67,5 @@ export class AddNewFlmComponent implements OnInit {
       }
     );
   }
-
-
 
 }

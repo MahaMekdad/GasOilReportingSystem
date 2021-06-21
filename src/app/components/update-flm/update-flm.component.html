@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div>
+          <form [formGroup]="form">
+            <div class="lg-3">
+              <label for="formDate" class="form-label">Date</label>
+              <input  [ngModel]="convertedDate | date:'yyyy-MM-dd'" (ngModelChange)="convertedDate = $event"    
+              formControlName="date" type="date" class="form-control" placeholder="Date" id="formDate"/>
+              <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
+                <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small> 
+              </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
+              <label for="formHour" class="form-label">Time</label>
+              <input [(ngModel)]="convertedTime" formControlName="time" type="time" class="form-control" placeholder="Time" id="formHour"/>
+              <div *ngIf="form.controls['time'].invalid && ((form.controls['time'].touched) || (this.form.controls['time'].dirty))">
+                <small *ngIf="this.form.controls['time'].hasError('required')" class="form-text text-danger">Please Pick a Time</small> 
+              </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formIntervals" class="form-label">Intervals</label>
+                <input [(ngModel)]="flmToBeUpdate.intervals" formControlName="intervals" type="text" class="form-control" placeholder="Intervals" id="formIntervals"/>
+                <div *ngIf="form.controls['intervals'].invalid && ((form.controls['intervals'].touched) || (this.form.controls['intervals'].dirty))">
+                  <small *ngIf="this.form.controls['intervals'].hasError('required')" class="form-text text-danger">Please Enter The Intervals</small> 
+                  <small *ngIf="this.form.controls['intervals'].hasError('minlength')" class="form-text text-danger">Intervals Should Be 5 Charaters Minimum</small> 
+                <small *ngIf="this.form.controls['intervals'].hasError('maxlength')" class="form-text text-danger">Intervals Should Be 2000 Charaters Maximum</small>
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formFlType" class="form-label">Fluid Level Type</label>
+                <input [(ngModel)]="flmToBeUpdate.flType" formControlName="flType" type="text" class="form-control" placeholder="Fluid level Type" id="formFlType"/>
+                <div *ngIf="form.controls['flType'].invalid && ((form.controls['flType'].touched) || (this.form.controls['flType'].dirty))">
+                  <small *ngIf="this.form.controls['flType'].hasError('required')" class="form-text text-danger">Please Choose The Fluid Level Type</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formFluidLevel" class="form-label">Fluid Level Value</label>
+                <input [(ngModel)]="flmToBeUpdate.fluidLevel" formControlName="fluidLevel" type="number" class="form-control" placeholder="Fluid level Value" id="formFluidLevel"/>
+                <div *ngIf="form.controls['fluidLevel'].invalid && ((form.controls['fluidLevel'].touched) || (this.form.controls['fluidLevel'].dirty))">
+                  <small *ngIf="this.form.controls['fluidLevel'].hasError('required')" class="form-text text-danger">Please Enter The Fluid Level Value</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formPumpDepth" class="form-label">Pump Depth Value</label>
+                <input [(ngModel)]="flmToBeUpdate.pumpDepth" formControlName="pumpDepth" type="number" class="form-control" placeholder="Pump Depth Value" id="formPumpDepth"/>
+                <div *ngIf="form.controls['pumpDepth'].invalid && ((form.controls['pumpDepth'].touched) || (this.form.controls['pumpDepth'].dirty))">
+                  <small *ngIf="this.form.controls['pumpDepth'].hasError('required')" class="form-text text-danger">Please Enter The Pump Depth Value</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formLiqPercentage" class="form-label">liquid Percentage</label>
+                <input [(ngModel)]="flmToBeUpdate.liqPercentage" formControlName="liqPercentage" type="number" class="form-control" placeholder="Liquid Percentage" id="formLiqPercentage"/>
+                <div *ngIf="form.controls['liqPercentage'].invalid && ((form.controls['liqPercentage'].touched) || (this.form.controls['liqPercentage'].dirty))">
+                  <small *ngIf="this.form.controls['liqPercentage'].hasError('required')" class="form-text text-danger">Please Enter The Liquid Percentage</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formPumpFillage" class="form-label">Pump Fillage</label>
+                <input [(ngModel)]="flmToBeUpdate.pumpFillage" formControlName="pumpFillage" type="number" class="form-control" placeholder="Pump Fillage" id="formPumpFillage"/>
+                <div *ngIf="form.controls['pumpFillage'].invalid && ((form.controls['pumpFillage'].touched) || (this.form.controls['pumpFillage'].dirty))">
+                  <small *ngIf="this.form.controls['pumpFillage'].hasError('required')" class="form-text text-danger">Please Enter The Pump Fillage</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formPumpSubmerge" class="form-label">Pump Submerge</label>
+                <input [(ngModel)]="flmToBeUpdate.pumpSubmerge" formControlName="pumpSubmerge" type="number" class="form-control" placeholder="Pump Submerge" id="formPumpFillage"/>
+                <div *ngIf="form.controls['pumpSubmerge'].invalid && ((form.controls['pumpSubmerge'].touched) || (this.form.controls['pumpSubmerge'].dirty))">
+                  <small *ngIf="this.form.controls['pumpSubmerge'].hasError('required')" class="form-text text-danger">Please Enter The Pump Submerge</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="formCard" class="form-label">Card</label>
+                <input [(ngModel)]="flmToBeUpdate.card" formControlName="card" type="text" class="form-control" placeholder="Card" id="formCard"/>
+                <div *ngIf="form.controls['card'].invalid && ((form.controls['card'].touched) || (this.form.controls['card'].dirty))">
+                  <small *ngIf="this.form.controls['card'].hasError('required')" class="form-text text-danger">Please Choose A Card</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+              <label for="formRemarks" class="form-label">remarks</label>
+              <input [(ngModel)]="flmToBeUpdate.remarks" formControlName="remarks" type="text" class="form-control" placeholder="Remarks" id="formRemarks"/>
+              <div *ngIf="form.controls['remarks'].invalid && ((form.controls['remarks'].touched) || (this.form.controls['remarks'].dirty))">
+                <small *ngIf="this.form.controls['remarks'].hasError('minlength')" class="form-text text-danger">Remarks Should Be 5 Charaters Minimum</small> 
+                <small *ngIf="this.form.controls['remarks'].hasError('maxlength')" class="form-text text-danger">Remarks Should Be 2000 Charaters Maximum</small> 
+              </div>
+            </div>
+            <br>
+            <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

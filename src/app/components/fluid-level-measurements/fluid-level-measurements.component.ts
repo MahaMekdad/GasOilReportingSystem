@@ -12,7 +12,9 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   flms: AllFluidLevelMeasurementResponse[]
 
-  highlightedRow: number
+  flmToBeUpdate: AllFluidLevelMeasurementResponse;
+
+  highlightedRow: number = -1;
 
   modalContent: NgbModalRef
 
@@ -37,6 +39,16 @@ export class FluidLevelMeasurementsComponent implements OnInit {
       return;
     }
     this.highlightedRow = index;
+  }
+
+  ClickedRowToUpdate(index: number)
+  {
+    if(this.highlightedRow == -1 || this.highlightedRow == undefined){
+      this.flmToBeUpdate = null;
+      return;
+    }
+    let x = this.flms[this.highlightedRow];
+    this.flmToBeUpdate = x;
   }
 
   deleteFromFlms() {
