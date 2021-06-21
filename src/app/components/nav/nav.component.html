@@ -1,8 +1,78 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" style="height: calc(100% - 64px); margin: 0;">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <!--      adding a material expansion panel inside the navigation bar.-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Main
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink='/home'>
+            <mat-icon>home</mat-icon>
+            Home</a>
+          <a mat-list-item routerLink='/login'>
+            <mat-icon>login</mat-icon>
+            login</a>
+          <a mat-list-item routerLink='/registration'>
+            <mat-icon>manage_accounts</mat-icon>
+            Registration</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Components
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/concessions">
+            <mat-icon>attach_money</mat-icon>
+            Concessions</a>
+          <a mat-list-item routerLink="#">
+            <mat-icon>notification_important</mat-icon>
+            Fields</a>
+          <a mat-list-item routerLink="#">
+            <mat-icon>notification_important</mat-icon>
+            Wells</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel dense>
+        <mat-expansion-panel-header>
+          DashBoards
+        </mat-expansion-panel-header>
+        <mat-list-item>
+          <a mat-list-item routerLink='/dashboard'>
+            <mat-icon>leaderboard</mat-icon>
+            DashBoard</a>
+        </mat-list-item>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Budgets
+        </mat-expansion-panel-header>
+        <mat-list-item>
+          <a mat-list-item routerLink='#'>
+            <mat-icon>bar_chart</mat-icon>
+            Budgets</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a mat-list-item routerLink='#'>
+            <mat-icon>bar_chart</mat-icon>
+            Budgets Vs Actual</a>
+        </mat-list-item>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Temporary
+        </mat-expansion-panel-header>
+        <mat-list-item>
+          <a mat-list-item routerLink='/well'>Single Well</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a mat-list-item routerLink='/tests'>Well Tests</a>
+        </mat-list-item>
+      </mat-expansion-panel>
       <a mat-list-item routerLink='/home'>Home</a>
       <a mat-list-item routerLink='/login'>login</a>
       <a mat-list-item routerLink='/registration'>Registration</a>
@@ -11,20 +81,53 @@
       <a mat-list-item routerLink='/Tests'>All Well Tests</a>
       <!-- the next line is to be updated -->
       <a mat-list-item routerLink='/tests'>All Tests fora well</a>
-      <a mat-list-item href="#">Charts</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Reporting System</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
 
-    <!-- addin the routing components to the bar -->
+  <mat-sidenav-content>
+    <!--    <mat-toolbar color="primary">-->
+    <!--      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"-->
+    <!--              *ngIf="isHandset$ | async">-->
+    <!--        <mat-icon aria-label="Side nav toggle icon">Contents</mat-icon>-->
+    <!--      </button>-->
+    <!--      <span>Reporting System</span>-->
+    <!--    </mat-toolbar>-->
+    <mat-toolbar style="color: #ffffff;background: #08151d;">
+      <button mat-icon-button matTooltip="Application Menu" (click)="drawer.toggle()">
+        <mat-icon>view_quilt</mat-icon>
+      </button>
+      Reporting System
+      <span style="flex: 1 1 auto;"></span>
+      <div>
+        <button mat-icon-button matTooltip="Switch Apps">
+          <mat-icon>apps</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Notifications">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="accountMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
+          <button mat-menu-item routerLink="#">
+            <mat-icon>person</mat-icon>
+            <span>My Account</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+    <!-- adding the routing components to the bar -->
     <router-outlet></router-outlet>
 
   </mat-sidenav-content>
