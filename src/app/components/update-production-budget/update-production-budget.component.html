@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div>
+        <form [formGroup]="form">
+          <div class="lg-3">
+            <label for="formDate" class="form-label">Date</label>
+            <input  [ngModel]="convertedDate | date:'yyyy-MM-dd'" (ngModelChange)="convertedDate = $event"
+                    formControlName="date" type="date" class="form-control" placeholder="Date" id="formDate"/>
+            <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
+              <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label for="formHour" class="form-label">Time</label>
+            <input [(ngModel)]="convertedTime" formControlName="time" type="time" class="form-control" placeholder="Time" id="formHour"/>
+            <div *ngIf="form.controls['time'].invalid && ((form.controls['time'].touched) || (this.form.controls['time'].dirty))">
+              <small *ngIf="this.form.controls['time'].hasError('required')" class="form-text text-danger">Please Pick a Time</small>
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label  class="form-label">meleiha</label>
+            <input [(ngModel)]="productionUpdate.meleiha" formControlName="meleiha" type="number" class="form-control" placeholder="meleiha" id="meleiha"/>
+            <div *ngIf="form.controls['meleiha'].invalid && ((form.controls['meleiha'].touched) || (this.form.controls['meleiha'].dirty))">
+              <small *ngIf="this.form.controls['meleiha'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label  class="form-label">aghar</label>
+            <input [(ngModel)]="productionUpdate.aghar" formControlName="aghar" type="number" class="form-control" placeholder="aghar" id="aghar"/>
+            <div *ngIf="form.controls['aghar'].invalid && ((form.controls['aghar'].touched) || (this.form.controls['aghar'].dirty))">
+              <small *ngIf="this.form.controls['aghar'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label  class="form-label">eastKanays</label>
+            <input [(ngModel)]="productionUpdate.eastKanays" formControlName="eastKanays" type="number" class="form-control" placeholder="eastKanays" id="eastKanays"/>
+            <div *ngIf="form.controls['eastKanays'].invalid && ((form.controls['eastKanays'].touched) || (this.form.controls['eastKanays'].dirty))">
+              <small *ngIf="this.form.controls['eastKanays'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label class="form-label">zarif</label>
+            <input [(ngModel)]="productionUpdate.zarif" formControlName="zarif" type="number" class="form-control" placeholder="zarif" id="zarif"/>
+            <div *ngIf="form.controls['zarif'].invalid && ((form.controls['zarif'].touched) || (this.form.controls['zarif'].dirty))">
+              <small *ngIf="this.form.controls['zarif'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label class="form-label">faras</label>
+            <input [(ngModel)]="productionUpdate.faras" formControlName="faras" type="number" class="form-control" placeholder="faras" id="faras"/>
+            <div *ngIf="form.controls['faras'].invalid && ((form.controls['faras'].touched) || (this.form.controls['faras'].dirty))">
+              <small *ngIf="this.form.controls['faras'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label class="form-label">raml</label>
+            <input [(ngModel)]="productionUpdate.raml" formControlName="raml" type="number" class="form-control" placeholder="raml" id="raml"/>
+            <div *ngIf="form.controls['raml'].invalid && ((form.controls['raml'].touched) || (this.form.controls['raml'].dirty))">
+              <small *ngIf="this.form.controls['raml'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="lg-3">
+            <label  class="form-label">westernDesert</label>
+            <input [(ngModel)]="productionUpdate.westernDesert" formControlName="westernDesert" type="number" class="form-control" placeholder="westernDesert" id="westernDesert"/>
+            <div *ngIf="form.controls['westernDesert'].invalid && ((form.controls['westernDesert'].touched) || (this.form.controls['westernDesert'].dirty))">
+              <small *ngIf="this.form.controls['westernDesert'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label  class="form-label">ashrafi</label>
+            <input [(ngModel)]="productionUpdate.ashrafi" formControlName="ashrafi" type="number" class="form-control" placeholder="ashrafi" id="ashrafi"/>
+            <div *ngIf="form.controls['ashrafi'].invalid && ((form.controls['ashrafi'].touched) || (this.form.controls['ashrafi'].dirty))">
+              <small *ngIf="this.form.controls['ashrafi'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label  class="form-label">agibaOil</label>
+            <input [(ngModel)]="productionUpdate.agibaOil" formControlName="agibaOil" type="number" class="form-control" placeholder="agibaOil" id="agibaOil"/>
+            <div *ngIf="form.controls['agibaOil'].invalid && ((form.controls['agibaOil'].touched) || (this.form.controls['agibaOil'].dirty))">
+              <small *ngIf="this.form.controls['agibaOil'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label  class="form-label">salesGas</label>
+            <input [(ngModel)]="productionUpdate.salesGas" formControlName="salesGas" type="number" class="form-control" placeholder="salesGas" id="salesGas"/>
+            <div *ngIf="form.controls['salesGas'].invalid && ((form.controls['salesGas'].touched) || (this.form.controls['salesGas'].dirty))">
+              <small *ngIf="this.form.controls['salesGas'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label  class="form-label">agibaBOE</label>
+            <input [(ngModel)]="productionUpdate.agibaBOE" formControlName="agibaBOE" type="number" class="form-control" placeholder="agibaBOE" id="agibaBOE"/>
+            <div *ngIf="form.controls['agibaBOE'].invalid && ((form.controls['agibaBOE'].touched) || (this.form.controls['agibaBOE'].dirty))">
+              <small *ngIf="this.form.controls['agibaBOE'].hasError('required')" class="form-text text-danger">Please Enter The data</small>
+            </div>
+          </div>
+          <br>
+          <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

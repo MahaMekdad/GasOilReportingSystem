@@ -5,6 +5,7 @@ import {ProductionBudgetService} from '../../api/productionBudget.service';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductionBudegetRequest} from '../../model/productionBudegetRequest';
+import {DrillingInfoDataResponse} from "../../model/drillingInfoDataResponse";
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ProductionBudgetComponent implements OnInit {
   dateForUpdate:string;
   timeForUpdate:string;
   datte:Date;
+  productionUpdate: ProductionBudegetDataResponse;
 
 
   constructor(private httpClient: HttpClient ,private _formBuilder: FormBuilder, private productionBudgetService: ProductionBudgetService , private modalService: NgbModal ) {
@@ -66,6 +68,15 @@ export class ProductionBudgetComponent implements OnInit {
       this.productionBudgetDataResponse = data;
     })
 
+  }
+  ClickedRowToUpdate(index: number)
+  {
+    if(this.HighlightRow == -1 || this.HighlightRow == undefined){
+      this.productionUpdate = null;
+      return;
+    }
+    let x = this.productionBudgetDataResponse[this.HighlightRow];
+    this.productionUpdate = x;
   }
   ClickedRow(index:number)
   {
@@ -185,4 +196,8 @@ export class ProductionBudgetComponent implements OnInit {
      }
    );
  }
+  closePopUpAndRefreshTable(){
+    this.window.dismiss();
+    this.getALl();
+  }
 }

@@ -40,6 +40,7 @@ import {DrillingInfoComponent} from "./components/drilling-info/drilling-info.co
 import { AddNewDrillinginfoComponent } from './components/add-new-drillinginfo/add-new-drillinginfo.component';
 import { UpdateDrillingInfoComponent } from './components/update-drilling-info/update-drilling-info.component';
 import { NewProductionbudgetComponent } from './components/new-productionbudget/new-productionbudget.component';
+import { UpdateProductionBudgetComponent } from './components/update-production-budget/update-production-budget.component';
 
 @NgModule({
 
@@ -64,7 +65,8 @@ import { NewProductionbudgetComponent } from './components/new-productionbudget/
     DrillingInfoComponent,
     AddNewDrillinginfoComponent,
     UpdateDrillingInfoComponent,
-    NewProductionbudgetComponent
+    NewProductionbudgetComponent,
+    UpdateProductionBudgetComponent
 
   ],
   imports: [

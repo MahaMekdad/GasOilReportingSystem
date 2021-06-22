@@ -1,162 +1,187 @@
 
-<button class="btn btn-primary" (click)="triggerModal(modalData)">insert</button>
-<button class="btn btn-primary" (click)="triggerModal(updateModal) ; helper()">Update</button>
+<!--<button class="btn btn-primary" (click)="triggerModal(modalData)">insert</button>-->
+<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+<!--<button class="btn btn-primary" (click)="triggerModal(updateModal) ; helper()">Update</button>-->
+<button *ngIf="HighlightRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
 <ng-template #modalData let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Insert New Production Budget Record</h4>
+    <h4 class="modal-title" id="modal-basic-title">Insert New Production budget record</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <br/>
-        <div>
-          <form >
-            <div>
-              <label>Production Date</label>
-              <input  type="date" [(ngModel)]="date" class="form-control" required>
-            </div>
-            <div>
-              <label>Production Time</label>
-              <input  type="time" [(ngModel)]="time" class="form-control" required>
-            </div>
-            <br>
-            <div>
-              <label>Meleiha</label>
-              <input  type="number" [(ngModel)]="productionBudgetDataInsert.meleiha"  class="form-control" required>
+  <div>
 
-<!--              <div *ngIf="form.controls['meleiha'].errors?.required">-->
-<!--              <div *ngIf="form.controls['meleiha'].invalid && ((form.controls['meleiha'].touched) || (this.form.controls['meleiha'].dirty))">-->
-<!--                <small *ngIf="this.form.controls['meleiha'].hasError('required')" class="form-text text-danger">Please Enter The Data</small>-->
-<!--              </div>-->
-            </div>
-            <br>
-            <div>
-              <label>Aghar</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.aghar" class="form-control" required>
-            </div>
-            <div>
-              <label>EastKanays</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.eastKanays" class="form-control" required>
-            </div>
-            <div>
-              <label>Zarif</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.zarif" class="form-control" required>
-            </div>
-            <div>
-              <label>Faras</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.faras" class="form-control" required>
-            </div>
-            <div>
-              <label>Raml</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.raml" class="form-control" required>
-            </div>
-            <div>
-              <label>WesternDesert</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.westernDesert" class="form-control" required>
-            </div>
-            <div>
-              <label>Ashrafi</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.ashrafi" class="form-control" required>
-            </div>
-            <div>
-              <label>AgibaOil</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.agibaOil" class="form-control" required>
-            </div>
-            <div>
-              <label>SalesGas</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.salesGas" class="form-control" required>
-            </div>
-            <div>
-              <label>AgibaBOE</label>
-              <input type="number" [(ngModel)]="productionBudgetDataInsert.agibaBOE" class="form-control" required>
-            </div>
+    <app-new-productionbudget (closeModal)=closePopUpAndRefreshTable()></app-new-productionbudget>
 
-           <button type="submit" class="btn bg-primary" (click)="insert()">Add</button>
-          </form>
-        </div>
-      </div>
-    </div>
   </div>
 </ng-template>
-<ng-template #updateModal let-modal>
+
+<ng-template #modalDataUpdate let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" >UpdateProduction Budget Record</h4>
+    <h4 class="modal-title" >Update A Production budget Record</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <br/>
-        <div>
-          <form >
-            <div>
-              <label>Production Date</label>
-              <input type="date" [ngModel] ="date | date:'yyyy-MM-dd'" class="form-control" (ngModelChange)="date = $event">
-<!--              <input  type="date"  [(ngModel)]="dateForUpdate" dataformatas="MM/dd/yyyy" class="form-control" required>-->
-            </div>
-            <div>
-              <label>Production Time</label>
-              <input  type="time" [(ngModel)]="time" class="form-control" required>
-            </div>
-            <br>
-            <div>
-              <label>Meleiha</label>
-              <input  type="number" [(ngModel)]="productionBudgetDataUpdate.meleiha"  class="form-control" required>
-            </div>
-            <br>
-            <div>
-              <label>Aghar</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.aghar" class="form-control" required>
-            </div>
-            <div>
-              <label>EastKanays</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.eastKanays" class="form-control" required>
-            </div>
-            <div>
-              <label>Zarif</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.zarif" class="form-control" required>
-            </div>
-            <div>
-              <label>Faras</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.faras" class="form-control" required>
-            </div>
-            <div>
-              <label>Raml</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.raml" class="form-control" required>
-            </div>
-            <div>
-              <label>WesternDesert</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.westernDesert" class="form-control" required>
-            </div>
-            <div>
-              <label>Ashrafi</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.ashrafi" class="form-control" required>
-            </div>
-            <div>
-              <label>AgibaOil</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaOil" class="form-control" required>
-            </div>
-            <div>
-              <label>SalesGas</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.salesGas" class="form-control" required>
-            </div>
-            <div>
-              <label>AgibaBOE</label>
-              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaBOE" class="form-control" required>
-            </div>
-
-            <button type="submit" class="btn bg-primary" (click)="update()">update</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-update-production-budget [productionUpdate]="productionUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-production-budget>
 </ng-template>
+<!--<ng-template #modalData let-modal>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title" id="modal-basic-title">Insert New Production Budget Record</h4>-->
+<!--    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">-->
+<!--      <span aria-hidden="true">×</span>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  <div class="container">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+<!--        <br/>-->
+<!--        <div>-->
+<!--          <form >-->
+<!--            <div>-->
+<!--              <label>Production Date</label>-->
+<!--              <input  type="date" [(ngModel)]="date" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Production Time</label>-->
+<!--              <input  type="time" [(ngModel)]="time" class="form-control" required>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div>-->
+<!--              <label>Meleiha</label>-->
+<!--              <input  type="number" [(ngModel)]="productionBudgetDataInsert.meleiha"  class="form-control" required>-->
+
+<!--&lt;!&ndash;              <div *ngIf="form.controls['meleiha'].errors?.required">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div *ngIf="form.controls['meleiha'].invalid && ((form.controls['meleiha'].touched) || (this.form.controls['meleiha'].dirty))">&ndash;&gt;-->
+<!--&lt;!&ndash;                <small *ngIf="this.form.controls['meleiha'].hasError('required')" class="form-text text-danger">Please Enter The Data</small>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div>-->
+<!--              <label>Aghar</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.aghar" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>EastKanays</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.eastKanays" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Zarif</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.zarif" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Faras</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.faras" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Raml</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.raml" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>WesternDesert</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.westernDesert" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Ashrafi</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.ashrafi" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>AgibaOil</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.agibaOil" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>SalesGas</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.salesGas" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>AgibaBOE</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataInsert.agibaBOE" class="form-control" required>-->
+<!--            </div>-->
+
+<!--           <button type="submit" class="btn bg-primary" (click)="insert()">Add</button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</ng-template>-->
+<!--<ng-template #updateModal let-modal>-->
+<!--  <div class="modal-header">-->
+<!--    <h4 class="modal-title" >UpdateProduction Budget Record</h4>-->
+<!--    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">-->
+<!--      <span aria-hidden="true">×</span>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--  <div class="container">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+<!--        <br/>-->
+<!--        <div>-->
+<!--          <form >-->
+<!--            <div>-->
+<!--              <label>Production Date</label>-->
+<!--              <input type="date" [ngModel] ="date | date:'yyyy-MM-dd'" class="form-control" (ngModelChange)="date = $event">-->
+<!--&lt;!&ndash;              <input  type="date"  [(ngModel)]="dateForUpdate" dataformatas="MM/dd/yyyy" class="form-control" required>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Production Time</label>-->
+<!--              <input  type="time" [(ngModel)]="time" class="form-control" required>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div>-->
+<!--              <label>Meleiha</label>-->
+<!--              <input  type="number" [(ngModel)]="productionBudgetDataUpdate.meleiha"  class="form-control" required>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div>-->
+<!--              <label>Aghar</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.aghar" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>EastKanays</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.eastKanays" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Zarif</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.zarif" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Faras</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.faras" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Raml</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.raml" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>WesternDesert</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.westernDesert" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>Ashrafi</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.ashrafi" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>AgibaOil</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaOil" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>SalesGas</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.salesGas" class="form-control" required>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--              <label>AgibaBOE</label>-->
+<!--              <input type="number" [(ngModel)]="productionBudgetDataUpdate.agibaBOE" class="form-control" required>-->
+<!--            </div>-->
+
+<!--            <button type="submit" class="btn bg-primary" (click)="update()">update</button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</ng-template>-->
 
 
 <button (click)="delete()" type="button" class="btn btn-danger">DELETE</button>
@@ -183,7 +208,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of productionBudgetDataResponse; let currentIndex=index" (click)="ClickedRow(currentIndex)"
+  <tr *ngFor="let item of productionBudgetDataResponse; let currentIndex=index" (click)="ClickedRow(currentIndex) ;ClickedRowToUpdate(currentIndex) "
       [class.active]="currentIndex == HighlightRow">
     <td>{{currentIndex + 1}}</td>
     <td>{{item.id}}</td>
