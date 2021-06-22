@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { AllLabs } from '../model/allLabs';
 import { AllLabsOfAWell } from '../model/allLabsOfAWell';
+import { ErrorDetails } from '../model/errorDetails';
 import { LabMeasurementRequest } from '../model/labMeasurementRequest';
 import { LabMeasurementResponse } from '../model/labMeasurementResponse';
 
@@ -83,6 +84,7 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -135,6 +137,7 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -334,6 +337,7 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

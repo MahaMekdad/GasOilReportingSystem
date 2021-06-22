@@ -10,16 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface WellGeneralInfoResponse { 
-    id?: number;
-    wellId?: number;
-    subCompanyName?: string;
-    locationName?: string;
-    areaName?: string;
-    leaseName?: string;
-    boreName?: string;
-    xcord?: number;
-    ycord?: number;
-    lat?: number;
-    longitude?: number;
+export interface ErrorDetails { 
+    date?: string;
+    status?: string;
+    error?: string;
+    uri?: string;
+    message: string;
 }

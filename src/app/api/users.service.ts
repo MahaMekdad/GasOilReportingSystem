@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { GetAllUsers } from '../model/getAllUsers';
 import { UserRequest } from '../model/userRequest';
 import { UserResponse } from '../model/userResponse';
@@ -28,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class UsersService {
 
-    protected basePath = 'http://localhost:8080';
+    protected basePath = 'http://www.ourcompany.com/v1';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -126,6 +127,7 @@ export class UsersService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -212,6 +214,7 @@ export class UsersService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -258,6 +261,7 @@ export class UsersService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

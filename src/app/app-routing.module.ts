@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,7 @@ import { FluidLevelMeasurementsComponent } from './components/fluid-level-measur
 import { TestComponent } from './components/test/test.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: ProdDashboardComponent },
@@ -22,24 +24,20 @@ const routes: Routes = [
   { path: 'flm', component: FluidLevelMeasurementsComponent },
   { path: 'test', component: TestComponent },
   { path: 'productionbudget', component: ProductionBudgetComponent },
-  { path: 'login', component: ProdDashboardComponent },
-  { path: 'registration', component: ProdDashboardComponent },
+  // { path: 'login', component: ProdDashboardComponent },
+  // { path: 'registration', component: ProdDashboardComponent },
   { path: 'test', component: ProdDashboardComponent },
   { path: 'productionbudget', component: ProductionBudgetComponent },
   { path: 'test/add/:id', component: TestEditComponent },
   { path: 'test/edit/:id', component: TestEditComponent },
-  {
-    path: 'flm',
-    component: FluidLevelMeasurementsComponent
-  },
-  {
-    path: 'test',
-    component: TestComponent
-  },
+  { path: 'flm', component: FluidLevelMeasurementsComponent},
+  { path: 'test', component: TestComponent},
   { path: 'productionbudget', component: ProductionBudgetComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'intervalsInfo', component: IntervalsInfoComponent },
-  { path: 'wellGeneralInfo', component: WellGeneralInfoComponent }
+  { path: 'wellGeneralInfo', component: WellGeneralInfoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'notFound', component: PageNotFoundComponent }
 
 ];
 

@@ -1,10 +1,11 @@
-import { HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/tokenInterceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiModule } from 'api.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,6 +33,15 @@ import { TestComponent } from './components/test/test.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
+import { LoginComponent } from './components/login/login.component';
+import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
 
 @NgModule({
 
@@ -50,8 +60,11 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
     FluidLevelMeasurementsComponent,
     TestComponent,
     IntervalsInfoComponent,
-    WellGeneralInfoComponent
-
+    WellGeneralInfoComponent,
+    LoginComponent,
+    AddNewFlmComponent,
+    UpdateFlmComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +85,23 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
     MatSortModule,
     HttpClientModule,
     FormsModule,
-    // ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    { 
+      provide: JWT_OPTIONS, 
+      useValue: JWT_OPTIONS 
+    },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

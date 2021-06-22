@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { FieldRequest } from '../model/fieldRequest';
 import { FieldResponse } from '../model/fieldResponse';
 import { GetAllFields } from '../model/getAllFields';
@@ -77,6 +78,7 @@ export class FieldService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -123,6 +125,7 @@ export class FieldService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -245,6 +248,7 @@ export class FieldService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

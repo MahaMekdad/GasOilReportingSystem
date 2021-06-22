@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { WellGeneralInfoRequest } from '../model/wellGeneralInfoRequest';
 import { WellGeneralInfoResponse } from '../model/wellGeneralInfoResponse';
 
@@ -27,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class WellGeneralInfoService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://www.ourcompany.com/v1';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -112,6 +113,7 @@ export class WellGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -198,6 +200,7 @@ export class WellGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -244,6 +247,7 @@ export class WellGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

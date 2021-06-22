@@ -17,8 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { LoginRequest } from '../model/loginRequest';
-import { UserResponse } from '../model/userResponse';
+import { UserLoggedInResponse } from '../model/userLoggedInResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
@@ -27,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class LoginService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8888';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -57,15 +58,15 @@ export class LoginService {
 
 
     /**
-     * 
+     *
      * user login
-     * @param body 
+     * @param body
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public loginPost(body: LoginRequest, observe?: 'body', reportProgress?: boolean): Observable<UserResponse>;
-    public loginPost(body: LoginRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserResponse>>;
-    public loginPost(body: LoginRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserResponse>>;
+    public loginPost(body: LoginRequest, observe?: 'body', reportProgress?: boolean): Observable<UserLoggedInResponse>;
+    public loginPost(body: LoginRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserLoggedInResponse>>;
+    public loginPost(body: LoginRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserLoggedInResponse>>;
     public loginPost(body: LoginRequest, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -92,7 +93,7 @@ export class LoginService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<UserResponse>('post',`${this.basePath}/login`,
+        return this.httpClient.request<UserLoggedInResponse>('post',`${this.basePath}/login`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
