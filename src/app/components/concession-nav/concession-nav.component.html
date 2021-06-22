@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-danger">BACK</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="display: none">#</th>
+                  <th>Id</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let con of allConcessions; let currentIndex = index"
+                  (click)="navToConFields(currentIndex)"
+                >
+                  <td style="display: none">{{ currentIndex + 1 }}</td>
+                  <td>{{ con.id }}</td>
+                  <td>{{ con.name }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
