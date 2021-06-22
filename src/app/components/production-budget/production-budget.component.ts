@@ -24,6 +24,8 @@ export class ProductionBudgetComponent implements OnInit {
   productionBudgetDataUpdate: ProductionBudegetRequest;
   dateForUpdate:string;
   timeForUpdate:string;
+  datte:Date;
+
 
   constructor(private httpClient: HttpClient ,private _formBuilder: FormBuilder, private productionBudgetService: ProductionBudgetService , private modalService: NgbModal ) {
   }
@@ -109,7 +111,7 @@ export class ProductionBudgetComponent implements OnInit {
       this.productionBudgetDataResponse = data;
     })
   }
-  update():void
+  helper():void
   {
     let productionbudget=this.productionBudgetDataResponse[this.HighlightRow];
     this.productionBudgetDataUpdate = productionbudget;
@@ -118,8 +120,38 @@ export class ProductionBudgetComponent implements OnInit {
     let ss = s.toString().split("-");
     let sss = ss[2].toString().split(",");
     console.log("ss[2]== "+ ss[2]);
+    this.datte = new Date(ss[0]+'-'+ss[1]+'-'+ sss[0]);
     this.dateForUpdate  = ss[1] + '/' + sss[0] + '/' + ss[0];
+
     console.log("dateforUpdate == "+ this.dateForUpdate);
+    console.log("date == "+ this.datte);
+  }
+  update():void
+  {
+   console.log("dateForUpdatee ageaim == "+ this.dateForUpdate);
+    let dateValues = this.dateForUpdate.split("/");
+    let n1 :number = +dateValues[0];
+    let n2 :number = +dateValues[1];
+    let n3 :number = +dateValues[2];
+    console.log("--- " + n1 +" ------- "+n2 +" ----- "+n3);
+    let dateString = n3 +'-' +n1 +'-' + n2 + "T00:00:00Z";
+    let date = new Date(dateString);
+    console.log("dateee=== " + date);
+    //this.productionBudgetDataUpdate.productionDate =  date;
+    console.log("production date=== "+this.productionBudgetDataUpdate.productionDate);
+    console.log(this.productionBudgetDataUpdate);
+    this.productionBudgetService.concessionsBudgetProductionBudgetIdPatch(this.productionBudgetDataUpdate , this.productionBudgetDataResponse[this.HighlightRow].id).subscribe(
+      response=>{
+        this.HighlightRow = -1;
+        this.window.dismiss();
+
+
+      },
+      error=>{
+        alert("Error");
+      }
+    );
+
 
 
 
