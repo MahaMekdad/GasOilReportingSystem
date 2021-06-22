@@ -77,7 +77,7 @@ export class UpdateFlmComponent implements OnInit {
     // let date = wholeDate[0];
     // let time = wholeDate[1]
     // let dateValues = date.split("-");
-    this.convertedDate = x.toLocaleDateString('en-UK');
+    this.convertedDate = x.toLocaleDateString();
     // this.convertedDate = new Date(Number.parseInt(dateValues[0]) , Number.parseInt(dateValues[1]), Number.parseInt(dateValues[2]));
     // let timeValues = time.split(":");
     this.convertedTime = x.getTime().toLocaleString()
