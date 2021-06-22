@@ -1,3 +1,4 @@
+import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { NgModule, Component } from '@angular/core';
@@ -39,7 +40,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'notFound', component: PageNotFoundComponent },
   { path: 'conNav', component: ConcessionNavComponent },
-  { path: 'fieldNav', component: FieldNavComponent }
+  { path: 'fieldNav', component: FieldNavComponent },
+  { path: 'pgi', component: ProductionGeneralInfoComponent }
 
 ]
 

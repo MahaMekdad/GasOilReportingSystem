@@ -62,7 +62,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
         this.highlightedRow = -1;
       },
       error => {
-        alert(error.errorMessage);
+        console.log(error.errorMessage);
       }
     );
   }

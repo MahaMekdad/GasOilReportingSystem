@@ -49,6 +49,9 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
 import { FieldNavComponent } from './components/field-nav/field-nav.component';
+import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
+import { AddNewPgiComponent } from './components/add-new-pgi/add-new-pgi.component';
+import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component';
 
 
 @NgModule({
@@ -76,7 +79,10 @@ import { FieldNavComponent } from './components/field-nav/field-nav.component';
     UpdateFlmComponent,
     PageNotFoundComponent,
     ConcessionNavComponent,
-    FieldNavComponent
+    FieldNavComponent,
+    ProductionGeneralInfoComponent,
+    AddNewPgiComponent,
+    UpdatePgiComponent
   ],
   imports: [
     BrowserModule,
