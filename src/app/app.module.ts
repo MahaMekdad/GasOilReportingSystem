@@ -36,6 +36,10 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
 import { LoginComponent } from './components/login/login.component';
 import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DrillingInfoComponent} from "./components/drilling-info/drilling-info.component";
+import { AddNewDrillinginfoComponent } from './components/add-new-drillinginfo/add-new-drillinginfo.component';
+import { UpdateDrillingInfoComponent } from './components/update-drilling-info/update-drilling-info.component';
+import { NewProductionbudgetComponent } from './components/new-productionbudget/new-productionbudget.component';
 
 @NgModule({
 
@@ -56,7 +60,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
     LoginComponent,
-    AddNewFlmComponent
+    AddNewFlmComponent,
+    DrillingInfoComponent,
+    AddNewDrillinginfoComponent,
+    UpdateDrillingInfoComponent,
+    NewProductionbudgetComponent
 
   ],
   imports: [

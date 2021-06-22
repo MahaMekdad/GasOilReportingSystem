@@ -14,6 +14,7 @@ import { TestComponent } from './components/test/test.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
 import { LoginComponent } from './components/login/login.component';
+import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
 
 const routes: Routes = [
   { path: 'home', component: ProdDashboardComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'intervalsInfo', component: IntervalsInfoComponent },
   { path: 'wellGeneralInfo', component: WellGeneralInfoComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'dinfo', component: DrillingInfoComponent }
 
 ];
 
