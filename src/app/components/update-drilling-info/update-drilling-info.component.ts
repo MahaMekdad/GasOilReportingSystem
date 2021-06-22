@@ -38,7 +38,7 @@ export class UpdateDrillingInfoComponent implements OnInit {
   }
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
-    this.convertedDate = x.toLocaleDateString('en-UK');
+    this.convertedDate = x.toLocaleDateString();
     this.convertedTime = x.getTime().toLocaleString()
 
   }

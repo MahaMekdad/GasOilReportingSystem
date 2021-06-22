@@ -17,6 +17,7 @@ export class UpdateProductionBudgetComponent implements OnInit {
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
 
   convertedDate: string;
+
   form: FormGroup;
   convertedTime: string;
   constructor(private _productionBudgetService: ProductionBudgetService , private _formBuilder: FormBuilder) { }
@@ -41,8 +42,8 @@ export class UpdateProductionBudgetComponent implements OnInit {
   }
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
-    this.convertedDate = x.toLocaleDateString('en-UK');
-    this.convertedTime = x.getTime().toLocaleString()
+    this.convertedDate = x.toLocaleDateString();
+    this.convertedTime = x.getTime().toLocaleString();
 
   }
   update(){
@@ -50,7 +51,7 @@ export class UpdateProductionBudgetComponent implements OnInit {
     let productionRequest: ProductionBudegetRequest = this.form.value as ProductionBudegetRequest
     let dateValues = this.form.controls.date.value.split("-");
     let timeValues = this.form.controls.time.value.split(":");
-    productionRequest.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2]+1, 0, 0);
+    productionRequest.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     console.log("--------------");
     console.log(productionRequest);
     this._productionBudgetService.concessionsBudgetProductionBudgetIdPatch(productionRequest, this.productionUpdate.id).subscribe(
