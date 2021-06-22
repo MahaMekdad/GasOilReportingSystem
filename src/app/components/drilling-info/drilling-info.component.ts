@@ -104,14 +104,14 @@ export class DrillingInfoComponent implements OnInit {
   // }
 
 
-  insert():void{
-    this._drilingInfoService.wellsWellIdDrillingInfoPost(this.r,this.wellId,null,null).subscribe( Response=>{
-      this.message="Added";
-    },error => {
-      this.message=error.error.errorMessage;
-      console.log(this.message);
-    });
-  }
+  // insert():void{
+  //   this._drilingInfoService.wellsWellIdDrillingInfoPost(this.r,this.wellId,null,null).subscribe( Response=>{
+  //     this.message="Added";
+  //   },error => {
+  //     this.message=error.error.errorMessage;
+  //     console.log(this.message);
+  //   });
+  // }
 
   edit():void{
     this._drilingInfoService.wellsWellIdDrillingInfoIdPatch(this.r2,this.wellIdEdite,this.drillId,null,null).subscribe( Response=>{

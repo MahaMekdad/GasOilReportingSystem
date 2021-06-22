@@ -196,8 +196,15 @@ export class ProductionBudgetComponent implements OnInit {
      }
    );
  }
-  closePopUpAndRefreshTable(){
+  loadRecords(){
+    this.productionBudgetService.concessionsBudgetProductionBudgetGet(null).subscribe((data: any[]) => {
+      console.log("heeeeeeeeeeaaaaaaar");
+      console.log("data = " + data);
+      this.productionBudgetDataResponse = data;
+    })
+  }
+  closePopUpAndRefreshTable(): void{
     this.window.dismiss();
-    this.getALl();
+    this.loadRecords();
   }
 }

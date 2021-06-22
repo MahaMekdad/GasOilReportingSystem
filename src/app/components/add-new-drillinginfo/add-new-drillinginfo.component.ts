@@ -18,14 +18,6 @@ export class AddNewDrillinginfoComponent implements OnInit {
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
 
   constructor(private _drillingService: DrilingInfoService ,  private _formBuilder: FormBuilder, private _wellService: WellService ,private modalService: NgbModal) { }
-  // releaseDate?: Date;
-  // wellDescription?: string;
-  // wellType?: string;
-  // boreType?: string;
-  // measuredDepth?: number;
-  // tvdDepth?: number;
-  // bbtp?: number;
-  // productionGeneralInfo?: string;
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
