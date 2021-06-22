@@ -109,7 +109,9 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     ReactiveFormsModule,
     NgbModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {

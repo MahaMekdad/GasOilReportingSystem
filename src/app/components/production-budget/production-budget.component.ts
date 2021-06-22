@@ -139,7 +139,7 @@ export class ProductionBudgetComponent implements OnInit {
   }
   update():void
   {
-   console.log("dateForUpdatee ageaim == "+ this.dateForUpdate);
+    console.log("dateForUpdatee ageaim == "+ this.dateForUpdate);
     let dateValues = this.dateForUpdate.split("/");
     let n1 :number = +dateValues[0];
     let n2 :number = +dateValues[1];
@@ -168,34 +168,34 @@ export class ProductionBudgetComponent implements OnInit {
 
   }
   insert(): void
- {
-   console.log("datee === " + this.productionBudgetDataInsert.productionDate);
-   console.log("meleiha === " + this.productionBudgetDataInsert.meleiha);
-   console.log("aghar === " + this.productionBudgetDataInsert.aghar);
-   console.log("zarif === " + this.productionBudgetDataInsert.zarif);
-   let dateValue = this.date.split("-");
-   let timeValues = this.time.split(":");
-   console.log("dateVlaues === "+ dateValue);
-   console.log("timeValuess === "+ timeValues);
-   let n1 :number = +dateValue[0];
-   let n2 :number = +dateValue[1];
-   let n3 :number = +dateValue[2];
-   let n4 :number = +timeValues[0];
-   let n5 :number = +timeValues[1];
-   console.log("--- "+ n1+ " -" + n2 + "=" + n3 +" -" +n4+"-" +n5);
-   this.productionBudgetDataInsert.productionDate = new Date(n1 , n2 , n3, n4 , n5);
-   console.log("datee===  "+this.productionBudgetDataInsert.productionDate);
-   this.productionBudgetService.concessionsBudgetProductionBudgetPost(this.productionBudgetDataInsert).subscribe(
-     response=>{
-       console.log("insert done");
-       this.getALl();
-       this.window.dismiss();
-     },
-     error=>{
-       alert("Error");
-     }
-   );
- }
+  {
+    console.log("datee === " + this.productionBudgetDataInsert.productionDate);
+    console.log("meleiha === " + this.productionBudgetDataInsert.meleiha);
+    console.log("aghar === " + this.productionBudgetDataInsert.aghar);
+    console.log("zarif === " + this.productionBudgetDataInsert.zarif);
+    let dateValue = this.date.split("-");
+    let timeValues = this.time.split(":");
+    console.log("dateVlaues === "+ dateValue);
+    console.log("timeValuess === "+ timeValues);
+    let n1 :number = +dateValue[0];
+    let n2 :number = +dateValue[1];
+    let n3 :number = +dateValue[2];
+    let n4 :number = +timeValues[0];
+    let n5 :number = +timeValues[1];
+    console.log("--- "+ n1+ " -" + n2 + "=" + n3 +" -" +n4+"-" +n5);
+    this.productionBudgetDataInsert.productionDate = new Date(n1 , n2 , n3, n4 , n5);
+    console.log("datee===  "+this.productionBudgetDataInsert.productionDate);
+    this.productionBudgetService.concessionsBudgetProductionBudgetPost(this.productionBudgetDataInsert).subscribe(
+      response=>{
+        console.log("insert done");
+        this.getALl();
+        this.window.dismiss();
+      },
+      error=>{
+        alert("Error");
+      }
+    );
+  }
   loadRecords(){
     this.productionBudgetService.concessionsBudgetProductionBudgetGet(null).subscribe((data: any[]) => {
       console.log("heeeeeeeeeeaaaaaaar");
