@@ -26,7 +26,7 @@ export class AddNewFlmComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       intervals:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
       flType:['', [Validators.required]],
       fluidLevel:['', [Validators.required]],
@@ -52,15 +52,16 @@ export class AddNewFlmComponent implements OnInit {
   insert() {
     // debugger
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
-    console.log(this.form);
-    console.log(this.form.controls.well.value);
-    console.log(this.form.controls.date);
-    console.log(this.form.controls.time.value);
+    // console.log(this.form);
+    // console.log(this.form.controls.well.value);
+    // console.log(this.form.controls.date);
+    // console.log(this.form.controls.time.value);
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
+    // let timeValues = this.form.controls.time.value.split(":");
     console.log(dateValues)
-    console.log(timeValues)
-    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], timeValues[0], timeValues[1])
+    console.log(dateValues[0])
+    // console.log(timeValues)
+    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     console.log(flmRequest.date)
     this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
       response => {
