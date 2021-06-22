@@ -42,6 +42,8 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { AddNewWellGeneralInfoComponent } from './components/well-general-info/add-new-well-general-info/add-new-well-general-info.component';
 import { UpdateWellGeneralInfoComponent } from './components/well-general-info/update-well-general-info/update-well-general-info.component';
+import { UpdateIntervalsInfoComponent } from './components/intervals-info/update-intervals-info/update-intervals-info.component';
+import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-new-intervals-info/add-new-intervals-info.component';
 
 @NgModule({
 
@@ -65,7 +67,9 @@ import { UpdateWellGeneralInfoComponent } from './components/well-general-info/u
     AddNewFlmComponent,
     UpdateFlmComponent,
     AddNewWellGeneralInfoComponent,
-    UpdateWellGeneralInfoComponent
+    UpdateWellGeneralInfoComponent,
+    UpdateIntervalsInfoComponent,
+    AddNewIntervalsInfoComponent
 
   ],
   imports: [

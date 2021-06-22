@@ -1,0 +1,175 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div>
+          <form [formGroup]="form">
+         
+            <div class="lg-3">
+                <label>Driving mechanism:</label>
+                <select  formControlName="drivingMechanism" class="form-control" require="required" name="drivingMechanism">
+                  <option disabled>Select driving mechanism</option>
+                  <option value='WaterDrive'>WaterDrive</option>
+                  <option value='GasCap'>GasCap</option>
+                  <option value='DepleationDrive'>DepleationDrive</option>
+                  <option value='GravityDrainage'>GravityDrainage</option>
+                  <option value='CombinationDrive'>CombinationDrive</option>
+                </select>
+                <div *ngIf="this.form.controls['drivingMechanism'].touched && this.form.controls['drivingMechanism'].invalid">
+                    <small class="form-text text-danger">Please Choose driving mechanism</small>
+                </div>
+                </div>
+                <br>
+
+            <div class="lg-3">
+                <label class="form-label">zones</label>
+                <input  type="text" name="zones" formControlName="zones" class="form-control" placeholder="zones" required="required"/>
+                <div *ngIf="this.form.controls['zones'].invalid && ((this.form.controls['zones'].touched) || (this.form.controls['zones'].dirty))">
+                  <small  class="form-text text-danger">Please enter zones</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">interval</label>
+                <input  type="text"  formControlName="interval" name="interval" class="form-control" placeholder="interval" required="required"/>
+                <div *ngIf="this.form.controls['interval'].invalid && ((this.form.controls['interval'].touched) || (this.form.controls['interval'].dirty))">
+                  <small  class="form-text text-danger">Please enter interval field</small> 
+                </div>
+              </div>
+            <br>
+
+            
+            <div class="lg-3">
+                <label class="form-label">from</label>
+                <input  type="number" formControlName="from" class="form-control" name="from" placeholder="from" required="required"/>
+                <div *ngIf="this.form.controls['from'].invalid && ((this.form.controls['from'].touched) || (this.form.controls['from'].dirty))">
+                  <small  class="form-text text-danger">Please Enter from field</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">to</label>
+                <input  type="number" formControlName="to" class="form-control" name="to" placeholder="to" required="required"/>
+                <div *ngIf="this.form.controls['to'].invalid && ((this.form.controls['to'].touched) || (this.form.controls['to'].dirty))">
+                  <small class="form-text text-danger">Please Enter to field</small> 
+                </div>
+              </div>
+            <br>
+
+            
+            <div class="lg-3">
+                <label class="form-label">length</label>
+                <input  type="number"  formControlName="length" class="form-control" name="length" placeholder="length" required="required"/>
+                <div *ngIf="this.form.controls['length'].invalid && ((this.form.controls['length'].touched) || (this.form.controls['length'].dirty))">
+                  <small class="form-text text-danger">Please Enter length field</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">pr</label>
+                <input  type="number" formControlName="pr" class="form-control"  placeholder="pr" required="required"/>
+                <div *ngIf="this.form.controls['pr'].invalid && ((this.form.controls['pr'].touched) || (this.form.controls['pr'].dirty))">
+                  <small class="form-text text-danger">Please Enter pr field</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">tr</label>
+                <input  type="number" formControlName="tr" class="form-control"  placeholder="tr" required="required"/>
+                <div *ngIf="this.form.controls['tr'].invalid && ((this.form.controls['tr'].touched) || (this.form.controls['tr'].dirty))">
+                  <small class="form-text text-danger">Please Enter tr field</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label>status:</label>
+                <select  formControlName="status" class="form-control" require="required" name="status">
+                  <option disabled>Select status</option>
+                  <option value='active'>active</option>
+                  <option value='shutin'>shutin</option>
+                </select>
+                <div *ngIf="this.form.controls['status'].touched && this.form.controls['status'].invalid">
+                    <small class="form-text text-danger">Please Choose status</small>
+                </div>
+                </div>
+                <br>
+
+                <div class="lg-3">
+                    <label class="form-label">Start date</label>
+                    <input formControlName="startDate" type="date" class="form-control" placeholder="Start date" id="formDate"/>
+                    <div *ngIf="form.controls['startDate'].invalid && ((form.controls['startDate'].touched) || (this.form.controls['startDate'].dirty))">
+                      <small class="form-text text-danger">Please Pick a Date</small> 
+                    </div>
+                  </div>
+                  <br>
+
+                  <div class="lg-3">
+                    <label class="form-label">End date</label>
+                    <input formControlName="endDate" type="date" class="form-control" placeholder="End date" id="formDate"/>
+                    <div *ngIf="form.controls['endDate'].invalid && ((form.controls['endDate'].touched) || (this.form.controls['endDate'].dirty))">
+                      <small class="form-text text-danger">Please Pick a Date</small> 
+                    </div>
+                  </div>
+                  <br>
+
+
+                  <div class="lg-3">
+                    <label class="form-label">pi</label>
+                    <input  type="number" formControlName="pi" class="form-control"  placeholder="pi" required="required"/>
+                    <div *ngIf="this.form.controls['pi'].invalid && ((this.form.controls['pi'].touched) || (this.form.controls['pi'].dirty))">
+                      <small class="form-text text-danger">Please Enter pi field</small> 
+                    </div>
+                  </div>
+                <br>
+
+                <div class="lg-3">
+                    <label class="form-label">mobility</label>
+                    <input  type="number" formControlName="mobility" class="form-control"  placeholder="mobility" required="required"/>
+                    <div *ngIf="this.form.controls['mobility'].invalid && ((this.form.controls['mobility'].touched) || (this.form.controls['mobility'].dirty))">
+                      <small class="form-text text-danger">Please Enter mobility field</small> 
+                    </div>
+                  </div>
+                <br>
+
+
+                <div class="lg-3">
+                    <label class="form-label">api</label>
+                    <input  type="number" formControlName="api" class="form-control"  placeholder="api" required="required"/>
+                    <div *ngIf="this.form.controls['api'].invalid && ((this.form.controls['api'].touched) || (this.form.controls['api'].dirty))">
+                      <small class="form-text text-danger">Please Enter api field</small> 
+                    </div>
+                  </div>
+                <br>
+
+            <div class="lg-3">
+                <label class="form-label">Fluid type</label>
+                <input  type="text" formControlName="fluidType" name="fluidType" class="form-control" placeholder="Fluid type" required="required"/>
+                <div *ngIf="this.form.controls['fluidType'].invalid && ((this.form.controls['fluidType'].touched) || (this.form.controls['fluidType'].dirty))">
+                  <small  class="form-text text-danger">Please enter Fluid type</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">notes</label>
+                <input  type="text" formControlName="notes" name="notes" class="form-control" placeholder="notes" required="required"/>
+                <div *ngIf="this.form.controls['notes'].invalid && ((this.form.controls['notes'].touched) || (this.form.controls['notes'].dirty))">
+                  <small  class="form-text text-danger">Please enter notes</small> 
+                </div>
+              </div>
+            <br>
+
+
+
+
+            <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
