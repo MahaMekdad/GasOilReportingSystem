@@ -38,6 +38,11 @@ import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
 
+import { JwtModule } from "@auth0/angular-jwt";
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { AddNewWellGeneralInfoComponent } from './components/well-general-info/add-new-well-general-info/add-new-well-general-info.component';
+import { UpdateWellGeneralInfoComponent } from './components/well-general-info/update-well-general-info/update-well-general-info.component';
+
 @NgModule({
 
   declarations: [
@@ -58,7 +63,9 @@ import { UpdateFlmComponent } from './components/update-flm/update-flm.component
     WellGeneralInfoComponent,
     LoginComponent,
     AddNewFlmComponent,
-    UpdateFlmComponent
+    UpdateFlmComponent,
+    AddNewWellGeneralInfoComponent,
+    UpdateWellGeneralInfoComponent
 
   ],
   imports: [
@@ -81,14 +88,19 @@ import { UpdateFlmComponent } from './components/update-flm/update-flm.component
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    JwtModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }
+      
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+   
   ],
   bootstrap: [AppComponent]
 })
