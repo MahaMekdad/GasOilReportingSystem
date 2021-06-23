@@ -15,6 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
         let modifiedRequest = req;
 
+
         if (accessToken != null && !(this.jwtHelper.isTokenExpired(accessToken))) {
             console.log(this.jwtHelper.isTokenExpired(accessToken))
             if (req.url.includes('/login')) {

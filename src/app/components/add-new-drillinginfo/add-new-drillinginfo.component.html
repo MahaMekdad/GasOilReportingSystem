@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div>
+        <form [formGroup]="form">
+          <div class="lg-3">
+            <label>Well:</label>
+            <select formControlName="well" class="form-control">
+              <option disabled>Select Well</option>
+              <option>Choose Well</option>
+              <option *ngFor="let well of allWells" [value]='well.wellId'>{{well.wellName}}</option>
+            </select>
+            <div *ngIf="this.form.controls['well'].touched && this.form.controls['well'].invalid">
+              <small *ngIf="this.form.controls['well'].errors.required" class="form-text text-danger">Please Choose a Well</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label for="formDate" class="form-label">Release Date</label>
+            <input formControlName="date" type="date" class="form-control" placeholder="Date" id="formDate"/>
+            <div *ngIf="form.controls['date'].invalid && ((form.controls['date'].touched) || (this.form.controls['date'].dirty))">
+              <small *ngIf="this.form.controls['date'].hasError('required')" class="form-text text-danger">Please Pick a Date</small>
+            </div>
+          </div>
+          <br>
+
+          <!-- <div class="lg-3">
+            <label class="form-label">Time</label>
+            <input formControlName="time" type="time" class="form-control" placeholder="Time" id="formHour"/>
+            <div *ngIf="form.controls['time'].invalid && ((form.controls['time'].touched) || (this.form.controls['time'].dirty))">
+              <small *ngIf="this.form.controls['time'].hasError('required')" class="form-text text-danger">Please Pick a Time</small>
+            </div>
+          </div> -->
+<br>
+
+          <div class="lg-3">
+            <label  class="form-label">Well description</label>
+            <input formControlName="wellDescription" type="text" class="form-control" placeholder="wellDescription" id="wellDescription"/>
+            <div *ngIf="form.controls['wellDescription'].invalid && ((form.controls['wellDescription'].touched) || (this.form.controls['wellDescription'].dirty))">
+              <small *ngIf="this.form.controls['wellDescription'].hasError('required')" class="form-text text-danger">Please Enter The description</small>
+            </div>
+          </div>
+          <br>
+
+
+          <!-- <div class="lg-3">
+              <label for="formFlType" class="form-label">Fluid Level Type</label>
+              <input formControlName="flType" type="text" class="form-control" placeholder="Fluid level Type" id="formFlType"/>
+              <div *ngIf="form.controls['flType'].invalid && ((form.controls['flType'].touched) || (this.form.controls['flType'].dirty))">
+                <small *ngIf="this.form.controls['flType'].hasError('required')" class="form-text text-danger">Please Choose The Fluid Level Type</small>
+              </div>
+            </div>
+          <br> -->
+
+          <div class="lg-3">
+            <label class="form-label">Well Type</label>
+            <input formControlName="wellType" type="text" class="form-control" placeholder="wellType" id="wellType"/>
+            <div *ngIf="form.controls['wellType'].invalid && ((form.controls['wellType'].touched) || (this.form.controls['wellType'].dirty))">
+              <small *ngIf="this.form.controls['wellType'].hasError('required')" class="form-text text-danger">Please Enter The wellTypee</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label class="form-label">Bore type</label>
+            <input formControlName="boreType" type="text" class="form-control" placeholder="boreType" id="boreType"/>
+            <div *ngIf="form.controls['boreType'].invalid && ((form.controls['boreType'].touched) || (this.form.controls['boreType'].dirty))">
+              <small *ngIf="this.form.controls['boreType'].hasError('required')" class="form-text text-danger">Please Enter The boreType</small>
+            </div>
+          </div>
+          <br>
+
+
+
+          <div class="lg-3">
+            <label class="form-label">measuredDepth</label>
+            <input formControlName="measuredDepth" type="number" class="form-control" placeholder="measuredDepth" id="measuredDepth"/>
+            <div *ngIf="form.controls['measuredDepth'].invalid && ((form.controls['measuredDepth'].touched) || (this.form.controls['measuredDepth'].dirty))">
+              <small *ngIf="this.form.controls['measuredDepth'].hasError('required')" class="form-text text-danger">Please Enter mesDepth</small>
+            </div>
+          </div>
+          <br>
+
+          <div class="lg-3">
+            <label class="form-label">tvdDepth</label>
+            <input formControlName="tvdDepth" type="number" class="form-control" placeholder="tvdDepth" id="tvdDepth"/>
+            <div *ngIf="form.controls['tvdDepth'].invalid && ((form.controls['tvdDepth'].touched) || (this.form.controls['tvdDepth'].dirty))">
+              <small *ngIf="this.form.controls['tvdDepth'].hasError('required')" class="form-text text-danger">Please Enter The tvDepth</small>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="lg-3">
+            <label class="form-label">bbtp</label>
+            <input formControlName="bbtp" type="number" class="form-control" placeholder="bbtp" id="bbtp"/>
+            <div *ngIf="form.controls['bbtp'].invalid && ((form.controls['bbtp'].touched) || (this.form.controls['bbtp'].dirty))">
+              <small *ngIf="this.form.controls['bbtp'].hasError('required')" class="form-text text-danger">Please Enter The bbtp</small>
+
+            </div>
+          </div>
+          <br>
+          <div class="lg-3">
+            <label class="form-label">productionGeneralInfo</label>
+            <input formControlName="productionGeneralInfo" type="text" class="form-control" placeholder="productionGeneralInfo" id="productionGeneralInfo"/>
+            <div *ngIf="form.controls['productionGeneralInfo'].invalid && ((form.controls['productionGeneralInfo'].touched) || (this.form.controls['productionGeneralInfo'].dirty))">
+              <small *ngIf="this.form.controls['productionGeneralInfo'].hasError('required')" class="form-text text-danger">Please Enter The prodGenearlInfo</small>
+            </div>
+          </div>
+          <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -21,7 +21,7 @@ export class AddNewFlmComponent implements OnInit {
 
   flTypeEnums = Object.values(AllFluidLevelMeasurementResponse.FlTypeEnum);
 
-  constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder, private _wellService: WellService) { }
+  constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder, private _wellService: WellService) {}
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
@@ -46,7 +46,7 @@ export class AddNewFlmComponent implements OnInit {
       error => {
         console.log(error)
     })
-    
+
   }
 
   insert() {

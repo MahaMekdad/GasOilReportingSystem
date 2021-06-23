@@ -42,6 +42,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { LoginComponent } from './components/login/login.component';
 import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
+import { AddNewDrillinginfoComponent } from './components/add-new-drillinginfo/add-new-drillinginfo.component';
+import { UpdateDrillingInfoComponent } from './components/update-drilling-info/update-drilling-info.component';
+import { NewProductionbudgetComponent } from './components/new-productionbudget/new-productionbudget.component';
+import { UpdateProductionBudgetComponent } from './components/update-production-budget/update-production-budget.component';
 import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -76,6 +81,11 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     ConfirmationComponent,
     LoginComponent,
     AddNewFlmComponent,
+    DrillingInfoComponent,
+    AddNewDrillinginfoComponent,
+    UpdateDrillingInfoComponent,
+    NewProductionbudgetComponent,
+    UpdateProductionBudgetComponent,
     UpdateFlmComponent,
     PageNotFoundComponent,
     ConcessionNavComponent,
@@ -107,9 +117,9 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
       useClass: TokenInterceptor,
       multi: true,
     },
-    { 
-      provide: JWT_OPTIONS, 
-      useValue: JWT_OPTIONS 
+    {
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
     },
     JwtHelperService
   ],
