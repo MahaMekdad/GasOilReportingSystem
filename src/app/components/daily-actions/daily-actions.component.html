@@ -1,138 +1,70 @@
-<div class="form-check">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Well Id
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellIdFilter" class="border-none"></td>
-    <span class="table-remove"><button type="button" (click)=filterById()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-  <label class="form-check-label" for="flexRadioDefault1">
-    ShutinLevel4
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="sLvl4Filter" class="border-none"></td>
-    <span class="table-remove"><button type="button" (click)=filterBySiLvl4()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-  <label class="form-check-label" for="flexRadioDefault1">
-    Losses
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="losses" class="border-none"></td>
-    <span class="table-remove"><button type="button" (click)=filterByLosses()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-  <label class="form-check-label" for="flexRadioDefault1">
-    DownTime
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="downTime" class="border-none"></td>
-    <span class="table-remove"><button type="button" (click)=filterByDownTime()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-  <label class="form-check-label" for="flexRadioDefault1">
-    StartDate
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="startDate" class="border-none">
-    </td>EndDate
-    <td class="pt-3-half" contenteditable="true">
-      <input type="text" name="id" [(ngModel)]="endDate" class="border-none">
-    </td>
-    <span class="table-remove"><button type="button" (click)=filterByDate()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-  <label class="form-check-label" for="flexRadioDefault1">
-    WellId
-    <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellF" class="border-none">
-    </td>ReportId
-    <td class="pt-3-half" contenteditable="true">
-      <input type="text" name="id" [(ngModel)]="reportF" class="border-none">
-    </td>
-    <span class="table-remove"><button type="button" (click)=filterByWellAndReport()
-      class="btn btn-danger btn-rounded btn-sm my-0">Filter</button></span>
-  </label>
-</div>
-
-
-<br><br><br>
 
 <div class="container">
-    <div class="card">
-        <div class="card-body">
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Well Id</th>
-                            <th>Date</th>
-                            <th>DownTime</th>
-                            <th>Losses</th>
-                            <th>ShutinLevel4</th>
-                            <th>Net Production</th>
-                            <th>Action Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let report of reports; let currentIndex=index">
-                            <td>{{currentIndex+1}}</td>
-                            <td>{{report.id}}</td>
-                            <td>{{report.date | date: 'dd-MM-yyyy'}}</td>
-                            <td>{{report.downTime}}</td>
-                            <td>{{report.losses}}</td>
-                            <td>{{report.siLVL4}}</td>
-                            <td>{{report.netProduction}}</td>
-                            <td>{{report.actionDescription}}</td>
-
-                            <td><button type="button" class="btn btn-danger" (click)="deleteFromReports(currentIndex)">Delete</button></td>
-                          </tr>
-                          <tr>
-                            <td>#</td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="id" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="r.date" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="down time" [(ngModel)]="r.downTime" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="losses" [(ngModel)]="r.losses" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="ShutinLevel4" [(ngModel)]="r.siLVL4" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="netProduction" [(ngModel)]="r.netProduction" class="border-none"></td>
-                            <td class="pt-3-half" contenteditable="true"><input type="text" name="actionDescription" [(ngModel)]="r.actionDescription" class="border-none"></td>
-                            <td>
-                              <span class="table-remove"><button type="button" (click)=insert()
-                                                    class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
-                            </td>
-                          </tr>                          
-                        </tbody>
-                      </table>
-                      <table class="table table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>Report Id</th>
-                            <th>Well Id</th>
-                            <th>Date</th>
-                            <th>DownTime</th>
-                            <th>Losses</th>
-                            <th>ShutinLevel4</th>
-                            <th>Net Production</th>
-                            <th>Action Description</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="idEdit" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="id" [(ngModel)]="wellId" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="date" [(ngModel)]="r2.date" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="down time" [(ngModel)]="r2.downTime" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="losses" [(ngModel)]="r2.losses" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="ShutinLevel4" [(ngModel)]="r2.siLVL4" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="netProduction" [(ngModel)]="r2.netProduction" class="border-none"></td>
-                              <td class="pt-3-half" contenteditable="true"><input type="text" name="actionDescription" [(ngModel)]="r2.actionDescription" class="border-none"></td>
-                              <td>
-                                <span class="table-remove"><button type="button" (click)=edit()
-                                                      class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
-
-
-
-                                                      
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                </div>
-               
-            </div>
-        </div>
-      </div>
-</div>
+	<div class="card">
+	  <div class="card-body">
+		<br />
+		<div class="row">
+		  <div class="col-md-12">
+			<button *ngIf="highlightedRow !== -1" class="btn btn-danger" (click)="deleteFromReports()">🗑️</button>
+			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+  
+			<ng-template #modalData let-modal>
+			  <div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">Insert New Report Record</h4>
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				  <span aria-hidden="true">×</span>
+				</button>
+			  </div>
+			  <app-add-new-report (closeModal)=closePopUpAndRefreshTable()></app-add-new-report>
+			</ng-template>
+  
+			<ng-template #modalDataUpdate let-modal>
+			  <div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">Update A Report Record</h4>
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				  <span aria-hidden="true">×</span>
+				</button>
+			  </div>
+			  <app-update-report [reportToBeUpdate]="reportToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-report>
+			</ng-template>
+  
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12">
+			<table class="table table-bordered table-hover">
+			  <thead>
+				<tr>
+				  <th style="display: none">#</th>
+				  <th>Report Id</th>
+				  <th>Date</th>
+				  <th>DownTime</th>
+				  <th>Losses</th>
+				  <th>ShutinLevel4</th>
+				  <th>Net Production</th>
+				  <th>Action Description</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr
+				  *ngFor="let report of reports; let currentIndex = index"
+				  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+				  [class.active]="currentIndex == highlightedRow"
+				>
+				  <td style="display: none">{{ currentIndex + 1 }}</td>
+				  <td>{{report.id}}</td>
+				  <td>{{report.date | date: 'dd-MM-yyyy'}}</td>
+				  <td>{{report.downTime}}</td>
+				  <td>{{report.losses}}</td>
+				  <td>{{report.siLVL4}}</td>
+				  <td>{{report.netProduction}}</td>
+				  <td>{{report.actionDescription}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>

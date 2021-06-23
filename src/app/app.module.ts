@@ -18,6 +18,12 @@ import { TestComponent } from './components/test/test.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
 import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddNewReportComponent } from './add-new-report/add-new-report.component';
+import { UpdateReportComponent } from './update-report/update-report.component';
+import { AddNewLabComponent } from './add-new-lab/add-new-lab.component';
+import { UpdateLabComponent } from './update-lab/update-lab.component';
+
 
 @NgModule({
 
@@ -39,23 +45,49 @@ import { WellGeneralInfoComponent } from './components/well-general-info/well-ge
     TestComponent,
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
+    AddNewReportComponent,
+    UpdateReportComponent,
+    AddNewLabComponent,
+    UpdateLabComponent,
 
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
   imports: [
+    BrowserAnimationsModule,
+    // MatDatepickerModule, MomentDateModule,
     BrowserModule,
     AppRoutingModule,
     ApiModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    FormsModule,
+    // HttpModule,
+    // MdCardModule
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: MAT_DATE_FORMATS,
+    //   useValue: {
+    //     parse: {
+    //       dateInput: ['l', 'LL'],
+    //     },
+    //     display: {
+    //       dateInput: 'L',
+    //       monthYearLabel: 'MMM YYYY',
+    //       dateA11yLabel: 'LL',
+    //       monthYearA11yLabel: 'MMMM YYYY',
+    //     },
+    //   },
+    // },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class MaterialModule { }
 
 
 

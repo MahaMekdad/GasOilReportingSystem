@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WellDailyActionsService } from 'src/app/api/wellDailyActions.service';
 import { WellDailyActionsResponse } from 'src/app/model/wellDailyActionsResponse';
-import { Injectable } from '@angular/core';
-import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { ReportRequest } from 'src/app/model/ReportRequest';
-import { WellDailyActionsRequest } from 'src/app/model/wellDailyActionsRequest';
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
-
-
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+ 
 @Component({
   selector: 'app-daily-actions',
   templateUrl: './daily-actions.component.html',
@@ -18,63 +10,54 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 })
 export class DailyActionsComponent implements OnInit {
 
-  constructor(private _wellDaily: WellDailyActionsService,private _http: HttpClient) { }
-
   reports: WellDailyActionsResponse[]
-  
 
-  id: number;
-  message:string="";
-  siLVL4: number;
-  actionDescription: String;
-  netProduction: number;
-  downTime: number;
-  idEdit: number;
-  wellId: number;
-  wellF: number;
-  reportF: number;
-  losses: number;
-  sLvl4Filter: number;
-  date: String;
-  wellIdFilter: number;
-  startDate: string;
-  endDate: string;
+  reportToBeUpdate: WellDailyActionsResponse;
 
+  highlightedRow: number = -1;
 
+  modalContent: NgbModalRef
 
-  r: WellDailyActionsRequest={
-  siLVL4: 0.0,
-  actionDescription: 'write here',
-  netProduction: 0.0,
-  downTime: 0.0,
-  losses: 0.0,
-  date: new Date()
-  };
+  constructor(private _wellDailyActionsService: WellDailyActionsService, private _modalService: NgbModal) { }
 
-  r2: WellDailyActionsRequest={
-    siLVL4: 0.0,
-    actionDescription: 'write here',
-    netProduction: 0.0,
-    downTime: 0.0,
-    losses: 0.0,
-    date: new Date()
-    };
-
-  ngOnInit(): void {
-    this._wellDaily.getAllReports(null, null).subscribe(
-      data => {
-        // console.log(data)
-        this.reports= data;
-      }
-    )
-
+  triggerModal(content) {
+    this.modalContent = content;
+    this.modalContent = this._modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
   }
 
-  deleteFromReports(index: number) {
-    let report = this.reports[index];
-    this._wellDaily.deleteReportById(1,report.id).subscribe(
+  ngOnInit(): void {
+    this.loadRecords()
+  }
+
+  ClickedRowToDelete(index: number)
+  {
+    if(this.highlightedRow == index)
+    {
+      this.highlightedRow = -1;
+      return;
+    }
+    this.highlightedRow = index;
+  }
+
+  ClickedRowToUpdate(index: number)
+  {
+    if(this.highlightedRow == -1 || this.highlightedRow == undefined){
+      this.reportToBeUpdate = null;
+      return;
+    }
+    let x = this.reports[this.highlightedRow];
+    this.reportToBeUpdate = x;
+  }
+
+  deleteFromReports() {
+    if(this.highlightedRow == -1 || this.highlightedRow == undefined){
+      return;
+    }
+    let report = this.reports[this.highlightedRow];
+    this._wellDailyActionsService.deleteReportById(1, report.id).subscribe(
       response => {
-        this.reports.splice(index, 1);
+        this.reports.splice(this.highlightedRow, 1);
+        this.highlightedRow = -1;
       },
       error => {
         alert(error.errorMessage);
@@ -82,84 +65,20 @@ export class DailyActionsComponent implements OnInit {
     );
   }
 
+  loadRecords(){
+    this._wellDailyActionsService.getAllReports(null, null).subscribe(
+      data => {
+        this.reports = data;
+      })
+  }
 
-
-
-insert():void{
-  this._wellDaily.addDailyReport(this.r,this.id).subscribe( Response=>{
-    this.message="Added";
-  },error => {
-    this.message=error.error.errorMessage;
-    console.log(this.message);
-  });
+  closePopUpAndRefreshTable(){
+    this.modalContent.dismiss();
+    this.loadRecords();
+  }
 }
 
-filterBySiLvl4():void{
-  this._wellDaily.getAllReports(this.sLvl4Filter,null,null,null,null).subscribe(
-    data => {
-      // console.log(data)
-      this.reports= data;
-    }
-)
-}
 
-filterByLosses():void{
-  this._wellDaily.getAllReports(null,this.losses,null,null,null).subscribe(
-    data => {
-      // console.log(data)
-      this.reports= data;
-    }
-)
-}
 
-filterByDownTime():void{
-  this._wellDaily.getAllReports(null,null,this.downTime,null,null).subscribe(
-    data => {
-      // console.log(data)
-      this.reports= data;
-    }
-)
-}
 
-filterByDate():void{
-  this._wellDaily.getAllReports(null,null,null,this.startDate,this.endDate).subscribe(
-    data => {
-      // console.log(data)
-      this.reports= data;
-    }
-)
-}
 
-filterByWellAndReport():void{
-  this._wellDaily.getWellReportById(this.wellF,this.reportF).subscribe(
-    data => {
-      // console.log(data)
-      this.reports[0]= data;
-      
-    }
-  )
-  for(var counter:number = 1; counter<this.reports.length; counter++){
-    delete (this.reports[counter]);
-}
-}
-
-filterById():void{
-  this._wellDaily.getReportById(this.wellIdFilter,null,null,null,null,null).subscribe(
-    data => {
-      // console.log(data)
-      
-      this.reports= data;
-    }
-)
-}
-
-edit():void{
-  this._wellDaily.updateWellReport(this.r2,this.wellId,this.idEdit).subscribe( Response=>{
-    this.message="Edited";
-  },error => {
-    this.message=error.error.errorMessage;
-    console.log(this.message);
-  });
-}
-
-}
