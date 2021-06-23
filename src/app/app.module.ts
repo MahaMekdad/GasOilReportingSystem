@@ -59,6 +59,12 @@ import { AddNewPgiComponent } from './components/add-new-pgi/add-new-pgi.compone
 import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component';
 
 
+import { JwtModule } from "@auth0/angular-jwt";
+import { AddNewWellGeneralInfoComponent } from './components/well-general-info/add-new-well-general-info/add-new-well-general-info.component';
+import { UpdateWellGeneralInfoComponent } from './components/well-general-info/update-well-general-info/update-well-general-info.component';
+import { UpdateIntervalsInfoComponent } from './components/intervals-info/update-intervals-info/update-intervals-info.component';
+import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-new-intervals-info/add-new-intervals-info.component';
+
 @NgModule({
 
   declarations: [
@@ -81,6 +87,10 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     ConfirmationComponent,
     LoginComponent,
     AddNewFlmComponent,
+    AddNewWellGeneralInfoComponent,
+    UpdateWellGeneralInfoComponent,
+    UpdateIntervalsInfoComponent,
+    AddNewIntervalsInfoComponent,
     DrillingInfoComponent,
     AddNewDrillinginfoComponent,
     UpdateDrillingInfoComponent,
@@ -93,6 +103,7 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
     UpdatePgiComponent
+
   ],
   imports: [
     BrowserModule,
@@ -108,14 +119,17 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     MatSelectModule,
     ReactiveFormsModule,
     NgbModule,
+    JwtModule,
     MatDatepickerModule,
     MatNativeDateModule
+
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
+      
     },
     {
       provide: JWT_OPTIONS,
