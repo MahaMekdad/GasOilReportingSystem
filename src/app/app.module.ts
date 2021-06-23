@@ -12,6 +12,12 @@ import { FieldComponent } from './components/field/field.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 import { DrillingInfoComponent } from './components/drilling-info/drilling-info.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppUpdateFieldComponent } from './components/app-update-field/app-update-field.component';
+import { AppAddNewFieldComponent } from './components/app-add-new-field/app-add-new-field.component';
+import { AppUpdateWellComponent } from './components/app-update-well/app-update-well.component';
+import { AppAddNewWellComponent } from './components/app-add-new-well/app-add-new-well.component';
+
 @NgModule({
 
   declarations: [
@@ -21,14 +27,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     WellComponent,
     FieldComponent,
     ProductionGeneralInfoComponent,
-    DrillingInfoComponent
+    DrillingInfoComponent,
+    AppUpdateFieldComponent,
+    AppAddNewFieldComponent,
+    AppUpdateWellComponent,
+    AppAddNewWellComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ApiModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

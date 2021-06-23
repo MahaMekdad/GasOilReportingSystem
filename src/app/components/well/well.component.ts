@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
 import { WellService } from 'src/app/api/well.service';
-import { WellRequest } from 'src/app/model/wellRequest';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-well',
   templateUrl: './well.component.html',
@@ -9,89 +10,72 @@ import { WellRequest } from 'src/app/model/wellRequest';
 })
 export class WellComponent implements OnInit {
 
-  well: AllWellsResponse[]
-  wellId: number;
-  message:string="";
-  wellIdEdit: number;
-  wellIdFilter: number;
+  wells: AllWellsResponse[]
 
+  wellToBeUpdate: AllWellsResponse;
 
-  constructor(private _wellService: WellService) { }
+  highlightedRow: number = -1;
 
+  modalContent: NgbModalRef
 
-  ngOnInit(): void {
-    this._wellService.getwells(null, null).subscribe(
-      data => {
-        // console.log(data)
-        this.well = data;
-      }
-    )
+  constructor(private _wellService: WellService, private _modalService: NgbModal) { }
+
+  triggerModal(content) {
+    this.modalContent = content;
+    // console.log(content)
+    this.modalContent = this._modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+    // console.log(this.modalContent)
   }
 
-  deleteFromwell(index: number) {
-    let wel = this.well[index];
-    this._wellService.deleteWellById(wel.wellId).subscribe(
+  ngOnInit(): void {
+    this.loadRecords()
+  }
+
+  ClickedRowToDelete(index: number)
+  {
+    if(this.highlightedRow == index)
+    {
+      this.highlightedRow = -1;
+      return;
+    }
+    this.highlightedRow = index;
+  }
+
+  ClickedRowToUpdate(index: number)
+  {
+    if(this.highlightedRow == -1 || this.highlightedRow == undefined){
+      this.wellToBeUpdate = null;
+      return;
+    }
+    let x = this.wells[this.highlightedRow];
+    this.wellToBeUpdate = x;
+  }
+
+  deleteFromwell() {
+    if(this.highlightedRow == -1 || this.highlightedRow == undefined){
+      return;
+    }
+    let well = this.wells[this.highlightedRow];
+    this._wellService.deleteWellById(well.wellId,null,null).subscribe(
       response => {
-        this.well.splice(index, 1);
+        this.wells.splice(this.highlightedRow, 1);
+        this.highlightedRow = -1;
       },
       error => {
         alert(error.errorMessage);
       }
     );
   }
-  r: WellRequest={
-    wellName: 'write here',
-    fieldId: 0.0
-  };
 
-  r2: WellRequest={
-    wellName: 'write here',
-    fieldId: 0.0
-  };
-
-  // filterById():void{
-  //   this._wellService.getwellById(this.wellIdFilter,null, null).subscribe(
-  //     data => {
-  //       // console.log(data)
-  //       this.well = data;
-  //     }
-  //   )
-  // }
-
-
-
-  filterById():void{
-    this._wellService.getwellById(this.wellIdFilter,null, null).subscribe(
+  loadRecords(){
+    this._wellService.getwells(null, null).subscribe(
       data => {
-        // console.log(data)
-        this.well[0]= data;
-
-      }
-    )
-    for(var counter:number = 1; counter<this.well.length; counter++){
-      delete (this.well[counter]);
-    }
+        this.wells = data;
+      })
   }
 
-
-
-  insert():void{
-    this._wellService.addwell(this.r).subscribe( Response=>{
-      this.message="Added";
-    },error => {
-      this.message=error.error.errorMessage;
-      console.log(this.message);
-    });
+  closePopUpAndRefreshTable(){
+    this.modalContent.dismiss();
+    this.loadRecords();
   }
-
-  edit():void{
-    this._wellService.updateWell(this.r2,this.wellIdEdit,null,null).subscribe( Response=>{
-      this.message="Edited";
-    },error => {
-      this.message=error.error.errorMessage;
-      console.log(this.message);
-    });
-  }
-
-
 }

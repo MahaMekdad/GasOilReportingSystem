@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div>
+        <form [formGroup]="form">
+
+          <div class="lg-3">
+            <label for="formfieldName" class="form-label">fieldName</label>
+            <input formControlName="fieldName" type="text" class="form-control" placeholder="fieldName" id="formfieldName"/>
+            <div *ngIf="form.controls['fieldName'].invalid && ((form.controls['fieldName'].touched) || (this.form.controls['fieldName'].dirty))">
+              <small *ngIf="this.form.controls['fieldName'].hasError('required')" class="form-text text-danger">Please Enter The fieldName</small>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="lg-3">
+            <label>Concession:</label>
+            <select formControlName="Concession" class="form-control">
+              <option disabled>Select Concession</option>
+              <option>Choose Concession</option>
+              <option *ngFor="let Concession of allConcessions" [value]='Concession.id'>{{Concession.name}}</option>
+            </select>
+            <div *ngIf="this.form.controls['Concession'].touched && this.form.controls['Concession'].invalid">
+              <small *ngIf="this.form.controls['Concession'].errors.required" class="form-text text-danger">Please Choose a Concession</small>
+            </div>
+          </div>
+          <br>
+
+
+          <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

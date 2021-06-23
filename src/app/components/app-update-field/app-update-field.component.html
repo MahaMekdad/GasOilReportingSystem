@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div>
+        <form [formGroup]="form">
+
+          <div class="lg-3">
+            <label for="formfieldName" class="form-label">fieldName</label>
+            <input formControlName="fieldName" type="text" class="form-control" placeholder="fieldName" id="formfieldName"/>
+            <div *ngIf="form.controls['fieldName'].invalid && ((form.controls['fieldName'].touched) || (this.form.controls['fieldName'].dirty))">
+              <small *ngIf="this.form.controls['fieldName'].hasError('required')" class="form-text text-danger">Please Enter The fieldName</small>
+            </div>
+          </div>
+          <br>
+
+          
+          <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
