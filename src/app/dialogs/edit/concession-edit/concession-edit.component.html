@@ -1,0 +1,14 @@
+<div class="container">
+  <h3 mat-dialog-title>Concession id: {{data.id}}</h3>
+  <form (ngSubmit)="submit" #formControl="ngForm">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Concession Name" [(ngModel)]="data.name" name="concessionName" maxlength="10" required >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

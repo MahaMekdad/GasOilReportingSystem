@@ -1,0 +1,13 @@
+.demo-table{
+  overflow: scroll;}
+button {
+  margin: 16px 8px;
+}
+
+.mat-column-productionDate {
+  width: 100px;
+  border-right: 1px solid currentColor;
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: left;
+}

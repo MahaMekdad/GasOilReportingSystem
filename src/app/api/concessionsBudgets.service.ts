@@ -27,7 +27,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ConcessionsBudgetsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:9494';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,7 +58,7 @@ export class ConcessionsBudgetsService {
 
     /**
      * Add a new record to the dataBase
-     * 
+     *
      * @param body budget object that needs to be added to the database
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -105,7 +105,7 @@ export class ConcessionsBudgetsService {
 
     /**
      * Deletes a recird
-     * 
+     *
      * @param id Record id to delete
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -182,7 +182,7 @@ export class ConcessionsBudgetsService {
 
     /**
      * Update an existing fieldsBudgetAndActual
-     * 
+     *
      * @param id ID of record to be updated to be returned
      * @param body fieldsBudgetAndActual object that needs to be added to the database
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.

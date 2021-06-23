@@ -27,6 +27,16 @@ import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
 import { ConfirmationComponent } from './components/general/confirmation/confirmation.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { BudgetActualComponent } from './components/budget-actual/budget-actual.component';
+import { ConcessionAddComponent } from './dialogs/add/concession-add/concession-add.component';
+import { ConcessionDeleteComponent } from './dialogs/delete/concession-delete/concession-delete.component';
+import { ConcessionEditComponent } from './dialogs/edit/concession-edit/concession-edit.component';
+import { WellTestAddComponent } from './dialogs/add/well-test-add/well-test-add.component';
+import { WellTestEditComponent } from './dialogs/edit/well-test-edit/well-test-edit.component';
+import { WellTestDeleteComponent } from './dialogs/delete/well-test-delete/well-test-delete.component';
+import { BudgetActualDeleteComponent } from './dialogs/delete/budget-actual-delete/budget-actual-delete.component';
+import { BudgetActualEditComponent } from './dialogs/edit/budget-actual-edit/budget-actual-edit.component';
+import { BudgetActualAddComponent } from './dialogs/add/budget-actual-add/budget-actual-add.component';
 
 @NgModule({
 
@@ -47,7 +57,17 @@ import {MatSelectModule} from '@angular/material/select';
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
     WellTabsComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    BudgetActualComponent,
+    ConcessionAddComponent,
+    ConcessionDeleteComponent,
+    ConcessionEditComponent,
+    WellTestAddComponent,
+    WellTestEditComponent,
+    WellTestDeleteComponent,
+    BudgetActualDeleteComponent,
+    BudgetActualEditComponent,
+    BudgetActualAddComponent
   ],
   imports: [
     BrowserModule,

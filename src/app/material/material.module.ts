@@ -13,6 +13,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatInputModule} from '@angular/material/input';
 
 
 // this is only used for importing and exporting the material components
@@ -32,7 +33,8 @@ const MaterialComponents = [
   MatDialogModule,
   MatToolbarModule,
   MatExpansionModule,
-  MatTabsModule
+  MatTabsModule,
+  MatInputModule
 
 ];
 

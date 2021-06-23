@@ -17,13 +17,36 @@ export class WellTestTableComponent implements OnInit {
   // (01) defining array of well test responses
   public testListForAllWells: WellTestResponse[];
   public testListForSpecificWell: WellTestResponse[];
+  displayedColumns: string[] = [
+    'id',
+    'productionDate',
+    'tDuration',
+    'gross',
+    'net',
+    'waterCut',
+    'gor',
+    'gasRate',
+    'whp',
+    'wht',
+    'usp',
+    'ust',
+    'sp',
+    'st',
+    'flp',
+    'flt',
+    'chockType',
+    'chockSize',
+    'h2s',
+    'co2',
+    'unit',
+    'remarks'];
+  dataSource: WellTestResponse[];
   confirmationResult: string = '';
   addResult: string = '';
   editResult: string = '';
-
-  // (02) injecting the well test service
   private wellId: number = 1;
 
+  // (02) injecting the well test service
   constructor(
     private wellTestsService: WellTestsService,
     private dialog: MatDialog
@@ -41,6 +64,8 @@ export class WellTestTableComponent implements OnInit {
     this.wellTestsService.findAllTests().subscribe( // this will make us notified when something happens
       (response: WellTestResponse[]) => { // if the response is object, add it to the response body
         this.testListForAllWells = response;
+        this.dataSource = response;
+
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
         alert(error.message);
@@ -87,5 +112,12 @@ export class WellTestTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.confirmationResult = dialogResult;
     });
+  }
+
+  deleteItem(i, id) {
+    console.log(`id +{{id}}`);
+  }
+
+  startEdit(i, id, productionDate: any, duration: number | 'fast' | 'slow' | number | string, gross: any, net: any, waterCut: any) {
   }
 }
