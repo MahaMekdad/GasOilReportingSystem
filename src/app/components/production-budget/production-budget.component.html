@@ -56,7 +56,7 @@
       [class.active]="currentIndex == HighlightRow">
     <td>{{currentIndex + 1}}</td>
     <td>{{item.id}}</td>
-    <td>{{item.productionDate}}</td>
+    <td>{{item.productionDate | date: "MM-dd-yyyy" }}</td>
     <td>{{item.meleiha}}</td>
     <td>{{item.aghar}}</td>
     <td>{{item.eastKanays}}</td>

@@ -24,7 +24,7 @@ export class UpdateDrillingInfoComponent implements OnInit {
 
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       wellDescription:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
       wellType:['', [Validators.required]],
       boreType:['', [Validators.required]],
@@ -39,14 +39,14 @@ export class UpdateDrillingInfoComponent implements OnInit {
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
     this.convertedDate = x.toLocaleDateString();
-    this.convertedTime = x.getTime().toLocaleString()
+    // this.convertedTime = x.getTime().toLocaleString()
 
   }
   update(){
     // console.log(this.convertedDate);
     let drillingRequest: DrillingInfoDataRequest = this.form.value as DrillingInfoDataRequest
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
+    // let timeValues = this.form.controls.time.value.split(":");
     drillingRequest.releaseDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._drillingInfoService.wellsWellIdDrillingInfoIdPatch(drillingRequest, this.drillingUpdate.wellId, this.drillingUpdate.id).subscribe(
       response => {

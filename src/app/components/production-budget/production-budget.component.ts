@@ -16,7 +16,7 @@ import {DrillingInfoDataResponse} from "../../model/drillingInfoDataResponse";
 export class ProductionBudgetComponent implements OnInit {
   productionBudgetDataResponse: ProductionBudegetDataResponse[] = [];
   productionBudgetDataInsert: ProductionBudegetRequest;
-  HighlightRow: number;
+  HighlightRow: number = -1;
   closeModal: string;
   window: NgbModalRef;
   form: FormGroup;
