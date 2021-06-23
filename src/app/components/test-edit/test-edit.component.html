@@ -1,7 +1,6 @@
-<div class="container mt-5">
-  <h2>{{header}}</h2>
-
-  <form #wellTestForm="ngForm" (ngSubmit)="onSubmit(wellTestForm)">
+<h2 mat-dialog-title> {{header}}</h2>
+<div mat-dialog-content>
+  <form #wellTestForm="ngForm">
     <div class="form-group">
       <label for="productionDate">Date</label>
       <input type="text" class="form-control" name="productionDate" ngModel>
@@ -73,6 +72,13 @@
       <label for="chockType">Chock Type</label>
       <input type="text" class="form-control" name="chockType" ngModel>
     </div>
+<!--    <mat-form-field>-->
+<!--      <mat-select [(value)]="wellTestRequestAdd.chockType">-->
+<!--        <mat-label>Chock Type</mat-label>-->
+<!--        <mat-option value="fixed">Fixed</mat-option>-->
+<!--        <mat-option value="adjustable">Adj</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
     <div class="form-group">
       <label for="chockSize">Chock Size</label>
       <input type="text" class="form-control" name="chockSize" ngModel>
@@ -93,9 +99,9 @@
       <label for="remarks">Remarks</label>
       <input type="text" class="form-control" name="remarks" ngModel>
     </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-
   </form>
 </div>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close="false" class="btn btn-danger">Cancel</button>
+  <button mat-button mat-dialog-close="true" class="btn-primary" (click)="onSubmit(wellTestForm)">Save</button>
+</mat-dialog-actions>

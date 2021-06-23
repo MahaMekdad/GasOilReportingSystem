@@ -23,7 +23,12 @@ export class UpdateFlmComponent implements OnInit {
 
   convertedDate: string;
 
-  convertedTime: Timestamp<Number>;
+  convertedTime: String;
+
+  cardEnums = Object.values(AllFluidLevelMeasurementResponse.CardEnum);
+
+  flTypeEnums = Object.values(AllFluidLevelMeasurementResponse.FlTypeEnum);
+
 
   constructor(private _fluidLevelMeasurementsSerive: FluidLevelMeasurementsService, private _formBuilder: FormBuilder) { }
 
@@ -47,12 +52,11 @@ export class UpdateFlmComponent implements OnInit {
   }
 
   update(){
-    console.log(this.convertedDate);
+    // console.log(this.convertedDate);
     let flmRequest: FluidLevelMeasurementRequest = this.form.value as FluidLevelMeasurementRequest
     let dateValues = this.form.controls.date.value.split("-");
     let timeValues = this.form.controls.time.value.split(":");
-    flmRequest.date = new Date(dateValues[0], dateValues[1], dateValues[2], timeValues[0], timeValues[1])
-    console.log(flmRequest.date)
+    flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsFlmIdPatch(flmRequest, this.flmToBeUpdate.wellId, this.flmToBeUpdate.id).subscribe(
       response => {
         console.log(response + "ff")
@@ -66,17 +70,18 @@ export class UpdateFlmComponent implements OnInit {
 
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
-
-    console.log(x.toLocaleDateString('en-UK'));
+    // console.log(x.toLocaleDateString('en-UK'));
     // let stringDate = new DatePipe("en-US").transform(datetime, 'yyyy-MM-ddTHH:mm:ss');
     // console.log(stringDate)
     // let wholeDate = stringDate.split("T");
     // let date = wholeDate[0];
     // let time = wholeDate[1]
     // let dateValues = date.split("-");
-    this.convertedDate = x.toLocaleDateString('en-UK');
+    this.convertedDate = x.toLocaleDateString();
     // this.convertedDate = new Date(Number.parseInt(dateValues[0]) , Number.parseInt(dateValues[1]), Number.parseInt(dateValues[2]));
     // let timeValues = time.split(":");
+    this.convertedTime = x.getTime().toLocaleString()
+    // console.log(this.convertedTime)
     // this.convertedTime = new Timestamp(Number.parseInt(timeValues[0]), Number.parseInt(timeValues[1]))
     // console.log(this.convertedDate)
     // console.log(this.convertedTime)
