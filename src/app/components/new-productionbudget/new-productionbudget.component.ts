@@ -18,7 +18,7 @@ export class NewProductionbudgetComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       meleiha:['', [Validators.required]],
       aghar:['', [Validators.required]],
       eastKanays:['', [Validators.required]],
@@ -36,8 +36,8 @@ export class NewProductionbudgetComponent implements OnInit {
 
     let prodBudget: ProductionBudegetRequest = this.form.value as ProductionBudegetRequest;
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
-    prodBudget.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], timeValues[0], timeValues[1])
+    // let timeValues = this.form.controls.time.value.split(":");
+    prodBudget.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     this._productionBudgetService.concessionsBudgetProductionBudgetPost(prodBudget).subscribe(
       response => {
         this.closeModal.emit();

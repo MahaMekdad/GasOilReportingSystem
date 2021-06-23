@@ -20,7 +20,7 @@ export class DrillingInfoComponent implements OnInit {
   wellId: number;
   wellIdEdite: number;
   wellIdFilter: number;
-  HighlightRow: number;
+  HighlightRow: number = -1;
   window: NgbModalRef;
   drillingUpdate: DrillingInfoDataResponse;
 

@@ -52,7 +52,7 @@
             [class.active]="currentIndex == HighlightRow">
               <td>{{currentIndex+1}}</td>
               <td>{{drill.id}}</td>
-              <td>{{drill.releaseDate}}</td>
+              <td>{{drill.releaseDate | date: "MM-dd-yyyy"}}</td>
               <td>{{drill.wellDescription}}</td>
               <td>{{drill.wellType}}</td>
               <td>{{drill.boreType}}</td>

@@ -19,13 +19,13 @@ export class UpdateProductionBudgetComponent implements OnInit {
   convertedDate: string;
 
   form: FormGroup;
-  convertedTime: string;
+  // convertedTime: string;
   constructor(private _productionBudgetService: ProductionBudgetService , private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       meleiha:['', [Validators.required]],
       aghar:['', [Validators.required]],
       eastKanays:['', [Validators.required]],
@@ -43,14 +43,14 @@ export class UpdateProductionBudgetComponent implements OnInit {
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
     this.convertedDate = x.toLocaleDateString();
-    this.convertedTime = x.getTime().toLocaleString();
+    // this.convertedTime = x.getTime().toLocaleString();
 
   }
   update(){
 
     let productionRequest: ProductionBudegetRequest = this.form.value as ProductionBudegetRequest
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
+    // let timeValues = this.form.controls.time.value.split(":");
     productionRequest.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     console.log("--------------");
     console.log(productionRequest);

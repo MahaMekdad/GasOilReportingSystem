@@ -21,7 +21,7 @@ export class AddNewDrillinginfoComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       wellDescription:['', [Validators.required]],
       wellType:['', [Validators.required]],
       boreType:['', [Validators.required]],
@@ -46,10 +46,10 @@ export class AddNewDrillinginfoComponent implements OnInit {
     console.log(this.form);
     console.log(this.form.controls.well.value);
     console.log(this.form.controls.date);
-    console.log(this.form.controls.time.value);
+    // console.log(this.form.controls.time.value);
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
-    drillInfo.releaseDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], timeValues[0], timeValues[1])
+    // let timeValues = this.form.controls.time.value.split(":");
+    drillInfo.releaseDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     console.log(drillInfo.releaseDate)
     console.log("-------------");
     console.log(drillInfo)
