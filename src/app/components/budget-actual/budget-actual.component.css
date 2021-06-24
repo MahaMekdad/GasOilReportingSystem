@@ -1,5 +1,5 @@
 .demo-table{
-  overflow: scroll;}
+  overflow: auto;}
 button {
   margin: 16px 8px;
 }

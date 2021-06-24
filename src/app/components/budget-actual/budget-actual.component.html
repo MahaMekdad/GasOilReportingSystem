@@ -8,9 +8,9 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button color="primary" (click)="addNew()"> Add Row</button>
-  <button mat-raised-button color="accent" (click)="addNew()"> Edit Row</button>
-  <button mat-raised-button color="warn" (click)="addNew()"> Remove</button>
+  <button mat-raised-button color="primary"> Add Row</button>
+  <button mat-raised-button color="accent"> Edit Row</button>
+  <button mat-raised-button color="warn"> Remove</button>
   <div>
 
   </div>
@@ -131,12 +131,24 @@
     </ng-container>
     <ng-container matColumnDef="Actions">
       <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
-          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-        </button>
+        <mat-cell *matCellDef="let row;">
+          <button mat-icon-button color="primary" (click)="addNew(row.productionDate,
+        row.meleihaActual,row.meleihaBudget,
+        row.agharActual,row.agharBudget,
+        row.eastKanaysActual,row.eastKanaysBudget,
+        row.zarifActual,row.zarifBudget,
+        row.farasActual,row.farasBudget,
+        row.ramlActual,row.ramlBudget,
+        row.westernDesertActual,row.westernDesertBudget,
+        row.ashrafiActual,row.ashrafiBudget,
+        row.agibaOilActual,row.agibaOilActual
+        )">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </mat-cell>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(i,row.productionDate,
+        <button mat-icon-button color="accent" (click)="startEdit(row.recordId,row.productionDate,
         row.meleihaActual,row.meleihaBudget,
         row.agharActual,row.agharBudget,
         row.eastKanaysActual,row.eastKanaysBudget,
@@ -150,7 +162,7 @@
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
         <button mat-icon-button color="accent">
-          <mat-icon aria-label="Delete" (click)="deleteItem(row.id,i)">delete</mat-icon>
+          <mat-icon aria-label="Delete" (click)="deleteItem(row.recordId,i)">delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

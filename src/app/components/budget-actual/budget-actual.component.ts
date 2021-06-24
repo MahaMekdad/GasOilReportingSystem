@@ -51,13 +51,37 @@ export class BudgetActualComponent implements OnInit {
     );
   }
 
-  addNew() {
+  addNew(productionDate: string,
+         meleihaActual: number, meleihaBudget: number, agharActual: number, agharBudget: number,
+         eastKanaysActual: number, eastKanaysBudget: number, zarifActual: number, zarifBudget: number,
+         farasActual: any, farasBudget: number, ramlActual: number, ramlBudget: number,
+         westernDesertActual: number, westernDesertBudget: number, ashrafiActual: number, ashrafiBudget: number,
+         agibaOilBudget: number, agibaOilActual: number
+  ) {
     console.log('calling start edit');
     const dialogRef = this.dialog.open(BudgetActualAddComponent, {
-        height: '200px',
-        width: '450px',
         data: {
-          rowData: {name: 'dummy name'},
+          rowData: {
+            productionDate: productionDate,
+            meleihaActual: meleihaActual,
+            meleihaBudget: meleihaBudget,
+            agharActual: agharActual,
+            agharBudget: agharBudget,
+            eastKanaysActual: eastKanaysActual,
+            eastKanaysBudget: eastKanaysBudget,
+            zarifActual: zarifActual,
+            zarifBudget: zarifBudget,
+            farasActual: farasActual,
+            farasBudget: farasBudget,
+            ramlActual: ramlActual,
+            ramlBudget: ramlBudget,
+            westernDesertActual: westernDesertActual,
+            westernDesertBudget: westernDesertBudget,
+            ashrafiActual: ashrafiActual,
+            ashrafiBudget: ashrafiBudget,
+            agibaOilBudget: agibaOilBudget,
+            agibaOilActual: agibaOilActual
+          },
         }
       })
     ;
@@ -69,7 +93,7 @@ export class BudgetActualComponent implements OnInit {
     });
   }
 
-  startEdit(i: number, productionDate: string,
+  startEdit(recordId: number, productionDate: string,
             meleihaActual: number, meleihaBudget: number, agharActual: number, agharBudget: number,
             eastKanaysActual: number, eastKanaysBudget: number, zarifActual: number, zarifBudget: number,
             farasActual: any, farasBudget: number, ramlActual: number, ramlBudget: number,
@@ -79,7 +103,7 @@ export class BudgetActualComponent implements OnInit {
     const dialogRef = this.dialog.open(BudgetActualEditComponent, {
         data: {
           rowData: {
-            index: i + 1,
+            recordId: recordId,
             productionDate: productionDate,
             meleihaActual: meleihaActual,
             meleihaBudget: meleihaBudget,
@@ -111,15 +135,11 @@ export class BudgetActualComponent implements OnInit {
     });
   }
 
-  deleteItem(i, id) {
-    this.index = i + 1;
-    this.id = id;
-    console.log('i ' + id);
-    console.log('i ' + i);
+  deleteItem(recordId, i) {
     const dialogRef = this.dialog.open(BudgetActualDeleteComponent, {
       height: '200px',
       width: '450px',
-      data: {id: id, index: i}
+      data: {recordId: recordId, index: i}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
