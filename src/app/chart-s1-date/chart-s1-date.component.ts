@@ -14,6 +14,7 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
+import { DatePipe } from "@angular/common";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -36,9 +37,13 @@ export class ChartS1DateComponent implements OnInit {
 
   labs: LabMeasurementResponse[];
   list: number[] = [];
-  list1: number[];
+  list1: number[] = [];
 
   list2: Date[] = [];
+  dateS: string ="";
+  list3: string[] = [];
+
+
   cloned: number[]
 
 
@@ -52,7 +57,7 @@ export class ChartS1DateComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor(private _labService: LabService) {}
+  constructor(public datepipe: DatePipe , private _labService: LabService) {}
 
   show() {
     debugger
@@ -82,6 +87,9 @@ export class ChartS1DateComponent implements OnInit {
 
     for (var counter: number = 0; counter < this.labs.length; counter++) {
       this.list2[counter] = ((this.labs[counter]).date);
+      this.dateS = this.datepipe.transform(this.list2[counter], 'dd/MM/yyyy')
+      this.list3[counter]=this.dateS;
+
       console.log(this.list2)
     }
 
@@ -113,7 +121,7 @@ export class ChartS1DateComponent implements OnInit {
         curve: "straight"
       },
       title: {
-        text: "Product Trends by Month",
+        text: "S1 Date Chart",
         align: "left"
       },
       grid: {
@@ -123,7 +131,7 @@ export class ChartS1DateComponent implements OnInit {
         }
       },
       xaxis: {
-        categories: this.list2
+        categories: this.list3
       }
     };
   }

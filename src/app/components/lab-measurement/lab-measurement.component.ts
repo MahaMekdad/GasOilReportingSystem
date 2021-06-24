@@ -10,6 +10,9 @@ import { LabService } from 'src/app/api/lab.service';
 })
 export class LabMeasurementComponent implements OnInit {
 
+  config: any;
+
+
   labs: LabMeasurementResponse[]
 
   labToBeUpdate: LabMeasurementResponse;
@@ -18,7 +21,14 @@ export class LabMeasurementComponent implements OnInit {
 
   modalContent: NgbModalRef
 
-  constructor(private _labService: LabService, private _modalService: NgbModal) { }
+  constructor(private _labService: LabService, private _modalService: NgbModal) { 
+
+    this.config = {
+      itemsPerPage: 3,
+      currentPage: 1,
+      totalItems: this.labs
+    };
+  }
 
   triggerModal(content) {
     this.modalContent = content;
@@ -76,4 +86,8 @@ export class LabMeasurementComponent implements OnInit {
     this.modalContent.dismiss();
     this.loadRecords();
   }
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
+
 }

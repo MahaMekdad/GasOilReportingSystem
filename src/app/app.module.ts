@@ -10,6 +10,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // import { ChartsModule } from 'ng2-charts';
 import { NgChartjsModule } from 'ng-chartjs';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -32,6 +35,7 @@ import { UpdateReportComponent } from './update-report/update-report.component';
 import { AddNewLabComponent } from './add-new-lab/add-new-lab.component';
 import { UpdateLabComponent } from './update-lab/update-lab.component';
 import { ChartS1DateComponent } from './chart-s1-date/chart-s1-date.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -79,12 +83,15 @@ import { ChartS1DateComponent } from './chart-s1-date/chart-s1-date.component';
 
     // HighchartsChartModule,
     // ChartModule,
-    NgChartjsModule
+    NgChartjsModule,
+    NgxPaginationModule
         // HttpModule,
     // MdCardModule
   ],
 
   providers: [
+    DatePipe
+
     // {
     //   provide: MAT_DATE_FORMATS,
     //   useValue: {

@@ -8,6 +8,8 @@
 			<button *ngIf="highlightedRow !== -1"class="btn btn-danger" (click)="deleteFromLabs()">🗑️</button>
 			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
 			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >$</button>
+
   
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
@@ -17,7 +19,17 @@
 				</button>
 			  </div>
 			  <app-add-new-lab (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
-			</ng-template>
+			</ng-template> 
+
+			<ng-template #modalChart let-modal>
+				<div class="modal-header">
+				  <h4 class="modal-title" id="modal-basic-title">Chart</h4>
+				  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+					<span aria-hidden="true">×</span>
+				  </button>
+				</div>
+				<app-chart-s1-date (closeModal)=closePopUpAndRefreshTable()></app-chart-s1-date>
+			  </ng-template>
   
 			<ng-template #modalDataUpdate let-modal>
 			  <div class="modal-header">
@@ -28,6 +40,9 @@
 			  </div>
 			  <app-update-lab [labToBeUpdate]="labToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-lab>
 			</ng-template>
+
+
+
   
 		  </div>
 		</div>
@@ -48,7 +63,7 @@
 			  </thead>
 			  <tbody>
 				<tr
-				  *ngFor="let lab of labs; let currentIndex = index"
+				  *ngFor="let lab of labs | paginate: config ;let currentIndex = index"
 				  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
 				  [class.active]="currentIndex == highlightedRow"
 				>
@@ -68,5 +83,6 @@
 		</div>
 	  </div>
 	</div>
+	<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
 
