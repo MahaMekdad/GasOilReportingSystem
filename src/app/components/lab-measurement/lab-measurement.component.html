@@ -3,14 +3,12 @@
 	<div class="card">
 	  <div class="card-body">
 		<br />
-		<div class="row">
+		<div class="row"> 
 		  <div class="col-md-12">
 			<button *ngIf="highlightedRow !== -1"class="btn btn-danger" (click)="deleteFromLabs()">🗑️</button>
 			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
 			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >$</button>
-
-  
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>  
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Insert New Lab Record</h4>

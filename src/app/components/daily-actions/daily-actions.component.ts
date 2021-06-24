@@ -8,7 +8,9 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './daily-actions.component.html',
   styleUrls: ['./daily-actions.component.css']
 })
-export class DailyActionsComponent implements OnInit {
+export class DailyActionsComponent implements OnInit { 
+  config: any;
+
 
   reports: WellDailyActionsResponse[]
 
@@ -18,7 +20,14 @@ export class DailyActionsComponent implements OnInit {
 
   modalContent: NgbModalRef
 
-  constructor(private _wellDailyActionsService: WellDailyActionsService, private _modalService: NgbModal) { }
+  constructor(private _wellDailyActionsService: WellDailyActionsService, private _modalService: NgbModal) { 
+    this.config = {
+      itemsPerPage: 3,
+      currentPage: 1,
+      totalItems: this.reports
+    };
+
+  }
 
   triggerModal(content) {
     this.modalContent = content;
@@ -75,6 +84,10 @@ export class DailyActionsComponent implements OnInit {
   closePopUpAndRefreshTable(){
     this.modalContent.dismiss();
     this.loadRecords();
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
   }
 }
 

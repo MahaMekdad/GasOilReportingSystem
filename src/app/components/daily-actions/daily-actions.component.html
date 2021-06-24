@@ -8,7 +8,8 @@
 			<button *ngIf="highlightedRow !== -1" class="btn btn-danger" (click)="deleteFromReports()">🗑️</button>
 			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
 			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-  
+
+
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Insert New Report Record</h4>
@@ -48,7 +49,7 @@
 			  </thead>
 			  <tbody>
 				<tr
-				  *ngFor="let report of reports; let currentIndex = index"
+				  *ngFor="let report of reports | paginate: config ; let currentIndex = index"
 				  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
 				  [class.active]="currentIndex == highlightedRow"
 				>
@@ -67,4 +68,5 @@
 		</div>
 	  </div>
 	</div>
+	<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
