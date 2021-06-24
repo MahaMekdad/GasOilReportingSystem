@@ -5,6 +5,14 @@ import { ApiModule } from 'api.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// import { HighchartsChartModule } from 'highcharts-angular';
+// import { ChartModule } from 'angular-highcharts';
+// import { ChartsModule } from 'ng2-charts';
+import { NgChartjsModule } from 'ng-chartjs';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
+
+
 // import { NavComponent } from './components/nav/nav.component';
 // import { ProdDashboardComponent } from './components/prod-dashboard/prod-dashboard.component';
 import { ConcessionComponent } from './components/concession/concession.component';
@@ -23,6 +31,7 @@ import { AddNewReportComponent } from './add-new-report/add-new-report.component
 import { UpdateReportComponent } from './update-report/update-report.component';
 import { AddNewLabComponent } from './add-new-lab/add-new-lab.component';
 import { UpdateLabComponent } from './update-lab/update-lab.component';
+import { ChartS1DateComponent } from './chart-s1-date/chart-s1-date.component';
 
 
 @NgModule({
@@ -49,6 +58,7 @@ import { UpdateLabComponent } from './update-lab/update-lab.component';
     UpdateReportComponent,
     AddNewLabComponent,
     UpdateLabComponent,
+    ChartS1DateComponent,
 
   ],
   schemas: [
@@ -65,9 +75,15 @@ import { UpdateLabComponent } from './update-lab/update-lab.component';
     FormsModule,
     BrowserModule,
     FormsModule,
-    // HttpModule,
+    NgApexchartsModule,
+
+    // HighchartsChartModule,
+    // ChartModule,
+    NgChartjsModule
+        // HttpModule,
     // MdCardModule
   ],
+
   providers: [
     // {
     //   provide: MAT_DATE_FORMATS,
