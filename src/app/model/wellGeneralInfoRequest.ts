@@ -20,5 +20,5 @@ export interface WellGeneralInfoRequest {
     xcord?: number;
     ycord?: number;
     lat?: number;
-    long_?: number;
+    longitude?: number;
 }

@@ -1,48 +1,87 @@
 <!-- <p>fluid-level-measurements works!</p> -->
 <div class="container">
-    <div class="card">
-        <div class="card-body">
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Well Id</th>
-                            <th>Date</th>
-                            <th>Intervals</th>
-                            <th>FLType</th>
-                            <th>Fluid Level</th>
-                            <th>Pump Depth</th>
-                            <th>Liq Percentage</th>
-                            <th>Pump Fillage</th>
-                            <th>Pump Submerge</th>
-                            <th>card</th>
-                            <th>Remarks</th> 
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let flm of flms; let currentIndex=index">
-                            <td>{{currentIndex+1}}</td>
-                            <td>{{flm.wellId}}</td>
-                            <td>{{flm.date | date: 'dd-MM-yyyy'}}</td>
-                            <td>{{flm.intervals}}</td>
-                            <td>{{flm.flType}}</td>
-                            <td>{{flm.fluidLevel}}</td>
-                            <td>{{flm.pumpDepth}}</td>
-                            <td>{{flm.liqPercentage}}</td>
-                            <td>{{flm.pumpFillage}}</td>
-                            <td>{{flm.pumpSubmerge}}</td>
-                            <td>{{flm.card}}</td>
-                            <td>{{flm.remarks}}</td>
-                            <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-               
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Insert New FLM Record</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
             </div>
+            <app-add-new-flm (closeModal)=closePopUpAndRefreshTable()></app-add-new-flm>
+          </ng-template>
+
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update A FLM Record</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-update-flm [flmToBeUpdate]="flmToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-flm>
+          </ng-template>
+
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="display: none">#</th>
+                <th>Well Id</th>
+                <th>Date</th>
+                <th>Intervals</th>
+                <th>FLType</th>
+                <th>Fluid Level</th>
+                <th>Pump Depth</th>
+                <th>Liq Percentage</th>
+                <th>Pump Fillage</th>
+                <th>Pump Submerge</th>
+                <th>card</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let flm of flms | paginate: { itemsPerPage: elements, currentPage: page, totalItems: totalRecords  }; let currentIndex = index"
+                (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+                [class.active]="currentIndex == highlightedRow"
+              >
+                <td style="display: none">{{ currentIndex + 1 }}</td>
+                <td>{{ flm.wellId }}</td>
+                <td>{{ flm.date | date: "MM-dd-yyyy" }}</td>
+                <td>{{ flm.intervals }}</td>
+                <td>{{ flm.flType }}</td>
+                <td>{{ flm.fluidLevel }}</td>
+                <td>{{ flm.pumpDepth }}</td>
+                <td>{{ flm.liqPercentage }}</td>
+                <td>{{ flm.pumpFillage }}</td>
+                <td>{{ flm.pumpSubmerge }}</td>
+                <td>{{ flm.card }}</td>
+                <td>{{ flm.remarks }}</td>
+                <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="text-right">
+            <pagination-controls (pageChange)="page = $event; updateDataArray();"></pagination-controls>
+          </div>
+
+
+          <!-- <br>
+          <app-flm-line-chart></app-flm-line-chart> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

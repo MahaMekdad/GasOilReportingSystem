@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { FieldsBudgetAndActualRequest } from '../model/fieldsBudgetAndActualRequest';
 import { FieldsBudgetAndActualResponse } from '../model/fieldsBudgetAndActualResponse';
 

@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { GetAllProductionGeneralInfoWithNames } from '../model/getAllProductionGeneralInfoWithNames';
 import { GetProductionGeneralInfo } from '../model/getProductionGeneralInfo';
 import { ProductionGeneralInfoRequest } from '../model/productionGeneralInfoRequest';
@@ -28,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ProductionGeneralInfoService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,7 +59,7 @@ export class ProductionGeneralInfoService {
 
 
     /**
-     * 
+     *
      * getting all the production general info for all the wells
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -94,7 +95,7 @@ export class ProductionGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * getting all the production general info for the well with the given id
      * @param wellId the ID of the well
      * @param powerSourceType the value of the powerSourceType
@@ -163,7 +164,7 @@ export class ProductionGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * deleting a specific production general info record that is related to the well with the given id
      * @param wellId the ID of the well
      * @param pgiId the ID of the production general info record
@@ -187,6 +188,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -208,9 +210,9 @@ export class ProductionGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * updating production general info of a specific well
-     * @param body 
+     * @param body
      * @param wellId the ID of the well
      * @param pgiId the ID of the production general info record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -237,6 +239,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -264,9 +267,9 @@ export class ProductionGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * creating a new production general info record for a specific well
-     * @param body 
+     * @param body
      * @param wellId the ID of the well
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -288,6 +291,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

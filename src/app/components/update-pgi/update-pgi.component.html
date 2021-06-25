@@ -1,0 +1,203 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <form [formGroup]="form">
+            <div class="lg-3">
+              <label for="formInitialProdDate" class="form-label">initialProdDate</label>
+              <input [ngModel]="pgiToBeUpdated.initialProdDate | date:'yyyy-MM-dd'" (ngModelChange)="pgiToBeUpdated.initialProdDate = $event" 
+                formControlName="initialProdDate" type="date" class="form-control" placeholder="initialProdDate" id="formDate"/>
+              <div *ngIf="form.controls['initialProdDate'].invalid && ((form.controls['initialProdDate'].touched) || (this.form.controls['initialProdDate'].dirty))">
+                <small *ngIf="this.form.controls['initialProdDate'].hasError('required')" class="form-text text-danger">Please Pick a Date</small> 
+              </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
+              <label for="initialType">initialType:</label>
+              <select formControlName="initialType" class="form-control">
+                  <option disabled>Select initialType</option>
+                  <option>Choose initialType</option>
+                  <option *ngFor="let initialType of initialTypeEnums">{{initialType}}</option>
+              </select>
+              <div *ngIf="form.controls['initialType'].invalid && ((form.controls['initialType'].touched) || (this.form.controls['initialType'].dirty))">
+                  <small *ngIf="this.form.controls['initialType'].hasError('required')" class="form-text text-danger">Please Choose An initialType</small> 
+              </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="initialProduct">initialProduct:</label>
+                <select formControlName="initialProduct" class="form-control">
+                    <option disabled>Select initialProduct</option>
+                    <option>Choose initialProduct</option>
+                    <option *ngFor="let initialProduct of initialProductEnums">{{initialProduct}}</option>
+                </select>
+                <div *ngIf="form.controls['initialProduct'].invalid && ((form.controls['initialProduct'].touched) || (this.form.controls['initialProduct'].dirty))">
+                    <small *ngIf="this.form.controls['initialProduct'].hasError('required')" class="form-text text-danger">Please Choose An initialProduct</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="initialLiftType">initialLiftType:</label>
+                <select formControlName="initialLiftType" class="form-control">
+                    <option disabled>Select initialLiftType</option>
+                    <option>Choose initialLiftType</option>
+                    <option *ngFor="let initialLiftType of initialLiftTypeEnums">{{initialLiftType}}</option>
+                </select>
+                <div *ngIf="form.controls['initialLiftType'].invalid && ((form.controls['initialLiftType'].touched) || (this.form.controls['initialLiftType'].dirty))">
+                    <small *ngIf="this.form.controls['initialLiftType'].hasError('required')" class="form-text text-danger">Please Choose An initialLiftType</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="initStatus">initStatus:</label>
+                <select formControlName="initStatus" class="form-control">
+                    <option disabled>Select initStatus</option>
+                    <option>Choose initStatus</option>
+                    <option *ngFor="let initStatus of initStatusEnums">{{initStatus}}</option>
+                </select>
+                <div *ngIf="form.controls['initStatus'].invalid && ((form.controls['initStatus'].touched) || (this.form.controls['initStatus'].dirty))">
+                    <small *ngIf="this.form.controls['initStatus'].hasError('required')" class="form-text text-danger">Please Choose An initStatus</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="monitoringSystem">monitoringSystem:</label>
+                <select formControlName="monitoringSystem" class="form-control">
+                    <option disabled>Select monitoringSystem</option>
+                    <option>Choose monitoringSystem</option>
+                    <option *ngFor="let monitoringSystem of monitoringSystemEnums">{{monitoringSystem}}</option>
+                </select>
+                <div *ngIf="form.controls['monitoringSystem'].invalid && ((form.controls['monitoringSystem'].touched) || (this.form.controls['monitoringSystem'].dirty))">
+                    <small *ngIf="this.form.controls['monitoringSystem'].hasError('required')" class="form-text text-danger">Please Choose A monitoringSystem</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="currentWellType">currentWellType:</label>
+                <select formControlName="currentWellType" class="form-control">
+                    <option disabled>Select currentWellType</option>
+                    <option>Choose currentWellType</option>
+                    <option *ngFor="let currentWellType of currentWellTypeEnums">{{currentWellType}}</option>
+                </select>
+                <div *ngIf="form.controls['currentWellType'].invalid && ((form.controls['currentWellType'].touched) || (this.form.controls['currentWellType'].dirty))">
+                    <small *ngIf="this.form.controls['currentWellType'].hasError('required')" class="form-text text-danger">Please Choose A currentWellType</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="formCurrentWellTypeDate" class="form-label">currentWellTypeDate</label>
+                <input [ngModel]="pgiToBeUpdated.currentWellTypeDate | date:'yyyy-MM-dd'" (ngModelChange)="pgiToBeUpdated.currentWellTypeDate = $event" 
+                    formControlName="currentWellTypeDate" type="date" class="form-control" placeholder="Time" id="formCurrentWellTypeDate"/>
+                <div *ngIf="form.controls['currentWellTypeDate'].invalid && ((form.controls['currentWellTypeDate'].touched) || (this.form.controls['currentWellTypeDate'].dirty))">
+                  <small *ngIf="this.form.controls['currentWellTypeDate'].hasError('required')" class="form-text text-danger">Please Pick a Time</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="currentProduct">currentProduct:</label>
+                <select formControlName="currentProduct" class="form-control">
+                    <option disabled>Select currentProduct</option>
+                    <option>Choose currentProduct</option>
+                    <option *ngFor="let currentProduct of currentProductEnums">{{currentProduct}}</option>
+                </select>
+                <div *ngIf="form.controls['currentProduct'].invalid && ((form.controls['currentProduct'].touched) || (this.form.controls['currentProduct'].dirty))">
+                    <small *ngIf="this.form.controls['currentProduct'].hasError('required')" class="form-text text-danger">Please Choose A currentProduct</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="currentStatus">currentStatus:</label>
+                <select formControlName="currentStatus" class="form-control">
+                    <option disabled>Select currentStatus</option>
+                    <option>Choose currentStatus</option>
+                    <option *ngFor="let currentStatus of currentStatusEnums">{{currentStatus}}</option>
+                </select>
+                <div *ngIf="form.controls['currentStatus'].invalid && ((form.controls['currentStatus'].touched) || (this.form.controls['currentStatus'].dirty))">
+                    <small *ngIf="this.form.controls['currentStatus'].hasError('required')" class="form-text text-danger">Please Choose A currentStatus</small> 
+                </div>
+              </div>
+              <br>
+
+            <div class="lg-3">
+                <label for="formRuntime" class="form-label">runtime</label>
+                <input [(ngModel)]="pgiToBeUpdated.runtime" formControlName="runtime" type="number" class="form-control" placeholder="runtime" id="formRuntime"/>
+                <div *ngIf="form.controls['runtime'].invalid && ((form.controls['runtime'].touched) || (this.form.controls['runtime'].dirty))">
+                  <small *ngIf="this.form.controls['runtime'].hasError('required')" class="form-text text-danger">Please Enter The runtime Value</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label for="currentLiftType">currentLiftType:</label>
+                <select formControlName="currentLiftType" class="form-control">
+                    <option disabled>Select currentLiftType</option>
+                    <option>Choose currentLiftType</option>
+                    <option *ngFor="let currentLiftType of currentLiftTypeEnums">{{currentLiftType}}</option>
+                </select>
+                <div *ngIf="form.controls['currentLiftType'].invalid && ((form.controls['currentLiftType'].touched) || (this.form.controls['currentLiftType'].dirty))">
+                    <small *ngIf="this.form.controls['currentLiftType'].hasError('required')" class="form-text text-danger">Please Choose A currentLiftType</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="formCurrentLiftTypeDate" class="form-label">currentLiftTypeDate</label>
+                <input [ngModel]="pgiToBeUpdated.currentLiftTypeDate | date:'yyyy-MM-dd'" (ngModelChange)="pgiToBeUpdated.currentLiftTypeDate = $event" 
+                    formControlName="currentLiftTypeDate" type="date" class="form-control" placeholder="Time" id="formCurrentLiftTypeDate"/>
+                <div *ngIf="form.controls['currentLiftTypeDate'].invalid && ((form.controls['currentLiftTypeDate'].touched) || (this.form.controls['currentLiftTypeDate'].dirty))">
+                  <small *ngIf="this.form.controls['currentLiftTypeDate'].hasError('required')" class="form-text text-danger">Please Pick a Time</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="powerSourceType">powerSourceType:</label>
+                <select formControlName="powerSourceType" class="form-control">
+                    <option disabled>Select powerSourceType</option>
+                    <option>Choose powerSourceType</option>
+                    <option *ngFor="let powerSourceType of powerSourceTypeEnums">{{powerSourceType}}</option>
+                </select>
+                <div *ngIf="form.controls['powerSourceType'].invalid && ((form.controls['powerSourceType'].touched) || (this.form.controls['powerSourceType'].dirty))">
+                    <small *ngIf="this.form.controls['powerSourceType'].hasError('required')" class="form-text text-danger">Please Choose A powerSourceType</small> 
+                </div>
+              </div>
+              <br>
+
+              <div class="lg-3">
+                <label for="formPowerSource" class="form-label">powerSource</label>
+                <input [(ngModel)]="pgiToBeUpdated.powerSource" formControlName="powerSource" type="text" class="form-control" placeholder="powerSource" id="formPowerSource"/>
+                <div *ngIf="form.controls['powerSource'].invalid && ((form.controls['powerSource'].touched) || (this.form.controls['powerSource'].dirty))">
+                  <small *ngIf="this.form.controls['powerSource'].hasError('minlength')" class="form-text text-danger">powerSource Should Be 5 Charaters Minimum</small> 
+                  <small *ngIf="this.form.controls['powerSource'].hasError('maxlength')" class="form-text text-danger">powerSource Should Be 2000 Charaters Maximum</small> 
+                </div>
+              </div>
+              <br>
+
+            <div class="lg-3">
+              <label for="processionPlant">processionPlant:</label>
+              <select formControlName="processionPlant" class="form-control">
+                  <option disabled>Select A processionPlant</option>
+                  <option>Choose A processionPlant</option>
+                  <option *ngFor="let processionPlant of processionPlantEnums">{{processionPlant}}</option>
+              </select>
+              <div *ngIf="form.controls['processionPlant'].invalid && ((form.controls['processionPlant'].touched) || (this.form.controls['processionPlant'].dirty))">
+                  <small *ngIf="this.form.controls['processionPlant'].hasError('required')" class="form-text text-danger">Please Choose A processionPlant</small> 
+              </div>
+            </div>
+            <br>
+
+            <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

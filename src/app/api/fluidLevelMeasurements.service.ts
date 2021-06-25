@@ -10,25 +10,25 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent } from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from 'service_utils/encoder';
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { FluidLevelMeasurementRequest } from '../model/fluidLevelMeasurementRequest';
 import { GetAllFluidLevelMeasurement } from '../model/getAllFluidLevelMeasurement';
 import { GetFluidLevelMeasurement } from '../model/getFluidLevelMeasurement';
 
-import { BASE_PATH, COLLECTION_FORMATS } from 'service_utils/variables';
-import { Configuration }from 'service_utils/configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
+import { Configuration }                                     from 'service_utils/configuration';
 
 
 @Injectable()
 export class FluidLevelMeasurementsService {
 
-    // protected basePath = 'http://www.ourcompany.com/v1';
     protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
@@ -59,18 +59,19 @@ export class FluidLevelMeasurementsService {
 
 
     /**
-     *
-     * getting the fluid level measurements for a specific well id
+     * 
+     * getting the fluid level measurements for all wells
+     * @param pageNum page number to get the right fluid level measurements records according
+     * @param elementNum getting this number of the fluid level measurements records that are of that date or before
      * @param beginDate getting the fluid level measurements records that are of that date or after
      * @param endDate getting the fluid level measurements records that are of that date or before
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public wellsFluidLevelMeasurementsGet(beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<GetAllFluidLevelMeasurement>;
-    public wellsFluidLevelMeasurementsGet(beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAllFluidLevelMeasurement>>;
-    public wellsFluidLevelMeasurementsGet(beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAllFluidLevelMeasurement>>;
-    public wellsFluidLevelMeasurementsGet(beginDate?: Date, endDate?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
+    public wellsFluidLevelMeasurementsGet(pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<GetAllFluidLevelMeasurement>;
+    public wellsFluidLevelMeasurementsGet(pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAllFluidLevelMeasurement>>;
+    public wellsFluidLevelMeasurementsGet(pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAllFluidLevelMeasurement>>;
+    public wellsFluidLevelMeasurementsGet(pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -79,6 +80,12 @@ export class FluidLevelMeasurementsService {
         }
         if (endDate !== undefined && endDate !== null) {
             queryParameters = queryParameters.set('endDate', <any>endDate.toISOString());
+        }
+        if (pageNum !== undefined && pageNum !== null) {
+            queryParameters = queryParameters.set('pageNum', <any>pageNum);
+        }
+        if (elementNum !== undefined && elementNum !== null) {
+            queryParameters = queryParameters.set('elementNum', <any>elementNum);
         }
 
         let headers = this.defaultHeaders;
@@ -108,7 +115,7 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     *
+     * 
      * deleting a specific fluid level measurements record that is related to the well with the given id
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
@@ -132,6 +139,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -153,9 +161,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     *
+     * 
      * updating a fluid level measurement of a specific well
-     * @param body
+     * @param body 
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -182,6 +190,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -209,9 +218,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     *
+     * 
      * updating a fluid level measurement of a specific well
-     * @param body
+     * @param body 
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -238,6 +247,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -265,22 +275,20 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     *
+     * 
      * getting the fluid level measurements for a specific well id
      * @param wellId the ID of the well
+     * @param pageNum page number to get the right fluid level measurements records according
+     * @param elementNum getting this number of the fluid level measurements records that are of that date or before
      * @param beginDate getting the fluid level measurements records that are of that date or after
      * @param endDate getting the fluid level measurements records that are of that date or before
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<GetFluidLevelMeasurement>;
-    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetFluidLevelMeasurement>>;
-    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetFluidLevelMeasurement>>;
-    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, beginDate?: Date, endDate?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (wellId === null || wellId === undefined) {
-            throw new Error('Required parameter wellId was null or undefined when calling wellsWellIdFluidLevelMeasurementsGet.');
-        }
+    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'body', reportProgress?: boolean): Observable<GetFluidLevelMeasurement>;
+    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetFluidLevelMeasurement>>;
+    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetFluidLevelMeasurement>>;
+    public wellsWellIdFluidLevelMeasurementsGet(wellId: number, pageNum?: number, elementNum?: number, beginDate?: Date, endDate?: Date, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
 
@@ -290,6 +298,12 @@ export class FluidLevelMeasurementsService {
         }
         if (endDate !== undefined && endDate !== null) {
             queryParameters = queryParameters.set('endDate', <any>endDate.toISOString());
+        }
+        if (pageNum !== undefined && pageNum !== null) {
+            queryParameters = queryParameters.set('pageNum', <any>pageNum);
+        }
+        if (elementNum !== undefined && elementNum !== null) {
+            queryParameters = queryParameters.set('elementNum', <any>elementNum);
         }
 
         let headers = this.defaultHeaders;
@@ -319,9 +333,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     *
+     * 
      * adding a new fluid level measurement for a specific well
-     * @param body
+     * @param body 
      * @param wellId the ID of the well
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -343,6 +357,7 @@ export class FluidLevelMeasurementsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
