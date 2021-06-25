@@ -23,6 +23,8 @@ import { DrillingInfoComponent } from './components/drilling-info/drilling-info.
 import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
 import { FieldNavComponent } from './components/field-nav/field-nav.component';
 import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-general-info-chart.component';
+import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
+import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,8 @@ const routes: Routes = [
   { path: 'conNav', component: ConcessionNavComponent },
   { path: 'fieldNav', component: FieldNavComponent },
   { path: 'pgi', component: ProductionGeneralInfoComponent },
+  { path: 'labs', component: LabMeasurementComponent },
+  { path: 'reports', component: DailyActionsComponent },
   { path: 'chartTest', component: WellGeneralInfoChartComponent },
   { path: 'wells', component: WellComponent },
   { path: 'fields', component: FieldComponent },
