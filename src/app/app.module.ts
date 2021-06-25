@@ -1,5 +1,5 @@
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ApiModule} from 'api.module';
 import {AppRoutingModule} from './app-routing.module';
@@ -57,6 +57,9 @@ import { FieldNavComponent } from './components/field-nav/field-nav.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 import { AddNewPgiComponent } from './components/add-new-pgi/add-new-pgi.component';
 import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component';
+import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-general-info-chart.component';
+import { NgChartjsModule } from 'ng-chartjs';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -92,7 +95,8 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     FieldNavComponent,
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
-    UpdatePgiComponent
+    UpdatePgiComponent,
+    WellGeneralInfoChartComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +113,9 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     ReactiveFormsModule,
     NgbModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgChartjsModule,
+    NgApexchartsModule
   ],
   providers: [
     {
@@ -123,7 +129,8 @@ import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component
     },
     JwtHelperService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }
