@@ -28,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class DrilingInfoService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://www.ourcompany.com/v1';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,7 +58,7 @@ export class DrilingInfoService {
 
 
     /**
-     *
+     * 
      * getting the drilling inforamtion for all wells
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -94,7 +94,7 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * delteing drilling info for specific well
      * @param wellId well id that we want to delete it
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -135,7 +135,7 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * getting the drilling inforamtion for specific well
      * @param wellId pass the id of a specific well
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -176,7 +176,7 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * delteing drilling info for specific well
      * @param wellId well id that we want to delete it
      * @param id pass the id of the record
@@ -222,7 +222,7 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * getting the drilling inforamtion for specific well
      * @param wellId pass the id of a specific well
      * @param id pass the id of the record
@@ -268,9 +268,9 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * updating drilling info for specific well
-     * @param body
+     * @param body 
      * @param wellId well id that we want to update it
      * @param id pass the id of the record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -325,9 +325,9 @@ export class DrilingInfoService {
     }
 
     /**
-     *
+     * 
      * adding new drilling info for specefic well
-     * @param body
+     * @param body 
      * @param wellId pass the id of a specific well
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

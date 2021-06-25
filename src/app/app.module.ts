@@ -1,13 +1,16 @@
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {ApiModule} from 'api.module';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NavComponent} from './components/nav/nav.component';
-import {LayoutModule} from '@angular/cdk/layout';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgChartjsModule } from 'ng-chartjs';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ApiModule } from 'api.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavComponent } from './components/nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './interceptor/tokenInterceptor';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,27 +25,27 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
 
-import {ProdDashboardComponent} from './components/prod-dashboard/prod-dashboard.component';
-import {ConcessionComponent} from './components/concession/concession.component';
-import {WellTestTableComponent} from './components/well-test-table/well-test-table.component';
-import {RegistrationComponent} from './components/registration/registration.component';
+import { ProdDashboardComponent } from './components/prod-dashboard/prod-dashboard.component';
+import { ConcessionComponent } from './components/concession/concession.component';
+import { WellTestTableComponent } from './components/well-test-table/well-test-table.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
-import {ProductionBudgetComponent} from './components/production-budget/production-budget.component';
-import {FluidLevelMeasurementsComponent} from './components/fluid-level-measurements/fluid-level-measurements.component';
-import {TestComponent} from './components/test/test.component';
-import {TestEditComponent} from './components/test-edit/test-edit.component';
-import {IntervalsInfoComponent} from './components/intervals-info/intervals-info.component';
-import {WellGeneralInfoComponent} from './components/well-general-info/well-general-info.component';
-import {MaterialModule} from './material/material.module';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
+import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
+import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
+import { TestComponent } from './components/test/test.component';
+import { TestEditComponent } from './components/test-edit/test-edit.component';
+import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
+import { WellGeneralInfoComponent } from './components/well-general-info/well-general-info.component';
+import { MaterialModule } from './material/material.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { WellTabsComponent } from './components/well-tabs/well-tabs.component';
 import { ConfirmationComponent } from './components/general/confirmation/confirmation.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './components/login/login.component';
 import { AddNewFlmComponent } from './components/add-new-flm/add-new-flm.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
+import { DrillingInfoComponent } from './components/drilling-info/drilling-info.component';
 import { AddNewDrillinginfoComponent } from './components/add-new-drillinginfo/add-new-drillinginfo.component';
 import { UpdateDrillingInfoComponent } from './components/update-drilling-info/update-drilling-info.component';
 import { NewProductionbudgetComponent } from './components/new-productionbudget/new-productionbudget.component';
@@ -50,7 +53,7 @@ import { UpdateProductionBudgetComponent } from './components/update-production-
 import { UpdateFlmComponent } from './components/update-flm/update-flm.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
 import { FieldNavComponent } from './components/field-nav/field-nav.component';
@@ -64,6 +67,7 @@ import { AddNewWellGeneralInfoComponent } from './components/well-general-info/a
 import { UpdateWellGeneralInfoComponent } from './components/well-general-info/update-well-general-info/update-well-general-info.component';
 import { UpdateIntervalsInfoComponent } from './components/intervals-info/update-intervals-info/update-intervals-info.component';
 import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-new-intervals-info/add-new-intervals-info.component';
+import { FlmLineChartComponent } from './components/fluid-level-measurements/flm-line-chart/flm-line-chart.component';
 
 @NgModule({
 
@@ -102,7 +106,8 @@ import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-ne
     FieldNavComponent,
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
-    UpdatePgiComponent
+    UpdatePgiComponent,
+    FlmLineChartComponent
 
   ],
   imports: [
@@ -121,7 +126,10 @@ import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-ne
     NgbModule,
     JwtModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxPaginationModule,
+    NgChartjsModule,
+    NgApexchartsModule
 
   ],
   providers: [
@@ -129,7 +137,7 @@ import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-ne
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-      
+
     },
     {
       provide: JWT_OPTIONS,
