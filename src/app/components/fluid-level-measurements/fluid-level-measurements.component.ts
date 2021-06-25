@@ -77,7 +77,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
     this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet().subscribe(
       data => {
         this.totalRecords = data.length;
-        console.log(this.totalRecords)
+        // console.log(this.totalRecords)
       },
       error => {
         console.log(error);
