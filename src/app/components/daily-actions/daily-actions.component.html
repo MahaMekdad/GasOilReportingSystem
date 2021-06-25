@@ -1,0 +1,72 @@
+
+<div class="container">
+	<div class="card">
+	  <div class="card-body">
+		<br />
+		<div class="row">
+		  <div class="col-md-12">
+			<button *ngIf="highlightedRow !== -1" class="btn btn-danger" (click)="deleteFromReports()">🗑️</button>
+			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+
+			<ng-template #modalData let-modal>
+			  <div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">Insert New Report Record</h4>
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				  <span aria-hidden="true">×</span>
+				</button>
+			  </div>
+			  <app-add-new-report (closeModal)=closePopUpAndRefreshTable()></app-add-new-report>
+			</ng-template>
+  
+			<ng-template #modalDataUpdate let-modal>
+			  <div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">Update A Report Record</h4>
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				  <span aria-hidden="true">×</span>
+				</button>
+			  </div>
+			  <app-update-report [reportToBeUpdate]="reportToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-report>
+			</ng-template>
+  
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12">
+			<table class="table table-bordered table-hover">
+			  <thead>
+				<tr>
+				  <th style="display: none">#</th>
+				  <th>Report Id</th>
+				  <th>Date</th>
+				  <th>DownTime</th>
+				  <th>Losses</th>
+				  <th>ShutinLevel4</th>
+				  <th>Net Production</th>
+				  <th>Action Description</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr
+				  *ngFor="let report of reports | paginate: config ; let currentIndex = index"
+				  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+				  [class.active]="currentIndex == highlightedRow"
+				>
+				  <td style="display: none">{{ currentIndex + 1 }}</td>
+				  <td>{{report.id}}</td>
+				  <td>{{report.date | date: 'dd-MM-yyyy'}}</td>
+				  <td>{{report.downTime}}</td>
+				  <td>{{report.losses}}</td>
+				  <td>{{report.siLVL4}}</td>
+				  <td>{{report.netProduction}}</td>
+				  <td>{{report.actionDescription}}</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>

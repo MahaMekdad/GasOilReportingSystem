@@ -74,6 +74,14 @@ import { UpdateWellGeneralInfoComponent } from './components/well-general-info/u
 import { UpdateIntervalsInfoComponent } from './components/intervals-info/update-intervals-info/update-intervals-info.component';
 import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-new-intervals-info/add-new-intervals-info.component';
 import { FlmLineChartComponent } from './components/fluid-level-measurements/flm-line-chart/flm-line-chart.component';
+import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
+import { AddNewLabComponent } from './components/add-new-lab/add-new-lab.component';
+import { UpdateLabComponent } from './components/update-lab/update-lab.component';
+import { ChartS1DateComponent } from './components/chart-s1-date/chart-s1-date.component';
+import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
+import { AddNewReportComponent } from './components/add-new-report/add-new-report.component';
+import { UpdateReportComponent } from './components/update-report/update-report.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
 
@@ -114,7 +122,14 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
     AddNewPgiComponent,
     UpdatePgiComponent,
     WellGeneralInfoChartComponent,
-    FlmLineChartComponent
+    FlmLineChartComponent,
+    LabMeasurementComponent,
+    AddNewLabComponent,
+    UpdateLabComponent,
+    ChartS1DateComponent,
+    DailyActionsComponent,
+    AddNewReportComponent,
+    UpdateReportComponent
 
   ],
   imports: [
@@ -140,6 +155,7 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
 
   ],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
