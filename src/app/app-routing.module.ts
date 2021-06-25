@@ -15,6 +15,7 @@ import {IntervalsInfoComponent} from './components/intervals-info/intervals-info
 import {WellGeneralInfoComponent} from './components/well-general-info/well-general-info.component';
 import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
 import {BudgetActualComponent} from './components/budget-actual/budget-actual.component';
+import {BudgetActualChComponent} from './charts/budget-actual-ch/budget-actual-ch.component';
 
 const routes: Routes = [
   {path: 'home', component: ProdDashboardComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'productionbudget', component: ProductionBudgetComponent},
   {path: 'budgetActual', component: BudgetActualComponent},
   {path: 'dashboard', component: ProdDashboardComponent},
+  // {path: 'budgetChart', component: BudgetActualChComponent},
 
 ];
 

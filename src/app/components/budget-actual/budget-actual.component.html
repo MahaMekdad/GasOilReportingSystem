@@ -1,7 +1,4 @@
-<div>
-
-</div>
-<div class="container ">
+<div class="container">
   <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
       <input matInput #filter placeholder="Filter Budgets">
@@ -11,127 +8,127 @@
   <button mat-raised-button color="primary"> Add Row</button>
   <button mat-raised-button color="accent"> Edit Row</button>
   <button mat-raised-button color="warn"> Remove</button>
-  <div>
 
-  </div>
-  <mat-table #table [dataSource]="dataSource" matSort class="demo-table">
+  <div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort class="responsive-table">
+      <!-- Production date Column -->
+      <ng-container matColumnDef="productionDate">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.productionDate}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Meleiha Actual">
+        <mat-header-cell *matHeaderCellDef>Mel. Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.meleihaActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Meleiha Budget">
+        <mat-header-cell *matHeaderCellDef>Mel. Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.meleihaBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Meleiha Percentage">
+        <mat-header-cell *matHeaderCellDef>Mel. %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.meleihaPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="agharActual">
+        <mat-header-cell *matHeaderCellDef>Agh Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.agharActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="agharBudget">
+        <mat-header-cell *matHeaderCellDef>Agh Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.agharBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="agharPercentage">
+        <mat-header-cell *matHeaderCellDef>Aghar %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.agharPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eastKanaysActual">
+        <mat-header-cell *matHeaderCellDef>Kan Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.eastKanaysActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eastKanaysBudget">
+        <mat-header-cell *matHeaderCellDef>Kan Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.eastKanaysBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eastKanysPercentage">
+        <mat-header-cell *matHeaderCellDef>Kan %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.eastKanysPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="zarifActual">
+        <mat-header-cell *matHeaderCellDef>Zarif Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.zarifActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="zarifBudget">
+        <mat-header-cell *matHeaderCellDef>Zarif Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.zarifBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="zarifPercentage">
+        <mat-header-cell *matHeaderCellDef>Zarif %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.zarifPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="farasActual">
+        <mat-header-cell *matHeaderCellDef>Faras Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.farasActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="farasBudget">
+        <mat-header-cell *matHeaderCellDef>Faras Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.farasBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="farasPercentage">
+        <mat-header-cell *matHeaderCellDef>Faras %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.farasPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ramlActual">
+        <mat-header-cell *matHeaderCellDef>Raml Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ramlActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ramlBudget">
+        <mat-header-cell *matHeaderCellDef>Raml Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ramlBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ramlPercentage">
+        <mat-header-cell *matHeaderCellDef>Raml %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ramlPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="westernDesertActual">
+        <mat-header-cell *matHeaderCellDef>WD Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.westernDesertActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="westernDesertBudget">
+        <mat-header-cell *matHeaderCellDef>WD Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.westernDesertBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="westernDesertPercentage">
+        <mat-header-cell *matHeaderCellDef>WD %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.westernDesertPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="westernDesertPercentage">
+        <mat-header-cell *matHeaderCellDef>WD %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.westernDesertPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ashrafiActual">
+        <mat-header-cell *matHeaderCellDef>Ash Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ashrafiActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ashrafiBudget">
+        <mat-header-cell *matHeaderCellDef>Ash Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ashrafiBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ashrafiPercentage">
+        <mat-header-cell *matHeaderCellDef>Ash %</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ashrafiPercentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="agibaOilActual">
+        <mat-header-cell *matHeaderCellDef>Total Act</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.agibaOilActual}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="agibaOilBudget">
+        <mat-header-cell *matHeaderCellDef>Total Bud</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.agibaOilBudget}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Actions">
+        <mat-header-cell *matHeaderCellDef>
 
-    <!-- Production date Column -->
-    <ng-container matColumnDef="productionDate">
-      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.productionDate}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Meleiha Actual">
-      <mat-header-cell *matHeaderCellDef>Mel. Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.meleihaActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Meleiha Budget">
-      <mat-header-cell *matHeaderCellDef>Mel. Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.meleihaBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Meleiha Percentage">
-      <mat-header-cell *matHeaderCellDef>Mel. %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.meleihaPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="agharActual">
-      <mat-header-cell *matHeaderCellDef>Agh Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.agharActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="agharBudget">
-      <mat-header-cell *matHeaderCellDef>Agh Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.agharBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="agharPercentage">
-      <mat-header-cell *matHeaderCellDef>Aghar %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.agharPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="eastKanaysActual">
-      <mat-header-cell *matHeaderCellDef>Kan Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.eastKanaysActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="eastKanaysBudget">
-      <mat-header-cell *matHeaderCellDef>Kan Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.eastKanaysBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="eastKanysPercentage">
-      <mat-header-cell *matHeaderCellDef>Kan %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.eastKanysPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="zarifActual">
-      <mat-header-cell *matHeaderCellDef>Zarif Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.zarifActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="zarifBudget">
-      <mat-header-cell *matHeaderCellDef>Zarif Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.zarifBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="zarifPercentage">
-      <mat-header-cell *matHeaderCellDef>Zarif %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.zarifPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="farasActual">
-      <mat-header-cell *matHeaderCellDef>Faras Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.farasActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="farasBudget">
-      <mat-header-cell *matHeaderCellDef>Faras Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.farasBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="farasPercentage">
-      <mat-header-cell *matHeaderCellDef>Faras %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.farasPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ramlActual">
-      <mat-header-cell *matHeaderCellDef>Raml Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ramlActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ramlBudget">
-      <mat-header-cell *matHeaderCellDef>Raml Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ramlBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ramlPercentage">
-      <mat-header-cell *matHeaderCellDef>Raml %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ramlPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="westernDesertActual">
-      <mat-header-cell *matHeaderCellDef>WD Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.westernDesertActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="westernDesertBudget">
-      <mat-header-cell *matHeaderCellDef>WD Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.westernDesertBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="westernDesertPercentage">
-      <mat-header-cell *matHeaderCellDef>WD %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.westernDesertPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="westernDesertPercentage">
-      <mat-header-cell *matHeaderCellDef>WD %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.westernDesertPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ashrafiActual">
-      <mat-header-cell *matHeaderCellDef>Ash Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ashrafiActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ashrafiBudget">
-      <mat-header-cell *matHeaderCellDef>Ash Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ashrafiBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="ashrafiPercentage">
-      <mat-header-cell *matHeaderCellDef>Ash %</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ashrafiPercentage}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="agibaOilActual">
-      <mat-header-cell *matHeaderCellDef>Total Act</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.agibaOilActual}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="agibaOilBudget">
-      <mat-header-cell *matHeaderCellDef>Total Bud</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.agibaOilBudget}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Actions">
-      <mat-header-cell *matHeaderCellDef>
-        <mat-cell *matCellDef="let row;">
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i=index;">
           <button mat-icon-button color="primary" (click)="addNew(row.productionDate,
         row.meleihaActual,row.meleihaBudget,
         row.agharActual,row.agharBudget,
@@ -145,10 +142,7 @@
         )">
             <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
           </button>
-        </mat-cell>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="startEdit(row.recordId,row.productionDate,
+          <button mat-icon-button color="accent" (click)="startEdit(row.recordId,row.productionDate,
         row.meleihaActual,row.meleihaBudget,
         row.agharActual,row.agharBudget,
         row.eastKanaysActual,row.eastKanaysBudget,
@@ -159,15 +153,27 @@
         row.ashrafiActual,row.ashrafiBudget,
         row.agibaOilActual,row.agibaOilActual
         )">
-          <mat-icon aria-label="Edit">edit</mat-icon>
-        </button>
-        <button mat-icon-button color="accent">
-          <mat-icon aria-label="Delete" (click)="deleteItem(row.recordId,i)">delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent">
+            <mat-icon aria-label="Delete" (click)="deleteItem(row.recordId,i)">delete</mat-icon>
+          </button>
+          <button mat-icon-button color="accent">
+            <mat-icon aria-label="Show Graph" (click)="showGraph(row.recordId,row.productionDate,row.meleihaActual,row.meleihaBudget,
+        row.agharActual,row.agharBudget,
+        row.eastKanaysActual,row.eastKanaysBudget,
+        row.zarifActual,row.zarifBudget,
+        row.farasActual,row.farasBudget,
+        row.ramlActual,row.ramlBudget,
+        row.westernDesertActual,row.westernDesertBudget,
+        row.ashrafiActual,row.ashrafiBudget,
+        row.agibaOilActual,row.agibaOilBudget)">Show Graph</mat-icon>
+          </button>
 
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
 </div>

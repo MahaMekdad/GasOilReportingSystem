@@ -6,6 +6,7 @@ import {FieldsBudgetAndActualResponse} from '../../model/fieldsBudgetAndActualRe
 import {BudgetActualDeleteComponent} from '../../dialogs/delete/budget-actual-delete/budget-actual-delete.component';
 import {BudgetActualAddComponent} from '../../dialogs/add/budget-actual-add/budget-actual-add.component';
 import {BudgetActualEditComponent} from '../../dialogs/edit/budget-actual-edit/budget-actual-edit.component';
+import {BudgetActualChComponent} from '../../charts/budget-actual-ch/budget-actual-ch.component';
 
 @Component({
   selector: 'app-budget-actual',
@@ -148,7 +149,47 @@ export class BudgetActualComponent implements OnInit {
     });
   }
 
+  showGraph(recordId: any, productionDate: any, meleihaActual: any, meleihaBudget: any, agharActual: any,
+            agharBudget: any, eastKanaysActual: any, eastKanaysBudget: any, zarifActual: any,
+            zarifBudget: any, farasActual: any,
+            farasBudget: any, ramlActual: any, ramlBudget: any, westernDesertActual: any, westernDesertBudget: any, ashrafiActual: any, ashrafiBudget: any, agibaOilActual: any, agibaOilBudget: any) {
+    const dialogRef = this.dialog.open(BudgetActualChComponent, {
+      height: '700px',
+      width: '700px',
+      data: {
+        rowData: {
+          recordId: recordId,
+          productionDate: productionDate,
+          meleihaActual: meleihaActual,
+          meleihaBudget: meleihaBudget,
+          agharActual: agharActual,
+          agharBudget: agharBudget,
+          eastKanaysActual: eastKanaysActual,
+          eastKanaysBudget: eastKanaysBudget,
+          zarifActual: zarifActual,
+          zarifBudget: zarifBudget,
+          farasActual: farasActual,
+          farasBudget: farasBudget,
+          ramlActual: ramlActual,
+          ramlBudget: ramlBudget,
+          westernDesertActual: westernDesertActual,
+          westernDesertBudget: westernDesertBudget,
+          ashrafiActual: ashrafiActual,
+          ashrafiBudget: ashrafiBudget,
+          agibaOilBudget: agibaOilBudget,
+          agibaOilActual: agibaOilActual,
+        }
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        this.refreshData();
+      }
+    });
+  }
+
   private refreshData() {
     this.findAll();
   }
+
 }
