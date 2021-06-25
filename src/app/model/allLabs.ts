@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AllLabMeasurementResponse } from './allLabMeasurementResponse';
+import { LabMeasurementResponse } from './labMeasurementResponse';
 
-export interface AllLabs extends Array<AllLabMeasurementResponse> { 
+export interface AllLabs extends Array<LabMeasurementResponse> { 
 }

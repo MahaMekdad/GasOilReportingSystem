@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { AllLabs } from '../model/allLabs';
 import { AllLabsOfAWell } from '../model/allLabsOfAWell';
+import { ErrorDetails } from '../model/errorDetails';
 import { LabMeasurementRequest } from '../model/labMeasurementRequest';
 import { LabMeasurementResponse } from '../model/labMeasurementResponse';
 
@@ -29,7 +30,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class LabService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:9592';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -83,6 +84,7 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -113,28 +115,29 @@ export class LabService {
     /**
      * Deletes a lab
      * Deletes a lab by its id
-     * @param labId Delete a lab by its id
      * @param wellId Delete a lab in a well by its id
+     * @param labId Delete a lab by its id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteLabById(labId: number, wellId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteLabById(labId: number, wellId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteLabById(labId: number, wellId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteLabById(labId: number, wellId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (labId === null || labId === undefined) {
-            throw new Error('Required parameter labId was null or undefined when calling deleteLabById.');
-        }
+    public deleteLabById(wellId: number, labId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public deleteLabById(wellId: number, labId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public deleteLabById(wellId: number, labId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteLabById(wellId: number, labId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (wellId === null || wellId === undefined) {
             throw new Error('Required parameter wellId was null or undefined when calling deleteLabById.');
+        }
+
+        if (labId === null || labId === undefined) {
+            throw new Error('Required parameter labId was null or undefined when calling deleteLabById.');
         }
 
         let headers = this.defaultHeaders;
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -182,7 +185,6 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -237,7 +239,6 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -285,7 +286,6 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
-            'application/xml',
             'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -337,6 +337,7 @@ export class LabService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

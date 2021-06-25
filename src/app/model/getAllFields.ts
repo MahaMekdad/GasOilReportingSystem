@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { AllFieldsResponse } from './allFieldsResponse';
+import { FieldResponse } from './fieldResponse';
 
-export interface GetAllFields extends Array<AllFieldsResponse> { 
+export interface GetAllFields extends Array<FieldResponse> { 
 }

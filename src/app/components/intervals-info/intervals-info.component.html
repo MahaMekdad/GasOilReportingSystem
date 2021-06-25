@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="card">
+      <div class="card-body">
+       <br>
+       <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-danger" (click)="deleteFromIntervalsInfo()">🗑️</button>
+        <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+        <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+        <ng-template #modalData let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Insert New IntervalsInfo</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <app-add-new-intervals-info [wellIdSelected]="wellIdSelected" (closeModal)=closePopUpAndRefreshTable()></app-add-new-intervals-info>
+        </ng-template>
+
+        <ng-template #modalDataUpdate let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Update An IntervalsInfo Record</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <app-update-intervals-info [intervalsInfoResponse]="intervalsInfoResponseList[highlightedRow]" (closeModal)=closePopUpAndRefreshTable()></app-update-intervals-info>
+        </ng-template>
+
+      </div>
+    </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <table class="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Well Id</th>
+                          <th>Driving mechanism</th>
+                          <th>zones</th>
+                          <th>interval</th>
+                          <th>from</th>
+                          <th>to</th>
+                          <th>length</th>
+                          <th>pr</th>
+                          <th>tr</th>
+                          <th>status</th>
+                          <th>Start date</th> 
+                          <th>End date</th> 
+                          <th>Pi</th> 
+                          <th>Mobility</th> 
+                          <th>fluidType</th> 
+                          <th>api</th> 
+                          <th>notes</th> 
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr *ngFor="let intervalsInfoResponse of intervalsInfoResponseList let currentIndex = index"
+                        (click)="ClickedRowToDelete(currentIndex)"
+                        [class.active]="currentIndex == highlightedRow">
+                          <td>{{intervalsInfoResponse.id}}</td>
+                          <td>{{intervalsInfoResponse.wellId}}</td>
+                          <td>{{intervalsInfoResponse.drivingMechanism}}</td>
+                          <td>{{intervalsInfoResponse.zones}}</td>
+                          <td>{{intervalsInfoResponse.interval}}</td>
+                          <td>{{intervalsInfoResponse.from}}</td>
+                          <td>{{intervalsInfoResponse.to}}</td>
+                          <td>{{intervalsInfoResponse.length}}</td>
+                          <td>{{intervalsInfoResponse.pr}}</td>
+                          <td>{{intervalsInfoResponse.tr}}</td>
+                          <td>{{intervalsInfoResponse.status}}</td>
+                          <td>{{intervalsInfoResponse.startDate | date: 'dd-MM-yyyy'}}</td>
+                          <td>{{intervalsInfoResponse.endDate  | date: 'dd-MM-yyyy'}}</td>
+                          <td>{{intervalsInfoResponse.pi}}</td>
+                          <td>{{intervalsInfoResponse.mobility}}</td>
+                          <td>{{intervalsInfoResponse.fluidType}}</td>
+                          <td>{{intervalsInfoResponse.api}}</td>
+                          <td>{{intervalsInfoResponse.notes}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+             
+          </div>
+      </div>
+    </div>
+</div>
+

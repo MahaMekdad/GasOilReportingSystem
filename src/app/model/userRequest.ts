@@ -19,6 +19,7 @@ export interface UserRequest {
     lastName: string;
     email: string;
     phoneNumber: string;
-    jobTitle: number;
+    jobTitle?: number;
     jobLocation: JobLocation;
+    password: string;
 }

@@ -1,0 +1,101 @@
+<!--<p>drilling-info works!</p>-->
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+
+      <div class="row">
+        <div class="col-md-12">
+          <button (click)="delete()" type="button" class="btn btn-danger">
+            DELETE
+          </button>
+          <button class="btn btn-primary" (click)="triggerModal(modalData)">
+            ➕
+          </button>
+          <button
+            *ngIf="HighlightRow !== -1"
+            class="btn btn-warning"
+            (click)="triggerModal(modalDataUpdate)"
+          >
+            🖊️
+          </button>
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">
+                Insert New Drilling info record
+              </h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div>
+              <app-add-new-drillinginfo
+                (closeModal)="closePopUpAndRefreshTable()"
+              ></app-add-new-drillinginfo>
+            </div>
+          </ng-template>
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Update A Drilling info Record</h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-update-drilling-info
+              [drillingUpdate]="drillingUpdate"
+              (closeModal)="closePopUpAndRefreshTable()"
+            ></app-update-drilling-info>
+          </ng-template>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>id</th>
+                <th>release_date</th>
+                <th>well_description</th>
+                <th>well_type</th>
+                <th>bore_type</th>
+                <th>measured_depth</th>
+                <th>tvd_depth</th>
+                <th>bbtp</th>
+                <th>production_general_info</th>
+                <th>well_id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let drill of drill; let currentIndex = index"
+                (click)="
+                  ClickedRow(currentIndex); ClickedRowToUpdate(currentIndex)
+                "
+                [class.active]="currentIndex == HighlightRow"
+              >
+                <td>{{ currentIndex + 1 }}</td>
+                <td>{{ drill.id }}</td>
+                <td>{{ drill.releaseDate | date: "MM-dd-yyyy" }}</td>
+                <td>{{ drill.wellDescription }}</td>
+                <td>{{ drill.wellType }}</td>
+                <td>{{ drill.boreType }}</td>
+                <td>{{ drill.measuredDepth }}</td>
+                <td>{{ drill.tvdDepth }}</td>
+                <td>{{ drill.bbtp }}</td>
+                <td>{{ drill.productionGeneralInfo }}</td>
+                <td>{{ drill.wellId }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

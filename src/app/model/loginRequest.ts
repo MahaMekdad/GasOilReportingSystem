@@ -10,14 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface AllLabMeasurementResponse { 
-    id?: number;
-    s1?: number;
-    s2?: number;
-    s3?: number;
-    s4?: number;
-    s5?: number;
-    remarks?: string;
-    date?: Date;
-    wellId?: number;
+/**
+ * Model for the UserData object info for return loggin
+ */
+export interface LoginRequest { 
+    email: string;
+    password: string;
 }
