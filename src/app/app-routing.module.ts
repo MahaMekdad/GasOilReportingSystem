@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
 import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
 import { FieldNavComponent } from './components/field-nav/field-nav.component';
+import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-general-info-chart.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'notFound', component: PageNotFoundComponent },
   { path: 'conNav', component: ConcessionNavComponent },
   { path: 'fieldNav', component: FieldNavComponent },
-  { path: 'pgi', component: ProductionGeneralInfoComponent }
+  { path: 'pgi', component: ProductionGeneralInfoComponent },
+  {path:'chartTest',component:WellGeneralInfoChartComponent}
 ];
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],

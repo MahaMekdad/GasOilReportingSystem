@@ -1,8 +1,11 @@
+
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+
+
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgChartjsModule } from 'ng-chartjs';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApiModule } from 'api.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { TokenInterceptor } from './interceptor/tokenInterceptor';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -60,6 +64,8 @@ import { FieldNavComponent } from './components/field-nav/field-nav.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
 import { AddNewPgiComponent } from './components/add-new-pgi/add-new-pgi.component';
 import { UpdatePgiComponent } from './components/update-pgi/update-pgi.component';
+import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-general-info-chart.component';
+
 
 
 import { JwtModule } from "@auth0/angular-jwt";
@@ -107,6 +113,7 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
     UpdatePgiComponent,
+    WellGeneralInfoChartComponent,
     FlmLineChartComponent
 
   ],
@@ -145,7 +152,8 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
     },
     JwtHelperService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }
