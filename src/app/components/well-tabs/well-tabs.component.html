@@ -1,11 +1,19 @@
 <mat-tab-group>
-  <mat-tab label="Well General Info">General info</mat-tab>
-  <mat-tab label="Well Drilling Info">Drilling</mat-tab>
-  <mat-tab label="Well Intervals Info">Intervals</mat-tab>
-  <mat-tab label="Daily Actions ">Intervals</mat-tab>
+  <mat-tab label="Well General Info">
+    <app-well-general-info></app-well-general-info>
+  </mat-tab>
+  <mat-tab label="Well Drilling Info">
+    <app-drilling-info></app-drilling-info>
+  </mat-tab>
+  <mat-tab label="Well Intervals Info">
+    <app-intervals-info></app-intervals-info>
+  </mat-tab>
+  <mat-tab label="Daily Actions">Soon</mat-tab>
   <mat-tab label="Well Test Data ">
     <app-well-test-table></app-well-test-table>
   </mat-tab>
-  <mat-tab label="Lab Measurements ">Intervals</mat-tab>
-  <mat-tab label="Fluid Level">Intervals</mat-tab>
+  <mat-tab label="Lab Measurements ">Soon</mat-tab>
+  <mat-tab label="Fluid Level">
+    <app-fluid-level-measurements></app-fluid-level-measurements>
+  </mat-tab>
 </mat-tab-group>
