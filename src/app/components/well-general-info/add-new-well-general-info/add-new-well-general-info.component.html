@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div>
+          <form [formGroup]="form">
+
+            <div class="lg-3">
+                <label class="form-label">Subcompany name</label>
+                <input  type="text" name="subCompanyName" formControlName="subCompanyName" class="form-control" placeholder="Subcompany name" required="required"/>
+                <div *ngIf="this.form.controls['subCompanyName'].invalid && ((this.form.controls['subCompanyName'].touched) || (this.form.controls['subCompanyName'].dirty))">
+                  <small  class="form-text text-danger">Please enter Subcompany name</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+              <label>Location name:</label>
+              <select  formControlName="locationName" class="form-control" require="required" name="locationName">
+                <option disabled>Select location name</option>
+                <option value='onshore'>onshore</option>
+                <option value='offshore'>offshore</option>
+              </select>
+
+            <div *ngIf="this.form.controls['locationName'].touched && this.form.controls['locationName'].invalid">
+                <small class="form-text text-danger">Please Choose location name</small>
+            </div>
+            </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">area name</label>
+                <input  type="text"  formControlName="areaName" name="areaName" class="form-control" placeholder="area name" required="required"/>
+                <div *ngIf="this.form.controls['areaName'].invalid && ((this.form.controls['areaName'].touched) || (this.form.controls['areaName'].dirty))">
+                  <small  class="form-text text-danger">Please enter area name</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">lease name</label>
+                <input  type="text" formControlName="leaseName" name="leaseName" class="form-control" placeholder="lease name" required="required"/>
+                <div *ngIf="this.form.controls['leaseName'].invalid && ((this.form.controls['leaseName'].touched) || (this.form.controls['leaseName'].dirty))">
+                  <small  class="form-text text-danger">Please enter lease name</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">bore name</label>
+                <input  type="text" formControlName="boreName" name="boreName" class="form-control" placeholder="bore name" required="required"/>
+                <div *ngIf="this.form.controls['boreName'].invalid && ((this.form.controls['boreName'].touched) || (this.form.controls['boreName'].dirty))">
+                  <small  class="form-text text-danger">Please enter bore name</small> 
+                </div>
+              </div>
+            <br>
+
+
+
+            <div class="lg-3">
+                <label class="form-label">xcord</label>
+                <input  type="number" formControlName="xcord" class="form-control" name="xcord" placeholder="xcord" required="required"/>
+                <div *ngIf="this.form.controls['xcord'].invalid && ((this.form.controls['xcord'].touched) || (this.form.controls['xcord'].dirty))">
+                  <small  class="form-text text-danger">Please Enter xcord</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">ycord</label>
+                <input  type="number" formControlName="ycord" class="form-control" name="ycord" placeholder="ycord" required="required"/>
+                <div *ngIf="this.form.controls['ycord'].invalid && ((this.form.controls['ycord'].touched) || (this.form.controls['ycord'].dirty))">
+                  <small class="form-text text-danger">Please Enter ycord</small> 
+                </div>
+              </div>
+            <br>
+
+            
+            <div class="lg-3">
+                <label class="form-label">latitude</label>
+                <input  type="number"  formControlName="lat" class="form-control" name="lat" placeholder="latitude" required="required"/>
+                <div *ngIf="this.form.controls['lat'].invalid && ((this.form.controls['lat'].touched) || (this.form.controls['lat'].dirty))">
+                  <small class="form-text text-danger">Please Enter latitude</small> 
+                </div>
+              </div>
+            <br>
+
+            <div class="lg-3">
+                <label class="form-label">longitude</label>
+                <input  type="number" formControlName="longitude" class="form-control"  placeholder="longitude" required="required"/>
+                <div *ngIf="this.form.controls['longitude'].invalid && ((this.form.controls['longitude'].touched) || (this.form.controls['longitude'].dirty))">
+                  <small class="form-text text-danger">Please Enter longitude</small> 
+                </div>
+              </div>
+            <br>
+
+            <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -19,6 +19,7 @@ import { Observable }                                        from 'rxjs';
 
 import { AllWellDailyActions } from '../model/allWellDailyActions';
 import { AllWellDailyActionsOfAWell } from '../model/allWellDailyActionsOfAWell';
+import { ErrorDetails } from '../model/errorDetails';
 import { WellDailyActionsRequest } from '../model/wellDailyActionsRequest';
 import { WellDailyActionsResponse } from '../model/wellDailyActionsResponse';
 
@@ -83,6 +84,7 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -134,6 +136,7 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -363,6 +366,7 @@ export class WellDailyActionsService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

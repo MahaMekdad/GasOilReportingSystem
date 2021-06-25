@@ -2,106 +2,99 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <br>
+      <br />
+
       <div class="row">
         <div class="col-md-12">
+          <button (click)="delete()" type="button" class="btn btn-danger">
+            DELETE
+          </button>
+          <button class="btn btn-primary" (click)="triggerModal(modalData)">
+            ➕
+          </button>
+          <button
+            *ngIf="HighlightRow !== -1"
+            class="btn btn-warning"
+            (click)="triggerModal(modalDataUpdate)"
+          >
+            🖊️
+          </button>
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">
+                Insert New Drilling info record
+              </h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div>
+              <app-add-new-drillinginfo
+                (closeModal)="closePopUpAndRefreshTable()"
+              ></app-add-new-drillinginfo>
+            </div>
+          </ng-template>
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title">Update A Drilling info Record</h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-update-drilling-info
+              [drillingUpdate]="drillingUpdate"
+              (closeModal)="closePopUpAndRefreshTable()"
+            ></app-update-drilling-info>
+          </ng-template>
           <table class="table table-bordered table-hover">
             <thead>
-            <tr>
-              <th>#</th>
-              <th>id</th>
-              <th>release_date</th>
-              <th>well_description</th>
-              <th>well_type</th>
-              <th>bore_type</th>
-              <th>measured_depth</th>
-              <th>tvd_depth</th>
-              <th>bbtp</th>
-              <th>production_general_info</th>
-              <th>well_id</th>
-            </tr>
+              <tr>
+                <th>#</th>
+                <th>id</th>
+                <th>release_date</th>
+                <th>well_description</th>
+                <th>well_type</th>
+                <th>bore_type</th>
+                <th>measured_depth</th>
+                <th>tvd_depth</th>
+                <th>bbtp</th>
+                <th>production_general_info</th>
+                <th>well_id</th>
+              </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let drill of drill; let currentIndex=index">
-              <td>{{currentIndex+1}}</td>
-              <td>{{drill.id}}</td>
-              <td>{{drill.releaseDate}}</td>
-              <td>{{drill.wellDescription}}</td>
-              <td>{{drill.wellType}}</td>
-              <td>{{drill.boreType}}</td>
-              <td>{{drill.measuredDepth}}</td>
-              <td>{{drill.tvdDepth}}</td>
-              <td>{{drill.bbtp}}</td>
-              <td>{{drill.productionGeneralInfo}}</td>
-              <td>{{drill.wellId}}</td>
-
-                            <td><button type="button" class="btn btn-danger" (click)="deleteFromDrill(currentIndex)">Delete</button></td>
-
-            </tr>
-
-            <tr>
-              <td>#</td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="drillId" [(ngModel)]="drillId" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="releaseDate" [(ngModel)]="r.releaseDate" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellDescription" [(ngModel)]="r.wellDescription" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellType" [(ngModel)]="r.wellType" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="boreType" [(ngModel)]="r.boreType" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="measuredDepth" [(ngModel)]="r.measuredDepth" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="tvdDepth" [(ngModel)]="r.tvdDepth" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="bbtp" [(ngModel)]="r.bbtp" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="productionGeneralInfo" [(ngModel)]="r.productionGeneralInfo" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellId" [(ngModel)]="wellId" class="border-none"></td>
-
-
-              <td>
-             <span class="table-remove"><button type="button" (click)=insert()
-                                                class="btn btn-danger btn-rounded btn-sm my-0">Insert</button></span>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-
-          <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>drillId</th>
-              <th>releaseDate</th>
-              <th>wellDescription</th>
-               <th>wellType</th>
-              <th>boreType</th>
-              <th>measuredDepth</th>
-              <th>tvdDepth</th>
-              <th>bbtp</th>
-              <th>productionGeneralInfo</th>
-              <th>wellId</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="drillId" [(ngModel)]="drillIdEdit" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="releaseDate" [(ngModel)]="r2.releaseDate" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="r2.wellDescription" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellCode" [(ngModel)]="r2.wellType" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="drillId" [(ngModel)]="r2.boreType" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellName" [(ngModel)]="r2.measuredDepth" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="fieldId" [(ngModel)]="r2.tvdDepth" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellCode" [(ngModel)]="r2.bbtp" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellCode" [(ngModel)]="r2.productionGeneralInfo" class="border-none"></td>
-              <td class="pt-3-half" contenteditable="true"><input type="text" name="wellIdEdite" [(ngModel)]="wellIdEdite" class="border-none"></td>
-
-              <td>
-                                <span class="table-remove"><button type="button" (click)=edit()
-                                                                   class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></span>
-              </td>
-            </tr>
-
-
-
+              <tr
+                *ngFor="let drill of drill; let currentIndex = index"
+                (click)="
+                  ClickedRow(currentIndex); ClickedRowToUpdate(currentIndex)
+                "
+                [class.active]="currentIndex == HighlightRow"
+              >
+                <td>{{ currentIndex + 1 }}</td>
+                <td>{{ drill.id }}</td>
+                <td>{{ drill.releaseDate | date: "MM-dd-yyyy" }}</td>
+                <td>{{ drill.wellDescription }}</td>
+                <td>{{ drill.wellType }}</td>
+                <td>{{ drill.boreType }}</td>
+                <td>{{ drill.measuredDepth }}</td>
+                <td>{{ drill.tvdDepth }}</td>
+                <td>{{ drill.bbtp }}</td>
+                <td>{{ drill.productionGeneralInfo }}</td>
+                <td>{{ drill.wellId }}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-
       </div>
     </div>
   </div>

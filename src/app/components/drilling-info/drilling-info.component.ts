@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DrillingInfoDataResponse} from "../../model/drillingInfoDataResponse";
 import {DrilingInfoService} from "../../api/drilingInfo.service";
 import { DrillingInfoDataRequest } from 'src/app/model/drillingInfoDataRequest';
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -19,8 +20,11 @@ export class DrillingInfoComponent implements OnInit {
   wellId: number;
   wellIdEdite: number;
   wellIdFilter: number;
+  HighlightRow: number = -1;
+  window: NgbModalRef;
+  drillingUpdate: DrillingInfoDataResponse;
 
-  constructor(private _drilingInfoService: DrilingInfoService) { }
+  constructor(private _drilingInfoService: DrilingInfoService , private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -31,12 +35,35 @@ export class DrillingInfoComponent implements OnInit {
       }
     )
   }
+  ClickedRowToUpdate(index: number)
+  {
+    if(this.HighlightRow == -1 || this.HighlightRow == undefined){
+      this.drillingUpdate = null;
+      return;
+    }
+    let x = this.drill[this.HighlightRow];
+    this.drillingUpdate = x;
+  }
+  ClickedRow(index:number)
+  {
+    if(this.HighlightRow == index)
+    {
+      this.HighlightRow = -1;
+      return;
+    }
+    this.HighlightRow = index;
+  }
+  triggerModal(content) {
+    this.window = content;
+    this.window = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
 
-  deleteFromDrill(index: number) {
-    let drill = this.drill[index];
+  }
+  delete(){
+    let drill = this.drill[this.HighlightRow];
     this._drilingInfoService.wellsWellIdDrillingInfoIdDelete(drill.wellId,drill.id,"body").subscribe(
       response => {
-        this.drill.splice(index, 1);
+        this.drill.splice(this.HighlightRow, 1);
+        this.HighlightRow = -1;
       },
       error => {
         alert(error.errorMessage);
@@ -77,14 +104,14 @@ export class DrillingInfoComponent implements OnInit {
   // }
 
 
-  insert():void{
-    this._drilingInfoService.wellsWellIdDrillingInfoPost(this.r,this.wellId,null,null).subscribe( Response=>{
-      this.message="Added";
-    },error => {
-      this.message=error.error.errorMessage;
-      console.log(this.message);
-    });
-  }
+  // insert():void{
+  //   this._drilingInfoService.wellsWellIdDrillingInfoPost(this.r,this.wellId,null,null).subscribe( Response=>{
+  //     this.message="Added";
+  //   },error => {
+  //     this.message=error.error.errorMessage;
+  //     console.log(this.message);
+  //   });
+  // }
 
   edit():void{
     this._drilingInfoService.wellsWellIdDrillingInfoIdPatch(this.r2,this.wellIdEdite,this.drillId,null,null).subscribe( Response=>{
@@ -94,5 +121,14 @@ export class DrillingInfoComponent implements OnInit {
       console.log(this.message);
     });
   }
-
+  loadRecords(){
+    this._drilingInfoService.wellsDrillingInfoGet().subscribe(
+      data => {
+        this.drill = data;
+      })
+  }
+  closePopUpAndRefreshTable(){
+    this.window.dismiss();
+    this.loadRecords();
+  }
 }

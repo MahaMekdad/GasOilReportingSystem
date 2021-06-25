@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+         <br>
+         <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger" (click)="deleteFromWellGeneralInfo()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button *ngIf="wellGeneralInfoResponse == null"class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Insert New wellGeneralInfo</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-add-new-well-general-info [wellIdToaddWellGeneralInfo]="wellIdToaddWellGeneralInfo" (closeModal)=closePopUpAndRefreshTable()></app-add-new-well-general-info>
+          </ng-template>
+
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update A WellGeneralInfo Record</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-update-well-general-info [wellGeneralInfoResponse]="wellGeneralInfoResponse" (closeModal)=closePopUpAndRefreshTable()></app-update-well-general-info>
+          </ng-template>
+
+        </div>
+      </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Well Id</th>
+                            <th>Subcompany name</th>
+                            <th>Location name</th>
+                            <th>Area name</th>
+                            <th>Lease name</th>
+                            <th>Bore name</th>
+                            <th>xcord</th>
+                            <th>ycord</th>
+                            <th>latitude</th>
+                            <th>longitude</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngIf="wellGeneralInfoResponse !=null">
+                          <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id); ClickedRowToUpdate(wellGeneralInfoResponse.id)"
+                          [class.active]="wellGeneralInfoResponse.id == highlightedRow">
+                            <td>{{wellGeneralInfoResponse.id}}</td>
+                            <td>{{wellGeneralInfoResponse.wellId}}</td>
+                            <td>{{wellGeneralInfoResponse.subCompanyName}}</td>
+                            <td>{{wellGeneralInfoResponse.locationName}}</td>
+                            <td>{{wellGeneralInfoResponse.areaName}}</td>
+                            <td>{{wellGeneralInfoResponse.leaseName}}</td>
+                            <td>{{wellGeneralInfoResponse.boreName}}</td>
+                            <td>{{wellGeneralInfoResponse.xcord}}</td>
+                            <td>{{wellGeneralInfoResponse.ycord}}</td>
+                            <td>{{wellGeneralInfoResponse.lat}}</td>
+                            <td>{{wellGeneralInfoResponse.longitude}}</td>
+                          </tr>
+                      </tbody>
+                      </table>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+</div>

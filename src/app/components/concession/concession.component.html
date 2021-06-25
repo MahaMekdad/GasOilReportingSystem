@@ -1,0 +1,107 @@
+<!-- adding external js file -->
+<script src="./concession.js"></script>
+
+<div class="container-lg">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8">
+            <h2>Concessions <b>Details</b></h2>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Concession Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let concession of concessionResponces">
+            <td>{{concession?.id}}</td>
+            <td>{{concession?.name}}</td>
+            <td>
+              <a (click) ="onOpenModal(concession,'edit')" href="#" class="add" title="Add" data-toggle="tooltip"><i class="material-icons" >&#xE03B;</i></a>
+              <a (click) ="onOpenModal(concession,'edit')" href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+              <a (click) ="onOpenModal(concession,'delete')" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- update concession module -->
+
+
+
+
+<!-- add concession modal -->
+<div class="modal fade" id="addConcessionModal" tabindex="-1" aria-labelledby="addConcessionModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <form ngForm #addForm="ngForm" (ngSubmit)="onAddConcession(addForm)">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Concession</h5>
+          <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- form beginning, calling the submit function. -->
+          <div class="form-group">
+            <label for="name" class="form-label">Concession Name</label>
+            <!-- we  added ngModel, and name for each field -->
+            <input type="text" ngModel name="name" class="form-control" id="name" placeholder="name" required="true">
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="add-concession-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- disable the button if the form is Invalid -->
+            <button [disabled]="addForm.invalid" type="submit" id="" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Notification for no Cocession found -->
+<div *ngIf="concessionResponces?.length===0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info " role="alert">
+    <h4 class="alert-heading">No Concessions found </h4>
+    <p>No Concessions were found</p>
+  </div>
+</div>
+
+
+
+<!-- delete concession modal -->
+<div id="delteConcessionModal" class="modal" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Concession</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- If i did not add the ? condition, the name will not be present and the page will not load the data. -->
+        <p>Sure you want to delete <b>{{deleteConcession?.name}} </b>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="delete-employee-form" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <!-- <button type="button" (click)="onDeleteConcession(deleteConcession?.id)" class="btn btn-danger">Yes</button> -->
+      </div>
+    </div>
+  </div>
+</div>

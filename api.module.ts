@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { NgModule, ModuleWithProviders, SkipSelf, Optional, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Configuration } from 'service_utils/configuration';
 import { HttpClient } from '@angular/common/http';
 
@@ -40,7 +40,9 @@ import { WellTestsService } from 'src/app/api/wellTests.service';
     WellService,
     WellDailyActionsService,
     WellGeneralInfoService,
-    WellTestsService ]
+    WellTestsService ],
+    schemas:[CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class ApiModule {
     // public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

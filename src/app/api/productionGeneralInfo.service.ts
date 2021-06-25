@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from 'service_utils
 
 import { Observable }                                        from 'rxjs';
 
+import { ErrorDetails } from '../model/errorDetails';
 import { GetAllProductionGeneralInfoWithNames } from '../model/getAllProductionGeneralInfoWithNames';
 import { GetProductionGeneralInfo } from '../model/getProductionGeneralInfo';
 import { ProductionGeneralInfoRequest } from '../model/productionGeneralInfoRequest';
@@ -28,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ProductionGeneralInfoService {
 
-    protected basePath = 'http://localhost:9598';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -187,6 +188,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -237,6 +239,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {
@@ -288,6 +291,7 @@ export class ProductionGeneralInfoService {
 
         // to determine the Accept header
         let httpHeaderAccepts: string[] = [
+            'application/json'
         ];
         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         if (httpHeaderAcceptSelected != undefined) {

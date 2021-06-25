@@ -1,61 +1,91 @@
-<!--<p>production-general-info works!</p>-->
 <!-- <p>fluid-level-measurements works!</p> -->
 <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <br>
-      <div class="row">
-        <div class="col-md-12">
-          <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th>id</th>
-              <th>initial_prod_date</th>
-              <th>initial_type</th>
-              <th>initial_product</th>
-              <th>initial_lift_type</th>
-              <th>init_status</th>
-              <th>monitoring_system</th>
-              <th>current_well_type_date</th>
-              <th>current_well_type</th>
-              <th>current_product</th>
-              <th>current_status</th>
-              <th>runtime</th>
-              <th>current_lift_type</th>
-              <th>current_lift_type_date</th>
-              <th>power_source_type</th>
-              <th>power_source</th>
-              <th>procession_plant</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let pqi of pqi; let currentIndex=index">
-              <td>{{currentIndex+1}}</td>
-              <td>{{pqi.id}}</td>
-              <td>{{pqi.initialProdDate | date: 'dd-MM-yyyy'}}</td>
-              <td>{{pqi.initialType}}</td>
-              <td>{{pqi.currentProduct}}</td>
-              <td>{{pqi.initialLiftType}}</td>
-              <td>{{pqi.initStatus}}</td>
-              <td>{{pqi.monitoringSystem}}</td>
-              <td>{{pqi.currentWellTypeDate | date: 'dd-MM-yyyy'}}</td>
-              <td>{{pqi.currentWellType}}</td>
-              <td>{{pqi.currentProduct}}</td>
-              <td>{{pqi.currentStatus}}</td>
-              <td>{{pqi.runtime}}</td>
-              <td>{{pqi.currentLiftType}}</td>
-              <td>{{pqi.currentLiftTypeDate | date: 'dd-MM-yyyy'}}</td>
-              <td>{{pqi.powerSourceType}}</td>
-              <td>{{pqi.powerSource}}</td>
-              <td>{{pqi.processionPlant}}</td>
-              <td><button type="button" class="btn btn-danger" (click)="deleteFromPqi(currentIndex)">Delete</button></td>
-            </tr>
-            </tbody>
-          </table>
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
+            <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+            <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+  
+            <ng-template #modalData let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Insert New PGI Record</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <app-add-new-pgi (closeModal)=closePopUpAndRefreshTable()></app-add-new-pgi>
+            </ng-template>
+  
+            <ng-template #modalDataUpdate let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Update A PGI Record</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <app-update-pgi [pgiToBeUpdated]="pgiToBeUpdated" (closeModal)=closePopUpAndRefreshTable()></app-update-pgi>
+            </ng-template>
+  
+          </div>
         </div>
-
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="display: none">#</th>
+                  <th>Id</th>
+                  <th>initialProdDate</th>
+                  <th>initialType</th>
+                  <th>initialProduct</th>
+                  <th>initialLiftType</th>
+                  <th>initStatus</th>
+                  <th>monitoringSystem</th>
+                  <th>currentWellType</th>
+                  <th>currentWellTypeDate</th>
+                  <th>currentProduct</th>
+                  <th>currentStatus</th>
+                  <th>runtime</th>
+                  <th>currentLiftType</th>
+                  <th>currentLiftTypeDate</th>
+                  <th>powerSourceType</th>
+                  <th>powerSource</th>
+                  <th>processionPlant</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let pgi of pgis; let currentIndex = index"
+                  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+                  [class.active]="currentIndex == highlightedRow"
+                >
+                  <td style="display: none">{{ currentIndex }}</td>
+                  <td>{{ pgi.id }}</td>
+                  <td>{{ pgi.initialProdDate | date: "MM-dd-yyyy" }}</td>
+                  <td>{{ pgi.initialType}}</td>
+                  <td>{{ pgi.initialProduct }}</td>
+                  <td>{{ pgi.initialLiftType }}</td>
+                  <td>{{ pgi.initStatus }}</td>
+                  <td>{{ pgi.monitoringSystem }}</td>
+                  <td>{{ pgi.currentWellType }}</td>
+                  <td>{{ pgi.currentWellTypeDate | date: "MM-dd-yyyy" }}</td>
+                  <td>{{ pgi.currentProduct }}</td>
+                  <td>{{ pgi.currentStatus }}</td>
+                  <td>{{ pgi.runtime }}</td>
+                  <td>{{ pgi.currentLiftType }}</td>
+                  <td>{{ pgi.currentLiftTypeDate | date: "MM-dd-yyyy" }}</td>
+                  <td>{{ pgi.powerSourceType }}</td>
+                  <td>{{ pgi.powerSource }}</td>
+                  <td>{{ pgi.processionPlant }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
