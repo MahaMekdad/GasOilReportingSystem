@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -121,7 +122,8 @@ import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-ne
     NgbModule,
     JwtModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxPaginationModule
 
   ],
   providers: [

@@ -21,6 +21,7 @@ import { AllConcessions } from '../model/allConcessions';
 import { ConcessionRequest } from '../model/concessionRequest';
 import { ConcessionResponse } from '../model/concessionResponse';
 import { ErrorDetails } from '../model/errorDetails';
+import { GetAllConcessionFields } from '../model/getAllConcessionFields';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
 import { Configuration }                                     from 'service_utils/configuration';
@@ -29,7 +30,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ConcessionsService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://www.ourcompany.com/v1';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -97,6 +98,47 @@ export class ConcessionsService {
         return this.httpClient.request<ConcessionResponse>('post',`${this.basePath}/concessions`,
             {
                 body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Array of all concession&#x27;s fields
+     * returning an Array of this concession&#x27;s fields
+     * @param id the ID of the concession
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public concessionFieldsIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<GetAllConcessionFields>;
+    public concessionFieldsIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAllConcessionFields>>;
+    public concessionFieldsIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAllConcessionFields>>;
+    public concessionFieldsIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling concessionFieldsIdGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<GetAllConcessionFields>('get',`${this.basePath}/concessionFields/${encodeURIComponent(String(id))}`,
+            {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

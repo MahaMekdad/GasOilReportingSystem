@@ -18,6 +18,12 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   modalContent: NgbModalRef
 
+  totalRecords: number;
+
+  page: number = 1;
+
+  elements: number = 5;
+
   constructor(private _fluidLevelMeasurementsService: FluidLevelMeasurementsService, private _modalService: NgbModal) { }
 
   triggerModal(content) {
@@ -62,20 +68,43 @@ export class FluidLevelMeasurementsComponent implements OnInit {
         this.highlightedRow = -1;
       },
       error => {
-        console.log(error.errorMessage);
+        console.log(error);
       }
     );
   }
 
   loadRecords(){
-    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(null, null).subscribe(
+    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet().subscribe(
+      data => {
+        this.totalRecords = data.length;
+        console.log(this.totalRecords)
+      },
+      error => {
+        console.log(error);
+      });
+    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
-      })
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   closePopUpAndRefreshTable(){
     this.modalContent.dismiss();
     this.loadRecords();
+  }
+
+  updateDataArray(){
+    this.highlightedRow = -1;
+    console.log("SOS!")
+    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(this.page-1, this.elements).subscribe(
+      data => {
+        this.flms = data;
+      },
+      error => {
+        console.log(error);
+      })
   }
 }
