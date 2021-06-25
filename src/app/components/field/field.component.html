@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger" (click)="deleteFromfields()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Insert New field Record</h4>
+<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  <span aria-hidden="true">×</span>
+</button>
+</div>
+<app-app-add-new-field (closeModal)=closePopUpAndRefreshTable()></app-app-add-new-field>
+</ng-template>
+
+<ng-template #modalDataUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update A field Record</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <app-app-update-field [fieldToBeUpdate]="fieldToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-app-update-field>
+</ng-template>
+
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th style="display: none">#</th>
+        <th>field_id</th>
+      <th>field_name</th>
+      <th>field_code</th>
+      <th>concession_id</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let field of fields; let currentIndex = index"
+        (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+        [class.active]="currentIndex == highlightedRow"
+      >
+        <td style="display: none">{{ currentIndex + 1 }}</td>
+         <td>{{field.fieldId}}</td>
+         <td>{{field.fieldName}}</td>
+         <td>{{field.fieldCode}}</td>
+         <td>{{field.concessionId}}</td>
+        <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+

@@ -30,7 +30,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ConcessionsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+    protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -61,7 +61,7 @@ export class ConcessionsService {
 
     /**
      * Add a new concession to the database
-     * 
+     *
      * @param body concession object that needs to be added to the database
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -149,7 +149,7 @@ export class ConcessionsService {
 
     /**
      * Deletes a concession
-     * 
+     *
      * @param id concession id to delete
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -267,7 +267,7 @@ export class ConcessionsService {
 
     /**
      * Update an existing concession
-     * 
+     *
      * @param body concession object that needs to be updated to the database
      * @param id ID of concession to be updated
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.

@@ -36,6 +36,12 @@ import { RegistrationComponent } from './components/registration/registration.co
 
 import { ProductionBudgetComponent } from './components/production-budget/production-budget.component';
 import { FluidLevelMeasurementsComponent } from './components/fluid-level-measurements/fluid-level-measurements.component';
+import { WellComponent } from './components/well/well.component';
+import { FieldComponent } from './components/field/field.component';
+import { AppUpdateFieldComponent } from './components/app-update-field/app-update-field.component';
+import { AppAddNewFieldComponent } from './components/app-add-new-field/app-add-new-field.component';
+import { AppUpdateWellComponent } from './components/app-update-well/app-update-well.component';
+import { AppAddNewWellComponent } from './components/app-add-new-well/app-add-new-well.component';
 import { TestComponent } from './components/test/test.component';
 import { TestEditComponent } from './components/test-edit/test-edit.component';
 import { IntervalsInfoComponent } from './components/intervals-info/intervals-info.component';
@@ -79,9 +85,6 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
 
   declarations: [
     AppComponent,
-    ProductionBudgetComponent,
-    FluidLevelMeasurementsComponent,
-    TestComponent,
     NavComponent,
     ProdDashboardComponent,
     ConcessionComponent,
@@ -91,6 +94,12 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
     ProductionBudgetComponent,
     FluidLevelMeasurementsComponent,
     TestComponent,
+    WellComponent,
+    FieldComponent,
+    AppUpdateFieldComponent,
+    AppAddNewFieldComponent,
+    AppUpdateWellComponent,
+    AppAddNewWellComponent,
     IntervalsInfoComponent,
     WellGeneralInfoComponent,
     WellTabsComponent,
