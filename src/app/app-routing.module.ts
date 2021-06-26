@@ -26,9 +26,9 @@ import { LogoutGuardService } from './guards/logout-guard.service';
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent,canActivate:[LogoutGuardService] },
   {path: 'registration', component: RegistrationComponent,canActivate:[LogoutGuardService]},
-  {path: 'home', component: ProdDashboardComponent,canActivate:[RouteGuardService]},
+  { path: 'login', component: LoginComponent,canActivate:[LogoutGuardService] },
+  
   {path: 'concessions', component: ConcessionComponent,canActivate:[RouteGuardService]},
   {path: 'well', component: WellTabsComponent,canActivate:[RouteGuardService]},
   {path: 'wellGeneralInfo', component: WellGeneralInfoComponent,canActivate:[RouteGuardService]},
@@ -40,7 +40,7 @@ const routes: Routes = [
   {path: 'flm', component: FluidLevelMeasurementsComponent,canActivate:[RouteGuardService]},
   {path: 'productionbudget', component: ProductionBudgetComponent,canActivate:[RouteGuardService]},
   {path: 'dashboard', component: ProdDashboardComponent,canActivate:[RouteGuardService]},
-  { path: 'home', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
+  { path: 'home', component: ProdDashboardComponent,canActivate:[RouteGuardService]},
   { path: 'dashboard', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
   { path: 'test', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
   { path: 'dinfo', component: DrillingInfoComponent,canActivate:[RouteGuardService] },

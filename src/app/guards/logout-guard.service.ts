@@ -10,10 +10,10 @@ export class LogoutGuardService implements CanActivate {
   constructor(private router:Router,private authenticationService:JwtAuthenticationService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
-      if(this.authenticationService.isUserLoggedIn()){
-        return false;
+      if(!this.authenticationService.isUserLoggedIn()){
+        return true;
       }
 
-      return true;
+      return false;
   }
 }
