@@ -1,4 +1,3 @@
-
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 
@@ -89,6 +88,17 @@ import { AddNewReportComponent } from './components/add-new-report/add-new-repor
 import { UpdateReportComponent } from './components/update-report/update-report.component';
 import { DatePipe } from '@angular/common';
 import { WellNavComponent } from './components/well-nav/well-nav.component';
+import {BudgetActualComponent} from './components/budget-actual/budget-actual.component';
+import {ConcessionAddComponent} from './dialogs/add/concession-add/concession-add.component';
+import {ConcessionDeleteComponent} from './dialogs/delete/concession-delete/concession-delete.component';
+import {ConcessionEditComponent} from './dialogs/edit/concession-edit/concession-edit.component';
+import {WellTestAddComponent} from './dialogs/add/well-test-add/well-test-add.component';
+import {WellTestEditComponent} from './dialogs/edit/well-test-edit/well-test-edit.component';
+import {WellTestDeleteComponent} from './dialogs/delete/well-test-delete/well-test-delete.component';
+import {BudgetActualDeleteComponent} from './dialogs/delete/budget-actual-delete/budget-actual-delete.component';
+import {BudgetActualEditComponent} from './dialogs/edit/budget-actual-edit/budget-actual-edit.component';
+import {BudgetActualAddComponent} from './dialogs/add/budget-actual-add/budget-actual-add.component';
+import {BudgetActualChComponent} from './charts/budget-actual-ch/budget-actual-ch.component';
 
 @NgModule({
 
@@ -113,6 +123,17 @@ import { WellNavComponent } from './components/well-nav/well-nav.component';
     WellGeneralInfoComponent,
     WellTabsComponent,
     ConfirmationComponent,
+    BudgetActualComponent,
+    ConcessionAddComponent,
+    ConcessionDeleteComponent,
+    ConcessionEditComponent,
+    WellTestAddComponent,
+    WellTestEditComponent,
+    WellTestDeleteComponent,
+    BudgetActualDeleteComponent,
+    BudgetActualEditComponent,
+    BudgetActualAddComponent,
+    BudgetActualChComponent,
     LoginComponent,
     AddNewFlmComponent,
     AddNewWellGeneralInfoComponent,
@@ -155,6 +176,8 @@ import { WellNavComponent } from './components/well-nav/well-nav.component';
     MatTooltipModule,
     MatFormFieldModule,
     MatSelectModule,
+    NgChartjsModule,
+    NgApexchartsModule,
     ReactiveFormsModule,
     NgbModule,
     JwtModule,
@@ -180,7 +203,7 @@ import { WellNavComponent } from './components/well-nav/well-nav.component';
     JwtHelperService
   ],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

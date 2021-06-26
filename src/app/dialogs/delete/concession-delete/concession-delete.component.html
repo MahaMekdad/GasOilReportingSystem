@@ -1,0 +1,10 @@
+<div class="container">
+  <h3 mat-dialog-title>Are you sure you wanna delete this Concession?</h3>
+  <div mat-dialog-content>
+    Name: {{data.name}}
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="warn" [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+    <button mat-button color="primary" (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>

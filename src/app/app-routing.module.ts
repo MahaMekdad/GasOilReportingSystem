@@ -26,6 +26,7 @@ import { FieldNavComponent } from './components/field-nav/field-nav.component';
 import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-general-info-chart.component';
 import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
 import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
+import { BudgetActualComponent } from './components/budget-actual/budget-actual.component';
 
 
 const routes: Routes = [
@@ -42,8 +43,6 @@ const routes: Routes = [
   { path: 'flm', component: FluidLevelMeasurementsComponent },
   { path: 'productionbudget', component: ProductionBudgetComponent },
   { path: 'dashboard', component: ProdDashboardComponent },
-  { path: 'home', component: ProdDashboardComponent },
-  { path: 'dashboard', component: ProdDashboardComponent },
   { path: 'test', component: ProdDashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dinfo', component: DrillingInfoComponent },
@@ -57,8 +56,10 @@ const routes: Routes = [
   { path: 'wells', component: WellComponent },
   { path: 'fields', component: FieldComponent },
   { path: 'wellNav/:id', component: WellNavComponent },
-  { path: 'well/:id', component: WellTabsComponent }
+  { path: 'well/:id', component: WellTabsComponent },
+  { path: 'budgetActual', component: BudgetActualComponent}
 ];
+
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
