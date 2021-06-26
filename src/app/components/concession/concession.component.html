@@ -1,15 +1,15 @@
 <div class="container my-card">
-  <div class="form">
-    <mat-form-field floatplaceholder="never" color="accent">
-      <input matInput #filter placeholder="Filter concession">
-    </mat-form-field>
-  </div>
+<!--  <div class="form">-->
+<!--    <mat-form-field floatplaceholder="never" color="accent">-->
+<!--      <input matInput #filter placeholder="Filter concession">-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
 
-  <div>
-    <button mat-raised-button (click)="addNew()" color="primary">Add Concession</button>
-    <button mat-raised-button (click)="addNew()" color="accent">Edit Concession</button>
-    <button mat-raised-button (click)="addNew()" color="warn">Delete</button>
-  </div>
+<!--  <div>-->
+<!--    <button mat-raised-button (click)="addNew()" color="primary">Add Concession</button>-->
+<!--    <button mat-raised-button (click)="addNew()" color="accent">Edit Concession</button>-->
+<!--    <button mat-raised-button (click)="addNew()" color="warn">Delete</button>-->
+<!--  </div>-->
   <mat-table #table [dataSource]="concessionsList" matSort class="mat-cell">
     <!-- Concession Id Column -->
     <ng-container matColumnDef="ID">

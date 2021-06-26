@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { LabMeasurementResponse } from 'src/app/model/labMeasurementResponse';
 import { LabService } from 'src/app/api/lab.service';
- 
+
 @Component({
   selector: 'app-lab-measurement',
   templateUrl: './lab-measurement.component.html',
   styleUrls: ['./lab-measurement.component.css']
 })
 export class LabMeasurementComponent implements OnInit {
-
+  @Input()
+  id: number;
   config: any;
 
   labs: LabMeasurementResponse[]
@@ -20,7 +21,7 @@ export class LabMeasurementComponent implements OnInit {
 
   modalContent: NgbModalRef
 
-  constructor(private _labService: LabService, private _modalService: NgbModal) { 
+  constructor(private _labService: LabService, private _modalService: NgbModal) {
 
     this.config = {
       itemsPerPage: 3,
@@ -75,7 +76,7 @@ export class LabMeasurementComponent implements OnInit {
   }
 
   loadRecords(){
-    this._labService.getAllLabs(null, null).subscribe(
+    this._labService.getAllLabsInWell(this.id).subscribe(
       data => {
         this.labs = data;
       })

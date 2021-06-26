@@ -16,7 +16,7 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <app-add-new-flm (closeModal)=closePopUpAndRefreshTable()></app-add-new-flm>
+            <app-add-new-flm [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-flm>
           </ng-template>
 
           <ng-template #modalDataUpdate let-modal>
@@ -26,7 +26,7 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <app-update-flm [flmToBeUpdate]="flmToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-flm>
+            <app-update-flm [id]="id" [flmToBeUpdate]="flmToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-flm>
           </ng-template>
 
         </div>
@@ -57,7 +57,7 @@
                 [class.active]="currentIndex == highlightedRow"
               >
                 <td style="display: none">{{ currentIndex + 1 }}</td>
-                <td>{{ flm.wellId }}</td>
+                <td>{{ id }}</td>
                 <td>{{ flm.date | date: "MM-dd-yyyy" }}</td>
                 <td>{{ flm.intervals }}</td>
                 <td>{{ flm.flType }}</td>

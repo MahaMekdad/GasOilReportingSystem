@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductionGeneralInfoService } from 'src/app/api/productionGeneralInfo.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProductionGeneralInfoResponse } from 'src/app/model/productionGeneralInfoResponse';
@@ -9,6 +9,9 @@ import { ProductionGeneralInfoResponse } from 'src/app/model/productionGeneralIn
   styleUrls: ['./production-general-info.component.css']
 })
 export class ProductionGeneralInfoComponent implements OnInit {
+
+  @Input()
+  id: number;
 
   pgis: ProductionGeneralInfoResponse[]
 
@@ -30,7 +33,7 @@ export class ProductionGeneralInfoComponent implements OnInit {
   }
 
   loadRecords(){
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoGet(1).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoGet(this.id).subscribe(
       data => {
         this.pgis = data;
         // console.log(this.pgis)
@@ -69,7 +72,7 @@ export class ProductionGeneralInfoComponent implements OnInit {
       return;
     }
     let pgi = this.pgis[this.highlightedRow];
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdDelete(1, pgi.id).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdDelete(this.id, pgi.id).subscribe(
       response => {
         this.pgis.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;

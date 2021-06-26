@@ -16,7 +16,7 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-add-new-lab (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
+			  <app-add-new-lab [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
 			</ng-template> 
 
 			<ng-template #modalChart let-modal>
@@ -36,7 +36,7 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-update-lab [labToBeUpdate]="labToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-lab>
+			  <app-update-lab [id]="id" [labToBeUpdate]="labToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-lab>
 			</ng-template>
 
 		  </div>
@@ -64,7 +64,7 @@
 				>
 				  <td style="display: none">{{ currentIndex + 1 }}</td>
 				  <td>{{lab.id}}</td>
-				  <td>{{lab.date | date: 'dd-MM-yyyy'}}</td>
+				  <td>{{lab.date | date: 'MM-dd-yyyy'}}</td>
 				  <td>{{lab.remarks}}</td>
 				  <td>{{lab.s1}}</td>
 				  <td>{{lab.s2}}</td>

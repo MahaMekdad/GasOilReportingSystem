@@ -1,0 +1,26 @@
+.text{
+  font-size:19px;
+  font-weight: bold;
+  color: black;
+}
+/*.cards-container {*/
+/*  column-count: 2;*/
+/*}*/
+
+/*.cards-container div {*/
+/*  background: floralwhite;*/
+/*  height: 50px;*/
+/*  margin: 10px 0;*/
+
+/*// to avoid column breaks*/
+/*-webkit-column-break-inside: avoid;*/
+/*  page-break-inside: avoid;*/
+/*  break-inside: avoid;*/
+/*}*/
+
+/*.cards-container div:first-child {*/
+/*  margin: 0;*/
+/*}*/
+/*.card{*/
+/*  margin-bottom: 10px;*/
+/*}*/

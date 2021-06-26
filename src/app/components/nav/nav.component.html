@@ -22,16 +22,16 @@
       </mat-expansion-panel>
       <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
         <mat-expansion-panel-header>
-          Components
+          Manage
         </mat-expansion-panel-header>
         <mat-nav-list dense>
           <a mat-list-item routerLink="/concessions">
             <mat-icon>attach_money</mat-icon>
             Concessions</a>
-          <a mat-list-item routerLink="#">
+          <a mat-list-item routerLink="/fields">
             <mat-icon>notification_important</mat-icon>
             Fields</a>
-          <a mat-list-item routerLink="#">
+          <a mat-list-item routerLink="/wells">
             <mat-icon>notification_important</mat-icon>
             Wells</a>
         </mat-nav-list>
@@ -51,18 +51,23 @@
         <mat-expansion-panel-header>
           Budgets
         </mat-expansion-panel-header>
-        <mat-list-item>
+        <!-- <mat-list-item>
           <a mat-list-item routerLink='#'>
             <mat-icon>bar_chart</mat-icon>
             Budgets</a>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item>
           <a mat-list-item routerLink='/budgetActual'>
             <mat-icon>bar_chart</mat-icon>
             Budgets Vs Act</a>
         </mat-list-item>
+        <mat-list-item>
+          <a mat-list-item routerLink='/productionbudget'>
+            <mat-icon>bar_chart</mat-icon>
+            Production Budget</a>
+        </mat-list-item>
       </mat-expansion-panel>
-      <mat-expansion-panel>
+      <!-- <mat-expansion-panel>
         <mat-expansion-panel-header>
           Temporary
         </mat-expansion-panel-header>
@@ -72,15 +77,15 @@
         <mat-list-item>
           <a mat-list-item routerLink='/tests'>Well Tests</a>
         </mat-list-item>
-      </mat-expansion-panel>
-      <a mat-list-item routerLink='/home'>Home</a>
+      </mat-expansion-panel> -->
+      <!-- <a mat-list-item routerLink='/home'>Home</a>
       <a mat-list-item routerLink='/login'>login</a>
       <a mat-list-item routerLink='/registration'>Registration</a>
       <a mat-list-item routerLink='/dashboard'>DashBoard</a>
       <a mat-list-item routerLink='/concessions'>concessions</a>
-      <a mat-list-item routerLink='/Tests'>All Well Tests</a>
+      <a mat-list-item routerLink='/Tests'>All Well Tests</a> -->
       <!-- the next line is to be updated -->
-      <a mat-list-item routerLink='/tests'>All Tests fora well</a>
+      <!-- <a mat-list-item routerLink='/tests'>All Tests fora well</a> -->
     </mat-nav-list>
   </mat-sidenav>
 

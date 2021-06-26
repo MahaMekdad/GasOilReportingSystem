@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { WellGeneralInfoService } from 'src/app/api/wellGeneralInfo.service';
 import { WellGeneralInfoResponse } from 'src/app/model/wellGeneralInfoResponse';
@@ -9,17 +9,20 @@ import { WellGeneralInfoResponse } from 'src/app/model/wellGeneralInfoResponse';
   styleUrls: ['./well-general-info.component.css']
 })
 export class WellGeneralInfoComponent implements OnInit {
+  @Input()
+  id: number;
   wellGeneralInfoResponse:WellGeneralInfoResponse;
   highlightedRow: number = -1;
   modalContent: NgbModalRef;
   wellIdToaddWellGeneralInfo:number=2;
   constructor(private wellGeneralInfoService:WellGeneralInfoService, private _modalService: NgbModal) { }
-   
+
   ngOnInit(): void {
     this.loadRecords();
+    this.wellIdToaddWellGeneralInfo = this.id;
   }
 
- 
+
   triggerModal(content) {
     this.modalContent = this._modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
   }
@@ -35,7 +38,7 @@ export class WellGeneralInfoComponent implements OnInit {
     this.highlightedRow = index;
   }
 
-  
+
 
   deleteFromWellGeneralInfo() {
     if(this.highlightedRow == -1 || this.highlightedRow == undefined){
@@ -48,7 +51,7 @@ export class WellGeneralInfoComponent implements OnInit {
 
   loadRecords(){
       //1>>>>wellId
-      this.wellGeneralInfoService.wellsGeneralInfoIdGet(2).subscribe(Response =>{
+      this.wellGeneralInfoService.wellsGeneralInfoIdGet(this.id).subscribe(Response =>{
         this.wellGeneralInfoResponse=Response;
      });
   }
