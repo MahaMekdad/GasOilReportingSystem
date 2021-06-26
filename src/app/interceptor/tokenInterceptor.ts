@@ -26,8 +26,12 @@ export class TokenInterceptor implements HttpInterceptor {
                     Authorization: 'Bearer ' + accessToken
                 }
             })
-        } else {
-            this._router.navigate(['login'])
+        }
+         else {
+           if (!(req.url.includes('/users'))){
+                 this._router.navigate(['login'])
+            }
+           
         }
 
         return next.handle(modifiedRequest)

@@ -43,10 +43,8 @@ export class RegistrationComponent implements OnInit {
   }
   register():void{
     this.userService.usersPost(this.userRequest).subscribe( Response=>{
-   //   this.router.navigate(["/registration"]);
       this.message="You have successfully registered";
     },error => {
-    //  this.router.navigate(["/registration"]);
       this.message=error.error.errorMessage;
       console.log(this.message);
     });
