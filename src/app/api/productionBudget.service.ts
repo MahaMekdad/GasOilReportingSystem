@@ -28,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class ProductionBudgetService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://localhost:9494';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,7 +58,7 @@ export class ProductionBudgetService {
 
 
     /**
-     * 
+     *
      * gell all budgets in specific date
      * @param date specific date to get all the budgets of the concessions
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -102,7 +102,7 @@ export class ProductionBudgetService {
     }
 
     /**
-     * 
+     *
      * deleting budget of a concession in specific date
      * @param id well id that we want to delete it
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -143,9 +143,9 @@ export class ProductionBudgetService {
     }
 
     /**
-     * 
+     *
      * updating budget of a concession in specific date
-     * @param body 
+     * @param body
      * @param id well id that we want to delete it
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -195,9 +195,9 @@ export class ProductionBudgetService {
     }
 
     /**
-     * 
+     *
      * adding new prdouction budget for concessions
-     * @param body 
+     * @param body
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
