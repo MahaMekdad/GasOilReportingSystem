@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConcessionsService } from 'src/app/api/concessions.service';
 import { FieldService } from 'src/app/api/field.service';
@@ -19,6 +20,8 @@ export class FieldNavComponent implements OnInit {
   constructor(private _concessionsService: ConcessionsService, private route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
+    let d = new Date(2020, 5, 15);
+    console.log(d.toLocaleDateString())
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });

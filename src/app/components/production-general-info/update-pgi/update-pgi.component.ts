@@ -14,6 +14,9 @@ export class UpdatePgiComponent implements OnInit {
   form: FormGroup;
 
   @Input()
+  id: number;
+
+  @Input()
   pgiToBeUpdated: ProductionGeneralInfoResponse;
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -67,7 +70,7 @@ export class UpdatePgiComponent implements OnInit {
     pgiRequest.initialProdDate = new Date(initialProdDateValues[0], initialProdDateValues[1]-1, initialProdDateValues[2], 0, 0)
     pgiRequest.currentWellTypeDate = new Date(currentWellTypeDateValues[0], currentWellTypeDateValues[1]-1, currentWellTypeDateValues[2], 0, 0)
     pgiRequest.currentLiftTypeDate = new Date(currentLiftTypeDateValues[0], currentLiftTypeDateValues[1]-1, currentLiftTypeDateValues[2], 0, 0)
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdPut(pgiRequest, 1, this.pgiToBeUpdated.id).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdPut(pgiRequest, this.id, this.pgiToBeUpdated.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

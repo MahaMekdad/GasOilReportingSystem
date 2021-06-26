@@ -1,5 +1,5 @@
 import { ProductionGeneralInfoResponse} from '../../../model/productionGeneralInfoResponse';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductionGeneralInfoService } from 'src/app/api/productionGeneralInfo.service';
 import { ProductionGeneralInfoRequest } from 'src/app/model/productionGeneralInfoRequest';
@@ -10,6 +10,9 @@ import { ProductionGeneralInfoRequest } from 'src/app/model/productionGeneralInf
   styleUrls: ['./add-new-pgi.component.css']
 })
 export class AddNewPgiComponent implements OnInit {
+  
+  @Input()
+  id: number;
   
   form: FormGroup;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -68,7 +71,7 @@ export class AddNewPgiComponent implements OnInit {
     pgiRequest.initialProdDate = new Date(initialProdDateValues[0], initialProdDateValues[1]-1, initialProdDateValues[2], 0, 0)
     pgiRequest.currentWellTypeDate = new Date(currentWellTypeDateValues[0], currentWellTypeDateValues[1]-1, currentWellTypeDateValues[2], 0, 0)
     pgiRequest.currentLiftTypeDate = new Date(currentLiftTypeDateValues[0], currentLiftTypeDateValues[1]-1, currentLiftTypeDateValues[2], 0, 0)
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPost(pgiRequest, 1).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPost(pgiRequest, this.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()
