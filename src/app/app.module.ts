@@ -82,6 +82,9 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
 import { AddNewReportComponent } from './components/add-new-report/add-new-report.component';
 import { UpdateReportComponent } from './components/update-report/update-report.component';
 import { DatePipe } from '@angular/common';
+// import { ReportComponent } from './components/report/report.component';
+// import pdfMake from "pdfmake/build/pdfmake";  
+// import pdfFonts from "pdfmake/build/vfs_fonts";
 
 @NgModule({
 
@@ -129,7 +132,8 @@ import { DatePipe } from '@angular/common';
     ChartS1DateComponent,
     DailyActionsComponent,
     AddNewReportComponent,
-    UpdateReportComponent
+    UpdateReportComponent,
+    // ReportComponent
 
   ],
   imports: [
@@ -151,7 +155,9 @@ import { DatePipe } from '@angular/common';
     MatNativeDateModule,
     NgxPaginationModule,
     NgChartjsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    // pdfMake,
+    // pdfFonts
 
   ],
   providers: [

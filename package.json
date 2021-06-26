@@ -31,6 +31,7 @@
     "ng-chartjs": "^0.2.3",
     "ngx-pagination": "^5.1.1",
     "object-mapper": "^6.2.0",
+    "pdfmake": "^0.1.71",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

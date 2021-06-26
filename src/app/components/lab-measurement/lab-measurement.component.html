@@ -8,7 +8,9 @@
 			<button *ngIf="highlightedRow !== -1"class="btn btn-danger" (click)="deleteFromLabs()">🗑️</button>
 			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
 			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>  
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalReport)" >📋</button>  
+  
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Insert New Lab Record</h4>
@@ -27,6 +29,16 @@
 				  </button>
 				</div>
 				<app-chart-s1-date (closeModal)=closePopUpAndRefreshTable()></app-chart-s1-date>
+			  </ng-template>
+
+			  <ng-template #modalReport let-modal>
+				<div class="modal-header">
+				  <h4 class="modal-title" id="modal-basic-title">Report</h4>
+				  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+					<span aria-hidden="true">×</span>
+				  </button>
+				</div>
+				<app-report (closeModal)=closePopUpAndRefreshTable()></app-report>
 			  </ng-template>
   
 			<ng-template #modalDataUpdate let-modal>
@@ -47,6 +59,7 @@
 			  <thead>
 				<tr>
 					<th>Id</th>
+					<th>wellId</th>
 					<th>Date</th>
 					<th>remarks</th>
 					<th>s1</th>
@@ -63,7 +76,9 @@
 				  [class.active]="currentIndex == highlightedRow"
 				>
 				  <td style="display: none">{{ currentIndex + 1 }}</td>
+
 				  <td>{{lab.id}}</td>
+				  <td>{{lab.wellId}}</td>
 				  <td>{{lab.date | date: 'dd-MM-yyyy'}}</td>
 				  <td>{{lab.remarks}}</td>
 				  <td>{{lab.s1}}</td>

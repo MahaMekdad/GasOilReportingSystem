@@ -29,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class FluidLevelMeasurementsService {
 
-    protected basePath = 'http://localhost:8000';
+    protected basePath = 'http://localhost:9592';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

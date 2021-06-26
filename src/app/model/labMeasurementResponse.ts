@@ -11,6 +11,7 @@
  */
 
 export interface LabMeasurementResponse { 
+    wellId?: number;
     id?: number;
     s1?: number;
     s2?: number;
