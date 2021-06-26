@@ -7,7 +7,7 @@ import { Observable }   from 'rxjs';
 })
 export class WellCoordinateService {
 
-  protected basePath = 'http://localhost:9494';
+  protected basePath = 'http://localhost:8000';
   constructor(private httpClient:HttpClient) { }
 
   public wellsCoordinatesGet(fieldId:number ): Observable<any> {
