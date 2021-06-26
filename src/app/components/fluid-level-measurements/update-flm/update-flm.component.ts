@@ -17,6 +17,9 @@ export class UpdateFlmComponent implements OnInit {
   form: FormGroup;
 
   @Input()
+  id: number;
+
+  @Input()
   flmToBeUpdate: AllFluidLevelMeasurementResponse;
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -57,7 +60,7 @@ export class UpdateFlmComponent implements OnInit {
     let dateValues = this.form.controls.date.value.split("-");
     let timeValues = this.form.controls.time.value.split(":");
     flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
-    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsFlmIdPatch(flmRequest, this.flmToBeUpdate.wellId, this.flmToBeUpdate.id).subscribe(
+    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsFlmIdPatch(flmRequest, this.id, this.flmToBeUpdate.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

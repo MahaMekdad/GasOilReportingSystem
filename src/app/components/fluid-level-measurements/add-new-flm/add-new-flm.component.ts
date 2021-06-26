@@ -1,5 +1,5 @@
 import { FluidLevelMeasurementRequest } from '../../../model/fluidLevelMeasurementRequest';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurements.service';
 import { WellService } from 'src/app/api/well.service';
@@ -13,7 +13,9 @@ import { AllFluidLevelMeasurementResponse } from 'src/app/model/allFluidLevelMea
 })
 export class AddNewFlmComponent implements OnInit {
 
-  allWells: AllWellsResponse[]
+  @Input()
+  id: number;
+  // allWells: AllWellsResponse[]
   form: FormGroup;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
   
@@ -36,16 +38,16 @@ export class AddNewFlmComponent implements OnInit {
       pumpSubmerge:['', [Validators.required]],
       card:['', [Validators.required]],
       remarks:['', [Validators.minLength(5), Validators.maxLength(2000)]],
-      well: ['', [Validators.required]]
+      // well: ['', [Validators.required]]
     })
 
-    this._wellService.getwells().subscribe(
-      response => {
-        this.allWells = response;
-      },
-      error => {
-        console.log(error)
-    })
+    // this._wellService.getwells().subscribe(
+    //   response => {
+    //     this.allWells = response;
+    //   },
+    //   error => {
+    //     console.log(error)
+    // })
 
   }
 
@@ -63,7 +65,7 @@ export class AddNewFlmComponent implements OnInit {
     // console.log(timeValues)
     flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     console.log(flmRequest.date)
-    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.form.controls.well.value).subscribe(
+    this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsPost(flmRequest, this.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

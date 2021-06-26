@@ -14,6 +14,9 @@ export class UpdateLabComponent implements OnInit {
   form: FormGroup;
 
   @Input()
+  id: number;
+
+  @Input()
   labToBeUpdate: LabMeasurementResponse;
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -50,7 +53,7 @@ export class UpdateLabComponent implements OnInit {
     let labRequest: LabMeasurementRequest = this.form.value as LabMeasurementRequest
     let dateValues = this.form.controls.date.value.split("-");
     labRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
-    this._labService.updateLabMeasurement(labRequest, this.wellId, this.labToBeUpdate.id).subscribe(
+    this._labService.updateLabMeasurement(labRequest, this.id, this.labToBeUpdate.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

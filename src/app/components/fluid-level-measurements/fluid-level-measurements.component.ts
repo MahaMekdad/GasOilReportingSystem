@@ -62,14 +62,19 @@ export class FluidLevelMeasurementsComponent implements OnInit {
   }
 
   deleteFromFlms() {
+    debugger
     if(this.highlightedRow == -1 || this.highlightedRow == undefined){
       return;
     }
     let flm = this.flms[this.highlightedRow];
-    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(flm.wellId, flm.id).subscribe(
+    console.log(flm)
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(this.id, flm.id).subscribe(
       response => {
         this.flms.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;
+        this.totalRecords = this.totalRecords-1
+        // this.page = this.page-1
+        // this.pageChange()
       },
       error => {
         console.log(error);

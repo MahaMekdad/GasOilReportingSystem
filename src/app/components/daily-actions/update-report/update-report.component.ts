@@ -36,7 +36,7 @@ export class UpdateReportComponent implements OnInit {
 
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
-      time:['', [Validators.required]],
+      // time:['', [Validators.required]],
       siLVL4:['', [Validators.required]],
       actionDescription:['', [Validators.required]],
       losses:['', [Validators.required]],
@@ -48,10 +48,12 @@ export class UpdateReportComponent implements OnInit {
   }
 
   update(){
+    debugger
     // console.log(this.convertedDate);
     let reportRequest: WellDailyActionsRequest = this.form.value as WellDailyActionsRequest
     let dateValues = this.form.controls.date.value.split("-");
-    let timeValues = this.form.controls.time.value.split(":");
+    // let timeValues = this.form.controls.time.value.split(":");
+    // console.log(dateValues)
     reportRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._wellDailyActionsService.updateWellReport(reportRequest, this.id, this.reportToBeUpdate.id).subscribe(
       response => {
@@ -67,6 +69,6 @@ export class UpdateReportComponent implements OnInit {
   dateSeparaterHelper(datetime: Date){
     let x = new Date(datetime);
     this.convertedDate = x.toLocaleDateString();
-    this.convertedTime = x.getTime().toLocaleString()
+    // this.convertedTime = x.getTime().toLocaleString()
   }
 }

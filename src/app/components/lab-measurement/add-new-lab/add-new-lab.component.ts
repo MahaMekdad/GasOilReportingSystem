@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
 import { LabService } from '../../../api/lab.service';
@@ -13,8 +13,10 @@ import { LabMeasurementRequest } from '../../../model/labMeasurementRequest';
 })
 export class AddNewLabComponent implements OnInit {
 
+  @Input()
+  id: number;
   wellId:number;
-  allWells: AllWellsResponse[]
+  // allWells: AllWellsResponse[]
   form: FormGroup;
   form2: FormGroup;
 
@@ -41,7 +43,7 @@ export class AddNewLabComponent implements OnInit {
     console.log(dateValues)
     labRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     console.log(labRequest.date)
-    this._labService.addLabMeasurement(labRequest, this.wellId).subscribe(
+    this._labService.addLabMeasurement(labRequest, this.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()
