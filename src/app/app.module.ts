@@ -88,6 +88,7 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
 import { AddNewReportComponent } from './components/add-new-report/add-new-report.component';
 import { UpdateReportComponent } from './components/update-report/update-report.component';
 import { DatePipe } from '@angular/common';
+import { WellNavComponent } from './components/well-nav/well-nav.component';
 
 @NgModule({
 
@@ -138,7 +139,8 @@ import { DatePipe } from '@angular/common';
     ChartS1DateComponent,
     DailyActionsComponent,
     AddNewReportComponent,
-    UpdateReportComponent
+    UpdateReportComponent,
+    WellNavComponent
 
   ],
   imports: [

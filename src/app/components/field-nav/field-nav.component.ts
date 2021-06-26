@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConcessionsService } from 'src/app/api/concessions.service';
+import { FieldService } from 'src/app/api/field.service';
+import { ConcessionsFieldsResponse } from 'src/app/model/concessionsFieldsResponse';
+import { FieldsWellsResponse } from 'src/app/model/fieldsWellsResponse';
 
 @Component({
   selector: 'app-field-nav',
@@ -7,10 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FieldNavComponent implements OnInit {
 
-  // allConFields: 
-  constructor() { }
+  allConFields: ConcessionsFieldsResponse[]
+  id: number;
+  sub: any;
+
+  constructor(private _concessionsService: ConcessionsService, private route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+    });
+    this._concessionsService.concessionFieldsIdGet(this.id).subscribe(
+      data => {
+        this.allConFields = data;
+      },
+      error => {
+        console.log(error);
+    });
+  }
+
+  navToFieldWells(currentIndex){
+    this._router.navigate(['/wellNav', this.allConFields[currentIndex].fieldId]);
   }
 
 }

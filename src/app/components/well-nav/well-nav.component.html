@@ -13,20 +13,20 @@
               <thead>
                 <tr>
                   <th style="display: none">#</th>
-                  <th>Field Id</th>
-                  <th>Field Name</th>
-                  <th>Field Code</th>
+                  <th>Well Id</th>
+                  <th>Well Name</th>
+                  <th>Well Code</th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  *ngFor="let con of allConFields; let currentIndex = index"
+                  *ngFor="let con of allFieldWells; let currentIndex = index"
                   (click)="navToFieldWells(currentIndex)"
                 >
                   <td style="display: none">{{ currentIndex + 1 }}</td>
-                  <td>{{ con.fieldId }}</td>
-                  <td>{{ con.fieldName }}</td>
-                  <td>{{ con.fieldCode }}</td>
+                  <td>{{ con.wellId }}</td>
+                  <td>{{ con.wellName }}</td>
+                  <td>{{ con.wellCode }}</td>
                 </tr>
               </tbody>
             </table>

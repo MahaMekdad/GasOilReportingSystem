@@ -1,3 +1,4 @@
+import { WellNavComponent } from './components/well-nav/well-nav.component';
 import { FieldComponent } from './components/field/field.component';
 import { WellComponent } from './components/well/well.component';
 import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
@@ -48,13 +49,15 @@ const routes: Routes = [
   { path: 'dinfo', component: DrillingInfoComponent },
   { path: 'notFound', component: PageNotFoundComponent },
   { path: 'conNav', component: ConcessionNavComponent },
-  { path: 'fieldNav', component: FieldNavComponent },
+  { path: 'fieldNav/:id', component: FieldNavComponent },
   { path: 'pgi', component: ProductionGeneralInfoComponent },
   { path: 'labs', component: LabMeasurementComponent },
   { path: 'reports', component: DailyActionsComponent },
   { path: 'chartTest', component: WellGeneralInfoChartComponent },
   { path: 'wells', component: WellComponent },
   { path: 'fields', component: FieldComponent },
+  { path: 'wellNav/:id', component: WellNavComponent },
+  { path: 'well/:id', component: WellTabsComponent }
 ];
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
