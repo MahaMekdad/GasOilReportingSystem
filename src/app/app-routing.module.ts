@@ -20,31 +20,35 @@ import { LoginComponent } from './components/login/login.component';
 import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
 import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
 import { FieldNavComponent } from './components/field-nav/field-nav.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { RouteGuardService } from './guards/route-guard.service';
+import { LogoutGuardService } from './guards/logout-guard.service';
 
 
 const routes: Routes = [
-  {path: 'home', component: ProdDashboardComponent},
-  {path: 'registration', component: RegistrationComponent},
-  {path: 'concessions', component: ConcessionComponent},
-  {path: 'well', component: WellTabsComponent},
-  {path: 'wellGeneralInfo', component: WellGeneralInfoComponent},
-  {path: 'intervalsInfo', component: IntervalsInfoComponent},
-  {path: 'tests', component: WellTestTableComponent},
-  {path: 'test', component: TestComponent},
-  {path: 'test/add/:id', component: TestEditComponent},
-  {path: 'test/edit/:id', component: TestEditComponent},
-  {path: 'flm', component: FluidLevelMeasurementsComponent},
-  {path: 'productionbudget', component: ProductionBudgetComponent},
-  {path: 'dashboard', component: ProdDashboardComponent},
-  { path: 'home', component: ProdDashboardComponent },
-  { path: 'dashboard', component: ProdDashboardComponent },
-  { path: 'test', component: ProdDashboardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'dinfo', component: DrillingInfoComponent },
-  { path: 'notFound', component: PageNotFoundComponent },
-  { path: 'conNav', component: ConcessionNavComponent },
-  { path: 'fieldNav', component: FieldNavComponent },
-  { path: 'pgi', component: ProductionGeneralInfoComponent }
+  { path: 'login', component: LoginComponent,canActivate:[LogoutGuardService] },
+  {path: 'registration', component: RegistrationComponent,canActivate:[LogoutGuardService]},
+  {path: 'home', component: ProdDashboardComponent,canActivate:[RouteGuardService]},
+  {path: 'concessions', component: ConcessionComponent,canActivate:[RouteGuardService]},
+  {path: 'well', component: WellTabsComponent,canActivate:[RouteGuardService]},
+  {path: 'wellGeneralInfo', component: WellGeneralInfoComponent,canActivate:[RouteGuardService]},
+  {path: 'intervalsInfo', component: IntervalsInfoComponent,canActivate:[RouteGuardService]},
+  {path: 'tests', component: WellTestTableComponent,canActivate:[RouteGuardService]},
+  {path: 'test', component: TestComponent,canActivate:[RouteGuardService]},
+  {path: 'test/add/:id', component: TestEditComponent,canActivate:[RouteGuardService]},
+  {path: 'test/edit/:id', component: TestEditComponent,canActivate:[RouteGuardService]},
+  {path: 'flm', component: FluidLevelMeasurementsComponent,canActivate:[RouteGuardService]},
+  {path: 'productionbudget', component: ProductionBudgetComponent,canActivate:[RouteGuardService]},
+  {path: 'dashboard', component: ProdDashboardComponent,canActivate:[RouteGuardService]},
+  { path: 'home', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
+  { path: 'dashboard', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
+  { path: 'test', component: ProdDashboardComponent,canActivate:[RouteGuardService] },
+  { path: 'dinfo', component: DrillingInfoComponent,canActivate:[RouteGuardService] },
+  { path: 'notFound', component: PageNotFoundComponent,canActivate:[RouteGuardService] },
+  { path: 'conNav', component: ConcessionNavComponent,canActivate:[RouteGuardService] },
+  { path: 'fieldNav', component: FieldNavComponent,canActivate:[RouteGuardService] },
+  { path: 'pgi', component: ProductionGeneralInfoComponent,canActivate:[RouteGuardService] },
+  { path: 'logout', component: LogoutComponent,canActivate:[RouteGuardService] }
 ];
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],

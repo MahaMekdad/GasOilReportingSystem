@@ -68,6 +68,7 @@ import { UpdateWellGeneralInfoComponent } from './components/well-general-info/u
 import { UpdateIntervalsInfoComponent } from './components/intervals-info/update-intervals-info/update-intervals-info.component';
 import { AddNewIntervalsInfoComponent } from './components/intervals-info/add-new-intervals-info/add-new-intervals-info.component';
 import { FlmLineChartComponent } from './components/fluid-level-measurements/flm-line-chart/flm-line-chart.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
 
@@ -107,7 +108,8 @@ import { FlmLineChartComponent } from './components/fluid-level-measurements/flm
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
     UpdatePgiComponent,
-    FlmLineChartComponent
+    FlmLineChartComponent,
+    LogoutComponent
 
   ],
   imports: [
