@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
-import {ProductionBudgetService} from "../../api/productionBudget.service";
-import { ProductionBudegetRequest } from './../../model/productionBudegetRequest';
-import {DrillingInfoDataRequest} from "../../model/drillingInfoDataRequest";
+import {ProductionBudgetService} from "../../../api/productionBudget.service";
+import { ProductionBudegetRequest } from '../../../model/productionBudegetRequest';
+import {DrillingInfoDataRequest} from "../../../model/drillingInfoDataRequest";
 
 @Component({
   selector: 'app-new-productionbudget',

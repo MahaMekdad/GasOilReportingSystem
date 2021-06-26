@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {FieldRequest} from "../../model/fieldRequest";
+import {FieldRequest} from "../../../model/fieldRequest";
 import { AllFieldsResponse } from 'src/app/model/allFieldsResponse';
 import { FieldService } from 'src/app/api/field.service';
 import { ConcessionsService} from 'src/app/api/concessions.service';

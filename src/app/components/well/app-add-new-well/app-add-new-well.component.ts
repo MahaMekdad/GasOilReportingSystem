@@ -1,5 +1,5 @@
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
-import { WellRequest } from './../../model/wellRequest';
+import { WellRequest } from '../../../model/wellRequest';
 import { WellService } from 'src/app/api/well.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WellDailyActionsService } from '../../api/wellDailyActions.service';
-import { WellDailyActionsRequest } from '../../model/wellDailyActionsRequest';
+import { WellDailyActionsService } from '../../../api/wellDailyActions.service';
+import { WellDailyActionsRequest } from '../../../model/wellDailyActionsRequest';
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
 import { WellService } from 'src/app/api/well.service';
 
@@ -14,8 +14,10 @@ import { WellService } from 'src/app/api/well.service';
 })
 export class AddNewReportComponent implements OnInit {
 
+  @Input()
+  id: number;
   wellId:number;
-  allWells: AllWellsResponse[]
+  // allWells: AllWellsResponse[]
   form: FormGroup;
   form2: FormGroup;
 
@@ -44,13 +46,13 @@ export class AddNewReportComponent implements OnInit {
     
   
 
-  this._wellService.getwells().subscribe(
-    response => {
-      this.allWells = response;
-    },
-    error => {
-      console.log(error)
-  })
+  // this._wellService.getwells().subscribe(
+  //   response => {
+  //     this.allWells = response;
+  //   },
+  //   error => {
+  //     console.log(error)
+  // })
   
 }
 
@@ -68,7 +70,7 @@ export class AddNewReportComponent implements OnInit {
     // console.log(timeValues)
     reportRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
     console.log(reportRequest.date)
-    this._wellDailyActionsService.addDailyReport(reportRequest, this.wellId).subscribe(
+    this._wellDailyActionsService.addDailyReport(reportRequest, this.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

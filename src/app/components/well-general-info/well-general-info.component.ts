@@ -19,6 +19,7 @@ export class WellGeneralInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRecords();
+    this.wellIdToaddWellGeneralInfo = this.id;
   }
 
 

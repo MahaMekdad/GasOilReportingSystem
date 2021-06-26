@@ -1,4 +1,4 @@
-import { FluidLevelMeasurementRequest } from './../../model/fluidLevelMeasurementRequest';
+import { FluidLevelMeasurementRequest } from '../../../model/fluidLevelMeasurementRequest';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurements.service';

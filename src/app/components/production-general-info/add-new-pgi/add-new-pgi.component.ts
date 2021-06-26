@@ -1,4 +1,4 @@
-import { ProductionGeneralInfoResponse} from './../../model/productionGeneralInfoResponse';
+import { ProductionGeneralInfoResponse} from '../../../model/productionGeneralInfoResponse';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductionGeneralInfoService } from 'src/app/api/productionGeneralInfo.service';

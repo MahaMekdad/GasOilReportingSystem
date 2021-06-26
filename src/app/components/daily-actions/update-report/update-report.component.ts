@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { WellDailyActionsService } from '../../api/wellDailyActions.service';
-import { WellDailyActionsRequest } from '../../model/wellDailyActionsRequest';
-import { WellDailyActionsResponse } from '../../model/wellDailyActionsResponse';
+import { WellDailyActionsService } from '../../../api/wellDailyActions.service';
+import { WellDailyActionsRequest } from '../../../model/wellDailyActionsRequest';
+import { WellDailyActionsResponse } from '../../../model/wellDailyActionsResponse';
 
 @Component({
   selector: 'app-update-report',
@@ -12,6 +12,9 @@ import { WellDailyActionsResponse } from '../../model/wellDailyActionsResponse';
 export class UpdateReportComponent implements OnInit {
 
   form: FormGroup;
+
+  @Input()
+  id: number;
 
   @Input()
   reportToBeUpdate: WellDailyActionsResponse;
@@ -50,7 +53,7 @@ export class UpdateReportComponent implements OnInit {
     let dateValues = this.form.controls.date.value.split("-");
     let timeValues = this.form.controls.time.value.split(":");
     reportRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
-    this._wellDailyActionsService.updateWellReport(reportRequest, this.wellId, this.reportToBeUpdate.id).subscribe(
+    this._wellDailyActionsService.updateWellReport(reportRequest, this.id, this.reportToBeUpdate.id).subscribe(
       response => {
         console.log(response + "ff")
         this.closeModal.emit()

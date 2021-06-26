@@ -71,7 +71,8 @@ export class WellTestTableComponent implements OnInit {
         console.log(response);
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
-        alert(error.message);
+        // alert(error.message);
+        console.log(error.message);
       }
     );
   }
@@ -84,7 +85,8 @@ export class WellTestTableComponent implements OnInit {
         console.log(response);
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
-        alert(error.message);
+        // alert(error.message);
+        console.log(error.message);
       }
     );
   }

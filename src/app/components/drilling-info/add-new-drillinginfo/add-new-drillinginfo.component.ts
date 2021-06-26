@@ -1,9 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AllWellsResponse} from "../../model/allWellsResponse";
-import {WellService} from "../../api/well.service";
-import {DrilingInfoService} from "../../api/drilingInfo.service";
-import { DrillingInfoDataRequest } from './../../model/drillingInfoDataRequest';
+import {AllWellsResponse} from "../../../model/allWellsResponse";
+import {WellService} from "../../../api/well.service";
+import {DrilingInfoService} from "../../../api/drilingInfo.service";
+import { DrillingInfoDataRequest } from '../../../model/drillingInfoDataRequest';
 import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -12,7 +12,9 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./add-new-drillinginfo.component.css']
 })
 export class AddNewDrillinginfoComponent implements OnInit {
-  allWells: AllWellsResponse[]
+  @Input()
+  id: number;
+  // allWells: AllWellsResponse[]
   form: FormGroup;
   window: NgbModalRef;
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
@@ -29,22 +31,22 @@ export class AddNewDrillinginfoComponent implements OnInit {
       tvdDepth:['', [Validators.required]],
       bbtp:['', [Validators.required]],
       productionGeneralInfo:['', [Validators.required]],
-      well: ['', [Validators.required]]
+      // well: ['', [Validators.required]]
     })
-    this._wellService.getwells().subscribe(
-      response => {
-        this.allWells = response;
-      },
-      error => {
-        console.log(error)
-      })
+    // this._wellService.getwells().subscribe(
+    //   response => {
+    //     this.allWells = response;
+    //   },
+    //   error => {
+    //     console.log(error)
+    //   })
   }
 
   insert() {
     // debugger
     let drillInfo: DrillingInfoDataRequest = this.form.value as DrillingInfoDataRequest;
     console.log(this.form);
-    console.log(this.form.controls.well.value);
+    // console.log(this.form.controls.well.value);
     console.log(this.form.controls.date);
     // console.log(this.form.controls.time.value);
     let dateValues = this.form.controls.date.value.split("-");
@@ -54,9 +56,7 @@ export class AddNewDrillinginfoComponent implements OnInit {
     console.log("-------------");
     console.log(drillInfo)
     console.log(drillInfo.wellDescription);
-    console.log("--------------");
-    console.log(this.form.controls.well.value);
-    this._drillingService.wellsWellIdDrillingInfoPost(drillInfo, this.form.controls.well.value).subscribe(
+    this._drillingService.wellsWellIdDrillingInfoPost(drillInfo, this.id).subscribe(
       response => {
         this.closeModal.emit();
       },

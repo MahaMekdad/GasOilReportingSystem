@@ -49,7 +49,8 @@
                           </tr>
                         </thead>
                         <tbody *ngIf="wellGeneralInfoResponse !=null">
-                          <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id); ClickedRowToUpdate(wellGeneralInfoResponse.id)"
+                          <!-- <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id); ClickedRowToUpdate(wellGeneralInfoResponse.id)" -->
+                          <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id);"
                           [class.active]="wellGeneralInfoResponse.id == highlightedRow">
                             <td>{{wellGeneralInfoResponse.id}}</td>
                             <td>{{wellGeneralInfoResponse.wellId}}</td>

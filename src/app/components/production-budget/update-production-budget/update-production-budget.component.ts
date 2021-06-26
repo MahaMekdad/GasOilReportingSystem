@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProductionBudegetDataResponse} from "../../model/productionBudegetDataResponse";
+import {ProductionBudegetDataResponse} from "../../../model/productionBudegetDataResponse";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProductionBudgetService} from "../../api/productionBudget.service";
-import {DrillingInfoDataRequest} from "../../model/drillingInfoDataRequest";
-import {ProductionBudegetRequest} from "../../model/productionBudegetRequest";
+import {ProductionBudgetService} from "../../../api/productionBudget.service";
+import {DrillingInfoDataRequest} from "../../../model/drillingInfoDataRequest";
+import {ProductionBudegetRequest} from "../../../model/productionBudegetRequest";
 
 @Component({
   selector: 'app-update-production-budget',
