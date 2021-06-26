@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div class="row">
+          <div class="col-md-12">
+  
+            <ng-template #modalDataUpdate let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Assign Role</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="container">
+                <div class="lg-3">
+                    <form [formGroup]="form">
+                        <br>
+                        <label for="jobTitle">User Role:</label>
+                        <select formControlName="jobTitle" class="form-control">
+                            <option disabled>Select Role</option>
+                            <option value=2>Office Engineer</option>
+                            <option value=3>Field Engineer</option>
+                            <option value=1>Non</option>
+                        </select>
+                        <div *ngIf="this.form.controls['jobTitle'].touched && this.form.controls['jobTitle'].invalid">
+                            <small *ngIf="this.form.controls['jobTitle'].errors.required" class="form-text text-danger">Please Choose a Role</small>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <button  type="submit" class="btn btn-primary" (click)="update()">Add</button>
+              </div>
+              <br>
+            </ng-template>
+  
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="display: none">#</th>
+                  <!-- <th>Id</th> -->
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <!-- <th>Job Title</th> -->
+                  <th>Job Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let user of users let currentIndex = index">
+                  <td style="display: none">{{ currentIndex }}</td>
+                  <td style="display: none">{{ user.id }}</td>
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phoneNumber }}</td>
+                  <td style="display: none">{{ user.jobTitle }}</td>
+                  <td>{{ user.jobLocation }}</td>
+                  <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate, currentIndex)">Add Role</button>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

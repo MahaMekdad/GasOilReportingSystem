@@ -1,3 +1,4 @@
+import { AdminAssignRolesComponent } from './components/admin-assign-roles/admin-assign-roles.component';
 import { WellNavComponent } from './components/well-nav/well-nav.component';
 import { FieldComponent } from './components/field/field.component';
 import { WellComponent } from './components/well/well.component';
@@ -57,7 +58,8 @@ const routes: Routes = [
   { path: 'fields', component: FieldComponent },
   { path: 'wellNav/:id', component: WellNavComponent },
   { path: 'well/:id', component: WellTabsComponent },
-  { path: 'budgetActual', component: BudgetActualComponent}
+  { path: 'budgetActual', component: BudgetActualComponent},
+  { path: 'adminManageRoles', component: AdminAssignRolesComponent}
 ];
 
 @NgModule({

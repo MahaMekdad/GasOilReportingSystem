@@ -99,6 +99,7 @@ import {BudgetActualDeleteComponent} from './dialogs/delete/budget-actual-delete
 import {BudgetActualEditComponent} from './dialogs/edit/budget-actual-edit/budget-actual-edit.component';
 import {BudgetActualAddComponent} from './dialogs/add/budget-actual-add/budget-actual-add.component';
 import {BudgetActualChComponent} from './charts/budget-actual-ch/budget-actual-ch.component';
+import { AdminAssignRolesComponent } from './components/admin-assign-roles/admin-assign-roles.component';
 
 @NgModule({
 
@@ -161,7 +162,8 @@ import {BudgetActualChComponent} from './charts/budget-actual-ch/budget-actual-c
     DailyActionsComponent,
     AddNewReportComponent,
     UpdateReportComponent,
-    WellNavComponent
+    WellNavComponent,
+    AdminAssignRolesComponent
 
   ],
   imports: [
