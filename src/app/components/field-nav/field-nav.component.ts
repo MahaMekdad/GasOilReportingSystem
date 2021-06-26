@@ -35,4 +35,7 @@ export class FieldNavComponent implements OnInit {
     this._router.navigate(['/wellNav', this.allConFields[currentIndex].fieldId]);
   }
 
+  back() {
+    this._router.navigate(['/conNav']);
+  }
 }
