@@ -1,6 +1,6 @@
 import {WellTestResponse} from '../../model/wellTestResponse';
 import {WellTestsService} from 'src/app/api/wellTests.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 import {MatDialog} from '@angular/material/dialog';
 import {WellTestAddComponent} from '../../dialogs/add/well-test-add/well-test-add.component';
@@ -15,7 +15,8 @@ import {WellTestDeleteComponent} from '../../dialogs/delete/well-test-delete/wel
   styleUrls: ['./well-test-table.component.css']
 })
 export class WellTestTableComponent implements OnInit {
-
+  @Input()
+  id: number;
   // (02) injecting the well test service
   constructor(
     private wellTestsService: WellTestsService,
@@ -56,6 +57,7 @@ export class WellTestTableComponent implements OnInit {
   private wellTestAdd: WellTestRequest;
 
   ngOnInit(): void {
+    this.wellId = this.id;
     this.getTestsForAWell(this.wellId);
   }
 

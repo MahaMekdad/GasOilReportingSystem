@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DrillingInfoDataResponse} from "../../model/drillingInfoDataResponse";
 import {DrilingInfoService} from "../../api/drilingInfo.service";
 import { DrillingInfoDataRequest } from 'src/app/model/drillingInfoDataRequest';
@@ -12,7 +12,8 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 })
 export class DrillingInfoComponent implements OnInit {
 
-
+  @Input()
+  id: number;
   drill: DrillingInfoDataResponse[]
   drillId: number;
   message:string= "";
@@ -28,7 +29,7 @@ export class DrillingInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._drilingInfoService.wellsDrillingInfoGet(null, null).subscribe(
+    this._drilingInfoService.wellsWellIdDrillingInfoGet(this.id).subscribe(
       data => {
         // console.log(data)
         this.drill = data;
