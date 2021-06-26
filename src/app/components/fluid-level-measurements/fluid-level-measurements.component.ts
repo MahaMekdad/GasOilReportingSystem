@@ -103,7 +103,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
   updateDataArray(){
     this.highlightedRow = -1;
     console.log("SOS!")
-    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(this.page-1, this.elements).subscribe(
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id, this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
       },
