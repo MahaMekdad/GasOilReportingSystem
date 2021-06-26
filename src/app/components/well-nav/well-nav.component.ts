@@ -33,8 +33,8 @@ export class WellNavComponent implements OnInit {
     this._fieldService.getfieldById(this.id).subscribe(
       data => {
         console.log(data);
-        console.log(this.fields);
         this.fields = data;
+        console.log(this.fields);
       },
       error => {
         console.log(error);
