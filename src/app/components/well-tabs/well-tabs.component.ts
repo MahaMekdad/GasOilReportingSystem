@@ -10,6 +10,7 @@ export class WellTabsComponent implements OnInit {
 
   id: number;
   sub: any;
+  concessionName: string;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -17,8 +18,12 @@ export class WellTabsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
-    console.log("horray");
-    console.log(this.id)
+    this.route.queryParams.subscribe(params => {
+      this.concessionName = params.con
+    }
+    );
+    // console.log("horray");
+    // console.log(this.id)
   }
 
 }

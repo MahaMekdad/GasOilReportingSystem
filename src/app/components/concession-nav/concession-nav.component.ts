@@ -30,7 +30,7 @@ export class ConcessionNavComponent implements OnInit {
   }
 
   navToConFields(currentIndex){
-    this._router.navigate(['/fieldNav', this.allConcessions[currentIndex].id])
+    this._router.navigate(['/fieldNav', this.allConcessions[currentIndex].id], { queryParams: {con: this.allConcessions[currentIndex].name}})
   }
 
 }

@@ -4,9 +4,9 @@
          <br>
          <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-danger" (click)="deleteFromWellGeneralInfo()">🗑️</button>
-          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-          <button *ngIf="wellGeneralInfoResponse == null"class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+          <button *ngIf="concession === jobLocation" class="btn btn-danger" (click)="deleteFromWellGeneralInfo()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1 && concession === jobLocation" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button *ngIf="wellGeneralInfoResponse == null && concession === jobLocation" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
 
           <ng-template #modalData let-modal>
             <div class="modal-header">
