@@ -12,13 +12,13 @@
             </form>
           <form [formGroup]="form"> -->
 
-                <div class="lg-3">
+                <!-- <div class="lg-3">
                     <label for="formWellId" class="form-label">WellId</label>
                     <input type="number" [(ngModel)]="wellId" class="form-control" placeholder="wellId" id="formWellId" />
-                  </div>
+                  </div>-->
              
              
-                  <form [formGroup]="form">
+          <form [formGroup]="form"> 
 
             <!-- <div class="lg-3">
               <label for="well">Well:</label>
@@ -31,10 +31,6 @@
                 <small *ngIf="this.form.controls['well'].errors.required" class="form-text text-danger">Please Choose a Well</small>
             </div>
             </div> -->
-
-
-
-
             <br>
 
             <div class="lg-3">
@@ -66,34 +62,38 @@
             <div class="lg-3">
                 <label for="formActionDescription" class="form-label">ActionDescription</label>
                 <input formControlName="actionDescription" type="text" class="form-control" placeholder="ActionDescription" id="formActionDescription"/>
-                  <small *ngIf="this.form.controls['actionDescription'].hasError('required')" class="form-text text-danger">Please Enter The ActionDescription</small> 
+                <div *ngIf="form.controls['actionDescription'].invalid && ((form.controls['actionDescription'].touched) || (this.form.controls['actionDescription'].dirty))">
+                  <small *ngIf="this.form.controls['actionDescription'].hasError('required')" class="form-text text-danger">Please Enter The Action Description</small> 
+                </div>
               </div>
-
             <br>
 
             <div class="lg-3">
                 <label for="formLosses" class="form-label">Losses</label>
                 <input formControlName="losses" type="number" class="form-control" placeholder="Losses" id="formLosses"/>
+                <div *ngIf="form.controls['losses'].invalid && ((form.controls['losses'].touched) || (this.form.controls['losses'].dirty))">
                   <small *ngIf="this.form.controls['losses'].hasError('required')" class="form-text text-danger">Please Enter The Losses</small> 
+                </div>
               </div>
-
             <br>
 
             
             <div class="lg-3">
                 <label for="formNetProduction" class="form-label">NetProduction</label>
                 <input formControlName="netProduction" type="number" class="form-control" placeholder="NetProduction" id="formNetProduction"/>
-                  <small *ngIf="this.form.controls['netProduction'].hasError('required')" class="form-text text-danger">Please Enter The NetProduction</small> 
+                <div *ngIf="form.controls['netProduction'].invalid && ((form.controls['netProduction'].touched) || (this.form.controls['netProduction'].dirty))">
+                  <small *ngIf="this.form.controls['netProduction'].hasError('required')" class="form-text text-danger">Please Enter The Net Production</small> 
+                </div>
               </div>
-
             <br>
 
             <div class="lg-3">
                 <label for="formDownTime" class="form-label">DownTime</label>
                 <input formControlName="downTime" type="number" class="form-control" placeholder="DownTime" id="formDownTime"/>
+                <div *ngIf="form.controls['downTime'].invalid && ((form.controls['downTime'].touched) || (this.form.controls['downTime'].dirty))">
                   <small *ngIf="this.form.controls['downTime'].hasError('required')" class="form-text text-danger">Please Enter The DownTime</small> 
+                </div>
               </div>
-
             <br>
 
             <!-- <div class="lg-3">
@@ -104,7 +104,6 @@
                 </div>
               </div>
             <br> -->
-
  
             <br>
             <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>

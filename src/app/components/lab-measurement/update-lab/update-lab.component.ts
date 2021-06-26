@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LabService } from '../../api/lab.service';
-import { LabMeasurementRequest } from '../../model/labMeasurementRequest';
-import { LabMeasurementResponse } from '../../model/labMeasurementResponse';
+import { LabService } from '../../../api/lab.service';
+import { LabMeasurementRequest } from '../../../model/labMeasurementRequest';
+import { LabMeasurementResponse } from '../../../model/labMeasurementResponse';
 
 @Component({
   selector: 'app-update-lab',

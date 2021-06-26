@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
-import { WellRequest } from './../../model/wellRequest';
+import { WellRequest } from '../../../model/wellRequest';
 import { WellService } from 'src/app/api/well.service';
 import {FieldResponse} from "../../model/fieldResponse";
 import {FieldService} from "../../api/field.service";

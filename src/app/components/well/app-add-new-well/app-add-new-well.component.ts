@@ -1,10 +1,12 @@
-import {AllWellsResponse} from 'src/app/model/allWellsResponse';
-import {WellRequest} from './../../model/wellRequest';
-import {FieldResponse} from './../../model/fieldResponse';
-import {WellService} from 'src/app/api/well.service';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FieldService} from "../../api/field.service";
+import { AllWellsResponse } from 'src/app/model/allWellsResponse';
+import { WellRequest } from '../../../model/wellRequest';
+import { WellService } from 'src/app/api/well.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FieldResponse} from "../../../model/fieldResponse";
+import {FieldService} from "../../../api/field.service";
+
+
 
 @Component({
   selector: 'app-app-add-new-well',

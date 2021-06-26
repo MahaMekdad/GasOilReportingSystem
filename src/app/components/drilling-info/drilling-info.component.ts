@@ -123,7 +123,7 @@ export class DrillingInfoComponent implements OnInit {
     });
   }
   loadRecords(){
-    this._drilingInfoService.wellsDrillingInfoGet().subscribe(
+    this._drilingInfoService.wellsWellIdDrillingInfoGet(this.id).subscribe(
       data => {
         this.drill = data;
       })

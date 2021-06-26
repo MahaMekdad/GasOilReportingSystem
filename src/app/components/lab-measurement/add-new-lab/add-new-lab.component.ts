@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AllWellsResponse } from 'src/app/model/allWellsResponse';
-import { LabService } from '../../api/lab.service';
-import { LabMeasurementRequest } from '../../model/labMeasurementRequest';
+import { LabService } from '../../../api/lab.service';
+import { LabMeasurementRequest } from '../../../model/labMeasurementRequest';
 
 
 
