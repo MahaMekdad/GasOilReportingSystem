@@ -1,0 +1,16 @@
+<div class="container" >
+  <h3 mat-dialog-title>Add New Concession</h3>
+  <form  (ngSubmit)="submit" #formControl="ngForm">
+    <mat-form-field color="accent">
+      <input matInput #input class="form-control" placeholder="concession Name" [(ngModel)]="data.name"
+             name="concessionName" required>
+      <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </form>
+  <div mat-dialog-actions>
+    <button mat-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">
+      Save
+    </button>
+    <button mat-button color="accent" (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>

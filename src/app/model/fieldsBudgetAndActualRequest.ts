@@ -10,34 +10,34 @@
  * Do not edit the class manually.
  */
 
-export interface FieldsBudgetAndActualRequest { 
-    productionDate?: string;
-    meleihaBudget?: number;
-    meleihaActual?: number;
-    meleihaPercentage?: number;
-    agharActual?: number;
-    agharBudget?: number;
-    agharPercentage?: number;
-    eastKanaysActual?: number;
-    eastKanaysBudget?: number;
-    eastKanysPercentage?: number;
-    zarifActual?: number;
-    zarifBudget?: number;
-    zarifPercentage?: number;
-    farasActual?: number;
-    farasBudget?: number;
-    farasPercentage?: number;
-    ramlActual?: number;
-    ramlBudget?: number;
-    ramlPercentage?: number;
-    westernDesertActual?: number;
-    westernDesertBudget?: number;
-    westernDesertPercentage?: number;
-    ashrafiActual?: number;
-    ashrafiBudget?: number;
-    ashrafiPercentage?: number;
-    agibaOilActual?: number;
-    agibaOilBudget?: number;
-    agibaOilPercentage?: number;
-    salesGasActual?: number;
+export interface FieldsBudgetAndActualRequest {
+  productionDate?: string;
+  meleihaBudget?: number;
+  meleihaActual?: number;
+  meleihaPercentage?: number;
+  agharActual?: number;
+  agharBudget?: number;
+  agharPercentage?: number;
+  eastKanaysActual?: number;
+  eastKanaysBudget?: number;
+  eastKanysPercentage?: number;
+  zarifActual?: number;
+  zarifBudget?: number;
+  zarifPercentage?: number;
+  farasActual?: number;
+  farasBudget?: number;
+  farasPercentage?: number;
+  ramlActual?: number;
+  ramlBudget?: number;
+  ramlPercentage?: number;
+  westernDesertActual?: number;
+  westernDesertBudget?: number;
+  westernDesertPercentage?: number;
+  ashrafiActual?: number;
+  ashrafiBudget?: number;
+  ashrafiPercentage?: number;
+  agibaOilActual?: number;
+  agibaOilBudget?: number;
+  agibaOilPercentage?: number;
+  salesGasActual?: number;
 }

@@ -28,7 +28,9 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class WellGeneralInfoService {
 
+
     protected basePath = 'http://localhost:8080';
+
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -58,7 +60,7 @@ export class WellGeneralInfoService {
 
 
     /**
-     * 
+     *
      * Returns a list of wells info
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -94,9 +96,9 @@ export class WellGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * delete wellGeneralInfo by id
-     * @param id 
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -135,9 +137,9 @@ export class WellGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * Obtain information about well from its id
-     * @param id 
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -176,10 +178,10 @@ export class WellGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * update information about well by id
-     * @param body 
-     * @param id 
+     * @param body
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -228,9 +230,9 @@ export class WellGeneralInfoService {
     }
 
     /**
-     * 
+     *
      * Lets a user post a new wellGeneralInfo
-     * @param body 
+     * @param body
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */

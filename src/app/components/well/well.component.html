@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger" (click)="deleteFromwell()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
+          <ng-template #modalData let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Insert New Well Record</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-app-add-new-well (closeModal)=closePopUpAndRefreshTable()></app-app-add-new-well>
+          </ng-template>
+
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Update A Well Record</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-app-update-well [wellToBeUpdate]="wellToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-app-update-well>
+          </ng-template>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th style="display: none">#</th>
+              <th>well_id</th>
+              <th>well_name</th>
+              <th>field_id</th>
+              <th>well_code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+              *ngFor="let wel of wells; let currentIndex = index"
+              (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+              [class.active]="currentIndex == highlightedRow"
+            >
+              <td style="display: none">{{ currentIndex + 1 }}</td>
+              <td>{{wel.wellId}}</td>
+              <td>{{wel.wellName}}</td>
+              <td>{{wel.fieldId}}</td>
+              <td>{{wel.wellCode}}</td>
+              <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

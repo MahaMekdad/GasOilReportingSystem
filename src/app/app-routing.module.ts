@@ -1,11 +1,3 @@
-import { ProductionGeneralInfoComponent } from './components/production-general-info/production-general-info.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { TestEditComponent } from './components/test-edit/test-edit.component';
-import { NgModule, Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import {CommonModule} from '@angular/common';
-
 import {ProdDashboardComponent} from './components/prod-dashboard/prod-dashboard.component';
 import {ConcessionComponent} from './components/concession/concession.component';
 import {WellTestTableComponent} from './components/well-test-table/well-test-table.component';
@@ -16,14 +8,25 @@ import {TestComponent} from './components/test/test.component';
 import {IntervalsInfoComponent} from './components/intervals-info/intervals-info.component';
 import {WellGeneralInfoComponent} from './components/well-general-info/well-general-info.component';
 import {WellTabsComponent} from './components/well-tabs/well-tabs.component';
-import { LoginComponent } from './components/login/login.component';
+import {LoginComponent} from './components/login/login.component';
 import {DrillingInfoComponent} from './components/drilling-info/drilling-info.component';
-import { ConcessionNavComponent } from './components/concession-nav/concession-nav.component';
-import { FieldNavComponent } from './components/field-nav/field-nav.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RouteGuardService } from './guards/route-guard.service';
 import { LogoutGuardService } from './guards/logout-guard.service';
-
+import {ConcessionNavComponent} from './components/concession-nav/concession-nav.component';
+import {FieldNavComponent} from './components/field-nav/field-nav.component';
+import {WellGeneralInfoChartComponent} from './well-general-info-chart/well-general-info-chart.component';
+import {LabMeasurementComponent} from './components/lab-measurement/lab-measurement.component';
+import {DailyActionsComponent} from './components/daily-actions/daily-actions.component';
+import {FieldComponent} from './components/field/field.component';
+import {WellComponent} from './components/well/well.component';
+import {ProductionGeneralInfoComponent} from './components/production-general-info/production-general-info.component';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {TestEditComponent} from './components/test-edit/test-edit.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {BudgetActualComponent} from './components/budget-actual/budget-actual.component';
 
 const routes: Routes = [
   {path: 'registration', component: RegistrationComponent,canActivate:[LogoutGuardService]},
@@ -48,8 +51,16 @@ const routes: Routes = [
   { path: 'conNav', component: ConcessionNavComponent,canActivate:[RouteGuardService] },
   { path: 'fieldNav', component: FieldNavComponent,canActivate:[RouteGuardService] },
   { path: 'pgi', component: ProductionGeneralInfoComponent,canActivate:[RouteGuardService] },
-  { path: 'logout', component: LogoutComponent,canActivate:[RouteGuardService] }
+  { path: 'logout', component: LogoutComponent,canActivate:[RouteGuardService] },
+  {path: 'budgetActual', component: BudgetActualComponent,canActivate:[RouteGuardService] },
+  {path: 'labs', component: LabMeasurementComponent,canActivate:[RouteGuardService] },
+  {path: 'reports', component: DailyActionsComponent,canActivate:[RouteGuardService] },
+  {path: 'chartTest', component: WellGeneralInfoChartComponent,canActivate:[RouteGuardService] },
+  {path: 'wells', component: WellComponent,canActivate:[RouteGuardService] },
+  {path: 'fields', component: FieldComponent,canActivate:[RouteGuardService] }
+
 ];
+
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]

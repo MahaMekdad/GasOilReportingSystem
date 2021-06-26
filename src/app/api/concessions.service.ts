@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 /**
  * Oil and Gas Reporting System (OGRS-API)
  * This is an api  to allows users to obtain infomation about the oil and gas wells database and generating a punch of related reposts such as wells count, insurance as well as production allocation funcationality
@@ -10,311 +11,268 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from 'service_utils/encoder';
+import { Inject, Injectable, Optional } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpResponse, HttpEvent } from '@angular/common/http';
 
-import { Observable }                                        from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { AllConcessions } from '../model/allConcessions';
 import { ConcessionRequest } from '../model/concessionRequest';
 import { ConcessionResponse } from '../model/concessionResponse';
-import { ErrorDetails } from '../model/errorDetails';
-import { GetAllConcessionFields } from '../model/getAllConcessionFields';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from 'service_utils/variables';
-import { Configuration }                                     from 'service_utils/configuration';
+import { BASE_PATH } from 'service_utils/variables';
+import { Configuration } from 'service_utils/configuration';
 
 
 @Injectable()
 export class ConcessionsService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
-    public defaultHeaders = new HttpHeaders();
-    public configuration = new Configuration();
+  // (01) definding a url for the service to be passed to the http client.
+  // this url is created in environmental variables.
+  protected basePath ='http://localhost:9494';
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-        if (basePath) {
-            this.basePath = basePath;
-        }
-        if (configuration) {
-            this.configuration = configuration;
-            this.basePath = basePath || configuration.basePath || this.basePath;
-        }
+  public defaultHeaders = new HttpHeaders();
+  public configuration = new Configuration();
+
+  constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    if (basePath) {
+      this.basePath = basePath;
+    }
+    if (configuration) {
+      this.configuration = configuration;
+      this.basePath = basePath || configuration.basePath || this.basePath;
+    }
+  }
+
+  /**
+   * @param consumes string[] mime-types
+   * @return true: consumes contains 'multipart/form-data', false: otherwise
+   */
+  private canConsumeForm(consumes: string[]): boolean {
+    const form = 'multipart/form-data';
+    for (const consume of consumes) {
+      if (form === consume) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  /**
+   * Add a new concession to the database
+   *
+   * @param body concession object that needs to be added to the database
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public addConcession(body: ConcessionRequest, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
+  public addConcession(body: ConcessionRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
+  public addConcession(body: ConcessionRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
+  public addConcession(body: ConcessionRequest, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+
+    if (body === null || body === undefined) {
+      throw new Error('Required parameter body was null or undefined when calling addConcession.');
     }
 
-    /**
-     * @param consumes string[] mime-types
-     * @return true: consumes contains 'multipart/form-data', false: otherwise
-     */
-    private canConsumeForm(consumes: string[]): boolean {
-        const form = 'multipart/form-data';
-        for (const consume of consumes) {
-            if (form === consume) {
-                return true;
-            }
-        }
-        return false;
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+      'application/json'
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-
-    /**
-     * Add a new concession to the database
-     * 
-     * @param body concession object that needs to be added to the database
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public addConcession(body: ConcessionRequest, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
-    public addConcession(body: ConcessionRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
-    public addConcession(body: ConcessionRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
-    public addConcession(body: ConcessionRequest, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling addConcession.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<ConcessionResponse>('post',`${this.basePath}/concessions`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    // to determine the Content-Type header
+    const consumes: string[] = [
+      'application/json'
+    ];
+    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected != undefined) {
+      headers = headers.set('Content-Type', httpContentTypeSelected);
     }
 
-    /**
-     * Array of all concession&#x27;s fields
-     * returning an Array of this concession&#x27;s fields
-     * @param id the ID of the concession
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public concessionFieldsIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<GetAllConcessionFields>;
-    public concessionFieldsIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GetAllConcessionFields>>;
-    public concessionFieldsIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GetAllConcessionFields>>;
-    public concessionFieldsIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    return this.httpClient.request<ConcessionResponse>('post', `${this.basePath}/concessions`,
+      {
+        body: body,
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
 
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling concessionFieldsIdGet.');
-        }
+  /**
+   * Deletes a concession
+   *
+   * @param id concession id to delete
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public deleteConcession(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+  public deleteConcession(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+  public deleteConcession(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+  public deleteConcession(id: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<GetAllConcessionFields>('get',`${this.basePath}/concessionFields/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    if (id === null || id === undefined) {
+      throw new Error('Required parameter id was null or undefined when calling deleteConcession.');
     }
 
-    /**
-     * Deletes a concession
-     * 
-     * @param id concession id to delete
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public deleteConcession(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteConcession(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteConcession(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public deleteConcession(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    let headers = this.defaultHeaders;
 
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteConcession.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<any>('delete',`${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+      'application/json'
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    /**
-     * Array of all concessions
-     * returning an Array  of available concessions
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public findAllConcessions(observe?: 'body', reportProgress?: boolean): Observable<AllConcessions>;
-    public findAllConcessions(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AllConcessions>>;
-    public findAllConcessions(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AllConcessions>>;
-    public findAllConcessions(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    // to determine the Content-Type header
+    const consumes: string[] = [
+    ];
 
-        let headers = this.defaultHeaders;
+    return this.httpClient.request<any>('delete', `${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
 
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
+  /**
+   * Array of all concessions
+   * returning an Array  of available concessions
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public findAllConcessions(observe?: 'body', reportProgress?: boolean): Observable<AllConcessions>;
+  public findAllConcessions(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AllConcessions>>;
+  public findAllConcessions(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AllConcessions>>;
+  public findAllConcessions(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
+    let headers = this.defaultHeaders;
 
-        return this.httpClient.request<AllConcessions>('get',`${this.basePath}/concessions`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+      'application/json'
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
-    /**
-     * Find concession by concessionID
-     * Returns a single concession
-     * @param id ID of concession to be returned
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public getConcessionById(id: number, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
-    public getConcessionById(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
-    public getConcessionById(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
-    public getConcessionById(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    // to determine the Content-Type header
+    const consumes: string[] = [
+    ];
 
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getConcessionById.');
-        }
+    return this.httpClient.request<AllConcessions>('get', `${this.basePath}/concessions`,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
 
-        let headers = this.defaultHeaders;
+  /**
+   * Find concession by concessionID
+   * Returns a single concession
+   * @param id ID of concession to be returned
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public getConcessionById(id: number, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
+  public getConcessionById(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
+  public getConcessionById(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
+  public getConcessionById(id: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<ConcessionResponse>('get',`${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    if (id === null || id === undefined) {
+      throw new Error('Required parameter id was null or undefined when calling getConcessionById.');
     }
 
-    /**
-     * Update an existing concession
-     * 
-     * @param body concession object that needs to be updated to the database
-     * @param id ID of concession to be updated
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public updateConcession(body: ConcessionRequest, id: number, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
-    public updateConcession(body: ConcessionRequest, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
-    public updateConcession(body: ConcessionRequest, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
-    public updateConcession(body: ConcessionRequest, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    let headers = this.defaultHeaders;
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling updateConcession.');
-        }
-
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateConcession.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<ConcessionResponse>('put',`${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+      'application/json'
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
 
+    // to determine the Content-Type header
+    const consumes: string[] = [
+    ];
+
+    return this.httpClient.request<ConcessionResponse>('get', `${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
+
+  /**
+   * Update an existing concession
+   *
+   * @param body concession object that needs to be updated to the database
+   * @param id ID of concession to be updated
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public updateConcession(body: ConcessionRequest, id: number, observe?: 'body', reportProgress?: boolean): Observable<ConcessionResponse>;
+  public updateConcession(body: ConcessionRequest, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ConcessionResponse>>;
+  public updateConcession(body: ConcessionRequest, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ConcessionResponse>>;
+  public updateConcession(body: ConcessionRequest, id: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+
+    if (body === null || body === undefined) {
+      throw new Error('Required parameter body was null or undefined when calling updateConcession.');
+    }
+
+    if (id === null || id === undefined) {
+      throw new Error('Required parameter id was null or undefined when calling updateConcession.');
+    }
+
+    let headers = this.defaultHeaders;
+
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+      'application/json'
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = [
+      'application/json'
+    ];
+    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected != undefined) {
+      headers = headers.set('Content-Type', httpContentTypeSelected);
+    }
+
+    return this.httpClient.request<ConcessionResponse>('put', `${this.basePath}/concessions/${encodeURIComponent(String(id))}`,
+      {
+        body: body,
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
 }
