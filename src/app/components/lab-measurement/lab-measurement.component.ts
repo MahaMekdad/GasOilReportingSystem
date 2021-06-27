@@ -72,7 +72,7 @@ export class LabMeasurementComponent implements OnInit {
       return;
     }
     let lab = this.labs[this.highlightedRow];
-    this._labService.deleteLabById(1, lab.id).subscribe(
+    this._labService.deleteLabById(this.id, lab.id).subscribe(
       response => {
         this.labs.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;
