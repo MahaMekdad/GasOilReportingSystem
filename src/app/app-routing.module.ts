@@ -34,13 +34,14 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
 import { BudgetActualComponent } from './components/budget-actual/budget-actual.component';
 import { ConNavGuardService } from './guards/ConNavGuardService';
 import { AdminGuardService } from './guards/AdminGuardService';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: ProdDashboardComponent },
+  { path: '', component: HomeComponent },
   { path: 'registration', component: RegistrationComponent, canActivate: [LogoutGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuardService] },
 
-  { path: 'home', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
+  { path: 'home', component: HomeComponent, canActivate: [RouteGuardService] },
   { path: 'dashboard', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
 
   { path: 'concessions', component: ConcessionComponent, canActivate: [RouteGuardService] },
