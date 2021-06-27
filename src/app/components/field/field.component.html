@@ -53,9 +53,20 @@
          <td>{{field.fieldName}}</td>
          <td>{{field.fieldCode}}</td>
          <td>{{field.concessionId}}</td>
+         <button class="btn btn-primary"  (click)="setFieldIdChart(currentIndex); triggerModal(modalChart)" >📊</button>  
+
         <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
       </tr>
       </tbody>
+      <ng-template #modalChart let-modal>
+				<div class="modal-header">
+				  <h4 class="modal-title" id="modal-basic-title">Chart</h4>
+				  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+					<span aria-hidden="true">×</span>
+				  </button>
+				</div>
+				<app-well-general-info-chart [fieldId]="fieldIdChart" (closeModal)=closePopUpAndRefreshTable()></app-well-general-info-chart>
+			  </ng-template>
     </table>
   </div>
 </div>

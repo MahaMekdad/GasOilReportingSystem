@@ -17,6 +17,8 @@ export class FieldComponent implements OnInit {
 
   highlightedRow: number = -1;
 
+  fieldIdChart:number;
+
   modalContent: NgbModalRef
 
   constructor(private _fieldService: FieldService, private _modalService: NgbModal) { }
@@ -81,6 +83,9 @@ export class FieldComponent implements OnInit {
   }
 
 
+  setFieldIdChart(currentIndex:number):void{
+    this.fieldIdChart=this.fields[currentIndex].fieldId;
+  }
 
 
 
