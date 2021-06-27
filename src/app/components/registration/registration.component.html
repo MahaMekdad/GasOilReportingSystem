@@ -1,7 +1,7 @@
 
 <div class="text-center alert alert-warning" *ngIf="message!=''" >{{message}}</div>
 
-<form class="text-center border border-light p-5"  (ngSubmit)="!registrationForm.invalid && register()" #registrationForm="ngForm">
+<form class="text-center border border-light p-5"  #registrationForm="ngForm">
     
       <input  type="text" class="form-control" required="required" placeholder="First name" name="firstName" #firstName="ngModel"  [(ngModel)]="userRequest.firstName">
       <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">First name is required</div>
@@ -23,17 +23,16 @@
       <div class="alert alert-warning" *ngIf="phoneNumber.dirty && phoneNumber.invalid">Phone number is not valid</div>
 
       <br>
-      <label>Job title</label>
+      <!-- <label>Job title</label>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{jobTitles[userRequest.jobTitle-1]}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" (click)="setJobTitle(1)">A</a>
-          <a class="dropdown-item" (click)="setJobTitle(2)">B</a>
-          <a class="dropdown-item" (click)="setJobTitle(3)">C</a>
+          <a class="dropdown-item" (click)="setJobTitle(1)">Office Engineer</a>
+          <a class="dropdown-item" (click)="setJobTitle(2)">Field Engineer</a>
         </div>
-      </div>
+      </div> -->
       <br>
       <label>Job Location</label>
       <div class="dropdown">
@@ -52,5 +51,5 @@
       
       <br>
       <br>
-    <button type="submit" class="btn btn-primary">Sign Up</button>
+    <button [disabled]="registrationForm.invalid" (click)="register()" class="btn btn-primary">Sign Up</button>
     </form>

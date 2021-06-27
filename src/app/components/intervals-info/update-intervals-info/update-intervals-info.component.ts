@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IntervalsInfoService } from 'src/app/api/intervalsInfo.service';
 import { IntervalsInfoRequest } from 'src/app/model/intervalsInfoRequest';
@@ -15,6 +15,8 @@ export class UpdateIntervalsInfoComponent implements OnInit {
   message:string;
   @Input()
   intervalsInfoResponse:IntervalsInfoResponse;
+  @Output() closeModal: EventEmitter<any> = new EventEmitter();
+
   constructor(private intervalsInfosrvice:IntervalsInfoService,private _formBuilder:FormBuilder) {
   
   }
@@ -70,7 +72,9 @@ export class UpdateIntervalsInfoComponent implements OnInit {
     this.intervalsInfoRequest.endDate=new Date(endDate[0],endDate[1],endDate[2]);
     this.intervalsInfosrvice.wellsIntervalsInfoIdPut(this.intervalsInfoRequest,this.intervalsInfoResponse.id).subscribe(
       Response=>{
-        this.message="updated successfully";
+       // this.message="updated successfully";
+        this.closeModal.emit();
+
       }
     )
   }

@@ -1,3 +1,4 @@
+import { LogoutComponent } from './components/logout/logout.component';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 
@@ -153,6 +154,7 @@ import { AdminAssignRolesComponent } from './components/admin-assign-roles/admin
     ProductionGeneralInfoComponent,
     AddNewPgiComponent,
     UpdatePgiComponent,
+    LogoutComponent,
     WellGeneralInfoChartComponent,
     FlmLineChartComponent,
     LabMeasurementComponent,
@@ -164,7 +166,6 @@ import { AdminAssignRolesComponent } from './components/admin-assign-roles/admin
     UpdateReportComponent,
     WellNavComponent,
     AdminAssignRolesComponent
-
   ],
   imports: [
     BrowserModule,

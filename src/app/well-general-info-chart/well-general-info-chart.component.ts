@@ -15,6 +15,7 @@ export type ChartOptions = {
   chart: ApexChart;
   xaxis: ApexXAxis;
   yaxis: ApexYAxis;
+  title: any
 };
 
 @Component({
@@ -63,10 +64,19 @@ export class WellGeneralInfoChartComponent implements OnInit {
           formatter: function(val) {
             return parseFloat(val).toFixed(1)
           }
-        }
+        },
+         title: {
+           text:"Xcord"
+          }
       },
       yaxis: {
-        tickAmount: 7
+        tickAmount: 7,
+        title: {
+          text:"Ycord"
+         }
+      },
+      title:{
+        text:"Wells Coordinates Chart"
       }
     };
   }
