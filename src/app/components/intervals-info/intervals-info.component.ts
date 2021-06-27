@@ -11,6 +11,10 @@ import { IntervalsInfoResponse } from 'src/app/model/intervalsInfoResponse';
 export class IntervalsInfoComponent implements OnInit {
   @Input()
   id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
   intervalsInfoResponseList:IntervalsInfoResponse[];
   wellIdSelected:number=1;
   highlightedRow: number = -1;

@@ -17,6 +17,10 @@ import {WellTestDeleteComponent} from '../../dialogs/delete/well-test-delete/wel
 export class WellTestTableComponent implements OnInit {
   @Input()
   id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
   // (02) injecting the well test service
   constructor(
     private wellTestsService: WellTestsService,

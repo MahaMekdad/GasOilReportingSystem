@@ -12,7 +12,10 @@ export class DailyActionsComponent implements OnInit {
   config: any;
   @Input()
   id: number;
-
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
   reports: WellDailyActionsResponse[]
 
   reportToBeUpdate: WellDailyActionsResponse;

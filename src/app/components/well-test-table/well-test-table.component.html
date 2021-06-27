@@ -1,6 +1,6 @@
-<button mat-raised-button color="primary" (click)="addNew()">Add Test</button>
-<button mat-raised-button color="accent">Edit Test</button>
-<button mat-raised-button color="warn">Delete</button>
+<button *ngFor=" concession === jobLocation || userRole ==='2'" mat-raised-button color="primary" (click)="addNew()">Add Test</button>
+<button *ngFor=" concession === jobLocation || userRole ==='2'" mat-raised-button color="accent">Edit Test</button>
+<button *ngFor=" concession === jobLocation || userRole ==='2'" mat-raised-button color="warn">Delete</button>
 
 <div class="container mat-elevation-z8 spacer">
   <div class="form">
@@ -109,10 +109,10 @@
       <mat-header-cell *matHeaderCellDef>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="primary" (click)="addNew()">
+        <button *ngFor=" concession === jobLocation || userRole ==='2'" mat-icon-button color="primary" (click)="addNew()">
           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="startEdit(
+        <button *ngFor=" concession === jobLocation || userRole ==='2'" mat-icon-button color="accent" (click)="startEdit(
         row.id,row.productionDate,
         row.gross,row.net,
         row.waterCut,row.gor,
@@ -127,7 +127,7 @@
         )">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id)">
+        <button *ngFor=" concession === jobLocation || userRole ==='2'" mat-icon-button color="accent" (click)="deleteItem(i, row.id)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

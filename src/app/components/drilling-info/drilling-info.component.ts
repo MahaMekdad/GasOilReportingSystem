@@ -14,7 +14,11 @@ export class DrillingInfoComponent implements OnInit {
 
   @Input()
   id: number;
-  drill: DrillingInfoDataResponse[]
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
+  drill: DrillingInfoDataResponse[];
   drillId: number;
   message:string= "";
   drillIdEdit: number;

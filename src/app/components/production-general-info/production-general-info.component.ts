@@ -12,7 +12,10 @@ export class ProductionGeneralInfoComponent implements OnInit {
 
   @Input()
   id: number;
-
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string  =  localStorage.getItem("userRole");
   pgis: ProductionGeneralInfoResponse[]
 
   pgiToBeUpdated: ProductionGeneralInfoResponse;
