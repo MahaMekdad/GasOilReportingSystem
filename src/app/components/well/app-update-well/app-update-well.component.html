@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <br />
+      <div>
+        <form [formGroup]="form">
+          <div class="lg-3">
+            <label for="formwellName" class="form-label">wellName</label>
+            <input formControlName="wellName" type="text" class="form-control" placeholder="wellName" id="formwellName"/>
+            <div *ngIf="form.controls['wellName'].invalid && ((form.controls['wellName'].touched) || (this.form.controls['wellName'].dirty))">
+              <small *ngIf="this.form.controls['wellName'].hasError('required')" class="form-text text-danger">Please Enter The wellName</small>
+            </div>
+          </div>
+          <br>
+
+          <!-- <div class="lg-3">
+            <label>Field:</label>
+            <select formControlName="field" class="form-control">
+              <option disabled>Select Field</option>
+              <option>Choose Field</option>
+              <option *ngFor="let field of fields" [value]='field.fieldId'>{{field.fieldName}}</option>
+            </select>
+            <div *ngIf="this.form.controls['field'].touched && this.form.controls['field'].invalid">
+              <small *ngIf="this.form.controls['field'].errors.required" class="form-text text-danger">Please Choose a Field</small>
+            </div>
+          </div> -->
+<!--          <div class="lg-3">-->
+<!--            <label for="formfieldId" class="form-label">fieldId</label>-->
+<!--            <input formControlName="fieldId" type="number" class="form-control" placeholder="fieldId" id="formfieldId"/>-->
+<!--            <div *ngIf="form.controls['fieldId'].invalid && ((form.controls['fieldId'].touched) || (this.form.controls['fieldId'].dirty))">-->
+<!--              <small *ngIf="this.form.controls['fieldId'].hasError('required')" class="form-text text-danger">Please Enter The fieldId</small>-->
+<!--            </div>-->
+<!--          </div>-->
+          <br>
+
+          <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

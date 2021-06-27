@@ -30,6 +30,7 @@ import { Configuration }                                     from 'service_utils
 export class WellTestsService {
 
     protected basePath = 'http://localhost:8080';
+
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
