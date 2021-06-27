@@ -39,7 +39,7 @@ export class WellTestEditComponent implements OnInit {
   }
 
   stopEdit(): void {
-    this.serviceReference.updateWellTestRecord(this.data.rowData, 1, this.data.rowData.recordId).subscribe(
+    this.serviceReference.updateWellTestRecord(this.data.rowData, this.data.wellId , this.data.rowData.recordId).subscribe(
       (response: WellTestResponse) => {
         console.log('---------------------');
         console.log(this.data.productionDate);

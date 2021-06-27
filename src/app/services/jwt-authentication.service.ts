@@ -38,4 +38,8 @@ export class JwtAuthenticationService {
       return false;
     }
   }
+
+  isAdmin(){
+    return +localStorage.getItem("userRole") === 4
+  }
 }

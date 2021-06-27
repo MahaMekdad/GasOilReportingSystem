@@ -32,40 +32,48 @@ import { WellGeneralInfoChartComponent } from './well-general-info-chart/well-ge
 import { LabMeasurementComponent } from './components/lab-measurement/lab-measurement.component';
 import { DailyActionsComponent } from './components/daily-actions/daily-actions.component';
 import { BudgetActualComponent } from './components/budget-actual/budget-actual.component';
+import { ConNavGuardService } from './guards/ConNavGuardService';
+import { AdminGuardService } from './guards/AdminGuardService';
 
 const routes: Routes = [
+  { path: '', component: ProdDashboardComponent },
   { path: 'registration', component: RegistrationComponent, canActivate: [LogoutGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuardService] },
 
+  { path: 'home', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
+  { path: 'dashboard', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
+
   { path: 'concessions', component: ConcessionComponent, canActivate: [RouteGuardService] },
-  { path: 'well', component: WellTabsComponent, canActivate: [RouteGuardService] },
+  { path: 'wells', component: WellComponent, canActivate: [RouteGuardService] },
+  { path: 'fields', component: FieldComponent, canActivate: [RouteGuardService] },
+  // { path: 'well', component: WellTabsComponent, canActivate: [RouteGuardService] },
+
   { path: 'wellGeneralInfo', component: WellGeneralInfoComponent, canActivate: [RouteGuardService] },
   { path: 'intervalsInfo', component: IntervalsInfoComponent, canActivate: [RouteGuardService] },
   { path: 'tests', component: WellTestTableComponent, canActivate: [RouteGuardService] },
-  { path: 'test', component: TestComponent, canActivate: [RouteGuardService] },
+  { path: 'flm', component: FluidLevelMeasurementsComponent, canActivate: [RouteGuardService] },
+  { path: 'dinfo', component: DrillingInfoComponent, canActivate: [RouteGuardService] },
+  { path: 'pgi', component: ProductionGeneralInfoComponent, canActivate: [RouteGuardService] },
+  { path: 'reports', component: DailyActionsComponent, canActivate: [RouteGuardService] },
+  { path: 'labs', component: LabMeasurementComponent, canActivate: [RouteGuardService] },
+  { path: 'chartTest', component: WellGeneralInfoChartComponent, canActivate: [RouteGuardService] },
+  
+  { path: 'budgetActual', component: BudgetActualComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+  { path: 'productionbudget', component: ProductionBudgetComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+
   { path: 'test/add/:id', component: TestEditComponent, canActivate: [RouteGuardService] },
   { path: 'test/edit/:id', component: TestEditComponent, canActivate: [RouteGuardService] },
-  { path: 'flm', component: FluidLevelMeasurementsComponent, canActivate: [RouteGuardService] },
-  { path: 'productionbudget', component: ProductionBudgetComponent, canActivate: [RouteGuardService] },
-  { path: 'dashboard', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
-  { path: 'home', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
-  { path: 'dashboard', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
-  { path: 'test', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
-  { path: 'dinfo', component: DrillingInfoComponent, canActivate: [RouteGuardService] },
-  { path: 'notFound', component: PageNotFoundComponent, canActivate: [RouteGuardService] },
-  { path: 'conNav', component: ConcessionNavComponent, canActivate: [RouteGuardService] },
-  { path: 'fieldNav/:id', component: FieldNavComponent, canActivate: [RouteGuardService] },
-  { path: 'pgi', component: ProductionGeneralInfoComponent, canActivate: [RouteGuardService] },
+
+  { path: 'conNav', component: ConcessionNavComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+  { path: 'fieldNav/:id', component: FieldNavComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+  { path: 'wellNav/:id', component: WellNavComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+  { path: 'well/:id', component: WellTabsComponent, canActivate: [RouteGuardService, ConNavGuardService] },
+  
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
-  { path: 'budgetActual', component: BudgetActualComponent, canActivate: [RouteGuardService] },
-  { path: 'labs', component: LabMeasurementComponent, canActivate: [RouteGuardService] },
-  { path: 'reports', component: DailyActionsComponent, canActivate: [RouteGuardService] },
-  { path: 'chartTest', component: WellGeneralInfoChartComponent, canActivate: [RouteGuardService] },
-  { path: 'wells', component: WellComponent, canActivate: [RouteGuardService] },
-  { path: 'fields', component: FieldComponent, canActivate: [RouteGuardService] },
-  { path: 'wellNav/:id', component: WellNavComponent, canActivate: [RouteGuardService] },
-  { path: 'well/:id', component: WellTabsComponent, canActivate: [RouteGuardService] },
-  { path: 'adminManageRoles', component: AdminAssignRolesComponent, canActivate: [RouteGuardService] }
+  
+  { path: 'adminManageRoles', component: AdminAssignRolesComponent, canActivate: [RouteGuardService, AdminGuardService] },
+
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
