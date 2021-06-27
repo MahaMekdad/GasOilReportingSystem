@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'concessions', component: ConcessionComponent, canActivate: [RouteGuardService] },
   { path: 'wells', component: WellComponent, canActivate: [RouteGuardService] },
   { path: 'fields', component: FieldComponent, canActivate: [RouteGuardService] },
-  { path: 'well', component: WellTabsComponent, canActivate: [RouteGuardService] },
+  // { path: 'well', component: WellTabsComponent, canActivate: [RouteGuardService] },
 
   { path: 'wellGeneralInfo', component: WellGeneralInfoComponent, canActivate: [RouteGuardService] },
   { path: 'intervalsInfo', component: IntervalsInfoComponent, canActivate: [RouteGuardService] },

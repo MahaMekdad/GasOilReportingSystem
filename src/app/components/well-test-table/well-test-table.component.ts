@@ -142,6 +142,7 @@ export class WellTestTableComponent implements OnInit {
             unit,
             remarks
           },
+          wellId: this.wellId
         }
       })
     ;
