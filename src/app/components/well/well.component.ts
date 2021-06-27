@@ -10,6 +10,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class WellComponent implements OnInit {
 
+  role: string = localStorage.getItem("userRole");
+
   wells: AllWellsResponse[]
 
   wellToBeUpdate: AllWellsResponse;

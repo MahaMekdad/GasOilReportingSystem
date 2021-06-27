@@ -16,6 +16,7 @@ import {ConcessionEditComponent} from '../../dialogs/edit/concession-edit/conces
 })
 export class ConcessionComponent implements OnInit {
 
+  role: string = localStorage.getItem("userRole");
   displayedColumns: string[] = ['ID', 'ConcessionName', 'Actions'];
   public datasource: ConcessionResponse[];
 
