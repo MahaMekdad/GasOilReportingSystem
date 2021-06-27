@@ -25,16 +25,16 @@
     <!--    Actions-->
     <ng-container matColumnDef="Actions">
       <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
+        <button *ngIf="+role === 2" mat-icon-button color="primary" (click)="addNew()">
           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
         </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent"
+        <button *ngIf="+role === 2" mat-icon-button color="accent"
                 (click)="EditRecord(i, row.id, row.name)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="delete(i, row.id, row.name)">
+        <button *ngIf="+role === 2" mat-icon-button color="accent" (click)="delete(i, row.id, row.name)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

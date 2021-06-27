@@ -11,6 +11,14 @@ import { LabService } from 'src/app/api/lab.service';
 export class LabMeasurementComponent implements OnInit {
   @Input()
   id: number;
+
+  @Input()
+  concession: string;
+
+  jobLocation: string = localStorage.getItem("jobLocation");
+
+  role: string = localStorage.getItem("userRole");
+
   config: any;
 
   labs: LabMeasurementResponse[]

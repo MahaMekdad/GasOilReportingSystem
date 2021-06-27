@@ -11,6 +11,14 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 export class FluidLevelMeasurementsComponent implements OnInit {
   @Input()
   id: number;
+
+  @Input()
+  concession: string;
+
+  jobLocation: string = localStorage.getItem("jobLocation");
+
+  role: string = localStorage.getItem("userRole");
+
   flms: AllFluidLevelMeasurementResponse[]
 
   flmToBeUpdate: AllFluidLevelMeasurementResponse;
