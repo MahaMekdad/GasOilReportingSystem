@@ -117,7 +117,7 @@ export class BudgetActualChComponent implements OnInit {
       },
       yaxis: {
         title: {
-          text: 'Temperature'
+          text: 'Budget'
         },
         min: 0,
         max: 10000
