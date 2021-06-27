@@ -11,6 +11,14 @@ import { LabService } from 'src/app/api/lab.service';
 export class LabMeasurementComponent implements OnInit {
   @Input()
   id: number;
+
+  @Input()
+  concession: string;
+
+  jobLocation: string = localStorage.getItem("jobLocation");
+
+  role: string = localStorage.getItem("userRole");
+
   config: any;
 
   labs: LabMeasurementResponse[]
@@ -64,7 +72,7 @@ export class LabMeasurementComponent implements OnInit {
       return;
     }
     let lab = this.labs[this.highlightedRow];
-    this._labService.deleteLabById(1, lab.id).subscribe(
+    this._labService.deleteLabById(this.id, lab.id).subscribe(
       response => {
         this.labs.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;

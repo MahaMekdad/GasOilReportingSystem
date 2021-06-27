@@ -9,6 +9,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FieldComponent implements OnInit {
 
+  role: string = localStorage.getItem("userRole");
 
   fields: AllFieldsResponse[]
 

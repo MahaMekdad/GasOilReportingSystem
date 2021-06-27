@@ -16,6 +16,7 @@ export class WellNavComponent implements OnInit {
   fields: FieldResponse;
   id: number;
   sub: any;
+  concessionName: string;
 
   constructor(private _fieldService: FieldService, private route: ActivatedRoute, private _router: Router) { }
 
@@ -30,6 +31,11 @@ export class WellNavComponent implements OnInit {
       error => {
         console.log(error);
     });
+    this.route.queryParams.subscribe(params => {
+      this.concessionName = params.con
+      // console.log(this.concessionName + " *********")
+    }
+    );
     this._fieldService.getfieldById(this.id).subscribe(
       data => {
         console.log(data);
@@ -43,7 +49,7 @@ export class WellNavComponent implements OnInit {
   }
 
   navToFieldWells(currentIndex){
-    this._router.navigate(['/well', this.allFieldWells[currentIndex].wellId]);
+    this._router.navigate(['/well', this.allFieldWells[currentIndex].wellId], { queryParams: {con: this.concessionName}});
   }
 
   back() {

@@ -16,15 +16,19 @@ export class FieldNavComponent implements OnInit {
   allConFields: ConcessionsFieldsResponse[]
   id: number;
   sub: any;
+  concessionName: string;
 
   constructor(private _concessionsService: ConcessionsService, private route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
-    let d = new Date(2020, 5, 15);
-    console.log(d.toLocaleDateString())
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
+    this.route.queryParams.subscribe(params => {
+        this.concessionName = params.con
+        // console.log(this.concessionName + " *********")
+      }
+    );
     this._concessionsService.concessionFieldsIdGet(this.id).subscribe(
       data => {
         this.allConFields = data;
@@ -35,7 +39,7 @@ export class FieldNavComponent implements OnInit {
   }
 
   navToFieldWells(currentIndex){
-    this._router.navigate(['/wellNav', this.allConFields[currentIndex].fieldId]);
+    this._router.navigate(['/wellNav', this.allConFields[currentIndex].fieldId], { queryParams: {con: this.concessionName}});
   }
 
   back() {

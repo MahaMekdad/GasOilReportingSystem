@@ -11,6 +11,10 @@ import { WellGeneralInfoResponse } from 'src/app/model/wellGeneralInfoResponse';
 export class WellGeneralInfoComponent implements OnInit {
   @Input()
   id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string  =  localStorage.getItem("userRole");
   wellGeneralInfoResponse:WellGeneralInfoResponse;
   highlightedRow: number = -1;
   modalContent: NgbModalRef;

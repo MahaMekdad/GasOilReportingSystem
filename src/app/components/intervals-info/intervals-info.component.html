@@ -4,9 +4,9 @@
        <br>
        <div class="row">
       <div class="col-md-12">
-        <button class="btn btn-danger" (click)="deleteFromIntervalsInfo()">🗑️</button>
-        <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-        <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+        <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || userRole ==='2')" class="btn btn-danger" (click)="deleteFromIntervalsInfo()">🗑️</button>
+        <button *ngIf="highlightedRow !== -1 &&( concession === jobLocation || userRole ==='2')" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+        <button *ngIf="concession === jobLocation || userRole ==='2'" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
 
         <ng-template #modalData let-modal>
           <div class="modal-header">
@@ -46,13 +46,13 @@
                           <th>pr</th>
                           <th>tr</th>
                           <th>status</th>
-                          <th>Start date</th> 
-                          <th>End date</th> 
-                          <th>Pi</th> 
-                          <th>Mobility</th> 
-                          <th>fluidType</th> 
-                          <th>api</th> 
-                          <th>notes</th> 
+                          <th>Start date</th>
+                          <th>End date</th>
+                          <th>Pi</th>
+                          <th>Mobility</th>
+                          <th>fluidType</th>
+                          <th>api</th>
+                          <th>notes</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -82,7 +82,7 @@
                       </tbody>
                     </table>
               </div>
-             
+
           </div>
       </div>
     </div>

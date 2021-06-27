@@ -5,10 +5,10 @@
         <br />
         <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
-            <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-            <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-  
+            <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || userRole ==='2')" class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
+            <button *ngIf="highlightedRow !== -1 &&( concession === jobLocation || userRole == '2')" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+            <button *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+
             <ng-template #modalData let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Insert New PGI Record</h4>
@@ -18,7 +18,7 @@
               </div>
               <app-add-new-pgi [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-pgi>
             </ng-template>
-  
+
             <ng-template #modalDataUpdate let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Update A PGI Record</h4>
@@ -28,7 +28,7 @@
               </div>
               <app-update-pgi [id]="id" [pgiToBeUpdated]="pgiToBeUpdated" (closeModal)=closePopUpAndRefreshTable()></app-update-pgi>
             </ng-template>
-  
+
           </div>
         </div>
         <div class="row">
@@ -120,4 +120,4 @@
       <!-- </div>
     </div> -->
   </div>
-  
+
