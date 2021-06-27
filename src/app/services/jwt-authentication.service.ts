@@ -26,5 +26,16 @@ export class JwtAuthenticationService {
   loggout(){
     localStorage.removeItem("authenticatedUser");
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("userRole");
+    localStorage.removeItem("jobLocation");
+  }
+
+  checkAuthorizationPrivilege(){
+    let role = localStorage.getItem("userRole");
+    if(+role !== 1 && +role !== 4){
+      return true;
+    } else {
+      return false;
+    }
   }
 }

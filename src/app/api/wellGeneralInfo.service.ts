@@ -30,7 +30,7 @@ export class WellGeneralInfoService {
 
 
 
-    protected basePath = 'http://localhost:8080';
+    protected basePath = 'http://localhost:8000';
 
 
     public defaultHeaders = new HttpHeaders();

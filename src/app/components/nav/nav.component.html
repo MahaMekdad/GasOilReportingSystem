@@ -21,7 +21,7 @@
         </mat-nav-list>
       </mat-expansion-panel>
       <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()' [class.mat-elevation-z0]="true" dense>
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header *ngIf='authenticationService.checkAuthorizationPrivilege()'>
           Manage
         </mat-expansion-panel-header>
         <mat-nav-list dense>
@@ -36,7 +36,7 @@
             Wells</a>
         </mat-nav-list>
       </mat-expansion-panel>
-      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()' dense>
+      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()' dense>
         <mat-expansion-panel-header>
           DashBoards
         </mat-expansion-panel-header>
@@ -47,7 +47,7 @@
         </mat-list-item>
       </mat-expansion-panel>
 
-      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()'>
+      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
         <mat-expansion-panel-header>
           Budgets
         </mat-expansion-panel-header>
