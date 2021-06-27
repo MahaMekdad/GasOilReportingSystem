@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/api/users.service';
 import { JobLocation } from 'src/app/model/jobLocation';
 import { UserRequest } from 'src/app/model/userRequest';
@@ -12,7 +13,7 @@ import { UserRequest } from 'src/app/model/userRequest';
 
 
 export class RegistrationComponent implements OnInit {
-  jobTitles:string[]=["A","B","c"];
+  jobTitles:string[]=["Office Engineer","Field Engineer"];
   email= new FormControl('',[
     Validators.required,
     Validators.email
@@ -28,7 +29,7 @@ export class RegistrationComponent implements OnInit {
     password: ''
    };
    addUserForm: FormGroup;
-  constructor(private userService:UsersService) {
+  constructor(private userService:UsersService,private router:Router) {
   }
 
   ngOnInit(): void {

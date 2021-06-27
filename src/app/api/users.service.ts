@@ -86,6 +86,7 @@ export class UsersService {
     const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     if (httpHeaderAcceptSelected != undefined) {
       headers = headers.set('Accept', httpHeaderAcceptSelected);
+
     }
 
     // to determine the Content-Type header

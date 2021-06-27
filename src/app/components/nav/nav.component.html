@@ -9,19 +9,19 @@
           Main
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink='/home'>
+          <a mat-list-item *ngIf='authenticationService.isUserLoggedIn()' routerLink='/home'>
             <mat-icon>home</mat-icon>
             Home</a>
-          <a mat-list-item routerLink='/login'>
+          <a *ngIf='!authenticationService.isUserLoggedIn()' mat-list-item routerLink='/login'>
             <mat-icon>login</mat-icon>
             login</a>
-          <a mat-list-item routerLink='/registration'>
+          <a *ngIf='!authenticationService.isUserLoggedIn()' mat-list-item routerLink='/registration'>
             <mat-icon>manage_accounts</mat-icon>
             Registration</a>
         </mat-nav-list>
       </mat-expansion-panel>
-      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
-        <mat-expansion-panel-header>
+      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()' [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header *ngIf='authenticationService.checkAuthorizationPrivilege()'>
           Manage
         </mat-expansion-panel-header>
         <mat-nav-list dense>
@@ -36,7 +36,7 @@
             Wells</a>
         </mat-nav-list>
       </mat-expansion-panel>
-      <mat-expansion-panel dense>
+      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()' dense>
         <mat-expansion-panel-header>
           DashBoards
         </mat-expansion-panel-header>
@@ -47,7 +47,7 @@
         </mat-list-item>
       </mat-expansion-panel>
 
-      <mat-expansion-panel>
+      <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
         <mat-expansion-panel-header>
           Budgets
         </mat-expansion-panel-header>
@@ -67,7 +67,10 @@
             Production Budget</a>
         </mat-list-item>
       </mat-expansion-panel>
-      <!-- <mat-expansion-panel>
+
+
+      <!-- <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()'>
+
         <mat-expansion-panel-header>
           Temporary
         </mat-expansion-panel-header>
@@ -77,6 +80,7 @@
         <mat-list-item>
           <a mat-list-item routerLink='/tests'>Well Tests</a>
         </mat-list-item>
+
       </mat-expansion-panel> -->
       <!-- <a mat-list-item routerLink='/home'>Home</a>
       <a mat-list-item routerLink='/login'>login</a>
@@ -103,7 +107,7 @@
       </button>
       Reporting System
       <span style="flex: 1 1 auto;"></span>
-      <div>
+      <div *ngIf='authenticationService.isUserLoggedIn()'>
         <button mat-icon-button matTooltip="Switch Apps">
           <mat-icon>apps</mat-icon>
         </button>
@@ -123,7 +127,7 @@
             <span>Help</span>
           </button>
           <mat-divider></mat-divider>
-          <button mat-menu-item>
+          <button mat-menu-item routerLink="/logout">
             <mat-icon>exit_to_app</mat-icon>
             Logout
           </button>

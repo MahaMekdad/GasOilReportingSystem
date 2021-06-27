@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IntervalsInfoService } from 'src/app/api/intervalsInfo.service';
 import { IntervalsInfoRequest } from 'src/app/model/intervalsInfoRequest';
@@ -14,6 +14,7 @@ export class AddNewIntervalsInfoComponent implements OnInit {
   @Input()
   wellIdSelected:number;
 
+  @Output() closeModal: EventEmitter<any> = new EventEmitter();
 
   constructor(private intervalsInfoService:IntervalsInfoService,private _formBuilder:FormBuilder) { }
 
@@ -53,6 +54,8 @@ export class AddNewIntervalsInfoComponent implements OnInit {
    console.log(intervalsInfoRequest);
     this.intervalsInfoService.wellsIntervalsInfoPost(intervalsInfoRequest).subscribe(Response=>{
             console.log("good");
+            this.closeModal.emit();
+
     },
     error=>{
       console.log(error)
