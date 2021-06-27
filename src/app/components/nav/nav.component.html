@@ -73,14 +73,7 @@
           <a mat-list-item routerLink='/tests'>Well Tests</a>
         </mat-list-item>
       </mat-expansion-panel>
-      <a *ngIf='authenticationService.isUserLoggedIn()' mat-list-item routerLink='/home'>Home</a>
-      <a *ngIf='!authenticationService.isUserLoggedIn()' mat-list-item routerLink='/login'>login</a>
-      <a *ngIf='!authenticationService.isUserLoggedIn()' mat-list-item routerLink='/registration'>Registration</a>
-      <a *ngIf='authenticationService.isUserLoggedIn()' mat-list-item routerLink='/dashboard'>DashBoard</a>
-      <a *ngIf='authenticationService.isUserLoggedIn()' mat-list-item routerLink='/concessions'>concessions</a>
-      <a *ngIf='authenticationService.isUserLoggedIn()' mat-list-item routerLink='/Tests'>All Well Tests</a>
-      <!-- the next line is to be updated -->
-      <a *ngIf='authenticationService.isUserLoggedIn()' mat-list-item routerLink='/tests'>All Tests fora well</a>
+     
     </mat-nav-list>
   </mat-sidenav>
 

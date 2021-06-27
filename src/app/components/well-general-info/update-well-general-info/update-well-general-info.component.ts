@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WellGeneralInfoService } from 'src/app/api/wellGeneralInfo.service';
 import { WellGeneralInfoRequest } from 'src/app/model/wellGeneralInfoRequest';
@@ -15,7 +15,8 @@ export class UpdateWellGeneralInfoComponent implements OnInit {
   message:string;
   @Input()
   wellGeneralInfoResponse:WellGeneralInfoResponse;
-  //wellGeneralInfoId:number;
+  @Output() closeModal: EventEmitter<any> = new EventEmitter();
+
   constructor(private wellGeneralInfosrvice:WellGeneralInfoService,private _formBuilder:FormBuilder) {
   
   }
@@ -51,7 +52,8 @@ export class UpdateWellGeneralInfoComponent implements OnInit {
   update():void{
     this.wellGeneralInfosrvice.wellsGeneralInfoIdPut(this.wellGeneralInfoRequest,this.wellGeneralInfoResponse.id).subscribe(
       Response=>{
-        this.message="updated successfully";
+        //this.message="updated successfully";
+        this.closeModal.emit();
       }
     )
   }
