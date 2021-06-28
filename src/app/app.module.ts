@@ -1,5 +1,5 @@
 import { LogoutComponent } from './components/logout/logout.component';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Inject, NgModule} from '@angular/core';
 
 
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -102,6 +102,8 @@ import {BudgetActualAddComponent} from './dialogs/add/budget-actual-add/budget-a
 import {BudgetActualChComponent} from './charts/budget-actual-ch/budget-actual-ch.component';
 import { AdminAssignRolesComponent } from './components/admin-assign-roles/admin-assign-roles.component';
 import { HomeComponent } from './components/home/home.component';
+import { LabPdfComponent } from './components/lab-pdf/lab-pdf.component';
+
 
 @NgModule({
 
@@ -167,7 +169,8 @@ import { HomeComponent } from './components/home/home.component';
     UpdateReportComponent,
     WellNavComponent,
     AdminAssignRolesComponent,
-    HomeComponent
+    HomeComponent,
+    LabPdfComponent
   ],
   imports: [
     BrowserModule,
@@ -212,3 +215,4 @@ import { HomeComponent } from './components/home/home.component';
 })
 export class AppModule {
 }
+
