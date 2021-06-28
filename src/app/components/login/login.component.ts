@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     let loginRequest: LoginRequest = this.form.value as LoginRequest
-    console.log(loginRequest);
+    // console.log(loginRequest);
     this.flag = false;
     this._loginService.loginPost(loginRequest).subscribe(
       response => {
         this.loggedInUser = response;
-        console.log(response)
+        // console.log(response)
         localStorage.setItem("accessToken", response.accessToken);
         localStorage.setItem("authenticatedUser",loginRequest.email);
         localStorage.setItem("userRole", response.jobTitle.toString());

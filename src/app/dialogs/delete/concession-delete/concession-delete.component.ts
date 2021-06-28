@@ -26,11 +26,11 @@ export class ConcessionDeleteComponent implements OnInit {
   confirmDelete(): void {
     this.concessionsService.deleteConcession(this.data.id).subscribe(
       (response: ConcessionResponse) => {
-        console.log(response);
+        // console.log(response);
         this.concessionsService.findAllConcessions();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }

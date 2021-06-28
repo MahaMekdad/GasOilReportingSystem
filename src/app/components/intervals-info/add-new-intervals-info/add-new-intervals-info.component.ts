@@ -53,12 +53,12 @@ export class AddNewIntervalsInfoComponent implements OnInit {
     intervalsInfoRequest.endDate=new Date(endDate[0],endDate[1],endDate[2]);
    console.log(intervalsInfoRequest);
     this.intervalsInfoService.wellsIntervalsInfoPost(intervalsInfoRequest).subscribe(Response=>{
-            console.log("good");
+            // console.log("good");
             this.closeModal.emit();
 
     },
     error=>{
-      console.log(error)
+      // console.log(error)
     }
     );
 

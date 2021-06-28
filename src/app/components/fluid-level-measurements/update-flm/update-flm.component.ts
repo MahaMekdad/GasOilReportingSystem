@@ -62,11 +62,11 @@ export class UpdateFlmComponent implements OnInit {
     flmRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._fluidLevelMeasurementsSerive.wellsWellIdFluidLevelMeasurementsFlmIdPatch(flmRequest, this.id, this.flmToBeUpdate.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

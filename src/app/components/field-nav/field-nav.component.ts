@@ -34,7 +34,7 @@ export class FieldNavComponent implements OnInit {
         this.allConFields = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
     });
   }
 

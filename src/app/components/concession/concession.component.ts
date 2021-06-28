@@ -43,10 +43,10 @@ export class ConcessionComponent implements OnInit {
     this.concessionsService.findAllConcessions().subscribe(// this will make us notified when something happens
       (response: ConcessionResponse[]) => { // if the response is concession , add it to the response body
         this.concessionsList = response;
-        console.log(response);
+        // console.log(response);
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -77,7 +77,7 @@ export class ConcessionComponent implements OnInit {
       width: '270px',
       data: {id: id, name: name}
     });
-    console.log('debugging 1 :----------');
+    // console.log('debugging 1 :----------');
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         this.refreshData();
@@ -86,8 +86,8 @@ export class ConcessionComponent implements OnInit {
   }
 
   delete(i, id, name) {
-    console.log('i ' + name);
-    console.log('i ' + id);
+    // console.log('i ' + name);
+    // console.log('i ' + id);
     this.index = i;
     this.id = id;
     const dialogRef = this.dialog.open(ConcessionDeleteComponent, {

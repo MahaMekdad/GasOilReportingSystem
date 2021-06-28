@@ -52,8 +52,8 @@ export class UpdateProductionBudgetComponent implements OnInit {
     let dateValues = this.form.controls.date.value.split("-");
     // let timeValues = this.form.controls.time.value.split(":");
     productionRequest.productionDate = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
-    console.log("--------------");
-    console.log(productionRequest);
+    // console.log("--------------");
+    // console.log(productionRequest);
     this._productionBudgetService.concessionsBudgetProductionBudgetIdPatch(productionRequest, this.productionUpdate.id).subscribe(
       response => {
 

@@ -72,11 +72,11 @@ export class WellTestTableComponent implements OnInit {
       (response: WellTestResponse[]) => { // if the response is object, add it to the response body
         this.testListForAllWells = response;
         this.dataSource = this.testListForAllWells;
-        console.log(response);
+        // console.log(response);
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
         // alert(error.message);
-        console.log(error.message);
+        // console.log(error.message);
       }
     );
   }
@@ -85,12 +85,12 @@ export class WellTestTableComponent implements OnInit {
       (response: WellTestResponse[]) => { // if the response is object, add it to the response body
         this.testListForSpecificWell = response;
         this.dataSource = this.testListForSpecificWell;
-        console.log('from method 2');
-        console.log(response);
+        // console.log('from method 2');
+        // console.log(response);
       },
       (error: HttpErrorResponse) => { // if the response is error, display the error using alert.
         // alert(error.message);
-        console.log(error.message);
+        // console.log(error.message);
       }
     );
   }
@@ -115,7 +115,7 @@ export class WellTestTableComponent implements OnInit {
             usp: any, ust: number, sp: number, st: number,
             flp: number, flt: number, chockType: string, chockSize: number,
             h2s: number, co2: number, unit: string, remarks: string) {
-    console.log('calling edit method');
+    // console.log('calling edit method');
     const dialogRef = this.dialog.open(WellTestEditComponent, {
         data: {
           rowData: {

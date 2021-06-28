@@ -41,14 +41,14 @@ export class WellTestEditComponent implements OnInit {
   stopEdit(): void {
     this.serviceReference.updateWellTestRecord(this.data.rowData, this.data.wellId , this.data.rowData.recordId).subscribe(
       (response: WellTestResponse) => {
-        console.log('---------------------');
-        console.log(this.data.productionDate);
-        console.log(response);
-        console.log(this.data.rowData.recordId);
+        // console.log('---------------------');
+        // console.log(this.data.productionDate);
+        // console.log(response);
+        // console.log(this.data.rowData.recordId);
         this.serviceReference.findAllTests();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }

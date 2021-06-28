@@ -55,7 +55,7 @@ export class AdminAssignRolesComponent implements OnInit {
         this.users = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
@@ -65,7 +65,7 @@ export class AdminAssignRolesComponent implements OnInit {
         this.usersRoles = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
@@ -80,11 +80,11 @@ export class AdminAssignRolesComponent implements OnInit {
     console.log(userRequest);
     this._usersService.usersIdPatch(userRequest, this.users[this.index].id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closePopUpAndRefreshTable();
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

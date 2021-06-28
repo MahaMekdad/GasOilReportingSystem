@@ -29,21 +29,21 @@ export class AppAddNewFieldComponent implements OnInit {
         this.allConcessions = response;
       },
       error => {
-        console.log(error)
+        // console.log(error)
       })
   }
   insert() {
     // debugger
     let fieldRequest: FieldRequest = this.form.value as FieldRequest;
     fieldRequest.concessionId = this.form.controls.Concession.value;
-    console.log(fieldRequest)
+    // console.log(fieldRequest)
     this._fieldService.addfieldMeasurement(fieldRequest,null,null).subscribe(
       response => {
 
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

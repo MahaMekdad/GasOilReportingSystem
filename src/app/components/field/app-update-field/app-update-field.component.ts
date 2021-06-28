@@ -37,7 +37,7 @@ export class AppUpdateFieldComponent implements OnInit {
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

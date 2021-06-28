@@ -45,7 +45,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRecords()
-    console.log("iddddd == " + this.id);
+    // console.log("iddddd == " + this.id);
 
   }
 
@@ -75,7 +75,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
       return;
     }
     let flm = this.flms[this.highlightedRow];
-    console.log(flm)
+    // console.log(flm)
     this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(this.id, flm.id).subscribe(
       response => {
         this.flms.splice(this.highlightedRow, 1);
@@ -85,7 +85,7 @@ export class FluidLevelMeasurementsComponent implements OnInit {
         // this.pageChange()
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -97,14 +97,14 @@ export class FluidLevelMeasurementsComponent implements OnInit {
         // console.log(this.totalRecords)
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
     this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id ,this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
@@ -115,13 +115,13 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   updateDataArray(){
     this.highlightedRow = -1;
-    console.log("SOS!")
+    // console.log("SOS!")
     this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id, this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       })
   }
 }

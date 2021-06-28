@@ -33,7 +33,7 @@ export class AppAddNewWellComponent implements OnInit {
         this.fields = response;
       },
       error => {
-        console.log(error)
+        // console.log(error)
       })
   }
 
@@ -41,15 +41,15 @@ export class AppAddNewWellComponent implements OnInit {
     // debugger
     let wellRequest: WellRequest = this.form.value as WellRequest
     wellRequest.fieldId = this.form.controls.field.value;
-    console.log("filed iddddd ==== " + wellRequest.fieldId);
-    console.log("Well request object == "+ wellRequest);
+    // console.log("filed iddddd ==== " + wellRequest.fieldId);
+    // console.log("Well request object == "+ wellRequest);
     this._wellService.addwell(wellRequest, null, null).subscribe(
       response => {
 
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

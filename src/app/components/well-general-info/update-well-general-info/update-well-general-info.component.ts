@@ -36,7 +36,7 @@ export class UpdateWellGeneralInfoComponent implements OnInit {
     });
       console.log("11");
    setTimeout(()=>{ }, 4000);
-   console.log(this.wellGeneralInfoResponse);
+  //  console.log(this.wellGeneralInfoResponse);
    this.wellGeneralInfoRequest.areaName=this.wellGeneralInfoResponse.areaName;
    this.wellGeneralInfoRequest.boreName=this.wellGeneralInfoResponse.boreName;
    this.wellGeneralInfoRequest.lat=this.wellGeneralInfoResponse.lat;

@@ -44,10 +44,10 @@ export class BudgetActualComponent implements OnInit {
     this.budgetActualService.findAllRecords().subscribe(
       (response: FieldsBudgetAndActualResponse[]) => {
         this.dataSource = response;
-        console.log(response);
+        // console.log(response);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }
@@ -59,7 +59,7 @@ export class BudgetActualComponent implements OnInit {
          westernDesertActual: number, westernDesertBudget: number, ashrafiActual: number, ashrafiBudget: number,
          agibaOilBudget: number, agibaOilActual: number
   ) {
-    console.log('calling start edit');
+    // console.log('calling start edit');
     const dialogRef = this.dialog.open(BudgetActualAddComponent, {
         data: {
           rowData: {
@@ -100,7 +100,7 @@ export class BudgetActualComponent implements OnInit {
             farasActual: any, farasBudget: number, ramlActual: number, ramlBudget: number,
             westernDesertActual: number, westernDesertBudget: number, ashrafiActual: number, ashrafiBudget: number,
             agibaOilBudget: number, agibaOilActual: number) {
-    console.log('calling add method');
+    // console.log('calling add method');
     const dialogRef = this.dialog.open(BudgetActualEditComponent, {
         data: {
           rowData: {

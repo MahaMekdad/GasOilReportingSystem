@@ -34,13 +34,13 @@ export class AddNewWellGeneralInfoComponent implements OnInit {
   insert():void{
     let wellGeneralInfoRequest: WellGeneralInfoRequest = this.form.value as WellGeneralInfoRequest
     wellGeneralInfoRequest.wellId=this.wellIdToaddWellGeneralInfo;
-   console.log(wellGeneralInfoRequest);
+  //  console.log(wellGeneralInfoRequest);
     this.wellGeneralInfosrvice.wellsGeneralInfoPost(wellGeneralInfoRequest).subscribe(Response=>{
-            console.log("good");
+            // console.log("good");
             this.closeModal.emit();
     },
     error=>{
-      console.log(error)
+      // console.log(error)
     }
     );
 

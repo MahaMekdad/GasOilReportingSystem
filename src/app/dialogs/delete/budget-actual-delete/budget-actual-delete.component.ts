@@ -26,11 +26,11 @@ export class BudgetActualDeleteComponent implements OnInit {
   confirmDelete(): void {
     this.serviceReference.deleteRecord(this.data.recordId).subscribe(
       (response: FieldsBudgetAndActualResponse) => {
-        console.log(response);
+        // console.log(response);
         this.serviceReference.findAllRecords();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }

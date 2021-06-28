@@ -27,13 +27,13 @@ export class ConcessionAddComponent implements OnInit {
   ]);
 
   public confirmAdd(): void {
-    console.log('concession Name' + this.data.name);
+    // console.log('concession Name' + this.data.name);
     this.concessionService.addConcession(this.data).subscribe(
       (response: ConcessionResponse) => {
-        console.log(response);
+        // console.log(response);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }
@@ -49,7 +49,7 @@ export class ConcessionAddComponent implements OnInit {
   }
 
   submit() {
-    console.log('printing from the submit method');
+    // console.log('printing from the submit method');
     // do nothing
   }
 }

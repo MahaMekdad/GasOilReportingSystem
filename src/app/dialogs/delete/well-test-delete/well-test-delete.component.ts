@@ -26,16 +26,16 @@ export class WellTestDeleteComponent implements OnInit {
   confirmDelete(): void {
     this.wellTestService.deleteTest(this.data.id, 1).subscribe(
       (response: WellTestResponse) => {
-        console.log(response);
+        // console.log(response);
         this.refreshData();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }
 
   private refreshData() {
-    console.log('as if we are updating data');
+    // console.log('as if we are updating data');
   }
 }

@@ -37,10 +37,10 @@ export class WellTestAddComponent implements OnInit {
   public stopEdit(): void {
     this.wellTestService.addTestRecord(this.data, 1).subscribe(
       (response: WellTestResponse) => {
-        console.log(response);
+        // console.log(response);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }
@@ -50,7 +50,7 @@ export class WellTestAddComponent implements OnInit {
   }
 
   submit() {
-    console.log('printing from the submit method');
+    // console.log('printing from the submit method');
     // do nothing
   }
 

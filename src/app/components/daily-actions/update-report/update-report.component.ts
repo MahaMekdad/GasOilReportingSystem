@@ -57,11 +57,11 @@ export class UpdateReportComponent implements OnInit {
     reportRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._wellDailyActionsService.updateWellReport(reportRequest, this.id, this.reportToBeUpdate.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

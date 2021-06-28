@@ -29,7 +29,7 @@ export class WellNavComponent implements OnInit {
         this.allFieldWells = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
     });
     this.route.queryParams.subscribe(params => {
       this.concessionName = params.con
@@ -38,12 +38,12 @@ export class WellNavComponent implements OnInit {
     );
     this._fieldService.getfieldById(this.id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.fields = data;
-        console.log(this.fields);
+        // console.log(this.fields);
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -53,8 +53,8 @@ export class WellNavComponent implements OnInit {
   }
 
   back() {
-    console.log("fieldIddddddd == " + this.id);
-    console.log("conIddddd == " + this.fields.concessionId);
+    // console.log("fieldIddddddd == " + this.id);
+    // console.log("conIddddd == " + this.fields.concessionId);
    this._router.navigate(['/fieldNav' , this.fields.concessionId]);
   }
 }

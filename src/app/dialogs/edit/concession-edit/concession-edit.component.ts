@@ -48,17 +48,17 @@ export class ConcessionEditComponent implements OnInit {
   }
 
   stopEdit(): void {
-    console.log('debugging 2 :----------');
+    // console.log('debugging 2 :----------');
 
-    console.log('name: ' + this.data.name);
-    console.log('id: ' + this.data.id);
+    // console.log('name: ' + this.data.name);
+    // console.log('id: ' + this.data.id);
     this.concessionService.updateConcession(this.data, this.data.id).subscribe(
       (response: ConcessionResponse) => {
-        console.log(response);
+        // console.log(response);
         this.concessionService.findAllConcessions();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
   }

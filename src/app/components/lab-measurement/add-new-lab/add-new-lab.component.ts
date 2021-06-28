@@ -40,16 +40,16 @@ export class AddNewLabComponent implements OnInit {
   insert() {
     let labRequest: LabMeasurementRequest = this.form.value as LabMeasurementRequest
     let dateValues = this.form.controls.date.value.split("-");
-    console.log(dateValues)
+    // console.log(dateValues)
     labRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
-    console.log(labRequest.date)
+    // console.log(labRequest.date)
     this._labService.addLabMeasurement(labRequest, this.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

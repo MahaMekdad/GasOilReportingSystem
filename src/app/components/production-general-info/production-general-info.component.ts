@@ -42,7 +42,7 @@ export class ProductionGeneralInfoComponent implements OnInit {
         // console.log(this.pgis)
       },
       error => {
-        console.log(error.errorMessage);
+        // console.log(error.errorMessage);
       })
   }
 
@@ -59,15 +59,15 @@ export class ProductionGeneralInfoComponent implements OnInit {
   ClickedRowToUpdate(index: number)
   {
     if(this.highlightedRow == -1 || this.highlightedRow == undefined){
-      console.log("zzzzzzz")
+      // console.log("zzzzzzz")
       this.pgiToBeUpdated = null;
       return;
     }
     let x = this.pgis[this.highlightedRow];
-    console.log(this.highlightedRow)
-    console.log(x)
+    // console.log(this.highlightedRow)
+    // console.log(x)
     this.pgiToBeUpdated = x;
-    console.log(this.pgiToBeUpdated)
+    // console.log(this.pgiToBeUpdated)
   }
 
   deleteFromFlms() {
@@ -81,7 +81,7 @@ export class ProductionGeneralInfoComponent implements OnInit {
         this.highlightedRow = -1;
       },
       error => {
-        console.log(error.errorMessage);
+        // console.log(error.errorMessage);
       }
     );
   }

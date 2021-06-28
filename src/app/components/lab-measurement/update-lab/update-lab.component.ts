@@ -55,11 +55,11 @@ export class UpdateLabComponent implements OnInit {
     labRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0);
     this._labService.updateLabMeasurement(labRequest, this.id, this.labToBeUpdate.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

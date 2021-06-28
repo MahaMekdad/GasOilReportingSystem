@@ -75,8 +75,8 @@ export class BudgetActualEditComponent implements OnInit {
   stopEdit(): void {
     this.serviceReference.updateBudgetRecord(this.data.rowData.recordId, this.data.rowData).subscribe(
       (response: FieldsBudgetAndActualResponse) => {
-        console.log(response);
-        console.log(this.data.rowData.recordId);
+        // console.log(response);
+        // console.log(this.data.rowData.recordId);
         this.serviceReference.findAllRecords();
       },
       (error: HttpErrorResponse) => {

@@ -69,14 +69,14 @@ export class AddNewReportComponent implements OnInit {
     // console.log(dateValues[0])
     // console.log(timeValues)
     reportRequest.date = new Date(dateValues[0], dateValues[1]-1, dateValues[2], 0, 0)
-    console.log(reportRequest.date)
+    // console.log(reportRequest.date)
     this._wellDailyActionsService.addDailyReport(reportRequest, this.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

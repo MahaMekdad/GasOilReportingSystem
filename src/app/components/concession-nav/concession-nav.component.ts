@@ -25,7 +25,7 @@ export class ConcessionNavComponent implements OnInit {
         // console.log(data);
       },
       error => { //if the response is error, display the error using alert.
-        console.log(error)
+        // console.log(error)
     })
   }
 

@@ -42,7 +42,7 @@ export class UpdateIntervalsInfoComponent implements OnInit {
     });
 
    setTimeout(()=>{ }, 4000);
-   console.log(this.intervalsInfoResponse);
+  //  console.log(this.intervalsInfoResponse);
    this.intervalsInfoRequest.api=this.intervalsInfoResponse.api;
    this.intervalsInfoRequest.drivingMechanism=this.intervalsInfoResponse.drivingMechanism;
    this.intervalsInfoRequest.endDate=this.intervalsInfoResponse.endDate;

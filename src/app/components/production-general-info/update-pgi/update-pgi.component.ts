@@ -72,11 +72,11 @@ export class UpdatePgiComponent implements OnInit {
     pgiRequest.currentLiftTypeDate = new Date(currentLiftTypeDateValues[0], currentLiftTypeDateValues[1]-1, currentLiftTypeDateValues[2], 0, 0)
     this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdPut(pgiRequest, this.id, this.pgiToBeUpdated.id).subscribe(
       response => {
-        console.log(response + "ff")
+        // console.log(response + "ff")
         this.closeModal.emit()
       },
       error => {
-        console.log(error + "cc")
+        // console.log(error + "cc")
       }
     );
   }

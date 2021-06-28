@@ -123,7 +123,7 @@ export class DrillingInfoComponent implements OnInit {
       this.message="Edited";
     },error => {
       this.message=error.error.errorMessage;
-      console.log(this.message);
+      // console.log(this.message);
     });
   }
   loadRecords(){

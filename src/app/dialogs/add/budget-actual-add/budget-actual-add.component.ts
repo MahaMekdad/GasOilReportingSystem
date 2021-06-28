@@ -73,8 +73,8 @@ export class BudgetActualAddComponent implements OnInit {
   stopEdit(): void {
     this.serviceReference.addBudgetRecord(this.data.rowData).subscribe(
       (response: FieldsBudgetAndActualResponse) => {
-        console.log(response);
-        console.log(this.data.rowData.recordId);
+        // console.log(response);
+        // console.log(this.data.rowData.recordId);
         this.serviceReference.findAllRecords();
       },
       (error: HttpErrorResponse) => {
