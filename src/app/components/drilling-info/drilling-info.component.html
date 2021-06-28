@@ -6,19 +6,23 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button *ngIf="HighlightRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="delete()" type="button" class="btn btn-danger">
-            DELETE
-          </button>
-          <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary" (click)="triggerModal(modalData)">
-            ➕
+          <div align="right">
+          <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+            INSERT
           </button>
           <button
             *ngIf="HighlightRow !== -1 &&( concession === jobLocation || userRole == '2')"
             class="btn btn-warning"
             (click)="triggerModal(modalDataUpdate)"
           >
-            🖊️
+           UPDATE
           </button>
+            <button *ngIf="HighlightRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="delete()" type="button" class="btn btn-danger">
+              DELETE
+            </button>
+          </div>
+          <br>
+
           <ng-template #modalData let-modal>
             <div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">
