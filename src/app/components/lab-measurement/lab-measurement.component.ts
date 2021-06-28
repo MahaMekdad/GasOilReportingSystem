@@ -1,14 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { LabMeasurementResponse } from 'src/app/model/labMeasurementResponse';
 import { LabService } from 'src/app/api/lab.service';
- 
+
 @Component({
   selector: 'app-lab-measurement',
   templateUrl: './lab-measurement.component.html',
   styleUrls: ['./lab-measurement.component.css']
 })
 export class LabMeasurementComponent implements OnInit {
+  @Input()
+  id: number;
+
+  @Input()
+  concession: string;
+
+  jobLocation: string = localStorage.getItem("jobLocation");
+
+  role: string = localStorage.getItem("userRole");
 
   config: any;
 
@@ -20,7 +29,7 @@ export class LabMeasurementComponent implements OnInit {
 
   modalContent: NgbModalRef
 
-  constructor(private _labService: LabService, private _modalService: NgbModal) { 
+  constructor(private _labService: LabService, private _modalService: NgbModal) {
 
     this.config = {
       itemsPerPage: 3,
@@ -63,7 +72,7 @@ export class LabMeasurementComponent implements OnInit {
       return;
     }
     let lab = this.labs[this.highlightedRow];
-    this._labService.deleteLabById(1, lab.id).subscribe(
+    this._labService.deleteLabById(this.id, lab.id).subscribe(
       response => {
         this.labs.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;
@@ -75,7 +84,7 @@ export class LabMeasurementComponent implements OnInit {
   }
 
   loadRecords(){
-    this._labService.getAllLabs(null, null).subscribe(
+    this._labService.getAllLabsInWell(this.id).subscribe(
       data => {
         this.labs = data;
       })

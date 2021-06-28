@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { WellDailyActionsService } from 'src/app/api/wellDailyActions.service';
 import { WellDailyActionsResponse } from 'src/app/model/wellDailyActionsResponse';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
- 
+
 @Component({
   selector: 'app-daily-actions',
   templateUrl: './daily-actions.component.html',
   styleUrls: ['./daily-actions.component.css']
 })
-export class DailyActionsComponent implements OnInit { 
+export class DailyActionsComponent implements OnInit {
   config: any;
-
-
+  @Input()
+  id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
   reports: WellDailyActionsResponse[]
 
   reportToBeUpdate: WellDailyActionsResponse;
@@ -20,7 +24,7 @@ export class DailyActionsComponent implements OnInit {
 
   modalContent: NgbModalRef
 
-  constructor(private _wellDailyActionsService: WellDailyActionsService, private _modalService: NgbModal) { 
+  constructor(private _wellDailyActionsService: WellDailyActionsService, private _modalService: NgbModal) {
     this.config = {
       itemsPerPage: 3,
       currentPage: 1,
@@ -75,7 +79,7 @@ export class DailyActionsComponent implements OnInit {
   }
 
   loadRecords(){
-    this._wellDailyActionsService.getAllReports(null, null).subscribe(
+    this._wellDailyActionsService.getReportById(this.id).subscribe(
       data => {
         this.reports = data;
       })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductionGeneralInfoService } from 'src/app/api/productionGeneralInfo.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProductionGeneralInfoResponse } from 'src/app/model/productionGeneralInfoResponse';
@@ -10,6 +10,12 @@ import { ProductionGeneralInfoResponse } from 'src/app/model/productionGeneralIn
 })
 export class ProductionGeneralInfoComponent implements OnInit {
 
+  @Input()
+  id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string  =  localStorage.getItem("userRole");
   pgis: ProductionGeneralInfoResponse[]
 
   pgiToBeUpdated: ProductionGeneralInfoResponse;
@@ -30,13 +36,13 @@ export class ProductionGeneralInfoComponent implements OnInit {
   }
 
   loadRecords(){
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoGet(1).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoGet(this.id).subscribe(
       data => {
         this.pgis = data;
         // console.log(this.pgis)
       },
       error => {
-        console.log(error.errorMessage);
+        // console.log(error.errorMessage);
       })
   }
 
@@ -53,15 +59,15 @@ export class ProductionGeneralInfoComponent implements OnInit {
   ClickedRowToUpdate(index: number)
   {
     if(this.highlightedRow == -1 || this.highlightedRow == undefined){
-      console.log("zzzzzzz")
+      // console.log("zzzzzzz")
       this.pgiToBeUpdated = null;
       return;
     }
     let x = this.pgis[this.highlightedRow];
-    console.log(this.highlightedRow)
-    console.log(x)
+    // console.log(this.highlightedRow)
+    // console.log(x)
     this.pgiToBeUpdated = x;
-    console.log(this.pgiToBeUpdated)
+    // console.log(this.pgiToBeUpdated)
   }
 
   deleteFromFlms() {
@@ -69,13 +75,13 @@ export class ProductionGeneralInfoComponent implements OnInit {
       return;
     }
     let pgi = this.pgis[this.highlightedRow];
-    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdDelete(1, pgi.id).subscribe(
+    this._productionGeneralInfoService.wellsWellIdProductionGeneralInfoPgiIdDelete(this.id, pgi.id).subscribe(
       response => {
         this.pgis.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;
       },
       error => {
-        console.log(error.errorMessage);
+        // console.log(error.errorMessage);
       }
     );
   }

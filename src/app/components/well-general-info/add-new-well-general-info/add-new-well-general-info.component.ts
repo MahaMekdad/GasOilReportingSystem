@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WellGeneralInfoService } from 'src/app/api/wellGeneralInfo.service';
 import { WellGeneralInfoRequest } from 'src/app/model/wellGeneralInfoRequest';
@@ -12,7 +12,8 @@ export class AddNewWellGeneralInfoComponent implements OnInit {
   form: FormGroup;
   @Input()
   wellIdToaddWellGeneralInfo:number;
-  
+  @Output() closeModal: EventEmitter<any> = new EventEmitter();
+
   constructor(private wellGeneralInfosrvice:WellGeneralInfoService,private _formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
@@ -33,12 +34,13 @@ export class AddNewWellGeneralInfoComponent implements OnInit {
   insert():void{
     let wellGeneralInfoRequest: WellGeneralInfoRequest = this.form.value as WellGeneralInfoRequest
     wellGeneralInfoRequest.wellId=this.wellIdToaddWellGeneralInfo;
-   console.log(wellGeneralInfoRequest);
+  //  console.log(wellGeneralInfoRequest);
     this.wellGeneralInfosrvice.wellsGeneralInfoPost(wellGeneralInfoRequest).subscribe(Response=>{
-            console.log("good");
+            // console.log("good");
+            this.closeModal.emit();
     },
     error=>{
-      console.log(error)
+      // console.log(error)
     }
     );
 

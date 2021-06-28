@@ -39,11 +39,11 @@ export class FlmLineChartComponent implements OnInit {
     this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(1).subscribe(
       data => {
         this.flms = data;
-        console.log(this.flms);
+        // console.log(this.flms);
         this.initChartData();
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 

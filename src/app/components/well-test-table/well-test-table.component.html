@@ -1,63 +1,150 @@
-<h2>Well Test Data</h2>
-<!--<a [routerLink]="['/test/add/0']" class="btn btn-primary mt-5 mb-3">Creat Record</a>-->
-<button mat-raised-button color="primary" (click)="openAddDialog()">Add Test</button>
-<button mat-raised-button color="accent" (click)="openEditDialog()">Edit Test</button>
-<button mat-raised-button color="warn" (click)="openConfirmation()">Delete</button>
-<mat-card>
-<div class="container mt-5">
-  <table class="table">
-    <thead>
-    <th>Well Id</th>
-    <th>Date</th>
-    <th>Test Duration</th>
-    <th>Gross</th>
-    <th>Net</th>
-    <th>WaterCut</th>
-    <th>GOR</th>
-    <th>Gas Rate</th>
-    <th>Condensate Rate</th>
-    <th>WHP</th>
-    <th>WHT</th>
-    <th>USP</th>
-    <th>UST</th>
-    <th>Sp</th>
-    <th>St</th>
-    <th>FLP</th>
-    <th>FLT</th>
-    <th>Chock type</th>
-    <th>Chs</th>
-    <th>H2s</th>
-    <th>Co2</th>
-    <th>Unit</th>
-    <th>Remarks</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let testRecord of testListForAllWells">
-      <td>{{testRecord?.id}}</td>
-      <td>{{testRecord?.productionDate}}</td>
-      <td>{{testRecord?.tDuration}}</td>
-      <td>{{testRecord?.gross}}</td>
-      <td>{{testRecord?.net}}</td>
-      <td>{{testRecord?.waterCut}}</td>
-      <td>{{testRecord?.gor}}</td>
-      <td>{{testRecord?.gasRate}}</td>
-      <td>{{testRecord?.condensateRate}}</td>
-      <td>{{testRecord?.whp}}</td>
-      <td>{{testRecord?.wht}}</td>
-      <td>{{testRecord?.usp}}</td>
-      <td>{{testRecord?.ust}}</td>
-      <td>{{testRecord?.sp}}</td>
-      <td>{{testRecord?.st}}</td>
-      <td>{{testRecord?.flp}}</td>
-      <td>{{testRecord?.flt}}</td>
-      <td>{{testRecord?.chockType}}</td>
-      <td>{{testRecord?.chockSize}}</td>
-      <td>{{testRecord?.h2s}}</td>
-      <td>{{testRecord?.co2}}</td>
-      <td>{{testRecord?.unit}}</td>
-      <td>{{testRecord?.remarks}}</td>
-    </tr>
-    </tbody>
-  </table>
+<button *ngIf=" concession === jobLocation || userRole ==='2'" mat-raised-button color="primary" (click)="addNew()">Add Test</button>
+<button *ngIf=" concession === jobLocation || userRole ==='2'" mat-raised-button color="accent">Edit Test</button>
+<button *ngIf=" concession === jobLocation || userRole ==='2'" mat-raised-button color="warn">Delete</button>
+
+<div class="container mat-elevation-z8 spacer">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter issues">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <!--    Column Id-->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="productionDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.productionDate}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tDuration">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Duration</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.tDuration}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gross">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Gross</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.gross}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="net">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Net</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.net}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="waterCut">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>WC %</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.waterCut}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gor">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>GOR</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.net}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gasRate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Gas Rate</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.gasRate}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cond">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cond Rate</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.condensateRate}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="whp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>WHP</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.whp}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="wht">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>WHT</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.wht}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="usp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>USP</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.usp}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ust">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>UST</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ust}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="sp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Sp</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sp}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="st">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>St</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.st}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>FLp</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.flp}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="flt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>FLt</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.flt}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="chockType">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ch.T</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.chockType}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="chockSize">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ch.z</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.chockSize}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="h2s">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>h2s</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.h2s}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="co2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Co2</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.co2}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="unit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Unit</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.unit}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="remarks">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Remarks</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.remarks}}</mat-cell>
+    </ng-container>
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button *ngIf=" concession === jobLocation || userRole ==='2'" mat-icon-button color="primary" (click)="addNew()">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+        <button *ngIf=" concession === jobLocation || userRole ==='2'" mat-icon-button color="accent" (click)="startEdit(
+        row.id,row.productionDate,
+        row.gross,row.net,
+        row.waterCut,row.gor,
+        row.gasRate,row.condensateRate,
+        row.whp,row.wht,
+        row.usp,row.ust,
+        row.flp,row.flt,
+        row.sp,row.st,
+        row.chockType,row.chockSize,
+        row.h2s,row.co2,
+        row.unit, row.remarks
+        )">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button *ngIf=" concession === jobLocation || userRole ==='2'" mat-icon-button color="accent" (click)="deleteItem(i, row.id)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!--  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">-->
+  <!--    No results-->
+  <!--  </div>-->
+
+  <mat-paginator #paginator
+                 [length]="10"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
 </div>
-</mat-card>

@@ -10,7 +10,8 @@
  * Do not edit the class manually.
  */
 
-export interface FieldsBudgetAndActualResponse { 
+export interface FieldsBudgetAndActualResponse {
+    id?: number;
     productionDate?: string;
     meleihaBudget?: number;
     meleihaActual?: number;

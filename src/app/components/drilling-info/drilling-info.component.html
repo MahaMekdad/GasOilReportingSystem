@@ -6,19 +6,23 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button (click)="delete()" type="button" class="btn btn-danger">
-            DELETE
-          </button>
-          <button class="btn btn-primary" (click)="triggerModal(modalData)">
-            ➕
+          <div>
+          <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+            INSERT
           </button>
           <button
-            *ngIf="HighlightRow !== -1"
+            *ngIf="HighlightRow !== -1 &&( concession === jobLocation || userRole == '2')"
             class="btn btn-warning"
             (click)="triggerModal(modalDataUpdate)"
           >
-            🖊️
+           UPDATE
           </button>
+            <button *ngIf="HighlightRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="delete()" type="button" class="btn btn-danger">
+              DELETE
+            </button>
+          </div>
+          <br>
+
           <ng-template #modalData let-modal>
             <div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">
@@ -34,7 +38,7 @@
               </button>
             </div>
             <div>
-              <app-add-new-drillinginfo
+              <app-add-new-drillinginfo [id]="id"
                 (closeModal)="closePopUpAndRefreshTable()"
               ></app-add-new-drillinginfo>
             </div>
@@ -59,8 +63,9 @@
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>#</th>
-                <th>id</th>
+                <th style="display: none">#</th>
+                <th style="display: none">id</th>
+                <th>well_id</th>
                 <th>release_date</th>
                 <th>well_description</th>
                 <th>well_type</th>
@@ -69,7 +74,6 @@
                 <th>tvd_depth</th>
                 <th>bbtp</th>
                 <th>production_general_info</th>
-                <th>well_id</th>
               </tr>
             </thead>
             <tbody>
@@ -80,8 +84,9 @@
                 "
                 [class.active]="currentIndex == HighlightRow"
               >
-                <td>{{ currentIndex + 1 }}</td>
-                <td>{{ drill.id }}</td>
+                <td style="display: none">{{ currentIndex + 1 }}</td>
+                <td style="display: none">{{ drill.id }}</td>
+                <td>{{ drill.wellId }}</td>
                 <td>{{ drill.releaseDate | date: "MM-dd-yyyy" }}</td>
                 <td>{{ drill.wellDescription }}</td>
                 <td>{{ drill.wellType }}</td>
@@ -90,7 +95,6 @@
                 <td>{{ drill.tvdDepth }}</td>
                 <td>{{ drill.bbtp }}</td>
                 <td>{{ drill.productionGeneralInfo }}</td>
-                <td>{{ drill.wellId }}</td>
               </tr>
             </tbody>
           </table>

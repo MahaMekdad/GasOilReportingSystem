@@ -58,7 +58,7 @@ export class IntervalsInfoService {
 
 
     /**
-     * 
+     *
      * Returns a list of intervals info about wells
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -94,9 +94,9 @@ export class IntervalsInfoService {
     }
 
     /**
-     * 
+     *
      * delete intervals Info by id
-     * @param id 
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -135,9 +135,9 @@ export class IntervalsInfoService {
     }
 
     /**
-     * 
+     *
      * Obtain intervalsInfo about well by id
-     * @param id 
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -176,10 +176,10 @@ export class IntervalsInfoService {
     }
 
     /**
-     * 
+     *
      * update intervals Info about well by id
-     * @param body 
-     * @param id 
+     * @param body
+     * @param id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -228,9 +228,9 @@ export class IntervalsInfoService {
     }
 
     /**
-     * 
+     *
      * Lets a user post a new intervalsInfo
-     * @param body 
+     * @param body
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */

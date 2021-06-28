@@ -9,12 +9,15 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FieldComponent implements OnInit {
 
+  role: string = localStorage.getItem("userRole");
 
   fields: AllFieldsResponse[]
 
   fieldToBeUpdate: AllFieldsResponse;
 
   highlightedRow: number = -1;
+
+  fieldIdChart:number;
 
   modalContent: NgbModalRef
 
@@ -80,6 +83,9 @@ export class FieldComponent implements OnInit {
   }
 
 
+  setFieldIdChart(currentIndex:number):void{
+    this.fieldIdChart=this.fields[currentIndex].fieldId;
+  }
 
 
 

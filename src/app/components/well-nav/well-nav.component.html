@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <br />
+        <div class="row">
+          <div class="col-md-12">
+            <button style="font-size :45px;" type="button" class="btn btn-default btn-sm" (click)="back()">
+              <span class="glyphicon glyphicon-chevron-left"></span> 
+              <!-- <i class="fas fa-arrow-circle-left"></i>  -->
+                <!-- &lt;= BACK -->
+                ⬅
+            </button>
+            <!-- <br> -->
+<!--            <button class="btn btn-danger" (click)="back()">BACK</button>-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="display: none">#</th>
+                  <th style="display: none">Well Id</th>
+                  <th>Well Name</th>
+                  <th>Well Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let con of allFieldWells; let currentIndex = index"
+                  (click)="navToFieldWells(currentIndex)"
+                >
+                  <td style="display: none">{{ currentIndex + 1 }}</td>
+                  <td style="display: none">{{ con.wellId }}</td>
+                  <td>{{ con.wellName }}</td>
+                  <td>{{ con.wellCode }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

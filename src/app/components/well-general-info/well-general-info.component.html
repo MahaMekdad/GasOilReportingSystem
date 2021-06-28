@@ -4,9 +4,22 @@
          <br>
          <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-danger" (click)="deleteFromWellGeneralInfo()">🗑️</button>
-          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-          <button *ngIf="wellGeneralInfoResponse == null"class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+          <div>
+            <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+              INSERT
+            </button>
+            <button
+              *ngIf="highlightedRow !== -1 &&( concession === jobLocation || userRole == '2')"
+              class="btn btn-warning"
+              (click)="triggerModal(modalDataUpdate)"
+            >
+              UPDATE
+            </button>
+            <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="deleteFromWellGeneralInfo()" type="button" class="btn btn-danger">
+              DELETE
+            </button>
+          </div>
+          <br>
 
           <ng-template #modalData let-modal>
             <div class="modal-header">
@@ -49,7 +62,8 @@
                           </tr>
                         </thead>
                         <tbody *ngIf="wellGeneralInfoResponse !=null">
-                          <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id); ClickedRowToUpdate(wellGeneralInfoResponse.id)"
+                          <!-- <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id); ClickedRowToUpdate(wellGeneralInfoResponse.id)" -->
+                          <tr  (click)="ClickedRowToDelete(wellGeneralInfoResponse.id);"
                           [class.active]="wellGeneralInfoResponse.id == highlightedRow">
                             <td>{{wellGeneralInfoResponse.id}}</td>
                             <td>{{wellGeneralInfoResponse.wellId}}</td>
@@ -66,7 +80,7 @@
                       </tbody>
                       </table>
                 </div>
-               
+
             </div>
         </div>
       </div>

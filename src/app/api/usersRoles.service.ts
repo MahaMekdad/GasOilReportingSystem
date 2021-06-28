@@ -29,7 +29,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class UsersRolesService {
 
-    protected basePath = 'http://www.ourcompany.com/v1';
+  protected basePath = 'http://localhost:8000';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -59,7 +59,7 @@ export class UsersRolesService {
 
 
     /**
-     * 
+     *
      * getting all users roles
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -95,7 +95,7 @@ export class UsersRolesService {
     }
 
     /**
-     * 
+     *
      * deleting a specific user role record with the given id
      * @param id the user role id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -136,7 +136,7 @@ export class UsersRolesService {
     }
 
     /**
-     * 
+     *
      * getting the user role record with the given id
      * @param id the ID of the user role
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -177,9 +177,9 @@ export class UsersRolesService {
     }
 
     /**
-     * 
+     *
      * updating user role record (name)
-     * @param body 
+     * @param body
      * @param id the user role id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -229,9 +229,9 @@ export class UsersRolesService {
     }
 
     /**
-     * 
+     *
      * adding a new user role
-     * @param body 
+     * @param body
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */

@@ -65,17 +65,17 @@ export class ChartS1DateComponent implements OnInit {
     //   data => {
     //     this.labs = data;
     //   })
-    console.log(this.labs)
+    // console.log(this.labs)
     for (let counter: number = 0; counter < this.labs.length; counter++) {
       console.log(this.labs.length)
-      console.log("-----1")
+      // console.log("-----1")
       console.log((this.labs[counter]).s1)
-      console.log("-----2")
-      console.log("-----3")
+      // console.log("-----2")
+      // console.log("-----3")
       this.list[counter] = ((this.labs[counter]).s1);
     }
-    console.log("-----")
-    console.log(this.list);
+    // console.log("-----")
+    // console.log(this.list);
     // this.list[0]=1
     // this.list[1]=2
     this.list1 = [1, 10, 5, 4, 3, 2]
@@ -90,7 +90,7 @@ export class ChartS1DateComponent implements OnInit {
       this.dateS = this.datepipe.transform(this.list2[counter], 'dd/MM/yyyy')
       this.list3[counter]=this.dateS;
 
-      console.log(this.list2)
+      // console.log(this.list2)
     }
 
     // this.list= this.labs.map(obj => ({obj}));

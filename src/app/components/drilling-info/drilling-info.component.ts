@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DrillingInfoDataResponse} from "../../model/drillingInfoDataResponse";
 import {DrilingInfoService} from "../../api/drilingInfo.service";
 import { DrillingInfoDataRequest } from 'src/app/model/drillingInfoDataRequest';
@@ -12,8 +12,13 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 })
 export class DrillingInfoComponent implements OnInit {
 
-
-  drill: DrillingInfoDataResponse[]
+  @Input()
+  id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
+  drill: DrillingInfoDataResponse[];
   drillId: number;
   message:string= "";
   drillIdEdit: number;
@@ -28,7 +33,7 @@ export class DrillingInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._drilingInfoService.wellsDrillingInfoGet(null, null).subscribe(
+    this._drilingInfoService.wellsWellIdDrillingInfoGet(this.id).subscribe(
       data => {
         // console.log(data)
         this.drill = data;
@@ -118,11 +123,11 @@ export class DrillingInfoComponent implements OnInit {
       this.message="Edited";
     },error => {
       this.message=error.error.errorMessage;
-      console.log(this.message);
+      // console.log(this.message);
     });
   }
   loadRecords(){
-    this._drilingInfoService.wellsDrillingInfoGet().subscribe(
+    this._drilingInfoService.wellsWellIdDrillingInfoGet(this.id).subscribe(
       data => {
         this.drill = data;
       })

@@ -1,14 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FluidLevelMeasurementsService } from 'src/app/api/fluidLevelMeasurements.service';
 import { AllFluidLevelMeasurementResponse } from 'src/app/model/allFluidLevelMeasurementResponse';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
- 
+
 @Component({
   selector: 'app-fluid-level-measurements',
   templateUrl: './fluid-level-measurements.component.html',
   styleUrls: ['./fluid-level-measurements.component.css']
 })
 export class FluidLevelMeasurementsComponent implements OnInit {
+  @Input()
+  id: number;
+
+  @Input()
+  concession: string;
+
+  jobLocation: string = localStorage.getItem("jobLocation");
+
+  role: string = localStorage.getItem("userRole");
 
   flms: AllFluidLevelMeasurementResponse[]
 
@@ -24,7 +33,8 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   elements: number = 5;
 
-  constructor(private _fluidLevelMeasurementsService: FluidLevelMeasurementsService, private _modalService: NgbModal) { }
+  constructor(private _fluidLevelMeasurementsService: FluidLevelMeasurementsService, private _modalService: NgbModal) {
+  }
 
   triggerModal(content) {
     this.modalContent = content;
@@ -35,6 +45,8 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRecords()
+    // console.log("iddddd == " + this.id);
+
   }
 
   ClickedRowToDelete(index: number)
@@ -58,36 +70,41 @@ export class FluidLevelMeasurementsComponent implements OnInit {
   }
 
   deleteFromFlms() {
+    debugger
     if(this.highlightedRow == -1 || this.highlightedRow == undefined){
       return;
     }
     let flm = this.flms[this.highlightedRow];
-    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(flm.wellId, flm.id).subscribe(
+    // console.log(flm)
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsFlmIdDelete(this.id, flm.id).subscribe(
       response => {
         this.flms.splice(this.highlightedRow, 1);
         this.highlightedRow = -1;
+        this.totalRecords = this.totalRecords-1
+        // this.page = this.page-1
+        // this.pageChange()
       },
       error => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }
 
   loadRecords(){
-    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet().subscribe(
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id).subscribe(
       data => {
         this.totalRecords = data.length;
         // console.log(this.totalRecords)
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
-    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(this.page-1, this.elements).subscribe(
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id ,this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 
@@ -98,13 +115,13 @@ export class FluidLevelMeasurementsComponent implements OnInit {
 
   updateDataArray(){
     this.highlightedRow = -1;
-    console.log("SOS!")
-    this._fluidLevelMeasurementsService.wellsFluidLevelMeasurementsGet(this.page-1, this.elements).subscribe(
+    // console.log("SOS!")
+    this._fluidLevelMeasurementsService.wellsWellIdFluidLevelMeasurementsGet(this.id, this.page-1, this.elements).subscribe(
       data => {
         this.flms = data;
       },
       error => {
-        console.log(error);
+        // console.log(error);
       })
   }
 }

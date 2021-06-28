@@ -5,10 +5,22 @@
 		<br />
 		<div class="row">
 		  <div class="col-md-12">
-			<button *ngIf="highlightedRow !== -1" class="btn btn-danger" (click)="deleteFromReports()">🗑️</button>
-			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-
+        <div>
+          <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+            INSERT
+          </button>
+          <button
+            *ngIf="highlightedRow !== -1 &&( concession === jobLocation || userRole == '2')"
+            class="btn btn-warning"
+            (click)="triggerModal(modalDataUpdate)"
+          >
+            UPDATE
+          </button>
+          <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="deleteFromReports()" type="button" class="btn btn-danger">
+            DELETE
+          </button>
+        </div>
+        <br>
 
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
@@ -17,9 +29,9 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-add-new-report (closeModal)=closePopUpAndRefreshTable()></app-add-new-report>
+			  <app-add-new-report [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-report>
 			</ng-template>
-  
+
 			<ng-template #modalDataUpdate let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Update A Report Record</h4>
@@ -27,9 +39,9 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-update-report [reportToBeUpdate]="reportToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-report>
+			  <app-update-report [id]="id" [reportToBeUpdate]="reportToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-report>
 			</ng-template>
-  
+
 		  </div>
 		</div>
 		<div class="row">
@@ -55,7 +67,7 @@
 				>
 				  <td style="display: none">{{ currentIndex + 1 }}</td>
 				  <td>{{report.id}}</td>
-				  <td>{{report.date | date: 'dd-MM-yyyy'}}</td>
+				  <td>{{report.date | date: 'MM-dd-yyyy'}}</td>
 				  <td>{{report.downTime}}</td>
 				  <td>{{report.losses}}</td>
 				  <td>{{report.siLVL4}}</td>

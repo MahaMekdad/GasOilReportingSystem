@@ -4,68 +4,132 @@
       <br />
       <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-danger" (click)="deleteFromfields()">🗑️</button>
-          <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-          <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+          <div align="right">
+            <button
+              *ngIf="+role === 2"
+              class="btn btn-primary"
+              (click)="triggerModal(modalData)"
+            >
+              INSERT
+            </button>
+            <button
+              *ngIf="highlightedRow !== -1 && +role === 2"
+              class="btn btn-warning"
+              (click)="triggerModal(modalDataUpdate)"
+            >
+              UPDATE
+            </button>
+            <button
+              *ngIf="highlightedRow !== -1 && +role === 2"
+              (click)="delete()"
+              type="button"
+              class="btn btn-danger"
+            >
+              DELETE
+            </button>
+          </div>
+          <!-- <button *ngIf="highlightedRow !== -1 && +role === 2" class="btn btn-danger" (click)="deleteFromfields()">🗑️</button>
+          <button *ngIf="highlightedRow !== -1 && +role === 2" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
+          <button *ngIf="+role === 2" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button> -->
 
           <ng-template #modalData let-modal>
             <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Insert New field Record</h4>
-<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-  <span aria-hidden="true">×</span>
-</button>
-</div>
-<app-app-add-new-field (closeModal)=closePopUpAndRefreshTable()></app-app-add-new-field>
-</ng-template>
+              <h4 class="modal-title" id="modal-basic-title">
+                Insert New field Record
+              </h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-app-add-new-field
+              (closeModal)="closePopUpAndRefreshTable()"
+            ></app-app-add-new-field>
+          </ng-template>
 
-<ng-template #modalDataUpdate let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Update A field Record</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">×</span>
-    </button>
+          <ng-template #modalDataUpdate let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">
+                Update A field Record
+              </h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <app-app-update-field
+              [fieldToBeUpdate]="fieldToBeUpdate"
+              (closeModal)="closePopUpAndRefreshTable()"
+            ></app-app-update-field>
+          </ng-template>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="display: none">#</th>
+                <th style="display: none">field_id</th>
+                <th>Field Name</th>
+                <th>Field Code</th>
+                <th>Concession Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let field of fields; let currentIndex = index"
+                (click)="
+                  ClickedRowToDelete(currentIndex);
+                  ClickedRowToUpdate(currentIndex)
+                "
+                [class.active]="currentIndex == highlightedRow"
+              >
+                <td style="display: none">{{ currentIndex + 1 }}</td>
+                <td style="display: none">{{ field.fieldId }}</td>
+                <td>{{ field.fieldName }}</td>
+                <td>{{ field.fieldCode }}</td>
+                <td>{{ field.concessionId }}</td>
+                <button
+                  class="btn btn-primary"
+                  (click)="
+                    setFieldIdChart(currentIndex); triggerModal(modalChart)
+                  "
+                >
+                  📊
+                </button>
+
+                <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
+              </tr>
+            </tbody>
+            <ng-template #modalChart let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Chart</h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <app-well-general-info-chart
+                [fieldId]="fieldIdChart"
+                (closeModal)="closePopUpAndRefreshTable()"
+              ></app-well-general-info-chart>
+            </ng-template>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-  <app-app-update-field [fieldToBeUpdate]="fieldToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-app-update-field>
-</ng-template>
-
 </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-bordered table-hover">
-      <thead>
-      <tr>
-        <th style="display: none">#</th>
-        <th>field_id</th>
-      <th>field_name</th>
-      <th>field_code</th>
-      <th>concession_id</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr
-        *ngFor="let field of fields; let currentIndex = index"
-        (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
-        [class.active]="currentIndex == highlightedRow"
-      >
-        <td style="display: none">{{ currentIndex + 1 }}</td>
-         <td>{{field.fieldId}}</td>
-         <td>{{field.fieldName}}</td>
-         <td>{{field.fieldCode}}</td>
-         <td>{{field.concessionId}}</td>
-        <!-- <td><button type="button" class="btn btn-danger" (click)="deleteFromFlms(currentIndex)">Delete</button></td> -->
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-

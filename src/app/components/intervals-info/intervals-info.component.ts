@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { IntervalsInfoService } from 'src/app/api/intervalsInfo.service';
 import { IntervalsInfoResponse } from 'src/app/model/intervalsInfoResponse';
@@ -9,14 +9,21 @@ import { IntervalsInfoResponse } from 'src/app/model/intervalsInfoResponse';
   styleUrls: ['./intervals-info.component.css']
 })
 export class IntervalsInfoComponent implements OnInit {
+  @Input()
+  id: number;
+  @Input()
+  concession: string;
+  jobLocation: string = localStorage.getItem("jobLocation");
+  userRole: string = localStorage.getItem("userRole");
   intervalsInfoResponseList:IntervalsInfoResponse[];
   wellIdSelected:number=1;
   highlightedRow: number = -1;
   modalContent: NgbModalRef;
-    
+
   constructor(private intervalsInfoService:IntervalsInfoService, private _modalService: NgbModal) { }
 
   ngOnInit(): void {
+      this.wellIdSelected = this.id;
       this.loadRecords(this.wellIdSelected);
     }
 
@@ -24,8 +31,8 @@ export class IntervalsInfoComponent implements OnInit {
     triggerModal(content) {
       this.modalContent = this._modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
     }
-  
-  
+
+
     ClickedRowToDelete(index: number)
     {
       if(this.highlightedRow == index)
@@ -35,8 +42,8 @@ export class IntervalsInfoComponent implements OnInit {
       }
       this.highlightedRow = index;
     }
-    
-  
+
+
     deleteFromIntervalsInfo() {
       if(this.highlightedRow == -1 || this.highlightedRow == undefined){
         return;
@@ -45,14 +52,14 @@ export class IntervalsInfoComponent implements OnInit {
         this.loadRecords(this.intervalsInfoResponseList[0].wellId);
      });
     }
-  
+
     loadRecords(wellIdSelected:number){
-       
+
         this.intervalsInfoService.wellsIntervalsInfoIdGet(wellIdSelected).subscribe(Response =>{
           this.intervalsInfoResponseList=Response;
        });
     }
-  
+
     closePopUpAndRefreshTable(){
       this.modalContent.dismiss();
       this.loadRecords(this.wellIdSelected);

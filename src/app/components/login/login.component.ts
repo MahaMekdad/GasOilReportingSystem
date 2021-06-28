@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loggedInUser: UserLoggedInResponse
   form: FormGroup;
+  flag: boolean = false;
 
   constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router) { }
 
@@ -26,16 +27,21 @@ export class LoginComponent implements OnInit {
 
   login() {
     let loginRequest: LoginRequest = this.form.value as LoginRequest
-    console.log(loginRequest);
+    // console.log(loginRequest);
+    this.flag = false;
     this._loginService.loginPost(loginRequest).subscribe(
       response => {
         this.loggedInUser = response;
-        console.log(response)
+        // console.log(response)
         localStorage.setItem("accessToken", response.accessToken);
+        localStorage.setItem("authenticatedUser",loginRequest.email);
+        localStorage.setItem("userRole", response.jobTitle.toString());
+        localStorage.setItem("jobLocation", response.jobLocation);
         this._router.navigate(['home'])
       },
       error => {
-        console.log(error)
+        // console.log(error)
+        this.flag = true;
       }
     );
   }

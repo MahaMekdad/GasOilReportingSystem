@@ -62,11 +62,11 @@ export class TestEditComponent implements OnInit {
     // the value of the well test id need to be changed.
     this.wellTestsService.addTestRecord(WellTestRequest, 1).subscribe(
       (response: WellTestResponse) => {
-        console.log(response);
+        // console.log(response);
         form.reset(); // clearing the form after process
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        // alert(error.message);
       }
     );
 

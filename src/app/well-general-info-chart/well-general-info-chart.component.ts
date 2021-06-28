@@ -1,11 +1,11 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, Input, OnInit,ViewChild } from '@angular/core';
 import { GetAllWells } from '../model/getAllWells';
 import {
   ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
   ApexYAxis,
-  ApexXAxis,
+  ApexXAxis
 } from "ng-apexcharts";
 import { WellService } from '../api/api';
 import { WellCoordinateService } from '../api/well-coordinate.service';
@@ -15,6 +15,7 @@ export type ChartOptions = {
   chart: ApexChart;
   xaxis: ApexXAxis;
   yaxis: ApexYAxis;
+  title: any
 };
 
 @Component({
@@ -24,17 +25,20 @@ export type ChartOptions = {
 })
 export class WellGeneralInfoChartComponent implements OnInit {
 
-
-  fieldId:number=1;
+  @Input()
+  fieldId:number;
   
-  ngOnInit(): void {
-  }
+
+  
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor(wellService:WellService,wellCoordinateService:WellCoordinateService) {
+
+  constructor(private wellService:WellService,private wellCoordinateService:WellCoordinateService) {}  
+  
+  ngOnInit(): void {
     let series_=[];
-    wellCoordinateService.wellsCoordinatesGet(this.fieldId).subscribe(Response=>{
+    this.wellCoordinateService.wellsCoordinatesGet(this.fieldId).subscribe(Response=>{
       let wellsCoordinates=Response;
       //console.log(Response);
       for(let wellCoordinate of wellsCoordinates){
@@ -63,10 +67,19 @@ export class WellGeneralInfoChartComponent implements OnInit {
           formatter: function(val) {
             return parseFloat(val).toFixed(1)
           }
-        }
+        },
+         title: {
+           text:"Xcord"
+          }
       },
       yaxis: {
-        tickAmount: 7
+        tickAmount: 7,
+        title: {
+          text:"Ycord"
+         }
+      },
+      title:{
+        text:"Wells Coordinates Chart"
       }
     };
   }

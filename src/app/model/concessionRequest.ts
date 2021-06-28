@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 
-export interface ConcessionRequest { 
-    /**
-     * the name of the concession
-     */
-    name?: string;
+export interface ConcessionRequest {
+  /**
+   * the name of the concession
+   */
+  name?: string;
 }

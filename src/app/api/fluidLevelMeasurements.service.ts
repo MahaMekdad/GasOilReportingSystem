@@ -59,7 +59,7 @@ export class FluidLevelMeasurementsService {
 
 
     /**
-     * 
+     *
      * getting the fluid level measurements for all wells
      * @param pageNum page number to get the right fluid level measurements records according
      * @param elementNum getting this number of the fluid level measurements records that are of that date or before
@@ -115,7 +115,7 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     * 
+     *
      * deleting a specific fluid level measurements record that is related to the well with the given id
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
@@ -161,9 +161,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     * 
+     *
      * updating a fluid level measurement of a specific well
-     * @param body 
+     * @param body
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -218,9 +218,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     * 
+     *
      * updating a fluid level measurement of a specific well
-     * @param body 
+     * @param body
      * @param wellId the ID of the well
      * @param flmId the ID of the fluid level measurement record
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -275,7 +275,7 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     * 
+     *
      * getting the fluid level measurements for a specific well id
      * @param wellId the ID of the well
      * @param pageNum page number to get the right fluid level measurements records according
@@ -333,9 +333,9 @@ export class FluidLevelMeasurementsService {
     }
 
     /**
-     * 
+     *
      * adding a new fluid level measurement for a specific well
-     * @param body 
+     * @param body
      * @param wellId the ID of the well
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

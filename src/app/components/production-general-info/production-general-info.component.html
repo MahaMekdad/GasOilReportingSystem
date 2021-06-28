@@ -1,14 +1,27 @@
 <!-- <p>fluid-level-measurements works!</p> -->
 <div class="container">
-    <div class="card">
-      <div class="card-body">
+    <!-- <div class="card">
+      <div class="card-body"> -->
         <br />
         <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-danger" (click)="deleteFromFlms()">🗑️</button>
-            <button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-            <button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-  
+            <div>
+              <button  *ngIf="(concession === jobLocation|| userRole=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+                INSERT
+              </button>
+              <button
+                *ngIf="highlightedRow !== -1 &&( concession === jobLocation || userRole == '2')"
+                class="btn btn-warning"
+                (click)="triggerModal(modalDataUpdate)"
+              >
+                UPDATE
+              </button>
+              <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || userRole ==='2')" (click)="deleteFromFlms()" type="button" class="btn btn-danger">
+                DELETE
+              </button>
+            </div>
+            <br>
+
             <ng-template #modalData let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Insert New PGI Record</h4>
@@ -16,9 +29,9 @@
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <app-add-new-pgi (closeModal)=closePopUpAndRefreshTable()></app-add-new-pgi>
+              <app-add-new-pgi [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-pgi>
             </ng-template>
-  
+
             <ng-template #modalDataUpdate let-modal>
               <div class="modal-header">
                 <h4 class="modal-title" id="modal-basic-title">Update A PGI Record</h4>
@@ -26,9 +39,9 @@
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <app-update-pgi [pgiToBeUpdated]="pgiToBeUpdated" (closeModal)=closePopUpAndRefreshTable()></app-update-pgi>
+              <app-update-pgi [id]="id" [pgiToBeUpdated]="pgiToBeUpdated" (closeModal)=closePopUpAndRefreshTable()></app-update-pgi>
             </ng-template>
-  
+
           </div>
         </div>
         <div class="row">
@@ -47,13 +60,13 @@
                   <th>currentWellType</th>
                   <th>currentWellTypeDate</th>
                   <th>currentProduct</th>
-                  <th>currentStatus</th>
+                  <!-- <th>currentStatus</th>
                   <th>runtime</th>
                   <th>currentLiftType</th>
                   <th>currentLiftTypeDate</th>
                   <th>powerSourceType</th>
                   <th>powerSource</th>
-                  <th>processionPlant</th>
+                  <th>processionPlant</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -73,6 +86,38 @@
                   <td>{{ pgi.currentWellType }}</td>
                   <td>{{ pgi.currentWellTypeDate | date: "MM-dd-yyyy" }}</td>
                   <td>{{ pgi.currentProduct }}</td>
+                  <!-- <td>{{ pgi.currentStatus }}</td>
+                  <td>{{ pgi.runtime }}</td>
+                  <td>{{ pgi.currentLiftType }}</td>
+                  <td>{{ pgi.currentLiftTypeDate | date: "MM-dd-yyyy" }}</td>
+                  <td>{{ pgi.powerSourceType }}</td>
+                  <td>{{ pgi.powerSource }}</td>
+                  <td>{{ pgi.processionPlant }}</td> -->
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="display: none">#</th>
+                  <th>Id</th>
+                  <th>currentStatus</th>
+                  <th>runtime</th>
+                  <th>currentLiftType</th>
+                  <th>currentLiftTypeDate</th>
+                  <th>powerSourceType</th>
+                  <th>powerSource</th>
+                  <th>processionPlant</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let pgi of pgis; let currentIndex = index"
+                  (click)="ClickedRowToDelete(currentIndex); ClickedRowToUpdate(currentIndex)"
+                  [class.active]="currentIndex == highlightedRow"
+                >
+                  <td>{{ pgi.id }}</td>
                   <td>{{ pgi.currentStatus }}</td>
                   <td>{{ pgi.runtime }}</td>
                   <td>{{ pgi.currentLiftType }}</td>
@@ -85,7 +130,7 @@
             </table>
           </div>
         </div>
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
   </div>
-  
+

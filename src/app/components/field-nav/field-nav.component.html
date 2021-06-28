@@ -1,10 +1,18 @@
-<!-- <div class="container">
+<div class="container">
     <div class="card">
       <div class="card-body">
         <br />
         <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-danger">BACK</button>
+
+              <button style="font-size :45px;" type="button" class="btn btn-default btn-sm" (click)="back()">
+                <span class="glyphicon glyphicon-chevron-left"></span> 
+                <!-- <i class="fas fa-arrow-circle-left"></i>  -->
+                  <!-- &lt;= BACK -->
+                  ⬅
+              </button>
+            <!-- <br> -->
+<!--            <button class="btn btn-danger" (click)="back()">BACK</button>-->
           </div>
         </div>
         <div class="row">
@@ -13,18 +21,20 @@
               <thead>
                 <tr>
                   <th style="display: none">#</th>
-                  <th>Id</th>
-                  <th>Name</th>
+                  <th style="display: none">Field Id</th>
+                  <th>Field Name</th>
+                  <th>Field Code</th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  *ngFor="let con of allConcessions; let currentIndex = index"
-                  (click)="navToConFields(currentIndex)"
+                  *ngFor="let con of allConFields; let currentIndex = index"
+                  (click)="navToFieldWells(currentIndex)"
                 >
                   <td style="display: none">{{ currentIndex + 1 }}</td>
-                  <td>{{ con.id }}</td>
-                  <td>{{ con.name }}</td>
+                  <td style="display: none">{{ con.fieldId }}</td>
+                  <td>{{ con.fieldName }}</td>
+                  <td>{{ con.fieldCode }}</td>
                 </tr>
               </tbody>
             </table>
@@ -32,4 +42,4 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>

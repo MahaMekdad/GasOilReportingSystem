@@ -1,19 +1,26 @@
 <mat-tab-group>
   <mat-tab label="Well General Info">
-    <app-well-general-info></app-well-general-info>
+    <app-well-general-info [id]="id" [concession]="concessionName"></app-well-general-info>
   </mat-tab>
   <mat-tab label="Well Drilling Info">
-    <app-drilling-info></app-drilling-info>
+    <app-drilling-info [id]="id" [concession]="concessionName"></app-drilling-info>
+  </mat-tab>
+  <mat-tab label="Production General Info">
+    <app-production-general-info [id]="id" [concession]="concessionName"></app-production-general-info>
   </mat-tab>
   <mat-tab label="Well Intervals Info">
-    <app-intervals-info></app-intervals-info>
+    <app-intervals-info [id]="id" [concession]="concessionName"></app-intervals-info>
   </mat-tab>
-  <mat-tab label="Daily Actions">Soon</mat-tab>
+  <mat-tab label="Daily Actions">
+    <app-daily-actions [id]="id" [concession]="concessionName"></app-daily-actions>
+  </mat-tab>
   <mat-tab label="Well Test Data ">
-    <app-well-test-table></app-well-test-table>
+    <app-well-test-table [id]="id" [concession]="concessionName"></app-well-test-table>
   </mat-tab>
-  <mat-tab label="Lab Measurements ">Soon</mat-tab>
+  <mat-tab label="Lab Measurements ">
+    <app-lab-measurement [id]="id" [concession]="concessionName"></app-lab-measurement>
+  </mat-tab>
   <mat-tab label="Fluid Level">
-    <app-fluid-level-measurements></app-fluid-level-measurements>
+    <app-fluid-level-measurements [id]="id" [concession]="concessionName"></app-fluid-level-measurements>
   </mat-tab>
 </mat-tab-group>

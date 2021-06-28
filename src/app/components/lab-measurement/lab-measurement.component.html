@@ -3,12 +3,26 @@
 	<div class="card">
 	  <div class="card-body">
 		<br />
-		<div class="row"> 
+		<div class="row">
 		  <div class="col-md-12">
-			<button *ngIf="highlightedRow !== -1"class="btn btn-danger" (click)="deleteFromLabs()">🗑️</button>
-			<button *ngIf="highlightedRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>  
+        <div>
+          <button  *ngIf="(concession === jobLocation|| role=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+            INSERT
+          </button>
+          <button
+            *ngIf="highlightedRow !== -1 &&( concession === jobLocation || role == '2')"
+            class="btn btn-warning"
+            (click)="triggerModal(modalDataUpdate)"
+          >
+            UPDATE
+          </button>
+          <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || role ==='2')" (click)="deleteFromLabs()" type="button" class="btn btn-danger">
+            DELETE
+          </button>
+        </div>
+
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>
+        <br>
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Insert New Lab Record</h4>
@@ -16,8 +30,8 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-add-new-lab (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
-			</ng-template> 
+			  <app-add-new-lab [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
+			</ng-template>
 
 			<ng-template #modalChart let-modal>
 				<div class="modal-header">
@@ -28,7 +42,7 @@
 				</div>
 				<app-chart-s1-date (closeModal)=closePopUpAndRefreshTable()></app-chart-s1-date>
 			  </ng-template>
-  
+
 			<ng-template #modalDataUpdate let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Update A Lab Record</h4>
@@ -36,7 +50,7 @@
 				  <span aria-hidden="true">×</span>
 				</button>
 			  </div>
-			  <app-update-lab [labToBeUpdate]="labToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-lab>
+			  <app-update-lab [id]="id" [labToBeUpdate]="labToBeUpdate" (closeModal)=closePopUpAndRefreshTable()></app-update-lab>
 			</ng-template>
 
 		  </div>
@@ -64,7 +78,7 @@
 				>
 				  <td style="display: none">{{ currentIndex + 1 }}</td>
 				  <td>{{lab.id}}</td>
-				  <td>{{lab.date | date: 'dd-MM-yyyy'}}</td>
+				  <td>{{lab.date | date: 'MM-dd-yyyy'}}</td>
 				  <td>{{lab.remarks}}</td>
 				  <td>{{lab.s1}}</td>
 				  <td>{{lab.s2}}</td>
