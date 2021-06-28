@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent, canActivate: [LogoutGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuardService] },
 
-  { path: 'home', component: HomeComponent, canActivate: [RouteGuardService] },
+  { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: ProdDashboardComponent, canActivate: [RouteGuardService] },
 
   { path: 'concessions', component: ConcessionComponent, canActivate: [RouteGuardService] },

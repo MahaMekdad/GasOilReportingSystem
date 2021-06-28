@@ -1,4 +1,7 @@
 .table tr.active td {
-  background-color: tan !important;
+  background-color:#C8C8C8 !important;
   color: black;
+}
+button {
+  margin: 16px 8px;
 }

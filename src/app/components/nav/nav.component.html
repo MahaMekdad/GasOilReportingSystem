@@ -1,9 +1,111 @@
-<mat-sidenav-container class="sidenav-container" style="height: calc(100% - 64px); margin: 0;">
+<div class="wrapper">
+  <!-- Sidebar Holder -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <h2>REPORTING SYSTEM</h2>
+      </div>
+
+      <ul class="list-unstyled components">
+          
+          <li>
+             <a routerLink='/home'>Home</a>
+         </li>
+         <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
+          <a routerLink='/conNav'>Well Info Management</a>
+         </li>
+         <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.isAdmin()'>
+          <a routerLink='/adminManageRoles'>Manage Roles</a>
+         </li>
+          <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage</a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                      <a routerLink="/concessions">Concessions</a>
+                  </li>
+                  <li>
+                      <a routerLink="/fields">Fields</a>
+                  </li>
+                  <li>
+                      <a routerLink="/wells">Wells</a>
+                  </li>
+              </ul>
+          </li>
+          <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Budgets</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li>
+                      <a routerLink='/budgetActual'>Budgets Vs Actual</a>
+                  </li>
+                  <li>
+                      <a routerLink='/productionbudget'>Production Budget</a>
+                  </li>
+              </ul>
+          </li>
+         <!--<li>
+              <a href="#">Portfolio</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>-->
+      </ul>
+
+      
+  </nav>
+
+  <!-- Page Content Holder -->
+  <div id="content">
+
+      <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+
+              
+              <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-align-justify"></i>
+              </button>
+
+              <div class="collapse navbar-collapse customClass" id="navbarSupportedContent">
+                  <ul class="nav navbar-nav ml-auto">
+                      <li class="nav-item" >
+                          <a class="nav-link" *ngIf='!authenticationService.isUserLoggedIn()' routerLink="/registration">Registration</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" *ngIf='!authenticationService.isUserLoggedIn()' routerLink="login">Login</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" *ngIf='authenticationService.isUserLoggedIn()' routerLink="logout">Logout</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <router-outlet></router-outlet>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<mat-sidenav-container class="sidenav-container" style="height: calc(100% - 64px); margin: 0;">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <!--      adding a material expansion panel inside the navigation bar.-->
+ 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           Main
@@ -51,11 +153,7 @@
         <mat-expansion-panel-header>
           Budgets
         </mat-expansion-panel-header>
-        <!-- <mat-list-item>
-          <a mat-list-item routerLink='#'>
-            <mat-icon>bar_chart</mat-icon>
-            Budgets</a>
-        </mat-list-item> -->
+    
         <mat-list-item>
           <a mat-list-item routerLink='/budgetActual'>
             <mat-icon>bar_chart</mat-icon>
@@ -69,38 +167,12 @@
       </mat-expansion-panel>
 
 
-      <!-- <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()'>
 
-        <mat-expansion-panel-header>
-          Temporary
-        </mat-expansion-panel-header>
-        <mat-list-item>
-          <a mat-list-item routerLink='/well'>Single Well</a>
-        </mat-list-item>
-        <mat-list-item>
-          <a mat-list-item routerLink='/tests'>Well Tests</a>
-        </mat-list-item>
-
-      </mat-expansion-panel> -->
-      <!-- <a mat-list-item routerLink='/home'>Home</a>
-      <a mat-list-item routerLink='/login'>login</a>
-      <a mat-list-item routerLink='/registration'>Registration</a>
-      <a mat-list-item routerLink='/dashboard'>DashBoard</a>
-      <a mat-list-item routerLink='/concessions'>concessions</a>
-      <a mat-list-item routerLink='/Tests'>All Well Tests</a> -->
-      <!-- the next line is to be updated -->
-      <!-- <a mat-list-item routerLink='/tests'>All Tests fora well</a> -->
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <!--    <mat-toolbar color="primary">-->
-    <!--      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"-->
-    <!--              *ngIf="isHandset$ | async">-->
-    <!--        <mat-icon aria-label="Side nav toggle icon">Contents</mat-icon>-->
-    <!--      </button>-->
-    <!--      <span>Reporting System</span>-->
-    <!--    </mat-toolbar>-->
+
     <mat-toolbar style="color: #ffffff;background: #08151d;">
       <button mat-icon-button matTooltip="Application Menu" (click)="drawer.toggle()">
         <mat-icon>view_quilt</mat-icon>
@@ -135,9 +207,9 @@
       </div>
     </mat-toolbar>
 
-    <!-- Add Content Here -->
-    <!-- adding the routing components to the bar -->
     <router-outlet></router-outlet>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
+-->
+

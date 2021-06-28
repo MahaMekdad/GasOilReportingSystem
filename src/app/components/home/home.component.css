@@ -103,8 +103,8 @@
 
 }*/
 body { margin:0px;}
-p { margin:0px; font-family: 'ProximaNovaRegular'; font-size:18px; line-height:25px; color:#454545; padding-bottom:20px;}
-h1
+/*p { margin:0px; font-family: 'ProximaNovaRegular'; font-size:18px; line-height:25px; color:#454545; padding-bottom:20px;}*/
+/*h1
 {
 	margin:0px;
 	font-family: 'ProximaNovaBold', Arial, Helvetica, sans-serif;
@@ -113,7 +113,8 @@ h1
 	line-height:60px;
 	font-size:48px;
 	text-transform:uppercase;
-}
+}*/
+/*
 h2
 {
 	margin:0px;
@@ -135,7 +136,7 @@ h3
 	font-weight:normal;
 	font-size:30px;
 	text-transform:uppercase;
-}
+}*/
 #logo
 {
 	margin:30px auto;

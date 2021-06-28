@@ -5,7 +5,7 @@
       <div>
         <form [formGroup]="form">
           <div class="lg-3">
-            <label for="formEmail" class="form-label">Email address</label>
+            <label for="formEmail" class="form-label">Email Address</label>
             <input formControlName="email" type="text" class="form-control" placeholder="Email" id="formEmail"/>
             <div *ngIf="form.controls['email'].invalid && ((form.controls['email'].touched) || (this.form.controls['email'].dirty))">
               <small *ngIf="this.form.controls['email'].hasError('required')" class="form-text text-danger">Please Enter Your Email</small> 
@@ -32,12 +32,14 @@
             </div> -->
           </div>
           <br>
-          <button [disabled]="form.invalid" type="submit" class="btn btn-success" (click)="login()">Sign in</button>
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary" (click)="login()">Sign in</button>
         </form>
+        <br>
+        <div class="alert alert-warning" *ngIf="flag === true">Wrong Email or Password!</div>
         <br>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="registration">New Around Here? Sign up</a>
-        <a class="dropdown-item" href="#">Forgot password?</a>
+        <!-- <a class="dropdown-item" href="#">Forgot password?</a> -->
       </div>
     </div>
   </div>

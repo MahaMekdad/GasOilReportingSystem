@@ -3,24 +3,24 @@
 
 <form class="text-center border border-light p-5"  #registrationForm="ngForm">
     
-      <input  type="text" class="form-control" required="required" placeholder="First name" name="firstName" #firstName="ngModel"  [(ngModel)]="userRequest.firstName">
-      <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">First name is required</div>
+      <input  type="text" class="form-control" required="required" placeholder="First Name" name="firstName" #firstName="ngModel"  [(ngModel)]="userRequest.firstName">
+      <div class="alert alert-warning" *ngIf="firstName.dirty && firstName.invalid">First Name is required</div>
 
       <br>    
-      <input type="text" class="form-control"required="required" placeholder="Last name" name="lastName" #lastName="ngModel"  [(ngModel)]="userRequest.lastName">
-      <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Last name is required</div>
+      <input type="text" class="form-control"required="required" placeholder="Last Name" name="lastName" #lastName="ngModel"  [(ngModel)]="userRequest.lastName">
+      <div class="alert alert-warning" *ngIf="lastName.dirty && lastName.invalid">Last Name is required</div>
 
       <br>
       <input type="email" class="form-control"   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Email"  name="email"  #email="ngModel" [(ngModel)]="userRequest.email">
-      <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Email is not valid</div>
+      <div class="alert alert-warning" *ngIf="email.dirty && email.invalid">Email is Not Valid</div>
    
       <br>
       <input type="password" class="form-control"  required="required" minlength="6" placeholder="Password" name="password"  #password="ngModel"  [(ngModel)]="userRequest.password">
-      <div class="alert alert-warning" *ngIf="password.dirty && password.invalid">Enter atleast 6 characters</div>
+      <div class="alert alert-warning" *ngIf="password.dirty && password.invalid">Enter Atleast 6 Characters</div>
 
       <br>
-      <input type="text" class="form-control" required="required" pattern="^(011|015|012|010)[0-9]{8}" placeholder="Phone number" name="phoneNumber"  #phoneNumber="ngModel" [(ngModel)]="userRequest.phoneNumber">
-      <div class="alert alert-warning" *ngIf="phoneNumber.dirty && phoneNumber.invalid">Phone number is not valid</div>
+      <input type="text" class="form-control" required="required" pattern="^(011|015|012|010)[0-9]{8}" placeholder="Phone Number" name="phoneNumber"  #phoneNumber="ngModel" [(ngModel)]="userRequest.phoneNumber">
+      <div class="alert alert-warning" *ngIf="phoneNumber.dirty && phoneNumber.invalid">Phone Number is not valid</div>
 
       <br>
       <!-- <label>Job title</label>

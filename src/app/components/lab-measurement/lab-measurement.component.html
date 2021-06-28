@@ -3,12 +3,26 @@
 	<div class="card">
 	  <div class="card-body">
 		<br />
-		<div class="row"> 
+		<div class="row">
 		  <div class="col-md-12">
-			<button *ngIf="highlightedRow !== -1 && (concession === jobLocation || +role === 2)" class="btn btn-danger" (click)="deleteFromLabs()">🗑️</button>
-			<button *ngIf="highlightedRow !== -1 && (concession === jobLocation || +role === 2)" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-			<button *ngIf="(concession === jobLocation || +role === 2)" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
-			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>  
+        <div align="right">
+          <button  *ngIf="(concession === jobLocation|| role=='2')" class="btn btn-primary"  (click)="triggerModal(modalData)">
+            INSERT
+          </button>
+          <button
+            *ngIf="highlightedRow !== -1 &&( concession === jobLocation || role == '2')"
+            class="btn btn-warning"
+            (click)="triggerModal(modalDataUpdate)"
+          >
+            UPDATE
+          </button>
+          <button *ngIf="highlightedRow !== -1 &&(concession === jobLocation || role ==='2')" (click)="deleteFromLabs()" type="button" class="btn btn-danger">
+            DELETE
+          </button>
+        </div>
+
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>
+        <br>
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Insert New Lab Record</h4>
@@ -17,7 +31,7 @@
 				</button>
 			  </div>
 			  <app-add-new-lab [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
-			</ng-template> 
+			</ng-template>
 
 			<ng-template #modalChart let-modal>
 				<div class="modal-header">
@@ -28,7 +42,7 @@
 				</div>
 				<app-chart-s1-date (closeModal)=closePopUpAndRefreshTable()></app-chart-s1-date>
 			  </ng-template>
-  
+
 			<ng-template #modalDataUpdate let-modal>
 			  <div class="modal-header">
 				<h4 class="modal-title" id="modal-basic-title">Update A Lab Record</h4>
