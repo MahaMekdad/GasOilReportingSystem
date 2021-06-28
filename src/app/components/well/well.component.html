@@ -4,9 +4,25 @@
       <br />
       <div class="row">
         <div class="col-md-12">
-          <button *ngIf="highlightedRow !== -1 && +role === 2" class="btn btn-danger" (click)="deleteFromwell()">🗑️</button>
+          <div align="right">
+            <button  *ngIf="+role === 2" class="btn btn-primary"  (click)="triggerModal(modalData)">
+              INSERT
+            </button>
+            <button
+            *ngIf="highlightedRow !== -1 && +role === 2"
+              class="btn btn-warning"
+              (click)="triggerModal(modalDataUpdate)"
+            >
+             UPDATE
+            </button>
+            <button *ngIf="highlightedRow !== -1 && +role === 2" (click)="delete()" type="button" class="btn btn-danger">
+              DELETE
+            </button>
+          </div> 
+
+          <!-- <button *ngIf="highlightedRow !== -1 && +role === 2" class="btn btn-danger" (click)="deleteFromwell()">🗑️</button>
           <button *ngIf="highlightedRow !== -1 && +role === 2" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-          <button *ngIf="+role === 2" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button>
+          <button *ngIf="+role === 2" class="btn btn-primary" (click)="triggerModal(modalData)" >➕</button> -->
 
           <ng-template #modalData let-modal>
             <div class="modal-header">
@@ -36,10 +52,10 @@
             <thead>
             <tr>
               <th style="display: none">#</th>
-              <th>well_id</th>
-              <th>well_name</th>
-              <th>field_id</th>
-              <th>well_code</th>
+              <th style="display: none;">well_id</th>
+              <th>Well Name</th>
+              <th>Field Id</th>
+              <th>Well Code</th>
             </tr>
             </thead>
             <tbody>
@@ -49,7 +65,7 @@
               [class.active]="currentIndex == highlightedRow"
             >
               <td style="display: none">{{ currentIndex + 1 }}</td>
-              <td>{{wel.wellId}}</td>
+              <td style="display: none;" >{{wel.wellId}}</td>
               <td>{{wel.wellName}}</td>
               <td>{{wel.fieldId}}</td>
               <td>{{wel.wellCode}}</td>
