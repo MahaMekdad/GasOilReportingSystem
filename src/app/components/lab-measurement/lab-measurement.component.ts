@@ -32,7 +32,7 @@ export class LabMeasurementComponent implements OnInit {
   constructor(private _labService: LabService, private _modalService: NgbModal) {
 
     this.config = {
-      itemsPerPage: 3,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.labs
     };
