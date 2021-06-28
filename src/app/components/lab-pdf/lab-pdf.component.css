@@ -1,0 +1,13 @@
+table, th, td {
+    border: 1px solid black;
+  }
+  th {
+    background-color: #0000FF;
+    color: white;
+  }
+
+#dk{
+    border-bottom: 8px solid #0000FF;
+    font-size: 8px;
+    display: inline-block;
+}

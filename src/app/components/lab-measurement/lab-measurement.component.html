@@ -21,7 +21,9 @@
           </button>
         </div>
 
-			<button class="btn btn-primary" (click)="triggerModal(modalChart)" >📊</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalChart)" title="Chart">📊</button>
+			<button class="btn btn-primary" (click)="triggerModal(modalReport)" title="Generate Pdf Report">📋</button>  
+
         <br>
 			<ng-template #modalData let-modal>
 			  <div class="modal-header">
@@ -32,6 +34,16 @@
 			  </div>
 			  <app-add-new-lab [id]="id" (closeModal)=closePopUpAndRefreshTable()></app-add-new-lab>
 			</ng-template>
+
+			<ng-template #modalReport let-modal>
+				<div class="modal-header">
+				  <h4 class="modal-title" id="modal-basic-title">Report</h4>
+				  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+					<span aria-hidden="true">×</span>
+				  </button>
+				</div>
+				<app-lab-pdf (closeModal)=closePopUpAndRefreshTable()></app-lab-pdf>
+			  </ng-template>
 
 			<ng-template #modalChart let-modal>
 				<div class="modal-header">
@@ -61,6 +73,7 @@
 			  <thead>
 				<tr>
 					<th>Id</th>
+					<th>wellId</th>
 					<th>Date</th>
 					<th>remarks</th>
 					<th>s1</th>
@@ -78,6 +91,7 @@
 				>
 				  <td style="display: none">{{ currentIndex + 1 }}</td>
 				  <td>{{lab.id}}</td>
+				  <td>{{lab.wellId}}</td>
 				  <td>{{lab.date | date: 'MM-dd-yyyy'}}</td>
 				  <td>{{lab.remarks}}</td>
 				  <td>{{lab.s1}}</td>
