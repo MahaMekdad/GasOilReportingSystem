@@ -1,10 +1,110 @@
-<mat-sidenav-container class="sidenav-container" style="height: calc(100% - 64px); margin: 0;">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="blah.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://bryanrojasq.wordpress.com">
+                <img src="http://placehold.it/200x50&text=LOGO" alt="LOGO">
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
+                </a>
+            </li>            
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> MENU 1 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-1" class="collapse">
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.1</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.2</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 1.3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  MENU 2 <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                    <ul id="submenu-2" class="collapse">
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.1</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.2</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> SUBMENU 2.3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="investigaciones/favoritas"><i class="fa fa-fw fa-user-plus"></i>  MENU 3</a>
+                </li>
+                <li>
+                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
+                </li>
+                <li>
+                    <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row" id="main" >
+                <div class="col-sm-12 col-md-12 well" id="content">
+                    <h1>Welcome Admin!</h1>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    <router-outlet></router-outlet>
+
+    </div>
+    <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-sidenav-container class="sidenav-container" style="height: calc(100% - 64px); margin: 0;"> -->
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"> -->
+    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+    <!-- <mat-nav-list> -->
       <!--      adding a material expansion panel inside the navigation bar.-->
-      <mat-expansion-panel>
+      <!-- <mat-expansion-panel>
         <mat-expansion-panel-header>
           Main
         </mat-expansion-panel-header>
@@ -51,11 +151,6 @@
         <mat-expansion-panel-header>
           Budgets
         </mat-expansion-panel-header>
-        <!-- <mat-list-item>
-          <a mat-list-item routerLink='#'>
-            <mat-icon>bar_chart</mat-icon>
-            Budgets</a>
-        </mat-list-item> -->
         <mat-list-item>
           <a mat-list-item routerLink='/budgetActual'>
             <mat-icon>bar_chart</mat-icon>
@@ -66,7 +161,7 @@
             <mat-icon>bar_chart</mat-icon>
             Production Budget</a>
         </mat-list-item>
-      </mat-expansion-panel>
+      </mat-expansion-panel> -->
 
 
       <!-- <mat-expansion-panel *ngIf='authenticationService.isUserLoggedIn()'>
@@ -90,10 +185,10 @@
       <a mat-list-item routerLink='/Tests'>All Well Tests</a> -->
       <!-- the next line is to be updated -->
       <!-- <a mat-list-item routerLink='/tests'>All Tests fora well</a> -->
-    </mat-nav-list>
-  </mat-sidenav>
+    <!-- </mat-nav-list> -->
+  <!-- </mat-sidenav> -->
 
-  <mat-sidenav-content>
+  <!-- <mat-sidenav-content> -->
     <!--    <mat-toolbar color="primary">-->
     <!--      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"-->
     <!--              *ngIf="isHandset$ | async">-->
@@ -101,11 +196,11 @@
     <!--      </button>-->
     <!--      <span>Reporting System</span>-->
     <!--    </mat-toolbar>-->
-    <mat-toolbar style="color: #ffffff;background: #08151d;">
-      <button mat-icon-button matTooltip="Application Menu" (click)="drawer.toggle()">
+    <!-- <mat-toolbar style="color: #ffffff;background: #08151d;"> -->
+      <!-- <button mat-icon-button matTooltip="Application Menu" (click)="drawer.toggle()">
         <mat-icon>view_quilt</mat-icon>
-      </button>
-      Reporting System
+      </button> -->
+      <!-- Reporting System
       <span style="flex: 1 1 auto;"></span>
       <div *ngIf='authenticationService.isUserLoggedIn()'>
         <button mat-icon-button matTooltip="Switch Apps">
@@ -133,11 +228,115 @@
           </button>
         </mat-menu>
       </div>
-    </mat-toolbar>
+    </mat-toolbar> -->
 
     <!-- Add Content Here -->
     <!-- adding the routing components to the bar -->
-    <router-outlet></router-outlet>
+
+
+
+
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Based on http://bootsnipp.com/snippets/featured/responsive-sidebar-menu -->
+
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  
+<!-- <nav class="navbar navbar-m2p sidebar" role="navigation"> -->
+    <!-- <div class="container-fluid"> -->
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                Foobar<b>Company</b>
+            </a>
+        </div> -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+            <ul class="nav navbar-nav"> -->
+                <!-- Dashboard -->
+                <!-- <li class="active open">
+                  <a href="#">
+                      <span class="pull-right hidden-xs showopacity glyphicon material-icons">av_timer</span> Dashboard
+                  </a>
+                </li> -->
+                <!-- Banner -->
+                <!-- <li class="">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="menu-icon pull-right hidden-xs showopacity glyphicon material-icons">burst_mode</span>
+                        Banners <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li><a href="#"><i class="material-icons">add</i> Add</a></li>
+                        <li><a href="#"><i class="material-icons">sort</i> List</a></li>
+                    </ul>
+                </li>
+                <li class="separator">Content</li>  -->
+                <!-- Page -->
+                <!-- <li class="">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="menu-icon pull-right hidden-xs showopacity glyphicon material-icons">description</span>
+                        Pages <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li><a href="#"><i class="material-icons">add</i> Add</a></li>
+                        <li><a href="#"><i class="material-icons">sort</i> List</a></li>
+                    </ul>
+                </li> -->
+                <!-- Blog -->
+                <!-- <li class="">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="menu-icon pull-right hidden-xs showopacity glyphicon material-icons">chat_bubble_outline</span>
+                        Blog <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li><a href="#"><i class="material-icons">add</i> Add</a></li>
+                        <li><a href="#"><i class="material-icons">sort</i> List</a></li>
+                    </ul>
+                </li> -->
+                <!-- Tags -->
+                <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon material-icons">label</span>
+                        Tags <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li><a href="#"> <i class="material-icons">add</i> Add</a></li>
+                        <li><a href="#"> <i class="material-icons">sort</i> List</a></li>
+                    </ul>
+                </li>
+                <li class="separator">System</li> -->
+                <!-- Users -->
+                <!-- <li class="#">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="menu-icon pull-right hidden-xs showopacity glyphicon material-icons">group</span>
+                        Users <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu forAnimate" role="menu">
+                        <li><a href="#"><i class="material-icons">add</i> Add</a></li>
+                        <li><a href="#"><i class="material-icons">sort</i> List</a></li>
+                    </ul>
+                </li> -->
+                <!-- Exit -->
+                <!-- <li>
+                    <a href="#">
+                        <span class="menu-icon pull-right hidden-xs showopacity glyphicon material-icons">exit_to_app</span> Exit
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+    <!-- <router-outlet></router-outlet>
 
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
