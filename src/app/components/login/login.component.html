@@ -32,12 +32,14 @@
             </div> -->
           </div>
           <br>
-          <button [disabled]="form.invalid" type="submit" class="btn btn-success" (click)="login()">Sign in</button>
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary" (click)="login()">Sign in</button>
         </form>
+        <br>
+        <div class="alert alert-warning" *ngIf="flag === true">Wrong Email or Password!</div>
         <br>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="registration">New Around Here? Sign up</a>
-        <a class="dropdown-item" href="#">Forgot password?</a>
+        <!-- <a class="dropdown-item" href="#">Forgot password?</a> -->
       </div>
     </div>
   </div>

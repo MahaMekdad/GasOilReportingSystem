@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loggedInUser: UserLoggedInResponse
   form: FormGroup;
+  flag: boolean = false;
 
   constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router) { }
 
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     let loginRequest: LoginRequest = this.form.value as LoginRequest
     console.log(loginRequest);
+    this.flag = false;
     this._loginService.loginPost(loginRequest).subscribe(
       response => {
         this.loggedInUser = response;
@@ -38,7 +40,8 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['home'])
       },
       error => {
-        console.log(error)
+        // console.log(error)
+        this.flag = true;
       }
     );
   }
