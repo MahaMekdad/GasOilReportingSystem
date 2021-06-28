@@ -51,7 +51,7 @@
                 <input formControlName="intervals" type="text" class="form-control" placeholder="Intervals" id="formIntervals"/>
                 <div *ngIf="form.controls['intervals'].invalid && ((form.controls['intervals'].touched) || (this.form.controls['intervals'].dirty))">
                   <small *ngIf="this.form.controls['intervals'].hasError('required')" class="form-text text-danger">Please Enter The Intervals</small>
-                  <small *ngIf="this.form.controls['intervals'].hasError('minlength')" class="form-text text-danger">Intervals Should Be 5 Charaters Minimum</small>
+                  <small *ngIf="this.form.controls['intervals'].hasError('minlength')" class="form-text text-danger">Intervals Should Be 2 Charaters Minimum</small>
                 <small *ngIf="this.form.controls['intervals'].hasError('maxlength')" class="form-text text-danger">Intervals Should Be 2000 Charaters Maximum</small>
                 </div>
               </div>
