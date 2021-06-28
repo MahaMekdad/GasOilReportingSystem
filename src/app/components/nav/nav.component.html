@@ -10,7 +10,13 @@
           <li>
              <a routerLink='/home'>Home</a>
          </li>
-          <li>
+         <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
+          <a routerLink='/conNav'>Well Info Management</a>
+         </li>
+         <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.isAdmin()'>
+          <a routerLink='/adminManageRoles'>Manage Roles</a>
+         </li>
+          <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
               <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage</a>
               <ul class="collapse list-unstyled" id="homeSubmenu">
                   <li>
@@ -24,7 +30,7 @@
                   </li>
               </ul>
           </li>
-          <li>
+          <li *ngIf='authenticationService.isUserLoggedIn() && authenticationService.checkAuthorizationPrivilege()'>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Budgets</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                   <li>
