@@ -2,10 +2,11 @@
   <div class="card">
     <div class="card-body">
       <!--<button class="btn btn-primary" (click)="triggerModal(modalData)">insert</button>-->
-      <button class="btn btn-primary" (click)="triggerModal(modalData)">➕</button>
+      <button class="btn btn-primary" (click)="triggerModal(modalData)">INSERT</button>
       <!--<button class="btn btn-primary" (click)="triggerModal(updateModal) ; helper()">Update</button>-->
-      <button *ngIf="HighlightRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">🖊️</button>
-      <button (click)="delete()" type="button" class="btn btn-danger">DELETE</button>
+      <button *ngIf="HighlightRow !== -1" class="btn btn-warning" (click)="triggerModal(modalDataUpdate)">UPDATE</button>
+      <button  *ngIf="HighlightRow !== -1" (click)="delete()" type="button" class="btn btn-danger">DELETE</button>
+      <br>
       <ng-template #modalData let-modal>
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">
