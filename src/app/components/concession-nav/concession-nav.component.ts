@@ -22,7 +22,7 @@ export class ConcessionNavComponent implements OnInit {
     this._concessionService.findAllConcessions().subscribe(
       data => {
         this.allConcessions = data;
-        console.log(data);
+        // console.log(data);
       },
       error => { //if the response is error, display the error using alert.
         console.log(error)
