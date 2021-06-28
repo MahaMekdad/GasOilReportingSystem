@@ -28,7 +28,7 @@ import { Configuration }                                     from 'service_utils
 @Injectable()
 export class LoginService {
 
-    protected basePath = 'http://localhost:9592';
+    protected basePath = 'http://localhost:9595';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

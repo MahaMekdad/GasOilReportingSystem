@@ -82,10 +82,8 @@ import { DailyActionsComponent } from './components/daily-actions/daily-actions.
 import { AddNewReportComponent } from './components/add-new-report/add-new-report.component';
 import { UpdateReportComponent } from './components/update-report/update-report.component';
 import { DatePipe } from '@angular/common';
-// import { ReportComponent } from './components/report/report.component';
-// import pdfMake from "pdfmake/build/pdfmake";  
-// import pdfFonts from "pdfmake/build/vfs_fonts";
 
+import { ReportComponent } from './components/report/report.component';
 @NgModule({
 
   declarations: [
@@ -133,7 +131,7 @@ import { DatePipe } from '@angular/common';
     DailyActionsComponent,
     AddNewReportComponent,
     UpdateReportComponent,
-    // ReportComponent
+    ReportComponent
 
   ],
   imports: [
@@ -156,9 +154,6 @@ import { DatePipe } from '@angular/common';
     NgxPaginationModule,
     NgChartjsModule,
     NgApexchartsModule,
-    // pdfMake,
-    // pdfFonts
-
   ],
   providers: [
     DatePipe,
@@ -167,7 +162,7 @@ import { DatePipe } from '@angular/common';
       useClass: TokenInterceptor,
       multi: true,
 
-    },
+    }, 
     {
       provide: JWT_OPTIONS,
       useValue: JWT_OPTIONS
