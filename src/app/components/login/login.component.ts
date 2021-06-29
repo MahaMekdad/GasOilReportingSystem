@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loggedInUser: UserLoggedInResponse
   form: FormGroup;
   flag: boolean = false;
+  msg: string;
 
   constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router) { }
 
@@ -40,8 +41,9 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['home'])
       },
       error => {
-        // console.log(error)
+        console.log(error)
         this.flag = true;
+        this.msg = error.error.errorMessage;
       }
     );
   }
