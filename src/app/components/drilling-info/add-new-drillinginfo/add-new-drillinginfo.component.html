@@ -102,13 +102,13 @@
             </div>
           </div>
           <br>
-          <div class="lg-3">
+          <!-- <div class="lg-3">
             <label class="form-label">productionGeneralInfo</label>
             <input formControlName="productionGeneralInfo" type="text" class="form-control" placeholder="productionGeneralInfo" id="productionGeneralInfo"/>
             <div *ngIf="form.controls['productionGeneralInfo'].invalid && ((form.controls['productionGeneralInfo'].touched) || (this.form.controls['productionGeneralInfo'].dirty))">
               <small *ngIf="this.form.controls['productionGeneralInfo'].hasError('required')" class="form-text text-danger">Please Enter The prodGenearlInfo</small>
             </div>
-          </div>
+          </div> -->
           <button  type="submit" class="btn btn-primary" (click)="insert()">Insert</button>
         </form>
       </div>

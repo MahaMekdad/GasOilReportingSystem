@@ -15,7 +15,7 @@ export class WellGeneralInfoComponent implements OnInit {
   concession: string;
   jobLocation: string = localStorage.getItem("jobLocation");
   userRole: string  =  localStorage.getItem("userRole");
-  wellGeneralInfoResponse:WellGeneralInfoResponse;
+  wellGeneralInfoResponse:WellGeneralInfoResponse = null;
   highlightedRow: number = -1;
   modalContent: NgbModalRef;
   wellIdToaddWellGeneralInfo:number=2;
@@ -57,6 +57,7 @@ export class WellGeneralInfoComponent implements OnInit {
       //1>>>>wellId
       this.wellGeneralInfoService.wellsGeneralInfoIdGet(this.id).subscribe(Response =>{
         this.wellGeneralInfoResponse=Response;
+        console.log(this.wellGeneralInfoResponse)
      });
   }
 
