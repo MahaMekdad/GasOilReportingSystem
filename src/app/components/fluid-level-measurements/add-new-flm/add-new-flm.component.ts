@@ -29,7 +29,7 @@ export class AddNewFlmComponent implements OnInit {
     this.form = this._formBuilder.group({
       date:['', [Validators.required]],
       // time:['', [Validators.required]],
-      intervals:['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      intervals:['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       flType:['', [Validators.required]],
       fluidLevel:['', [Validators.required]],
       pumpDepth:['', [Validators.required]],

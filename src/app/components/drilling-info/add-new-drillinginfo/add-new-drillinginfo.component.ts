@@ -30,7 +30,7 @@ export class AddNewDrillinginfoComponent implements OnInit {
       measuredDepth:['', [Validators.required]],
       tvdDepth:['', [Validators.required]],
       bbtp:['', [Validators.required]],
-      productionGeneralInfo:['', [Validators.required]],
+      // productionGeneralInfo:['', [Validators.required]],
       // well: ['', [Validators.required]]
     })
     // this._wellService.getwells().subscribe(
@@ -56,6 +56,7 @@ export class AddNewDrillinginfoComponent implements OnInit {
     // console.log("-------------");
     // console.log(drillInfo)
     // console.log(drillInfo.wellDescription);
+    drillInfo.productionGeneralInfo = null;
     this._drillingService.wellsWellIdDrillingInfoPost(drillInfo, this.id).subscribe(
       response => {
         this.closeModal.emit();

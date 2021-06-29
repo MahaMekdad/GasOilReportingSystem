@@ -68,13 +68,13 @@
           </div>
           <br>
           <br>
-          <div class="lg-3">
+          <!-- <div class="lg-3">
             <label  class="form-label">productionGeneralInfo</label>
             <input [(ngModel)]="drillingUpdate.productionGeneralInfo" formControlName="productionGeneralInfo" type="text" class="form-control" placeholder="productionGeneralInfo" id="productionGeneralInfo"/>
             <div *ngIf="form.controls['productionGeneralInfo'].invalid && ((form.controls['productionGeneralInfo'].touched) || (this.form.controls['productionGeneralInfo'].dirty))">
               <small *ngIf="this.form.controls['productionGeneralInfo'].hasError('required')" class="form-text text-danger">Please Enter The productionGeneralInfo</small>
             </div>
-          </div>
+          </div> -->
           <br>
           <button  type="submit" class="btn btn-primary" (click)="update()">Update</button>
         </form>
