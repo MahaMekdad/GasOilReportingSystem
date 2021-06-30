@@ -64,6 +64,14 @@
               </button>
 
               <div class="collapse navbar-collapse customClass" id="navbarSupportedContent">
+                <ul style="text-align: left; float: left;" class="nav navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <h4 *ngIf='authenticationService.isUserLoggedIn()'>Hi, {{name}}. Your Location: {{location}}</h4>
+                  </li>
+                </ul>
+            </div>
+
+              <div class="collapse navbar-collapse customClass" id="navbarSupportedContent">
                   <ul class="nav navbar-nav ml-auto">
                       <li class="nav-item" >
                           <a class="nav-link" *ngIf='!authenticationService.isUserLoggedIn()' routerLink="/registration">Registration</a>

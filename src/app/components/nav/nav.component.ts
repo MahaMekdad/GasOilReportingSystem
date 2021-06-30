@@ -13,6 +13,10 @@ export class NavComponent {
 
   role: string = localStorage.getItem("userRole");
 
+  location: string = localStorage.getItem("jobLocation")
+
+  name: string = localStorage.getItem("name")
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

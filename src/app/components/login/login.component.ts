@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("authenticatedUser",loginRequest.email);
         localStorage.setItem("userRole", response.jobTitle.toString());
         localStorage.setItem("jobLocation", response.jobLocation);
+        localStorage.setItem("name", response.firstName);
         this._router.navigate(['home'])
       },
       error => {

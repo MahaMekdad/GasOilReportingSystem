@@ -28,6 +28,7 @@ export class JwtAuthenticationService {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userRole");
     localStorage.removeItem("jobLocation");
+    localStorage.removeItem("name");
   }
 
   checkAuthorizationPrivilege(){
